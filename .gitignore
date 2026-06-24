@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+*.parquet
+*.parquet.bak
+dataset/
+*.log
+*.pkl
+*.sqlite
+node_modules/
+.env
+
