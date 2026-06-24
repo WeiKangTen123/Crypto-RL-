@@ -42,6 +42,10 @@ data/
 # Phase 12
 phase_12/
 
+# Freqtrade
+freqtrade/
+freqai/
+
 # Node
 node_modules/
 
