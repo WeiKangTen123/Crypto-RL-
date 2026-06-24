@@ -27,12 +27,20 @@ dataset/
 .env.*
 !.env.example
 reddit_api.txt
+open_router_API.txt
+binance_api.txt
 *api_key*
 *secret*
 *credential*
 *_token.txt
 *.pem
 *.key
+
+# Data & large folders
+data/
+
+# Phase 12
+phase_12/
 
 # Node
 node_modules/
