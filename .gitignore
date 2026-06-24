@@ -38,6 +38,25 @@ binance_api.txt
 
 # Data & large folders
 data/
+dataset/
+train_results/
+
+# Generated outputs
+results/
+report/
+strategy_backtest/results/
+
+# Loose binary/media files
+*.zip
+*.pdf
+*.png
+*.webp
+*.jpg
+*.jpeg
+*.gif
+
+# Backup files (all)
+*.bak
 
 # Phase 12
 phase_12/
