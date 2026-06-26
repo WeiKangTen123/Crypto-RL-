@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+EMA crossovers (9 and 21) are effective in trending markets but generate many "fakeouts" during consolidations. In crypto, a genuine trend shift is almost always accompanied by a surge in trade count (`num_trades`) as new participants enter the market. By filtering for "volatility expansion" via trade intensity at the moment of the crossover, we significantly increase the probability that the crossover represents a "structural break" rather than a temporary oscillation.

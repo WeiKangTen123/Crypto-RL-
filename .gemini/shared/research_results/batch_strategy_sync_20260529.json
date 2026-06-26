@@ -1,0 +1,10 @@
+{
+  "sync_date": "2026-05-29",
+  "total_strategies": 75,
+  "top_performers": [
+    {"id": "30", "name": "LIQUIDITY_SWEEP_REVERSAL_BTC_4H", "roi": "90.74%", "sharpe": 1.24},
+    {"id": "22", "name": "SUPER_FVMA_BTC_4H", "roi": "82.99%", "sharpe": 2.51},
+    {"id": "1", "name": "MACD_KDJ_DAILY_PROFIT", "roi": "1560%", "sharpe": 0.95}
+  ],
+  "message": "Full batch of 75 technical strategies ready for dashboard integration. See settings.py for full library."
+}

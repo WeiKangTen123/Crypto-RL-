@@ -1,0 +1,182 @@
+"""
+This code defines various settings and functions for training a machine learning model.
+
+The trade start date in combinations with the amount of candles required for training and validation determine all
+other parameters automatically.
+
+The function nCr calculates the number of ways to choose r elements from a set of n elements, also known as a combination.
+
+The settings defined in this script include the random seed SEED_CFG, the time frame TIMEFRAME,
+the number of trials H_TRIALS,
+the number of groups used for testing K_TEST_GROUPS,
+the number of paths NUM_PATHS,
+the number of K-fold cross validation groups KCV_groups
+the number of groups N_GROUPS,
+the number of splits NUMBER_OF_SPLITS,
+the start and end date for the trade period trade_start_date
+the trade_end_date,
+the number of candles for training no_candles_for_train
+the validation no_candles_for_val
+the list of tickers TICKER_LIST,
+the minimum buy limits ALPACA_LIMITS,
+the list of technical indicators TECHNICAL_INDICATORS_LIST.
+
+The function calculate_start_end_dates is used to compute the start and end dates for training and validation based on the number of candles and the selected time frame.
+
+"""
+
+from datetime import datetime, timedelta
+import numpy as np
+import operator as op
+from functools import reduce
+
+
+def nCr(n, r):
+    r = min(r, n-r)
+    numer = reduce(op.mul, range(n, n-r, -1), 1)
+    denom = reduce(op.mul, range(1, r+1), 1)
+    return numer // denom  # or / in Python 2
+
+
+# General Training Settings
+#######################################################################################################
+#######################################################################################################
+
+trade_start_date = '2024-07-31 20:00:00'   # Start of test period (60% train done)
+trade_end_date   = '2026-04-28 00:00:00'   # End of test period (last parquet row)
+
+SEED_CFG = 2390408
+TIMEFRAME = '4h'
+H_TRIALS = 50
+KCV_groups = 5
+K_TEST_GROUPS = 2
+NUM_PATHS = 4
+N_GROUPS = NUM_PATHS + 1
+NUMBER_OF_SPLITS = nCr(N_GROUPS, N_GROUPS - K_TEST_GROUPS)
+
+print(NUMBER_OF_SPLITS)
+
+no_candles_for_train = 2601  # 75% of 3469 available 4h candles
+no_candles_for_val   = 868   # 25% of 3469 available 4h candles
+
+TICKER_LIST = [
+               'BTCUSDT',        # coins the agent actively trades
+               ]
+
+FEATURE_TICKERS = [
+               'ETHUSDT',        # coins used as indicator features only (not traded)
+               'DXYUSDT',
+               'SPYUSDT',
+               'VIXUSDT',
+               'JPYUSDT',
+               ]
+
+
+# Minimum buy limits
+ALPACA_LIMITS = np.array([0.01,
+                          0.10,
+                          0.0001,
+                          0.1,
+                          0.1,
+                          0.001,
+                          0.01,
+                          10,
+                          0.1,
+                          0.01
+                          ])
+
+# Minimum crypto limits for CCXT exchanges (BTC, ETH, etc.)
+CRYPTO_LIMITS = np.array([0.0001,  # BTC minimum (about $4)
+                          0.001,   # ETH minimum (about $2)
+                          0.01,    # NEAR minimum
+                          0.1,     # LINK minimum
+                          0.1,     # LTC minimum
+                          1.0,     # MATIC minimum
+                          0.1,     # UNI minimum
+                          0.01,    # SOL minimum
+                          0.1,     # Additional cryptos if needed
+                          0.001
+                          ])
+
+# CCXT Exchange Configuration
+CCXT_CONFIG = {
+    'exchange_name': 'binance',  # Default exchange
+    'sandbox': False,           # Set to True for testing
+    'enable_rate_limit': True,
+    'timeout': 30000,          # 30 seconds
+    'verbose': False,          # Set to True for debugging
+}
+
+# Environment parameters for CCXT
+ENV_PARAMS_CCXT = {
+    'lookback': 50,            # Lookback window for state
+    'norm_cash': 1e-6,         # Cash normalization factor
+    'norm_stocks': 100,        # Stock/crypto normalization factor
+    'norm_tech': 1,            # Technical indicator normalization
+    'norm_reward': 1,          # Reward normalization
+    'norm_action': 1,          # Action normalization
+}
+
+# Trading parameters
+TRADING_PARAMS = {
+    'initial_capital': 1000000,    # $1M initial capital
+    'buy_cost_pct': 0.001,         # 0.1% trading fee (Binance standard)
+    'sell_cost_pct': 0.001,        # 0.1% trading fee
+    'gamma': 0.99,                # Discount factor
+    'safety_factor': 0.95,        # 5% safety margin for orders
+    'cooldown_periods': 24,        # Periods before forced sell (2 hours for 5m)
+    'forced_sell_pct': 0.05,       # 5% forced sell after cooldown
+}
+
+
+TECHNICAL_INDICATORS_LIST = [
+    # Per-ticker base features (14)
+    'close', 'volume', 'quote_vol', 'num_trades', 'taker_buy_ratio',
+    'rsi', 'dx', 'ultosc', 'obv', 'ht_dcphase',
+    'atr', 'bband_width', 'ema_ratio', 'log_return',
+    # Cross-asset: BTC vs each feature ticker (3 × 5 = 15)
+    'cross_price_ratio_eth', 'cross_volume_ratio_eth', 'cross_corr_20_eth',
+    'cross_price_ratio_dxy', 'cross_volume_ratio_dxy', 'cross_corr_20_dxy',
+    'cross_price_ratio_spy', 'cross_volume_ratio_spy', 'cross_corr_20_spy',
+    'cross_price_ratio_vix', 'cross_volume_ratio_vix', 'cross_corr_20_vix',
+    'cross_price_ratio_jpy', 'cross_volume_ratio_jpy', 'cross_corr_20_jpy',
+    # VIX panic signal — explicit volatility-of-volatility (1)
+    'vix_log_return',
+]
+
+
+# Auto compute all necessary dates based on candle distribution
+#######################################################################################################
+#######################################################################################################
+
+def calculate_start_end_dates(candlewidth):
+    no_minutes = int
+
+    candle_to_no_minutes = {'1m': 1, '5m': 5, '10m': 10, '30m': 30, '1h': 60, '2h': 2*60, '4h': 4*60, '12h': 12*60}
+    no_minutes = candle_to_no_minutes[candlewidth]
+
+    trade_start_date_datetimeObj = datetime.strptime(trade_start_date, "%Y-%m-%d %H:%M:%S")
+
+    # train start date = trade_start_date - (no_c_t  + no_c_v)
+    train_start_date = (trade_start_date_datetimeObj
+                        - timedelta(minutes=no_minutes * (no_candles_for_train
+                                                          + no_candles_for_val))).strftime("%Y-%m-%d %H:%M:%S")
+
+    # train start date = trade_start_date - (no_c_v + 1)
+    train_end_date = (trade_start_date_datetimeObj
+                      - timedelta(minutes=no_minutes * (no_candles_for_val + 1))).strftime("%Y-%m-%d %H:%M:%S")
+
+    # validation start date = trade_start_date - no_c_v
+    val_start_date = (trade_start_date_datetimeObj
+                      - timedelta(minutes=no_minutes * no_candles_for_val)).strftime("%Y-%m-%d %H:%M:%S")
+
+    # validation start date = trade_start_date - 1
+    val_end_date = (trade_start_date_datetimeObj
+                    - timedelta(minutes=no_minutes * 1)).strftime("%Y-%m-%d %H:%M:%S")
+
+    return train_start_date, train_end_date, val_start_date, val_end_date
+
+
+TRAIN_START_DATE, TRAIN_END_DATE, VAL_START_DATE, VAL_END_DATE = calculate_start_end_dates(TIMEFRAME)
+print("TRAIN_START_DATE: ", TRAIN_START_DATE)
+print("VAL_END_DATE: ", VAL_END_DATE)

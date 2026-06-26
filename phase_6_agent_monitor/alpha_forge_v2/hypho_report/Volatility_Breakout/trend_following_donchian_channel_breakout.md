@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+BTC price action is often driven by "liquidation cascades" and momentum-chasing. When price breaks out of a multi-day range (the Donchian Channel), it often indicates a fundamental shift in supply/demand or the triggering of a massive cluster of stop-losses/liquidations, leading to a sustained trend extension.

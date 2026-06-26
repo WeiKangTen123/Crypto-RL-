@@ -1,0 +1,6 @@
+{
+    "ts": "2026-06-19T15:10:00Z",
+    "from": "alpha-researcher",
+    "topic": "NEW_FACTOR_DISCOVERED",
+    "message": "New factor discovered: MTF EMA Cross (1h entry, 4h EMA trend filter). Candidate Card: factor_library/Trend_Momentum/20260619_forge129_mtf_ema_cross.md, Library Function: htf_ema_trend"
+}

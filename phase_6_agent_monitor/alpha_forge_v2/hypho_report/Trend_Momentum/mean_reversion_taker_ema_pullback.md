@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+BTC often experiences "liquidity hunt" pullbacks during strong trends. Traditional traders often get stopped out when price touches a key moving average like the 50 EMA. This strategy gains an edge by using `taker_buy_base_vol`. If the taker-buy ratio remains > 52% during a price drop to the EMA, it indicates that "aggressive" buyers are still absorbing every available offer, suggesting the pullback is a temporary lack of sell-side liquidity rather than a trend shift.

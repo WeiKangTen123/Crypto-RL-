@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Crypto-RL Backtest Dashboard</title>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>📈 Crypto-RL Backtest Dashboard</h1>
+    <p class="header-sub">Out-of-sample performance evaluation</p>
+    <div class="header-chips" id="drl-header-chips">
+      <span id="h-result">—</span>
+      <span id="h-tickers">—</span>
+      <span id="h-period">—</span>
+      <span id="h-generated">—</span>
+    </div>
+
+    <div class="summary-bar" id="drl-summary-bar" style="display:none">
+      <div class="summary-item"><span class="sl">Net Profit</span><span class="sv" id="s-profit">—</span></div>
+      <div class="summary-item"><span class="sl">Total Return</span><span class="sv" id="s-return">—</span></div>
+      <div class="summary-item"><span class="sl">Max Drawdown</span><span class="sv" id="s-mdd">—</span></div>
+      <div class="summary-item"><span class="sl">Total Trades</span><span class="sv" id="s-trades">—</span></div>
+      <div class="summary-item"><span class="sl">Win Rate</span><span class="sv" id="s-winrate">—</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Mode Selector -->
+  <div class="mode-bar-wrapper">
+    <div class="mode-bar-inner">
+      <button class="mode-btn" data-mode="drl">🤖 DRL Agent Backtest</button>
+      <button class="mode-btn active" data-mode="strategy">⚡ Technical Strategy Backtest</button>
+      <button class="mode-btn" data-mode="multicoin">🌐 Multi-Coin Forge</button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== DRL MODE -->
+  <div id="mode-drl-content" style="display:none">
+
+    <!-- Alert -->
+    <div id="alert-banner" class="alert alert-warn" style="display:none">
+      ⚠️ <strong>DRL bot is not trading — portfolio held as cash the entire period.</strong>
+      Reward signal is too small to learn from. Fix: increase <code>norm_reward</code>
+      (try 2⁻⁵) in <code>optimize_cpcv.py → sample_hyperparams()</code> and re-run Phase 1.
+    </div>
+
+    <!-- Performance Comparison (DRL vs HODL) -->
+    <section class="card">
+      <div class="card-header"><span class="icon">⚖️</span><h2>DRL Bot vs. Buy &amp; Hold</h2></div>
+      <div class="comparison">
+        <div class="comp-col drl-col">
+          <div class="comp-title drl-title" id="drl-bot-title">🤖 DRL Bot</div>
+          <div class="metric-row highlight"><span class="ml">Annual Return</span><span class="mv" id="d-annret">—</span></div>
+          <div class="metric-row"><span class="ml">Cumulative Return</span><span class="mv" id="d-cumret">—</span></div>
+          <div class="metric-row"><span class="ml">Sharpe Ratio</span><span class="mv" id="d-sharpe">—</span></div>
+          <div class="metric-row"><span class="ml">Sortino Ratio</span><span class="mv" id="d-sortino">—</span></div>
+          <div class="metric-row"><span class="ml">Max Drawdown</span><span class="mv" id="d-mdd">—</span></div>
+        </div>
+        <div class="comp-divider"></div>
+        <div class="comp-col hodl-col">
+          <div class="comp-title hodl-title">📦 Buy &amp; Hold</div>
+          <div class="metric-row highlight"><span class="ml">Annual Return</span><span class="mv" id="h-annret">—</span></div>
+          <div class="metric-row"><span class="ml">Cumulative Return</span><span class="mv" id="h-cumret">—</span></div>
+          <div class="metric-row"><span class="ml">Sharpe Ratio</span><span class="mv" id="h-sharpe">—</span></div>
+          <div class="metric-row"><span class="ml">Sortino Ratio</span><span class="mv" id="h-sortino">—</span></div>
+          <div class="metric-row"><span class="ml">Max Drawdown</span><span class="mv" id="h-mdd">—</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Metrics Grid -->
+    <div class="metrics-grid">
+      <section class="card">
+        <div class="card-header"><span class="icon">💰</span><h2>Account Overview</h2></div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="ml">Initial Balance</span><span class="mv" id="m-init-bal">—</span></div>
+          <div class="metric-row"><span class="ml">Final Balance</span><span class="mv" id="m-final-bal">—</span></div>
+          <div class="metric-row highlight"><span class="ml">Net Profit</span><span class="mv" id="m-net-profit">—</span></div>
+          <div class="metric-row"><span class="ml">Gross Profit</span><span class="mv" id="m-gross-profit">—</span></div>
+          <div class="metric-row"><span class="ml">Gross Loss</span><span class="mv" id="m-gross-loss">—</span></div>
+          <div class="metric-row"><span class="ml">Total Fees</span><span class="mv" id="m-fees">—</span></div>
+        </div>
+      </section>
+      <section class="card">
+        <div class="card-header"><span class="icon">⚡</span><h2>Edge &amp; Efficiency</h2></div>
+        <div class="metric-list">
+          <div class="metric-row highlight"><span class="ml">Expectancy (per trade)</span><span class="mv" id="m-expectancy">—</span></div>
+          <div class="metric-row highlight"><span class="ml">Profit Factor</span><span class="mv" id="m-profit-factor">—</span></div>
+          <div class="metric-row"><span class="ml">Calmar Ratio</span><span class="mv" id="m-calmar">—</span></div>
+          <div class="metric-row"><span class="ml">Recovery Factor</span><span class="mv" id="m-recovery">—</span></div>
+          <div class="metric-row"><span class="ml">Sharpe Ratio</span><span class="mv" id="m-sharpe">—</span></div>
+          <div class="metric-row"><span class="ml">Sortino Ratio</span><span class="mv" id="m-sortino">—</span></div>
+        </div>
+      </section>
+      <section class="card">
+        <div class="card-header"><span class="icon">📊</span><h2>Trade Statistics</h2></div>
+        <div class="metric-list">
+          <div class="metric-row highlight"><span class="ml">Win Rate</span><span class="mv" id="m-win-rate">—</span></div>
+          <div class="metric-row"><span class="ml">Total Trades</span><span class="mv" id="m-total-trades">—</span></div>
+          <div class="metric-row"><span class="ml">Avg Win / Loss</span><span class="mv" id="m-avg-win-loss">—</span></div>
+          <div class="metric-row"><span class="ml">Best / Worst Trade</span><span class="mv" id="m-best-worst">—</span></div>
+          <div class="metric-row"><span class="ml">Max Consec. Wins/Loss</span><span class="mv" id="m-consec">—</span></div>
+          <div class="metric-row"><span class="ml">Avg Duration</span><span class="mv" id="m-duration">—</span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Analytics Tabs -->
+    <section class="card">
+      <div class="card-header">
+        <span class="icon">📈</span>
+        <h2>Analytics &amp; Visualization</h2>
+      </div>
+      <div class="tab-header drl-tab-bar">
+        <button class="tab-btn active" data-tab="equity">Equity Curve</button>
+        <button class="tab-btn" data-tab="periodic">Periodic Returns</button>
+        <button class="tab-btn" data-tab="price">Price &amp; Markers</button>
+        <button class="tab-btn" data-tab="drawdown">Drawdown</button>
+        <button class="tab-btn" data-tab="log">Trade Log</button>
+      </div>
+
+      <div id="tab-equity" class="tab-content active">
+        <div id="chart-equity" class="chart"></div>
+        <div class="interp">Cumulative return since start of test period. <strong>Blue = DRL Bot</strong>, <strong>Red = Buy &amp; Hold</strong>.</div>
+      </div>
+
+      <div id="tab-periodic" class="tab-content">
+        <div class="grid-2">
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Monthly Returns (%)</h3>
+            <div id="chart-monthly" class="chart" style="height:350px"></div>
+          </div>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Yearly Returns (%)</h3>
+            <div id="chart-yearly" class="chart" style="height:350px"></div>
+          </div>
+        </div>
+        <div class="interp">Percentage returns grouped by month and year. Positive = green, negative = red.</div>
+      </div>
+
+      <div id="tab-price" class="tab-content">
+        <div class="chart-controls">
+          <select id="asset-selector" class="search-box" style="margin-bottom:10px"></select>
+        </div>
+        <div id="chart-price" class="chart"></div>
+        <div class="interp">Entry and Exit points on the asset price. 🟢 = BUY, 🔴 = SELL.</div>
+      </div>
+
+      <div id="tab-drawdown" class="tab-content">
+        <div id="chart-drawdown" class="chart"></div>
+        <div class="interp"><strong>Drawdown</strong> = decline from the portfolio's rolling peak value.</div>
+      </div>
+
+      <div id="tab-log" class="tab-content">
+        <div class="table-wrap">
+          <table id="log-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Asset</th>
+                <th>Side</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Value (USD)</th>
+                <th>Fee (USD)</th>
+              </tr>
+            </thead>
+            <tbody id="log-tbody"></tbody>
+          </table>
+        </div>
+        <div class="interp">Every execution (Buy/Sell) processed by the DRL agent, including the 0.1% exchange fee.</div>
+      </div>
+    </section>
+
+    <!-- Round-Trip Trades -->
+    <section class="card">
+      <div class="card-header">
+        <span class="icon">📋</span>
+        <h2>Round-Trip Trades (Net of Fees)</h2>
+        <div class="table-toolbar">
+          <input type="text" id="trade-search" placeholder="Search asset..." class="search-box">
+          <span id="trade-count-badge" class="count-badge">0 trades</span>
+        </div>
+      </div>
+      <div id="no-trades-msg" class="no-trades" style="display:none">
+        No trades executed — the agent held cash for the entire test period.
+      </div>
+      <div class="table-wrap">
+        <table id="trade-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Entry Time</th>
+              <th>Exit Time</th>
+              <th>Cost Basis</th>
+              <th>Exit Price</th>
+              <th>Fees (USD)</th>
+              <th>Slippage (USD)</th>
+              <th>Gross Profit</th>
+              <th>Net Profit (USD)</th>
+              <th>Net Profit (%)</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody id="trade-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div><!-- end mode-drl-content -->
+
+  <!-- ===================================================================== STRATEGY MODE -->
+  <div id="mode-strategy-content">
+
+    <!-- Strategy Picker Card -->
+    <section class="card">
+      <div class="card-header">
+        <span class="icon">⚙️</span>
+        <h2>Strategy Configuration</h2>
+        <span class="strat-server-note" id="strat-server-note"></span>
+      </div>
+      <div class="strat-picker-controls">
+        <button id="btn-select-all" class="btn-secondary">☑ Select All</button>
+        <button id="btn-clear-all" class="btn-secondary">☐ Clear</button>
+        <div style="flex:1"></div>
+        <label class="date-label">From
+          <input type="date" id="strat-date-from" value="2021-01-01" class="date-input">
+        </label>
+        <label class="date-label">To
+          <input type="date" id="strat-date-to" value="2026-05-31" class="date-input">
+        </label>
+        <button id="btn-run-strat" class="btn-primary" disabled>▶ Run Backtest</button>
+      </div>
+      <div id="strat-date-note" style="font-size:11px;color:#6b7280;padding:2px 4px;min-height:16px;"></div>
+      <div id="strat-filter-bar"></div>
+      <div id="strat-grid" class="strat-grid">
+        <div class="strat-loading">Connecting to Flask server (http://127.0.0.1:5001)…</div>
+      </div>
+    </section>
+
+    <!-- Loading indicator -->
+    <div id="strat-running" style="display:none" class="strat-running-banner">
+      ⏳ Running backtest… this may take 30–90 seconds depending on the number of strategies.
+    </div>
+
+    <!-- Results -->
+    <div id="strat-results" style="display:none">
+
+      <!-- Equity Comparison Chart -->
+      <section class="card">
+        <div class="card-header">
+          <span class="icon">📈</span>
+          <h2>Equity Comparison</h2>
+          <span id="strat-result-count" class="count-badge" style="margin-left:auto">0 strategies</span>
+        </div>
+        <div id="chart-strat-compare" class="chart"></div>
+        <div class="interp">Cumulative return for each selected strategy. Click a row in the table below to highlight a strategy.</div>
+      </section>
+
+      <!-- Ranking Table -->
+      <section class="card">
+        <div class="card-header">
+          <span class="icon">🏆</span>
+          <h2>Strategy Rankings</h2>
+          <span class="interp" style="margin-left:auto;margin-bottom:0;font-size:0.8rem">sorted by Sharpe Ratio — click a row to see details</span>
+        </div>
+        <div class="table-wrap">
+          <table id="strat-rank-table">
+            <thead>
+              <tr>
+                <th>Strategy</th>
+                <th>Coin</th>
+                <th>TF</th>
+                <th>Total Return</th>
+                <th>Sharpe</th>
+                <th>Sortino</th>
+                <th>Max DD%</th>
+                <th>Win Rate</th>
+                <th>Trades</th>
+                <th>Leverage</th>
+                <th>Profit Factor</th>
+              </tr>
+            </thead>
+            <tbody id="strat-rank-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Per-Strategy Detail Panel -->
+      <div id="strat-detail-panel" style="display:none">
+        <section class="card strat-detail-card">
+          <div class="strat-detail-header">
+            <div>
+              <div class="strat-detail-title" id="strat-detail-title">—</div>
+              <div class="strat-detail-meta" id="strat-detail-meta">—</div>
+            </div>
+            <button id="btn-close-detail" class="btn-secondary">✕ Close</button>
+          </div>
+
+          <!-- Detail Sub-Tabs -->
+          <div class="tab-header strat-detail-tabs">
+            <button class="tab-btn active" data-stab="s-metrics">📊 Metrics</button>
+            <button class="tab-btn" data-stab="s-equity">📈 Equity Curve</button>
+            <button class="tab-btn" data-stab="s-price">📍 Entry &amp; Exit</button>
+            <button class="tab-btn" data-stab="s-periodic">📅 Periodic Returns</button>
+            <button class="tab-btn" data-stab="s-trades">📋 Trade Log</button>
+            <button class="tab-btn" data-stab="s-rulebook">✅ Rulebook</button>
+          </div>
+
+          <!-- Metrics Sub-Tab -->
+          <div id="stab-s-metrics" class="tab-content active">
+            <div class="metrics-grid" id="strat-metrics-grid"></div>
+          </div>
+
+          <!-- Equity Sub-Tab -->
+          <div id="stab-s-equity" class="tab-content">
+            <div id="chart-strat-detail-equity" class="chart"></div>
+          </div>
+
+          <!-- Price & Markers Sub-Tab -->
+          <div id="stab-s-price" class="tab-content">
+            <div id="chart-strat-detail-price" class="chart"></div>
+            <div class="interp">🟢 Triangle up = Entry (BUY/LONG) &nbsp;|&nbsp; 🔴 Triangle down = Exit (SELL/SHORT). Price line shows Close price at each bar.</div>
+          </div>
+
+          <!-- Periodic Returns Sub-Tab -->
+          <div id="stab-s-periodic" class="tab-content">
+            <div class="grid-2">
+              <div>
+                <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Monthly Returns (%)</h3>
+                <div id="chart-strat-monthly" class="chart" style="height:350px"></div>
+              </div>
+              <div>
+                <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Yearly Returns (%)</h3>
+                <div id="chart-strat-yearly" class="chart" style="height:350px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rulebook Sub-Tab -->
+          <div id="stab-s-rulebook" class="tab-content">
+            <div id="rulebook-content"></div>
+          </div>
+
+          <!-- Trade Log Sub-Tab -->
+          <div id="stab-s-trades" class="tab-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Side</th>
+                    <th>Qty</th>
+                    <th>Entry Price</th>
+                    <th>Exit Price</th>
+                    <th>Gross PnL</th>
+                    <th>Fees</th>
+                    <th>Slippage</th>
+                    <th>Net Profit</th>
+                    <th>Mkt %</th>
+                    <th>Duration</th>
+                    <th>Leverage</th>
+                    <th>ROE %</th>
+                    <th>Reason</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="strat-detail-trades-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+      </div><!-- end strat-detail-panel -->
+
+    </div><!-- end strat-results -->
+
+  </div><!-- end mode-strategy-content -->
+
+  <!-- ===================================================================== MULTICOIN MODE -->
+  <div id="mode-multicoin-content" style="display:none">
+
+    <!-- File Selector Card -->
+    <section class="card">
+      <div class="card-header">
+        <span class="icon">📂</span>
+        <h2>Select Multi-Coin Forge Results</h2>
+        <span class="strat-server-note" id="mc-load-note" style="margin-left:auto"></span>
+        <button id="mc-refresh-files-btn" class="btn-secondary" style="margin-left:8px;font-size:0.78rem">↻ Refresh</button>
+      </div>
+      <div id="mc-file-list" style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
+        <div style="color:#94a3b8;font-size:0.85rem;padding:12px 0">Loading available result files…</div>
+      </div>
+    </section>
+
+    <!-- Strategy Picker (shown after file load) -->
+    <div id="mc-picker-wrap" style="display:none">
+      <section class="card">
+        <div class="card-header">
+          <span class="icon">⚙️</span>
+          <h2>Strategy Configuration</h2>
+          <span class="strat-server-note" id="mc-server-note" style="margin-left:auto"></span>
+        </div>
+
+        <div class="strat-picker-controls">
+          <button id="mc-btn-select-all" class="btn-secondary">☑ Select All</button>
+          <button id="mc-btn-clear-all"  class="btn-secondary">☐ Clear</button>
+          <div style="flex:1"></div>
+
+          <!-- Coin multi-select -->
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:0.78rem;font-weight:700;color:#475569">Coins</span>
+            <div id="mc-coin-checkboxes" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"></div>
+          </div>
+
+          <label class="date-label">From
+            <input type="date" id="mc-date-from" value="2021-01-01" class="date-input">
+          </label>
+          <label class="date-label">To
+            <input type="date" id="mc-date-to" value="2026-05-31" class="date-input">
+          </label>
+          <button id="mc-run-btn" class="btn-primary" disabled>▶ Run Backtest</button>
+        </div>
+
+        <!-- TF pills above grid -->
+        <div id="mc-tf-pill-wrap" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+          <span style="font-size:0.78rem;font-weight:700;color:#64748b">Filter TF:</span>
+          <div id="mc-tf-pills" class="strat-filter-pills"></div>
+          <span id="mc-card-count" class="count-badge" style="margin-left:auto"></span>
+        </div>
+
+        <!-- Strategy card grid -->
+        <div id="mc-strat-grid" class="strat-grid"></div>
+      </section>
+
+      <!-- Running banner -->
+      <div id="mc-running" style="display:none" class="strat-running-banner">
+        ⏳ Running multi-coin backtest… this may take 30–120 seconds.
+      </div>
+
+      <!-- Results -->
+      <div id="mc-results" style="display:none">
+
+        <!-- Equity chart -->
+        <section class="card">
+          <div class="card-header">
+            <span class="icon">📈</span>
+            <h2>Equity Comparison</h2>
+            <span id="mc-result-count" class="count-badge" style="margin-left:auto">0 runs</span>
+          </div>
+          <div id="chart-mc-compare" class="chart"></div>
+          <div class="interp">Cumulative return for each selected DNA × coin run. Click a row below to view details.</div>
+        </section>
+
+        <!-- Ranking table -->
+        <section class="card">
+          <div class="card-header">
+            <span class="icon">🏆</span>
+            <h2>Rankings</h2>
+            <span class="interp" style="margin-left:auto;margin-bottom:0;font-size:0.8rem">sorted by Sharpe — click row for details</span>
+          </div>
+          <div class="table-wrap">
+            <table id="mc-rank-table">
+              <thead>
+                <tr>
+                  <th>Strategy</th>
+                  <th>Coin</th>
+                  <th>TF</th>
+                  <th>Total Return</th>
+                  <th>Sharpe</th>
+                  <th>Sortino</th>
+                  <th>Max DD%</th>
+                  <th>Win Rate</th>
+                  <th>Trades</th>
+                  <th>Leverage</th>
+                  <th>Profit Factor</th>
+                </tr>
+              </thead>
+              <tbody id="mc-rank-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Detail panel -->
+        <div id="mc-detail-panel" style="display:none">
+          <section class="card strat-detail-card">
+            <div class="strat-detail-header">
+              <div>
+                <div class="strat-detail-title" id="mc-detail-title">—</div>
+                <div class="strat-detail-meta"  id="mc-detail-meta">—</div>
+              </div>
+              <button id="mc-close-detail" class="btn-secondary">✕ Close</button>
+            </div>
+
+            <div class="tab-header strat-detail-tabs">
+              <button class="tab-btn active" data-mctab="mc-metrics">📊 Metrics</button>
+              <button class="tab-btn" data-mctab="mc-equity">📈 Equity Curve</button>
+              <button class="tab-btn" data-mctab="mc-price">📍 Entry &amp; Exit</button>
+              <button class="tab-btn" data-mctab="mc-periodic">📅 Periodic Returns</button>
+              <button class="tab-btn" data-mctab="mc-trades">📋 Trade Log</button>
+            </div>
+
+            <div id="stab-mc-metrics"   class="tab-content active"><div class="metrics-grid" id="mc-metrics-grid"></div></div>
+            <div id="stab-mc-equity"    class="tab-content"><div id="chart-mc-detail-equity" class="chart"></div></div>
+            <div id="stab-mc-price"     class="tab-content">
+              <div id="chart-mc-detail-price" class="chart"></div>
+              <div class="interp">🟢 Triangle up = Long Entry &nbsp;|&nbsp; 🔴 Triangle down = Short Entry &nbsp;|&nbsp; ✕ = Exit</div>
+            </div>
+            <div id="stab-mc-periodic"  class="tab-content">
+              <div class="grid-2">
+                <div>
+                  <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Monthly Returns (%)</h3>
+                  <div id="chart-mc-monthly" class="chart" style="height:350px"></div>
+                </div>
+                <div>
+                  <h3 style="font-size:0.9rem;margin-bottom:10px;color:#4a5568;text-align:center">Yearly Returns (%)</h3>
+                  <div id="chart-mc-yearly" class="chart" style="height:350px"></div>
+                </div>
+              </div>
+            </div>
+            <div id="stab-mc-trades"    class="tab-content">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Entry Time</th><th>Exit Time</th><th>Side</th><th>Qty</th>
+                      <th>Entry Price</th><th>Exit Price</th><th>Gross PnL</th>
+                      <th>Fees</th><th>Slippage</th><th>Net Profit</th>
+                      <th>Mkt %</th><th>Duration</th><th>Leverage</th>
+                      <th>ROE %</th><th>Reason</th><th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mc-detail-trades-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div><!-- end mc-results -->
+    </div><!-- end mc-picker-wrap -->
+
+  </div><!-- end mode-multicoin-content -->
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

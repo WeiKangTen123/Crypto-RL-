@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto-RL — Agentic Pipeline Flow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar__left">
+      <span class="top-bar__logo">⬡</span>
+      <span class="top-bar__title">Crypto-RL — Agentic Research Pipeline</span>
+      <span class="top-bar__track">TRACK B · Phase 6</span>
+    </div>
+    <div class="top-bar__right">
+      <span class="pill pill--good">🟢 GOOD <strong id="cnt-good">5</strong></span>
+      <span class="pill pill--mediocre">🟡 MEDIOCRE <strong id="cnt-mediocre">45</strong></span>
+      <span class="pill pill--bad">🔴 BAD <strong id="cnt-bad">50</strong></span>
+      <span class="pill pill--neutral">Σ <strong id="cnt-total">100</strong> strategies</span>
+      <span class="pill pill--neutral" id="scan-time">Last scan: 2026-06-14</span>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn tab-btn--active" data-tab="pipeline">⬡ Pipeline</button>
+    <button class="tab-btn" data-tab="agents">◈ Agents</button>
+    <button class="tab-btn" data-tab="scenarios">⇄ Scenarios</button>
+    <button class="tab-btn" data-tab="reference">≡ Reference</button>
+  </nav>
+
+  <main class="canvas">
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TAB 1 — PIPELINE: end-to-end sequential flow (compact agents)
+    ════════════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel tab-panel--active" id="tab-pipeline">
+
+      <!-- ─── INTAKE ──────────────────────────────────────────────────── -->
+      <section class="intake-wrapper">
+        <div class="intake-label">3 DISCOVERY CHANNELS (INTAKE)</div>
+        <div class="intake-grid">
+
+          <div class="node node--blue" data-tip="tip-web">
+            <div class="node__num">①</div>
+            <div class="node__title">Web Research</div>
+            <div class="node__agent">@alpha-researcher</div>
+            <ul class="node__list">
+              <li>Tier 1: GitHub · TradingView · Quantpedia</li>
+              <li>Tier 2: arXiv · SSRN · Glassnode · Binance Research</li>
+              <li>Tier 3: Twitter · Reddit · QuantConnect</li>
+            </ul>
+            <div class="node__tags">
+              <span class="tag tag--blue">LLM math extraction</span>
+              <span class="tag tag--blue">Pro model required</span>
+            </div>
+          </div>
+
+          <div class="node node--blue" data-tip="tip-queue">
+            <div class="node__num">②</div>
+            <div class="node__title">Queue Pickup</div>
+            <div class="node__agent">@alpha-researcher</div>
+            <ul class="node__list">
+              <li>Scans factor_library/ for status: QUEUED</li>
+              <li>Prioritises interest: High first</li>
+              <li>Flash model → queue-only (no web)</li>
+            </ul>
+            <div class="node__tags">
+              <span class="tag tag--blue">direct handoff</span>
+            </div>
+          </div>
+
+          <div class="node node--blue" data-tip="tip-data">
+            <div class="node__num">③</div>
+            <div class="node__title">Cross-Fertilize</div>
+            <div class="node__agent">@alpha-researcher</div>
+            <ul class="node__list">
+              <li>FINETUNE_PROMOTED inbox → look for variants</li>
+              <li>FACTOR_FAILURE_REPORT → poison filter update</li>
+              <li>DATA_REPAIRED inbox → unblock BLOCKED cards</li>
+            </ul>
+            <div class="node__tags">
+              <span class="tag tag--blue">inbox-driven</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="v-arrow"><span class="v-arrow__label">4-stage researcher pipeline</span></div>
+
+      <!-- ─── COMPACT RESEARCHER ─────────────────────────────────────── -->
+      <div class="flow-agent flow-agent--blue node--wide">
+        <div class="fa-header">
+          <div>
+            <div class="fa-name">@alpha-researcher</div>
+            <div class="fa-meta">4-Stage Discovery Pipeline · every 60 min</div>
+          </div>
+          <span class="fa-hint">→ Agents tab for full stage detail</span>
+        </div>
+        <div class="fa-stages">
+          <div class="fa-stage fa-stage--blue">1/4 WEB_SEARCH</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--blue">2/4 EXTRACT_ALPHA</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--blue">3/4 HYPHO_REPORT</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--blue">4/4 INDEX_SYNC</div>
+        </div>
+        <div class="fa-rules">
+          <span class="fa-rule">📌 Coins ∈ {BTC ETH BNB SOL XRP} · TF ∈ {5m 15m 1h 4h 1d} · BLOCKED if needs OI / liquidations / order book → DATA_REQUEST to @crypto-data-engineer</span>
+          <span class="fa-rule">📌 Flash model → queue-only fallback (skip WEB_SEARCH) · interest: High first · poison filter blocks known-bad factor classes</span>
+        </div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">NEW_FACTOR_DISCOVERED inbox</span></div>
+
+      <!-- ─── FACTOR LIBRARY ─────────────────────────────────────────── -->
+      <div class="node node--green node--wide">
+        <div class="node__header">
+          <div>
+            <div class="node__title">factor_library/</div>
+            <div class="node__subtitle">Candidate Cards — 8 categories</div>
+          </div>
+          <div class="node__counters">
+            <div class="counter"><span class="counter__n" id="cnt-cards">112</span><span class="counter__l">Total</span></div>
+            <div class="counter counter--yellow"><span class="counter__n" id="cnt-queued">37</span><span class="counter__l">QUEUED</span></div>
+            <div class="counter counter--green"><span class="counter__n" id="cnt-validated">2</span><span class="counter__l">VALIDATED</span></div>
+          </div>
+        </div>
+        <div class="node__tags node__tags--spaced">
+          <span class="tag">Trend_Momentum</span>
+          <span class="tag">Mean_Reversion</span>
+          <span class="tag">Volatility_Breakout</span>
+          <span class="tag">Funding_Rate_Arb</span>
+          <span class="tag">Cross_Sectional</span>
+          <span class="tag">Sentiment_OnChain</span>
+          <span class="tag">HFT</span>
+          <span class="tag">Market_Making</span>
+        </div>
+        <div class="node__rule">
+          ⚠ YAML enforced · BLOCKED cards with NEED: lines not picked up by developer
+        </div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">developer picks QUEUED card each cycle</span></div>
+
+      <!-- ─── COMPACT DEVELOPER ──────────────────────────────────────── -->
+      <div class="flow-agent flow-agent--indigo node--wide">
+        <div class="fa-header">
+          <div>
+            <div class="fa-name">@alpha-developer</div>
+            <div class="fa-meta">8-Stage Build Pipeline · every 60 min · click any stage to expand</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="node__counters" style="gap:8px">
+              <div class="counter"><span class="counter__n" id="cnt-strats">74</span><span class="counter__l">strategy .py</span></div>
+              <div class="counter counter--red"><span class="counter__n" id="cnt-autopsy">2</span><span class="counter__l">autopsies</span></div>
+            </div>
+            <span class="fa-hint">→ Agents tab for full stage detail</span>
+          </div>
+        </div>
+        <div class="stages-track">
+          <div class="stage"><div class="stage__num">1/8</div><div class="stage__name">INGEST</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">2/8</div><div class="stage__name">BUILD</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">3/8</div><div class="stage__name">SYNTAX</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">4/8</div><div class="stage__name">SMOKE</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage stage--highlight"><div class="stage__num">5/8</div><div class="stage__name">DEV_REPORT</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">6/8</div><div class="stage__name">WFO_EVO</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">7/8</div><div class="stage__name">PBO_AUDIT</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="stage"><div class="stage__num">8/8</div><div class="stage__name">MANIFEST</div></div>
+        </div>
+        <div class="fa-rules">
+          <span class="fa-rule">📌 finetune.py (Optuna 100+ trials) at Stage 5 BEFORE WFO · WFO tests stability only, never overwrites Optuna params</span>
+          <span class="fa-rule">📌 date_to always 2026-05-31 · date_from: 5m→2025 · 15m→2024 · 1h/4h→2023 · 1d→2022</span>
+        </div>
+        <div class="on-fail">⚠ ON_FAIL (any stage) → autopsy_report/ written · card status: REJECTED</div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">STRATEGY_READY inbox</span></div>
+
+      <!-- ─── SETTINGS.PY ────────────────────────────────────────────── -->
+      <div class="node node--purple node--wide">
+        <div class="node__header">
+          <div>
+            <div class="node__title">strategy_backtest/settings.py</div>
+            <div class="node__subtitle">Single Source of Truth · params = Optuna best · NO grade or status field</div>
+          </div>
+          <div class="node__counters">
+            <div class="counter"><span class="counter__n">100</span><span class="counter__l">strategies</span></div>
+            <div class="counter"><span class="counter__n">74</span><span class="counter__l">.py files</span></div>
+            <div class="counter"><span class="counter__n">43</span><span class="counter__l">library fns</span></div>
+          </div>
+        </div>
+        <div class="node__rule">
+          params set by finetune.py at Stage 5 · NOT overwritten at Stage 8 · entry NEVER deleted (REJECTED gets _REJECTED suffix in id) · grade lives in scan_results.json
+        </div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">scan_all.py · finetune.py · classify_strategies.py</span></div>
+
+      <!-- ─── COMPACT TUNER ──────────────────────────────────────────── -->
+      <div class="flow-agent flow-agent--amber node--wide">
+        <div class="fa-header">
+          <div>
+            <div class="fa-name">@crypto-strategy-tuner</div>
+            <div class="fa-meta">Grader &amp; Optimizer · every 5 min</div>
+          </div>
+          <span class="fa-hint">→ Agents tab for full stage detail</span>
+        </div>
+        <div class="fa-stages">
+          <div class="fa-stage fa-stage--amber">1/4 AUDIT</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--amber">2/4 WORK_CYCLE</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--amber">3/4 REPORTING</div>
+          <span class="fa-arr">›</span>
+          <div class="fa-stage fa-stage--amber">4/4 MANIFEST</div>
+        </div>
+        <div class="fa-rules">
+          <span class="fa-rule">📌 Sharpe ≥ 1.0 → GOOD · 0.3–1.0 → MEDIOCRE rescue · &lt;0.3 → BAD proactive rescue · ≥3 BAD same class → FACTOR_FAILURE_REPORT to researcher</span>
+          <span class="fa-rule">📌 Auto-expand: param at boundary → +50% range → +75 trials · scoring: Sharpe 70% + Recovery Factor 30%</span>
+        </div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">grade by Sharpe ratio</span></div>
+
+      <!-- ─── GRADE SPLIT ────────────────────────────────────────────── -->
+      <div class="grade-grid">
+        <div class="node node--grade-good">
+          <div class="grade__emoji">🟢</div>
+          <div class="grade__label">GOOD</div>
+          <div class="grade__count" id="grade-good">5</div>
+          <div class="grade__threshold">Sharpe ≥ 1.0</div>
+          <div class="grade__action">Paper trading ready</div>
+        </div>
+        <div class="node node--grade-mediocre">
+          <div class="grade__emoji">🟡</div>
+          <div class="grade__label">MEDIOCRE</div>
+          <div class="grade__count" id="grade-mediocre">45</div>
+          <div class="grade__threshold">Sharpe 0.3 – 1.0</div>
+          <div class="grade__action">Worth tuning</div>
+        </div>
+        <div class="node node--grade-bad">
+          <div class="grade__emoji">🔴</div>
+          <div class="grade__label">BAD</div>
+          <div class="grade__count" id="grade-bad">50</div>
+          <div class="grade__threshold">Sharpe &lt; 0.3</div>
+          <div class="grade__action">Proactive rescue</div>
+        </div>
+      </div>
+
+      <div class="outcome-arrows">
+        <div class="outcome-arrow"><div class="oa-shaft"></div><div class="oa-head"></div></div>
+        <div class="outcome-arrow"><div class="oa-shaft"></div><div class="oa-head"></div></div>
+        <div class="outcome-arrow"><div class="oa-shaft"></div><div class="oa-head"></div></div>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="node node--paper">
+          <div class="node__title">📈 Paper Trading</div>
+          <ul class="node__list">
+            <li>5 GOOD strategies live</li>
+            <li>Monitored: Phase 6 dashboard</li>
+            <li>elite_report/ written per GOOD</li>
+            <li>Waiting: composite GREEN gate</li>
+          </ul>
+        </div>
+        <div class="node node--rescue">
+          <div class="node__title">🔧 finetune.py Rescue</div>
+          <ul class="node__list">
+            <li>Optuna 100–400 trials</li>
+            <li>Multi-objective: Sharpe + Recovery Factor</li>
+            <li>find_worst_strategy.py selects target</li>
+            <li>On improve → re-grade → GOOD?</li>
+          </ul>
+        </div>
+        <div class="node node--autopsy">
+          <div class="node__title">🔬 Autopsy / Poison Filter</div>
+          <ul class="node__list">
+            <li>autopsy_report/ document written</li>
+            <li>FACTOR_FAILURE_REPORT → @alpha-researcher</li>
+            <li>≥3 BAD same class → researcher poison filter</li>
+            <li>Prevents same concept being rebuilt</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /tab-pipeline -->
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TAB 2 — AGENTS: full stage detail for all 6 agents
+    ════════════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-agents">
+
+      <div class="section-divider">CORE PIPELINE AGENTS — FULL STAGE DETAIL</div>
+
+      <!-- ─── ALPHA-RESEARCHER (full) ───────────────────────────────── -->
+      <div class="node node--blue node--wide">
+        <div class="node__header">
+          <div>
+            <div class="node__title">@alpha-researcher</div>
+            <div class="node__subtitle">4-Stage Discovery Pipeline · every 60 min</div>
+          </div>
+          <div class="node__counters">
+            <div class="counter"><span class="counter__n">35</span><span class="counter__l">hypho reports</span></div>
+            <div class="counter counter--yellow"><span class="counter__n">37</span><span class="counter__l">QUEUED</span></div>
+          </div>
+        </div>
+        <div class="stages-track stages-track--blue">
+          <div class="stage stage--blue">
+            <div class="stage__num">1/4</div>
+            <div class="stage__name">WEB_SEARCH</div>
+            <div class="stage__desc">Tier 1→2→3 sources · if web fails → skip to [2/4] queue pickup</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage stage--blue">
+            <div class="stage__num">2/4</div>
+            <div class="stage__name">EXTRACT_ALPHA</div>
+            <div class="stage__desc">Data Universe Guard · feasibility check · BLOCKED if needs OI/liquidations/order book · category routing</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage stage--blue">
+            <div class="stage__num">3/4</div>
+            <div class="stage__name">HYPHO_REPORT</div>
+            <div class="stage__desc">Extract signal math · add isolated fn to library.py · write Candidate Card with coins/TF/logic switches</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage stage--blue">
+            <div class="stage__num">4/4</div>
+            <div class="stage__name">INDEX_SYNC</div>
+            <div class="stage__desc">NEW_FACTOR_DISCOVERED → @alpha-developer inbox · card: QUEUED → HANDED_OFF · sync Obsidian</div>
+          </div>
+        </div>
+        <div class="dev-rules">
+          <span class="dev-rule">📌 Data Universe Guard: coins ∈ {BTC ETH BNB SOL XRP} · TF ∈ {5m 15m 1h 4h 1d} only — adapt foreign coins to nearest supported</span>
+          <span class="dev-rule">📌 BLOCKED path: strategy needs OI / liquidations / order book → fill Data Engineer Request block → send DATA_REQUEST → card BLOCKED until DATA_VALIDATION_DONE</span>
+          <span class="dev-rule">📌 known_data_gaps.md = partial gaps log only · does NOT mean coin/TF is unusable · all 5 coins usable across all 5 TFs</span>
+        </div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">NEW_FACTOR_DISCOVERED inbox</span></div>
+
+      <!-- ─── ALPHA-DEVELOPER (full) ─────────────────────────────────── -->
+      <div class="node node--indigo node--wide node--developer">
+        <div class="node__header">
+          <div>
+            <div class="node__title">@alpha-developer</div>
+            <div class="node__subtitle">8-Stage Build Pipeline · every 60 min · click any stage to expand</div>
+          </div>
+          <div class="node__counters">
+            <div class="counter"><span class="counter__n">74</span><span class="counter__l">strategy .py</span></div>
+            <div class="counter counter--red"><span class="counter__n">2</span><span class="counter__l">autopsies</span></div>
+          </div>
+        </div>
+        <div class="stages-track">
+          <div class="stage">
+            <div class="stage__num">1/8</div>
+            <div class="stage__name">INGEST</div>
+            <div class="stage__desc">Read card YAML · extract coin/TF/min-history · BLOCKED if NEED: lines present</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">2/8</div>
+            <div class="stage__name">BUILD</div>
+            <div class="stage__desc">grep library.py (43 fns) · skim 2 similar strategies · SIGNAL_PARAMS · inline regime masks · no check_regime()</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">3/8</div>
+            <div class="stage__name">SYNTAX</div>
+            <div class="stage__desc">Python AST validation · fix all imports</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">4/8</div>
+            <div class="stage__name">SMOKE</div>
+            <div class="stage__desc">Signal count (both >0) · 1-day backtest · verify manage_trade action strings</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage stage--highlight">
+            <div class="stage__num">5/8</div>
+            <div class="stage__name">DEV_REPORT</div>
+            <div class="stage__desc">Baseline → register settings.py → finetune.py (Optuna 100+ trials) → final backtest → cross-asset → dev report</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">6/8</div>
+            <div class="stage__name">WFO_EVO</div>
+            <div class="stage__desc">4-window stability · tests OPTIMIZED params · not defaults</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">7/8</div>
+            <div class="stage__name">PBO_AUDIT</div>
+            <div class="stage__desc">Overfit check · CPCV · threshold PBO &lt; 0.40</div>
+          </div>
+          <div class="stage-arrow">›</div>
+          <div class="stage">
+            <div class="stage__num">8/8</div>
+            <div class="stage__name">MANIFEST</div>
+            <div class="stage__desc">Verify Optuna params in settings.py · sync Obsidian · STRATEGY_READY → Tuner</div>
+          </div>
+        </div>
+        <div class="dev-rules">
+          <span class="dev-rule">📌 finetune.py (Optuna 100+ trials) at Stage 5 BEFORE WFO · even rejected strategies keep Optuna best params</span>
+          <span class="dev-rule">📌 WFO tests stability only — never overwrites Optuna params · settings.py entry retained even after REJECT</span>
+          <span class="dev-rule">📌 date_to always 2026-05-31 · date_from: 5m→2025 · 15m→2024 · 1h/4h→2023 · 1d→2022</span>
+          <span class="dev-rule">📌 Cross-asset uses SAME timeframe on other coins listed in card</span>
+        </div>
+        <div class="on-fail">⚠ ON_FAIL (any stage) → autopsy_report/ written · card status: REJECTED</div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">STRATEGY_READY inbox</span></div>
+
+      <!-- ─── TUNER (full) ───────────────────────────────────────────── -->
+      <div class="node node--amber node--wide">
+        <div class="node__header">
+          <div>
+            <div class="node__title">@crypto-strategy-tuner</div>
+            <div class="node__subtitle">Grader &amp; Optimizer · every 5 min</div>
+          </div>
+        </div>
+        <div class="tuner-track">
+          <div class="tuner-step"><div class="tuner-step__n">1/4</div><div class="tuner-step__name">AUDIT</div><div class="tuner-step__desc">Load scan_results.json · classify PENDING · check STRATEGY_READY inbox</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="tuner-step"><div class="tuner-step__n">2/4</div><div class="tuner-step__name">WORK_CYCLE</div><div class="tuner-step__desc">scan_all.py · finetune.py (1 auto-tune/wake-up, Sharpe 70% + Recovery 30%) · find_worst_strategy.py rescue</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="tuner-step"><div class="tuner-step__n">3/4</div><div class="tuner-step__name">REPORTING</div><div class="tuner-step__desc">Backtest report per strategy · if ≥3 BAD same class → FACTOR_FAILURE_REPORT to researcher</div></div>
+          <div class="stage-arrow">›</div>
+          <div class="tuner-step"><div class="tuner-step__n">4/4</div><div class="tuner-step__name">MANIFEST</div><div class="tuner-step__desc">GOOD → elite report · PAPER_READY · FINETUNE_PROMOTED → researcher · STRATEGY_VALIDATED → fullstack</div></div>
+        </div>
+        <div class="node__rule">Auto-expand: best param hits boundary → expand range 50% → re-run 75 trials · scoring: Sharpe 70% + Recovery Factor 30% + consistency</div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">support layer runs in parallel at all times</span></div>
+      <div class="section-divider">SUPPORT LAYER — 3 ALWAYS-ON AGENTS</div>
+
+      <div class="support-grid">
+
+        <div class="support-agent sa--cyan">
+          <div class="sa-header">
+            <div class="sa-name">@crypto-data-engineer</div>
+            <div class="sa-sched">Every 60 min · proactive + reactive</div>
+          </div>
+          <div class="sa-stages">
+            <div class="sa-stage"><span class="sa-n">1/4</span><div class="sa-content"><div class="sa-stage-name">SCAN</div><div class="sa-stage-desc">health_scout_v2.py · audit all 5 coins × 5 TF parquets</div></div></div>
+            <div class="sa-stage"><span class="sa-n">2/4</span><div class="sa-content"><div class="sa-stage-name">ANALYZE</div><div class="sa-stage-desc">gap patterns · schema / dtype errors · compare known_data_gaps.md</div></div></div>
+            <div class="sa-stage"><span class="sa-n">3/4</span><div class="sa-content"><div class="sa-stage-name">REPAIR</div><div class="sa-stage-desc">sync_all.py · incremental_fetcher.py · vpn_manager.py · .bak before every repair</div></div></div>
+            <div class="sa-stage"><span class="sa-n">4/4</span><div class="sa-content"><div class="sa-stage-name">VERIFY</div><div class="sa-stage-desc">final integrity check · update known_data_gaps.md · reply DATA_VALIDATION_DONE</div></div></div>
+          </div>
+          <div class="sa-note sa-note--cyan">⟵ Reactive: DATA_REQUEST inbox → fetches new data types (OI, liquidations, order book depth) → stores parquet → DATA_VALIDATION_DONE reply</div>
+        </div>
+
+        <div class="support-agent sa--yellow">
+          <div class="sa-header">
+            <div class="sa-name">@crypto-qa-tester</div>
+            <div class="sa-sched">Every 60 min · test &amp; route</div>
+          </div>
+          <div class="sa-stages">
+            <div class="sa-stage sa-stage--yellow"><span class="sa-n sa-n--yellow">1/4</span><div class="sa-content"><div class="sa-stage-name">GROUP_1</div><div class="sa-stage-desc">Flask API routes · retry once → FLASK_ROUTE_FAIL → @crypto-fullstack</div></div></div>
+            <div class="sa-stage sa-stage--yellow"><span class="sa-n sa-n--yellow">2/4</span><div class="sa-content"><div class="sa-stage-name">GROUP_2</div><div class="sa-stage-desc">strategy imports · engine integrity · retry once → STRATEGY_IMPORT_FAIL → @alpha-developer</div></div></div>
+            <div class="sa-stage sa-stage--yellow"><span class="sa-n sa-n--yellow">3/4</span><div class="sa-content"><div class="sa-stage-name">GROUP_3</div><div class="sa-stage-desc">data linkage · smoke backtest · retry once → DATA_LINKAGE_FAIL → @crypto-data-engineer</div></div></div>
+            <div class="sa-stage sa-stage--yellow"><span class="sa-n sa-n--yellow">4/4</span><div class="sa-content"><div class="sa-stage-name">REPORT</div><div class="sa-stage-desc">activity log · ▶ START ⚙ WORK ✓ RESULT ⚠ WARN ✗ FAIL 🏁 FINISH</div></div></div>
+          </div>
+          <div class="sa-note sa-note--yellow">⟵ Rule: retry once before escalating · fix nothing · route everything to the correct agent</div>
+        </div>
+
+        <div class="support-agent sa--purple">
+          <div class="sa-header">
+            <div class="sa-name">@crypto-fullstack</div>
+            <div class="sa-sched">Every 30 min · infra engineer</div>
+          </div>
+          <div class="sa-stages">
+            <div class="sa-stage sa-stage--purple"><span class="sa-n sa-n--purple">1/4</span><div class="sa-content"><div class="sa-stage-name">TRIAGE</div><div class="sa-stage-desc">bug_patterns.md FIRST · then server.log + error_log.jsonl · inbox: FLASK_ROUTE_FAIL</div></div></div>
+            <div class="sa-stage sa-stage--purple"><span class="sa-n sa-n--purple">2/4</span><div class="sa-content"><div class="sa-stage-name">IMPLEMENT</div><div class="sa-stage-desc">patch main.py · monitor_app.js · Flask routes · wire GOOD strategies to paper trading</div></div></div>
+            <div class="sa-stage sa-stage--purple"><span class="sa-n sa-n--purple">3/4</span><div class="sa-content"><div class="sa-stage-name">CHAOS_TEST</div><div class="sa-stage-desc">chaos_test.py — all Flask routes post-patch · confirm no regressions</div></div></div>
+            <div class="sa-stage sa-stage--purple"><span class="sa-n sa-n--purple">4/4</span><div class="sa-content"><div class="sa-stage-name">FINALIZE</div><div class="sa-stage-desc">sync_knowledge_base.py (MANDATORY every session) → KNOWLEDGE_BASE.md → notify agents</div></div></div>
+          </div>
+          <div class="sa-note sa-note--purple">⟵ Receives: FLASK_ROUTE_FAIL · STRATEGY_VALIDATED (wire to paper trading) · infra-level STRATEGY_IMPORT_FAIL</div>
+        </div>
+
+      </div>
+
+    </div><!-- /tab-agents -->
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TAB 3 — SCENARIOS: inter-agent communication + message types
+    ════════════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-scenarios">
+
+      <div class="section-divider">INTER-AGENT COMMUNICATION SCENARIOS</div>
+
+      <div class="scenarios-grid">
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-badge scenario-badge--A">A</span>
+            <span class="scenario-title">Researcher discovers strategy needing new data type</span>
+          </div>
+          <div class="scenario-trigger">Trigger: Strategy requires Open Interest — not in existing parquets</div>
+          <div class="msg-chain">
+            <div class="mc-step">
+              <span class="mc-from agent--blue">@alpha-researcher</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--blue">DATA_REQUEST</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--cyan">@crypto-data-engineer</span>
+            </div>
+            <div class="mc-detail-row">card: BLOCKED · fills "Data Engineer Request" block · NEED: open_interest (BTC/1h)</div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--cyan">@crypto-data-engineer</span>
+              <span class="mc-acts">fetch Binance futures API → store dataset/BTC/1h/open_interest.parquet → repair_dtypes.py</span>
+            </div>
+            <div class="mc-step">
+              <span class="mc-from agent--cyan">@crypto-data-engineer</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--cyan">DATA_VALIDATION_DONE</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--blue">@alpha-researcher</span>
+            </div>
+            <div class="mc-detail-row">parquet path · columns available · date range confirmed</div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--blue">@alpha-researcher</span>
+              <span class="mc-acts">remove NEED: lines · card: BLOCKED → QUEUED → NEW_FACTOR_DISCOVERED to @alpha-developer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-badge scenario-badge--B">B</span>
+            <span class="scenario-title">New strategy discovered → built → graded GOOD</span>
+          </div>
+          <div class="scenario-trigger">Trigger: RSI divergence strategy found on GitHub, all data already in parquets</div>
+          <div class="msg-chain">
+            <div class="mc-step">
+              <span class="mc-from agent--blue">@alpha-researcher</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--blue">NEW_FACTOR_DISCOVERED</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--indigo">@alpha-developer</span>
+            </div>
+            <div class="mc-detail-row">card: HANDED_OFF · library.py fn: calc_rsi_divergence · TF: 1h · coin: BTC</div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--indigo">@alpha-developer</span>
+              <span class="mc-acts">8-stage pipeline → Stage 5: finetune.py → register settings.py with Optuna best params</span>
+            </div>
+            <div class="mc-step">
+              <span class="mc-from agent--indigo">@alpha-developer</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--indigo">STRATEGY_READY</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--amber">@crypto-strategy-tuner</span>
+            </div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--amber">@crypto-strategy-tuner</span>
+              <span class="mc-acts">scan_all.py → Sharpe ≥ 1.0 → GOOD → elite_report/ → status: PAPER_READY</span>
+            </div>
+            <div class="mc-step">
+              <span class="mc-from agent--amber">@crypto-strategy-tuner</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--amber">FINETUNE_PROMOTED</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--blue">@alpha-researcher</span>
+            </div>
+            <div class="mc-detail-row">researcher cross-fertilizes: looks for RSI divergence variants on other coins/TF</div>
+            <div class="mc-step">
+              <span class="mc-from agent--amber">@crypto-strategy-tuner</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--purple">STRATEGY_VALIDATED</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--purple">@crypto-fullstack</span>
+            </div>
+            <div class="mc-detail-row">fullstack wires GOOD strategy to paper trading dashboard</div>
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-badge scenario-badge--C">C</span>
+            <span class="scenario-title">Tuner detects persistent bad factor class → poison filter</span>
+          </div>
+          <div class="scenario-trigger">Trigger: 4 Ichimoku strategies → BAD, avg Sharpe 0.12 after 3 finetune attempts each</div>
+          <div class="msg-chain">
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--amber">@crypto-strategy-tuner</span>
+              <span class="mc-acts">writes autopsy_report/ for each · card status: REJECTED · triggers FACTOR_FAILURE_REPORT</span>
+            </div>
+            <div class="mc-step">
+              <span class="mc-from agent--amber">@crypto-strategy-tuner</span>
+              <span class="mc-arrow">──</span><span class="mc-msg mc-msg--red">FACTOR_FAILURE_REPORT</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--blue">@alpha-researcher</span>
+            </div>
+            <div class="mc-detail-row">"Ichimoku: 4/5 BAD, avg Sharpe 0.12, high param fragility — avoid until structural fix identified"</div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor agent--blue">@alpha-researcher</span>
+              <span class="mc-acts">adds to poison filter · future hypotheses deprioritize Ichimoku class · notes in hypothesis reports</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-badge scenario-badge--D">D</span>
+            <span class="scenario-title">QA Tester detects failures and routes to correct agent</span>
+          </div>
+          <div class="scenario-trigger">Trigger: system_test.py detects failures across test groups (retry once before routing)</div>
+          <div class="msg-chain">
+            <div class="mc-step">
+              <span class="mc-from agent--yellow">@crypto-qa-tester</span>
+              <span class="mc-arrow"> GROUP_1 ──</span><span class="mc-msg mc-msg--purple">FLASK_ROUTE_FAIL</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--purple">@crypto-fullstack</span>
+            </div>
+            <div class="mc-detail-row">endpoint · status code · traceback included</div>
+            <div class="mc-step">
+              <span class="mc-from agent--yellow">@crypto-qa-tester</span>
+              <span class="mc-arrow"> GROUP_2 ──</span><span class="mc-msg mc-msg--indigo">STRATEGY_IMPORT_FAIL</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--indigo">@alpha-developer</span>
+            </div>
+            <div class="mc-detail-row">file · ImportError message · renamed/removed fn in library.py</div>
+            <div class="mc-step">
+              <span class="mc-from agent--yellow">@crypto-qa-tester</span>
+              <span class="mc-arrow"> GROUP_3 ──</span><span class="mc-msg mc-msg--cyan">DATA_LINKAGE_FAIL</span><span class="mc-arrow">──►</span>
+              <span class="mc-to agent--cyan">@crypto-data-engineer</span>
+            </div>
+            <div class="mc-detail-row">parquet path · missing column · expected schema</div>
+            <div class="mc-step mc-step--action">
+              <span class="mc-actor" style="color:var(--text-muted)">receiving agent</span>
+              <span class="mc-acts">patches issue → replies PATCH_APPLIED → QA re-tests on next cycle</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">message reference</span></div>
+
+      <div class="node node--wide" style="border-color: rgba(99,102,241,.3);">
+        <div class="node__title" style="margin-bottom:12px;">MESSAGE TYPES REFERENCE</div>
+        <div class="msg-table-wrap">
+          <table class="msg-table">
+            <thead>
+              <tr><th>Topic</th><th>From</th><th>To</th><th>Trigger</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="mt-topic mt-blue">NEW_FACTOR_DISCOVERED</td><td class="agent--blue">@alpha-researcher</td><td class="agent--indigo">@alpha-developer</td><td>Card written, status HANDED_OFF</td></tr>
+              <tr><td class="mt-topic mt-blue">DATA_REQUEST</td><td class="agent--blue">@alpha-researcher</td><td class="agent--cyan">@crypto-data-engineer</td><td>Card has NEED: lines, status BLOCKED</td></tr>
+              <tr><td class="mt-topic mt-cyan">DATA_VALIDATION_DONE</td><td class="agent--cyan">@crypto-data-engineer</td><td class="agent--blue">@alpha-researcher</td><td>New data fetched and validated</td></tr>
+              <tr><td class="mt-topic mt-cyan">DATA_REPAIRED</td><td class="agent--cyan">@crypto-data-engineer</td><td class="agent--blue">@alpha-researcher / @crypto-qa-tester</td><td>Gap filled or dtype fixed</td></tr>
+              <tr><td class="mt-topic mt-indigo">STRATEGY_READY</td><td class="agent--indigo">@alpha-developer</td><td class="agent--amber">@crypto-strategy-tuner</td><td>Stage 8 MANIFEST complete</td></tr>
+              <tr><td class="mt-topic mt-amber">FINETUNE_PROMOTED</td><td class="agent--amber">@crypto-strategy-tuner</td><td class="agent--blue">@alpha-researcher</td><td>Strategy graded GOOD</td></tr>
+              <tr><td class="mt-topic mt-amber">STRATEGY_VALIDATED</td><td class="agent--amber">@crypto-strategy-tuner</td><td class="agent--purple">@crypto-fullstack</td><td>GOOD strategy needs paper trading wiring</td></tr>
+              <tr><td class="mt-topic mt-red">FACTOR_FAILURE_REPORT</td><td class="agent--amber">@crypto-strategy-tuner</td><td class="agent--blue">@alpha-researcher</td><td>Factor class ≥ 3 BAD strategies</td></tr>
+              <tr><td class="mt-topic mt-purple">FLASK_ROUTE_FAIL</td><td class="agent--yellow">@crypto-qa-tester</td><td class="agent--purple">@crypto-fullstack</td><td>Flask API test fails after retry</td></tr>
+              <tr><td class="mt-topic mt-indigo">STRATEGY_IMPORT_FAIL</td><td class="agent--yellow">@crypto-qa-tester</td><td class="agent--indigo">@alpha-developer</td><td>Strategy import fails after retry</td></tr>
+              <tr><td class="mt-topic mt-cyan">DATA_LINKAGE_FAIL</td><td class="agent--yellow">@crypto-qa-tester</td><td class="agent--cyan">@crypto-data-engineer</td><td>Data linkage smoke test fails</td></tr>
+              <tr><td class="mt-topic mt-green">PATCH_APPLIED</td><td class="agent--purple">@crypto-fullstack</td><td class="agent--yellow">@crypto-qa-tester</td><td>Bug fixed, requesting retest</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /tab-scenarios -->
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TAB 4 — REFERENCE: specs, rules, memory, lifecycle
+    ════════════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-reference">
+
+      <div class="section-divider">CARD STATUS LIFECYCLE &amp; QUEUE PRIORITY ORDER</div>
+
+      <div class="info-grid-2">
+
+        <div class="node info-block">
+          <div class="node__title" style="margin-bottom:14px;">CANDIDATE CARD STATUS LIFECYCLE</div>
+          <div class="state-flow">
+            <div class="sf-row">
+              <div class="sf-state sf--queued">QUEUED</div>
+              <div class="sf-conn"><div class="sf-conn-lbl">DATA_REQUEST sent</div><div class="sf-conn-arr">⟶</div></div>
+              <div class="sf-state sf--blocked">BLOCKED</div>
+              <div class="sf-conn"><div class="sf-conn-lbl">DATA_VALIDATION_DONE</div><div class="sf-conn-arr">⟶</div></div>
+              <div class="sf-state sf--queued">QUEUED</div>
+            </div>
+            <div class="sf-down">↓ <span class="sf-down-lbl">NEW_FACTOR_DISCOVERED → @alpha-developer</span></div>
+            <div class="sf-row">
+              <div class="sf-state sf--handed">HANDED_OFF</div>
+              <div class="sf-conn"><div class="sf-conn-lbl">dev picks card</div><div class="sf-conn-arr">⟶</div></div>
+              <div class="sf-state sf--progress">IN_PROGRESS</div>
+              <div class="sf-conn"><div class="sf-conn-lbl">all pass ↗<br>any fail ↘</div><div class="sf-conn-arr">⟶</div></div>
+              <div class="sf-state-pair">
+                <div class="sf-state sf--validated">VALIDATED</div>
+                <div class="sf-state sf--rejected">REJECTED</div>
+              </div>
+            </div>
+          </div>
+          <div class="sf-rules">
+            <div class="sf-rule">BLOCKED cards: invisible to developer — never enter build queue</div>
+            <div class="sf-rule">REJECTED: NOT deleted · stays in factor_library/ + settings.py · id gets _REJECTED suffix</div>
+            <div class="sf-rule">Tuner can rescue REJECTED strategy via finetune.py regardless of card status</div>
+          </div>
+        </div>
+
+        <div class="node info-block">
+          <div class="node__title" style="margin-bottom:14px;">QUEUED CARD PRIORITY ORDER</div>
+          <div class="prio-grid">
+            <div class="prio-agent">
+              <div class="prio-agent-name agent--blue">@alpha-researcher</div>
+              <div class="prio-agent-sub">Queue Pickup</div>
+              <div class="prio-steps">
+                <div class="prio-step prio-step--high">① interest: High</div>
+                <div class="prio-step prio-step--medium">② interest: Medium</div>
+                <div class="prio-step prio-step--low">③ interest: Low</div>
+                <div class="prio-step prio-step--tie">Tie-break: older card first (FIFO)</div>
+              </div>
+              <div class="prio-note">Interest set at card creation based on novelty, data availability, confidence in the edge</div>
+            </div>
+            <div class="prio-divider"></div>
+            <div class="prio-agent">
+              <div class="prio-agent-name agent--indigo">@alpha-developer</div>
+              <div class="prio-agent-sub">Card Selection</div>
+              <div class="prio-steps">
+                <div class="prio-step prio-step--dev">① inbox NEW_FACTOR_DISCOVERED (FIFO)</div>
+                <div class="prio-step prio-step--dev">② factor_library/ if inbox empty → High first</div>
+                <div class="prio-step prio-step--dev">③ one card per 60-min session</div>
+              </div>
+              <div class="prio-note">BLOCKED cards never appear in developer queue even if interest: High</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">shared memory system</span></div>
+      <div class="section-divider">SHARED MEMORY ARCHITECTURE — 3 TIERS</div>
+
+      <div class="node node--wide">
+        <div class="node__title" style="margin-bottom:12px;">HOW ALL 6 AGENTS PERSIST KNOWLEDGE ACROSS SESSIONS</div>
+        <div class="mem-tiers">
+          <div class="mem-tier mem-tier--local">
+            <div class="mem-tier-label">TIER 1 — AGENT-LOCAL</div>
+            <div class="mem-tier-name">LTM.md</div>
+            <div class="mem-tier-path">.gemini/skills/{agent}/LTM.md</div>
+            <div class="mem-tier-desc">Per-agent wins, failures, patterns, parameter insights, strategy-class observations</div>
+            <div class="mem-tier-tags">
+              <span class="mem-tag">Read by: that agent only</span>
+              <span class="mem-tag">Written: when new pattern learned</span>
+            </div>
+          </div>
+          <div class="mem-tier mem-tier--shared">
+            <div class="mem-tier-label">TIER 2 — SYSTEM-WIDE</div>
+            <div class="mem-tier-name">GLOBAL_LTM.md</div>
+            <div class="mem-tier-path">.gemini/shared/GLOBAL_LTM.md</div>
+            <div class="mem-tier-desc">Architecture decisions, cross-agent bugs, engine rules, data universe constraints — PRIMARY shared constraint source</div>
+            <div class="mem-tier-tags">
+              <span class="mem-tag">Read by: ALL 6 agents at session start</span>
+              <span class="mem-tag">Written: any agent when issue affects multiple agents</span>
+            </div>
+          </div>
+          <div class="mem-tier mem-tier--generated">
+            <div class="mem-tier-label">TIER 3 — MACHINE-GENERATED</div>
+            <div class="mem-tier-name">KNOWLEDGE_BASE.md</div>
+            <div class="mem-tier-path">.gemini/shared/KNOWLEDGE_BASE.md</div>
+            <div class="mem-tier-desc">Strategy count, grades, registered IDs — factual snapshot from scan_results.json + settings.py · NOT authoritative for grades</div>
+            <div class="mem-tier-tags">
+              <span class="mem-tag">Generated: sync_knowledge_base.py (fullstack FINALIZE — every session)</span>
+              <span class="mem-tag">Read by: ALL 6 agents</span>
+            </div>
+          </div>
+        </div>
+        <div class="node__rule">Startup order (all 6 agents): 1. Own LTM.md → 2. GLOBAL_LTM.md → 3. KNOWLEDGE_BASE.md → 4. Check inbox/ → 5. Begin pipeline stages</div>
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">model capability &amp; rescue loop</span></div>
+      <div class="section-divider">MODEL ALLOCATION &amp; MEDIOCRE RESCUE LOOP</div>
+
+      <div class="info-grid-2">
+
+        <div class="node info-block">
+          <div class="node__title" style="margin-bottom:12px;">MODEL ALLOCATION PER AGENT</div>
+          <div class="msg-table-wrap">
+            <table class="msg-table">
+              <thead><tr><th>Agent</th><th>Web Search</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td class="agent--blue">@alpha-researcher</td><td style="color:var(--amber);font-weight:700">Required</td><td>Flash → queue-only · Pro → web discovery</td></tr>
+                <tr><td class="agent--indigo">@alpha-developer</td><td style="color:var(--text-muted)">Not used</td><td style="color:var(--text-muted)">Any model works</td></tr>
+                <tr><td class="agent--amber">@crypto-strategy-tuner</td><td style="color:var(--text-muted)">Not used</td><td style="color:var(--text-muted)">Any model works</td></tr>
+                <tr><td class="agent--cyan">@crypto-data-engineer</td><td style="color:var(--text-muted)">Not used</td><td style="color:var(--text-muted)">Any model works</td></tr>
+                <tr><td class="agent--yellow">@crypto-qa-tester</td><td style="color:var(--text-muted)">Not used</td><td style="color:var(--text-muted)">Any model works</td></tr>
+                <tr><td class="agent--purple">@crypto-fullstack</td><td style="color:var(--text-muted)">Not used</td><td style="color:var(--text-muted)">Any model works</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="node__rule">No model hard-coded in any skill file · Flash fallback: researcher skips WEB_SEARCH, goes to [2/4] QUEUE PICKUP directly</div>
+        </div>
+
+        <div class="node info-block">
+          <div class="node__title" style="margin-bottom:12px;">MEDIOCRE RESCUE LOOP</div>
+          <div class="rescue-flow">
+            <div class="rf-box rf-box--mediocre">MEDIOCRE · Sharpe 0.3 – 1.0</div>
+            <div class="rf-arrow-v">↓</div>
+            <div class="rf-box rf-box--work">
+              <div class="rf-box-title">find_worst_strategy.py</div>
+              <div class="rf-box-desc">lowest Sharpe or highest param fragility · 1 auto-tune per tuner wake-up (every 5 min)</div>
+            </div>
+            <div class="rf-arrow-v">↓</div>
+            <div class="rf-box rf-box--work">
+              <div class="rf-box-title">finetune.py Optuna rescue</div>
+              <div class="rf-box-desc">100–400 trials · Sharpe 70% + Recovery 30% · auto-expand: param at boundary → +50% range → +75 trials</div>
+            </div>
+            <div class="rf-arrow-v">↓ re-scan next cycle</div>
+            <div class="rf-outcomes">
+              <div class="rf-outcome rf-outcome--good">Sharpe ≥ 1.0<br>→ PROMOTED<br>elite_report/<br>FINETUNE_PROMOTED<br>→ researcher</div>
+              <div class="rf-outcome rf-outcome--mid">Still MEDIOCRE<br>→ stays in pool<br>rescue indefinitely<br>(no hard give-up)</div>
+              <div class="rf-outcome rf-outcome--bad">Class ≥ 3 BAD<br>→ FACTOR_FAILURE<br>→ researcher<br>poison filter +<br>GLOBAL_LTM note</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="v-arrow"><span class="v-arrow__label">where grade and status actually live</span></div>
+      <div class="section-divider">STRATEGY GRADE &amp; STATUS TRACKING — 3 LOCATIONS</div>
+
+      <div class="node node--wide">
+        <div class="node__title" style="margin-bottom:12px;">settings.py has NO grade or status field — tracking is split across 3 locations</div>
+        <div class="grade-track-grid">
+          <div class="gt-card gt-card--purple">
+            <div class="gt-loc">settings.py</div>
+            <div class="gt-stores">Stores: params + metadata only</div>
+            <div class="gt-no-store">NO grade · NO status field</div>
+            <div class="gt-rows">
+              <div class="gt-row"><span class="gt-k">id</span><span class="gt-v">"RSI_DIV_BTC_1H" → "_REJECTED" suffix (naming convention only)</span></div>
+              <div class="gt-row"><span class="gt-k">params</span><span class="gt-v">always Optuna best (finetune.py Stage 5)</span></div>
+              <div class="gt-row"><span class="gt-k">retention</span><span class="gt-v">entry NEVER deleted — REJECTED stays in file</span></div>
+            </div>
+          </div>
+          <div class="gt-card gt-card--amber">
+            <div class="gt-loc">scan_results.json</div>
+            <div class="gt-stores">Authoritative grade source</div>
+            <div class="gt-rows">
+              <div class="gt-row"><span class="gt-k">grade</span><span class="gt-v">GOOD | MEDIOCRE | BAD (Sharpe ≥ 1.0 = GOOD)</span></div>
+              <div class="gt-row"><span class="gt-k">sharpe</span><span class="gt-v">float — primary grade criterion</span></div>
+              <div class="gt-row"><span class="gt-k">grade_reason</span><span class="gt-v">explanation string per strategy</span></div>
+              <div class="gt-row"><span class="gt-k">refresh</span><span class="gt-v">scan_all.py every WORK_CYCLE (5 min)</span></div>
+            </div>
+          </div>
+          <div class="gt-card gt-card--green">
+            <div class="gt-loc">elite_report/</div>
+            <div class="gt-stores">PAPER_READY deployment flag</div>
+            <div class="gt-rows">
+              <div class="gt-row"><span class="gt-k">exists when</span><span class="gt-v">strategy graded GOOD → tuner MANIFEST [4/4]</span></div>
+              <div class="gt-row"><span class="gt-k">format</span><span class="gt-v">{id}_{class}_elite.md · YAML frontmatter</span></div>
+              <div class="gt-row"><span class="gt-k">YAML field</span><span class="gt-v">status: PAPER_READY</span></div>
+              <div class="gt-row"><span class="gt-k">triggers</span><span class="gt-v">STRATEGY_VALIDATED → @crypto-fullstack</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="node__rule">Grade lifecycle: registered in settings.py → scan_results.json: PENDING → GOOD / MEDIOCRE / BAD → GOOD: elite_report/ created + STRATEGY_VALIDATED → paper trading wired by @crypto-fullstack</div>
+      </div>
+
+    </div><!-- /tab-reference -->
+
+  </main>
+
+  <footer class="rules-bar">
+    <span class="rules-bar__title">KEY CONSTRAINTS</span>
+    <span class="rules-bar__rule">Coins: BTC ETH BNB SOL XRP only</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">TF: 5m 15m 1h 4h 1d only</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">finetune.py BEFORE WFO</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">WFO ≠ best params (Optuna owns params)</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">No check_regime() — inline masks only</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">Register settings.py at Stage 5</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">manage_trade: SL TP TS EXIT REVERSE HOLD SKIP ADD</span>
+    <span class="rules-bar__sep">·</span>
+    <span class="rules-bar__rule">QA retries once before routing · BLOCKED card = dev does not start</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

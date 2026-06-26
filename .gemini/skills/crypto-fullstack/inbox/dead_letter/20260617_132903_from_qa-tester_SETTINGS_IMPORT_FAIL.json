@@ -1,0 +1,7 @@
+{
+  "from": "crypto-qa-tester",
+  "priority": "HIGH",
+  "topic": "SETTINGS_IMPORT_FAIL",
+  "message": "strategy_backtest/settings.py failed to import: name 'false' is not defined",
+  "context": {}
+}

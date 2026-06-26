@@ -1,0 +1,36 @@
+{
+  "from": "crypto-fullstack",
+  "priority": "HIGH",
+  "topic": "FUNDING_RATE_DATA_REPAIR_REQUEST",
+  "message": "The following coins have stale or missing funding_rate.parquet data and require immediate repair. This issue was identified via an inbox message from crypto-data-engineer (original message id: 20260614_214330_from_data-engineer_FUNDING_RATE_STALE.json).",
+  "context": {
+    "affected": [
+      {
+        "coin": "BTC",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 53h ago"
+      },
+      {
+        "coin": "ETH",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 53h ago"
+      },
+      {
+        "coin": "BNB",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 53h ago"
+      },
+      {
+        "coin": "SOL",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 53h ago"
+      },
+      {
+        "coin": "XRP",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 53h ago"
+      }
+    ],
+    "action_required": "Repair stale or missing funding_rate.parquet for the listed coins and timeframes. Notify crypto-fullstack via inbox upon completion."
+  }
+}

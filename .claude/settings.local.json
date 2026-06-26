@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 5 ./venv/bin/python phase_1/monitor_training.py)",
+      "Bash(lsof -ti:5001)",
+      "Bash(xargs kill -TERM)"
+    ]
+  }
+}

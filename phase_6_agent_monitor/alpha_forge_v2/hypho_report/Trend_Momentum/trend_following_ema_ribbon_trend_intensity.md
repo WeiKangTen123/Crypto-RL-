@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+EMA ribbons (20, 50, 100, 200) are excellent for identifying established trends, but they often suffer from "lazy" signals where price drifts into the ribbon without momentum. By requiring a spike in `num_trades` (Trade Intensity), we filter for high-participation events. A spike in trade count typically represents institutional "order splitting" or high-frequency bot activity, signaling that the trend has sufficient fuel to continue rather than stalling or reversing.

@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Market movements are driven by the aggression of participants. "Taker" volume represents traders who are willing to pay the spread to execute immediately, signaling urgency. When `taker_buy_base_vol` significantly exceeds the remaining volume (taker sell volume) in a short window (1m), it indicates a localized supply/demand imbalance. This aggressive "buying into the ask" often creates a momentum tail that can be scalped for small, high-probability gains before the liquidity resets.

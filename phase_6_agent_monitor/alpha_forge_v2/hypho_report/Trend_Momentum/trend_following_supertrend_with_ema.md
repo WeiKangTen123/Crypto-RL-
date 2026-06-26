@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Bitcoin exhibits strong, sustained trends but is prone to high-volatility noise. This strategy uses the 200-period Exponential Moving Average (EMA) as a "macro filter" to ensure trades are aligned with the primary trend, while the Supertrend indicator (based on Average True Range) provides a volatility-adjusted entry trigger that accounts for BTC's specific price action characteristics.

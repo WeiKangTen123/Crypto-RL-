@@ -1,0 +1,270 @@
+{
+  "generated_at": "2026-06-23T09:56:03.959981",
+  "coin": "ETH",
+  "tf": "5m",
+  "mode": "presets",
+  "total": 8,
+  "good": 2,
+  "mediocre": 0,
+  "bad": 6,
+  "results": [
+    {
+      "name": "EMA_psar_trail",
+      "entry": "ema_cross",
+      "filters": [
+        "htf_ema_trend",
+        "adx_trend",
+        "atr_expansion"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_fast": 8,
+        "ema_slow": 21,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "adx_period": 14,
+        "adx_threshold": 25,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "psar_acceleration": 0.02,
+        "psar_maximum": 0.2,
+        "sl_atr_mult": 2.0,
+        "tp_atr_mult": 5.0,
+        "coin": "ETH"
+      },
+      "result": {
+        "score": 20.41,
+        "total_return": 20.41,
+        "sharpe": 7.69,
+        "total_trades": 932,
+        "profit_factor": 72.86,
+        "max_drawdown": 0.12
+      }
+    },
+    {
+      "name": "ST_psar_trail",
+      "entry": "supertrend",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion",
+        "obv_trend",
+        "adx_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "st_period": 27,
+        "st_multiplier": 2.5,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "obv_period": 20,
+        "adx_period": 14,
+        "adx_threshold": 31,
+        "psar_acceleration": 0.02,
+        "psar_maximum": 0.2,
+        "sl_atr_mult": 2.0,
+        "tp_atr_mult": 5.0,
+        "direction": "long_only",
+        "coin": "ETH"
+      },
+      "result": {
+        "score": 9.35,
+        "total_return": 9.35,
+        "sharpe": 6.15,
+        "total_trades": 298,
+        "profit_factor": 99.0,
+        "max_drawdown": 0.06
+      }
+    },
+    {
+      "name": "ST_vol_adaptive",
+      "entry": "supertrend",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion",
+        "obv_trend",
+        "adx_trend"
+      ],
+      "exit": "vol_adaptive_sl",
+      "params": {
+        "st_period": 27,
+        "st_multiplier": 2.5,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "obv_period": 20,
+        "adx_period": 14,
+        "adx_threshold": 31,
+        "sl_atr_mult": 2.0,
+        "tp_atr_mult": 4.0,
+        "direction": "long_only",
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -0.81,
+        "total_return": -0.81,
+        "sharpe": -0.56,
+        "total_trades": 292,
+        "profit_factor": 1.07,
+        "max_drawdown": 1.84
+      }
+    },
+    {
+      "name": "ST_trailing_tp",
+      "entry": "supertrend",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion",
+        "obv_trend",
+        "adx_trend"
+      ],
+      "exit": "trailing_tp",
+      "params": {
+        "st_period": 27,
+        "st_multiplier": 2.5,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "obv_period": 20,
+        "adx_period": 14,
+        "adx_threshold": 31,
+        "sl_atr_mult": 2.0,
+        "tp_activation_mult": 1.5,
+        "tp_trail_mult": 0.8,
+        "direction": "long_only",
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -2.25,
+        "total_return": -2.25,
+        "sharpe": -2.59,
+        "total_trades": 298,
+        "profit_factor": 0.72,
+        "max_drawdown": 2.33
+      }
+    },
+    {
+      "name": "TAKER_trailing_tp",
+      "entry": "taker_momentum",
+      "filters": [
+        "htf_ema_trend",
+        "adx_trend",
+        "obv_trend"
+      ],
+      "exit": "trailing_tp",
+      "params": {
+        "intensity_period": 14,
+        "taker_threshold": 0.6,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "adx_period": 14,
+        "adx_threshold": 25,
+        "obv_period": 20,
+        "atr_period": 14,
+        "sl_atr_mult": 1.5,
+        "tp_activation_mult": 1.0,
+        "tp_trail_mult": 0.7,
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -5.62,
+        "total_return": -5.62,
+        "sharpe": -6.48,
+        "total_trades": 714,
+        "profit_factor": 0.52,
+        "max_drawdown": 5.62
+      }
+    },
+    {
+      "name": "ZSHTF_vol_adaptive",
+      "entry": "zscore_htf",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion"
+      ],
+      "exit": "vol_adaptive_sl",
+      "params": {
+        "htf_bars": 72,
+        "zscore_period": 20,
+        "zscore_threshold": 1.8,
+        "htf_ema_period": 50,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "sl_atr_mult": 2.0,
+        "tp_atr_mult": 4.0,
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -31.1,
+        "total_return": -31.1,
+        "sharpe": -10.66,
+        "total_trades": 1404,
+        "profit_factor": 0.31,
+        "max_drawdown": 31.14
+      }
+    },
+    {
+      "name": "ZSEMA_trail",
+      "entry": "zscore_ema",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion",
+        "obv_trend"
+      ],
+      "exit": "trailing_tp",
+      "params": {
+        "ema_trend": 50,
+        "zscore_period": 20,
+        "zscore_threshold": 2.0,
+        "htf_bars": 72,
+        "htf_ema_period": 50,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "obv_period": 20,
+        "sl_atr_mult": 1.5,
+        "tp_activation_mult": 1.0,
+        "tp_trail_mult": 0.6,
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -32.05,
+        "total_return": -32.05,
+        "sharpe": -15.21,
+        "total_trades": 3650,
+        "profit_factor": 0.41,
+        "max_drawdown": 32.05
+      }
+    },
+    {
+      "name": "FR_mr_chandelier",
+      "entry": "funding_rate_mr",
+      "filters": [
+        "adx_trend",
+        "atr_expansion"
+      ],
+      "exit": "chandelier_tp",
+      "params": {
+        "fr_long_thresh": -0.0001,
+        "fr_short_thresh": 0.0003,
+        "adx_period": 14,
+        "adx_threshold": 20,
+        "atr_period": 14,
+        "vol_ma_period": 50,
+        "atr_multiplier": 2.5,
+        "tp_atr_mult": 5.0,
+        "coin": "ETH"
+      },
+      "result": {
+        "score": -999.0,
+        "total_return": -999.0,
+        "sharpe": -999.0,
+        "total_trades": 0,
+        "profit_factor": 99.0,
+        "max_drawdown": 100.0
+      }
+    }
+  ]
+}

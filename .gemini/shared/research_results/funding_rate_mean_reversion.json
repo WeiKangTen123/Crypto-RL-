@@ -1,0 +1,12 @@
+{
+    "strategy_name": "MeanReversionFundingRateStrategy",
+    "id_btc": 76,
+    "id_eth": 78,
+    "id_bnb": 79,
+    "id_sol": 80,
+    "id_xrp": 81,
+    "best_coin": "BTC",
+    "best_sharpe": 1.76,
+    "best_return": 78.22,
+    "max_dd": 7.14
+}

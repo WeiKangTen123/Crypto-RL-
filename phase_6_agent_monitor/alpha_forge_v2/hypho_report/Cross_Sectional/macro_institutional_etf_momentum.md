@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Post-January 2024, Bitcoin's price discovery has transitioned to U.S.-regulated Spot ETFs (IBIT, FBTC, etc.). These vehicles represent institutional allocation, which tends to be "stickier" and trend-following rather than speculative. Significant net inflows create a "supply vacuum" on exchanges as ETF providers must purchase spot BTC to back their shares. This strategy exploits the delay between aggregated daily net inflow reports and the subsequent multi-day price pressure they create.

@@ -1,0 +1,63 @@
+"""
+forge_strategy.py — bridge between strategy_forge StrategyDNA and the
+strategy_backtest registry.
+
+ForgeStrategy accepts (entry, filters, exit_method, **params) so it can be
+registered in settings.py exactly like any other strategy class.
+
+NOTE: Do NOT modify the constructor defaults here. All params are always
+supplied explicitly via settings.py — these defaults are never used in
+production. The finetune.py script should NOT auto-update this file's
+signature; param updates go into settings.py only.
+"""
+import pandas as pd
+from typing import Optional, Tuple
+
+from strategy_backtest.base_strategy import BaseStrategy
+from strategy_forge.composer.dna import StrategyDNA
+
+
+class ForgeStrategy(BaseStrategy):
+    """
+    Generic wrapper that delegates to StrategyDNA.
+
+    Constructor params (passed via settings.py 'params' dict):
+      entry       : entry signal name  (str)
+      filters     : list of filter names (list[str])
+      exit_method : exit method name  (str)
+      **kwargs    : all numeric/categorical params forwarded to StrategyDNA
+    """
+
+    # Empty OPTIMIZATION_RANGES signals finetune.py to use DEFAULT_RANGES only.
+    # Do NOT override here — ranges are generic and managed centrally.
+    OPTIMIZATION_RANGES = {}
+
+    # Minimum trades floor for finetune guard (30 = 1-year data standard).
+    MIN_TRADES = 30
+
+    def __init__(self, df: pd.DataFrame, entry: str = 'rsi_reversion',
+                 filters: list = None, exit_method: str = 'atr_tp_sl', **kwargs):
+        super().__init__(df, **kwargs)
+        self._dna = StrategyDNA(
+            df,
+            entry=entry,
+            filters=filters or [],
+            exit_method=exit_method,
+            params=kwargs,
+        )
+
+    def generate_signals(self) -> pd.DataFrame:
+        self.df = self._dna.generate_signals()
+        return self.df
+
+    def manage_trade(self, row, position: float, entry_price: float,
+                     wallet: float = 0) -> Tuple[str, Optional[float]]:
+        return self._dna.manage_trade(row, position, entry_price, wallet)
+
+    @classmethod
+    def validate_params(cls, params: dict) -> bool:
+        fast = params.get('ema_fast')
+        slow = params.get('ema_slow')
+        if fast is not None and slow is not None and fast >= slow:
+            return False
+        return True

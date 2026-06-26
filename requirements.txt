@@ -1,0 +1,61 @@
+# FinRL_Crypto - Requirements
+# Install: pip install -r requirements.txt
+#
+# IMPORTANT PRE-STEPS:
+#   macOS:  brew install ta-lib
+#   Ubuntu: sudo apt-get install libta-lib-dev
+#   Then:   pip install TA-Lib
+#
+# NOTE: 'elegantrl' is NOT listed here - the project ships its own
+#       local copy in train/ and drl_agents/. Do NOT install elegantrl from PyPI.
+
+# --- Core ML & Deep Learning ---
+torch
+numpy
+pandas
+
+# --- Reinforcement Learning Environment ---
+gymnasium
+
+# --- Hyperparameter Optimization ---
+optuna
+
+# --- Technical Analysis ---
+TA-Lib
+stockstats
+
+# --- Exchange & Market Data APIs ---
+python-binance
+ccxt
+yfinance
+
+# --- Finance Calendar (used by processor_Yahoo.py) ---
+exchange-calendars
+
+# --- Statistics & ML ---
+scipy
+scikit-learn
+statsmodels
+
+# --- Visualization ---
+matplotlib
+seaborn
+plotly
+
+# --- Utilities ---
+tqdm
+psutil
+joblib
+pytz
+python-dotenv
+requests
+aiohttp
+certifi
+pyarrow
+python-dateutil
+
+# --- Distutils backport (distutils removed from stdlib in Python 3.12+) ---
+setuptools
+
+# --- Optional (not on PyPI, handled gracefully in processor_Binance.py) ---
+# fracdiff

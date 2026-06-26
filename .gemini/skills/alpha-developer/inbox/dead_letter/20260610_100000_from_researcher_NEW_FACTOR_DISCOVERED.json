@@ -1,0 +1,6 @@
+{
+    "ts": "2026-06-10T10:00:00Z",
+    "from": "alpha-researcher",
+    "topic": "NEW_FACTOR_DISCOVERED",
+    "message": "New factor discovered: ETH Momentum Breakout. Candidate Card: factor_library/ETH_Momentum_Breakout/ETH_Momentum_Breakout_Card.md, Library Function: calc_bb_kc_squeeze"
+}

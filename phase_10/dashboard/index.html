@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 10: Quantitative Pairs Trading</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+<body>
+
+<!-- ═══ Page Header ═══════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <h1>⚡ Phase 10 — Quantitative Pairs Trading</h1>
+  <div class="sub">Cointegration · Z-Score Spread · Dynamic BB Bands · MFE/MAE · TCA Analysis</div>
+  <div class="header-row">
+    <div class="summary-bar" id="summary-bar">
+      <div class="sum-item"><div class="sum-label">Best Pair</div><div class="sum-value" id="s-best-pair">—</div></div>
+      <div class="sum-item"><div class="sum-label">Best Sharpe</div><div class="sum-value" id="s-best-sharpe">—</div></div>
+      <div class="sum-item"><div class="sum-label">Cointegrated</div><div class="sum-value" id="s-coint">—</div></div>
+      <div class="sum-item"><div class="sum-label">Total Trades</div><div class="sum-value" id="s-total-trades">—</div></div>
+      <div class="sum-item"><div class="sum-label">Period</div><div class="sum-value" id="s-period" style="font-size:0.9rem">—</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Controls ══════════════════════════════════════════════════════════════ -->
+<div class="controls-row">
+  <div class="ctrl-group">
+    <span class="ctrl-label">Engine Mode</span>
+    <select id="engine-mode" onchange="loadResults()">
+      <option value="advanced" selected>Advanced (Log/Z-Score)</option>
+      <option value="wright">Wright Research (Clean)</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Pair Inspector</span>
+    <select id="pair-select" onchange="onPairChange()">
+      <option value="">-- Select a Pair --</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Signal TF</span>
+    <select id="signal-tf">
+      <option value="1h" selected>1h</option>
+      <option value="15m">15m</option>
+      <option value="5m">5m</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Execution TF</span>
+    <select id="execution-tf">
+      <option value="15m" selected>15m</option>
+      <option value="5m">5m</option>
+      <option value="1h">1h</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Run Backtest</span>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-blue" id="btn-run" onclick="runBacktest()">▶ Run All Pairs</button>
+      <button class="btn btn-red"  id="btn-stop" onclick="stopBacktest()">■ Stop</button>
+    </div>
+  </div>
+  <div id="run-meta" style="font-size:0.78rem;color:var(--muted);align-self:flex-end;"></div>
+</div>
+
+<div id="run-block">
+  <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.78rem;color:var(--muted);">
+    <span id="run-status">Running…</span><span id="run-prog-text">0 pairs</span>
+  </div>
+  <div id="prog-outer"><div id="prog-fill"></div></div>
+  <div id="run-log"></div>
+</div>
+
+<!-- ═══ Main ══════════════════════════════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- Pair detail section (hidden until pair selected) -->
+  <div id="pair-detail" style="display:none;">
+
+    <!-- Pair title + pills -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div id="pair-header-name">—</div>
+          <div id="pair-header-meta">—</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Validation Split</div>
+          <div class="split-row" id="split-bar"></div>
+          <div class="split-label-row" id="split-labels"></div>
+        </div>
+      </div>
+      <div class="pill-row" id="detail-pills"></div>
+    </div>
+
+    <!-- Metrics grid: Pair Stats | Coin A Account | Coin B Account -->
+    <div class="metrics-grid">
+
+      <!-- Column 1: Pair Statistics -->
+      <div class="card">
+        <div class="card-header"><span class="icon">📊</span><h2>Pair Statistics</h2></div>
+        <div class="metric-list">
+          <div class="metric-row highlight"><span class="ml">Sharpe (combined)</span><span class="mv" id="m-sharpe">—</span></div>
+          <div class="metric-row highlight"><span class="ml">Calmar Ratio</span><span class="mv" id="m-calmar">—</span></div>
+          <div class="metric-row highlight"><span class="ml">Profit Factor</span><span class="mv" id="m-pf">—</span></div>
+          <div class="metric-row"><span class="ml">Max Drawdown</span><span class="mv" id="m-mdd">—</span></div>
+          <div class="metric-row"><span class="ml">ADF p-value</span><span class="mv" id="m-adf">—</span></div>
+          <div class="metric-row"><span class="ml">Half-Life (bars)</span><span class="mv" id="m-hl">—</span></div>
+          <div class="metric-row"><span class="ml">Hedge Ratio β</span><span class="mv" id="m-beta">—</span></div>
+          <div class="metric-row"><span class="ml">Total Trades</span><span class="mv" id="m-trades">—</span></div>
+          <div class="metric-row"><span class="ml">Avg Hold (bars)</span><span class="mv" id="m-hold">—</span></div>
+          <div class="metric-row"><span class="ml">Total Fees (4×legs)</span><span class="mv" id="m-fees">—</span></div>
+          <div class="metric-row" style="margin-top:6px;flex-direction:column;gap:6px;">
+            <span class="ml" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:.05em;">Exit Breakdown</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="badge badge-green" id="m-exit-mr">MR —%</span>
+              <span class="badge badge-blue"  id="m-exit-ts">TS —%</span>
+              <span class="badge badge-red"   id="m-exit-rev">REV —%</span>
+              <span class="badge" style="background:#3b1f5e;color:#c084fc;" id="m-exit-zstop">ZSTOP —%</span>
+              <span class="badge" style="background:#991b1b;color:#fca5a5;" id="m-exit-liq">LIQ —%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Master Portfolio Wallet -->
+      <div class="card" style="grid-column: span 2;">
+        <div class="card-header">
+          <span class="icon">💼</span>
+          <h2>Master Portfolio Wallet</h2>
+          <div class="card-header-right">
+            <span class="badge badge-blue" id="m-side-badge" style="font-size:0.7rem;">—</span>
+          </div>
+        </div>
+        <div class="metric-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px;">
+          <div class="metric-row"><span class="ml">Starting Capital</span><span class="mv">$2,000</span></div>
+          <div class="metric-row"><span class="ml">Total Trades</span><span class="mv" id="m-pf-trades">—</span></div>
+          
+          <div class="metric-row"><span class="ml">Gross PnL</span><span class="mv" id="m-pf-gross">—</span></div>
+          <div class="metric-row"><span class="ml">Total Fees</span><span class="mv" id="m-pf-fees">—</span></div>
+          
+          <div class="metric-row highlight"><span class="ml">Net PnL</span><span class="mv" id="m-pf-net">—</span></div>
+          <div class="metric-row highlight"><span class="ml">ROI</span><span class="mv" id="m-pf-roi">—</span></div>
+          
+          <div class="metric-row"><span class="ml">Win Rate</span><span class="mv" id="m-pf-wr">—</span></div>
+          <div class="metric-row"><span class="ml">Profit Factor</span><span class="mv" id="m-pf-pf">—</span></div>
+          
+          <div class="metric-row" style="margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px;">
+            <span class="ml" style="color:var(--accent2)">Leg A (<span id="m-ca-name">Coin A</span>) Net PnL</span>
+            <span class="mv" id="m-pf-ca-net">—</span>
+          </div>
+          <div class="metric-row" style="margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px;">
+            <span class="ml" style="color:var(--orange)">Leg B (<span id="m-cb-name">Coin B</span>) Net PnL</span>
+            <span class="mv" id="m-pf-cb-net">—</span>
+          </div>
+          
+          <div class="metric-row"><span class="ml" style="color:var(--accent2)">Leg A Fees</span><span class="mv" id="m-pf-ca-fees">—</span></div>
+          <div class="metric-row"><span class="ml" style="color:var(--orange)">Leg B Fees</span><span class="mv" id="m-pf-cb-fees">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics card with tabs -->
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">📈</span><h2>Analytics &amp; Visualization</h2>
+        <div class="card-header-right">
+          <div class="tab-bar" style="flex-wrap:wrap">
+            <button class="tab-btn active" onclick="switchTab('t-dance',this)">🌊 Pairs Chart</button>
+            <button class="tab-btn" onclick="switchTab('t-zscore',this)">📉 Z-Score</button>
+            <button class="tab-btn" onclick="switchTab('t-equity',this)">📈 Equity Curve</button>
+            <button class="tab-btn" onclick="switchTab('t-excursion',this)">🎯 MFE / MAE</button>
+            <button class="tab-btn" onclick="switchTab('t-periodic',this)">📅 Periodic</button>
+            <button class="tab-btn" onclick="switchTab('t-trades',this)">📋 Trade Log</button>
+            <button class="tab-btn" onclick="switchTab('t-workflow',this)">📐 Workflow</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pairs Dance Chart -->
+      <div id="t-dance" class="tab-content active">
+        <div id="chart-dance" class="chart-full"></div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:10px;display:flex;flex-wrap:wrap;gap:12px;">
+          <span>Continuous execution-time price series, normalized to base=100.</span>
+          <span style="color:#3b82f6;">— Coin A</span>
+          <span style="color:#f97316;">— Coin B</span>
+          <span style="color:#22c55e;">▲ Long Entry</span>
+          <span style="color:#ef4444;">▼ Short Entry</span>
+          <span style="color:#e2e8f0;">◆ Mean Revert</span>
+          <span style="color:#eab308;">✕ Time Stop</span>
+          <span style="color:#a78bfa;">+ Reversal</span>
+        </div>
+      </div>
+
+      <!-- Z-Score chart -->
+      <div id="t-zscore" class="tab-content">
+        <div id="chart-zscore" class="chart-full"></div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:10px;">
+          Spread Z-Score with dynamic Bollinger Bands and regime filters.
+        </div>
+      </div>
+
+      <!-- Equity curve -->
+      <div id="t-equity" class="tab-content">
+        <div id="chart-equity" class="chart-full"></div>
+      </div>
+
+      <!-- MFE / MAE -->
+      <div id="t-excursion" class="tab-content">
+        <div class="chart-grid-2">
+          <div>
+            <div class="chart-label">MFE vs Net PnL — <em>high MFE + low realized = exiting too late</em></div>
+            <div id="chart-mfe" class="chart-medium"></div>
+          </div>
+          <div>
+            <div class="chart-label">MAE vs Net PnL — <em>large MAE = entry timing or margin risk</em></div>
+            <div id="chart-mae" class="chart-medium"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Periodic returns -->
+      <div id="t-periodic" class="tab-content">
+        <div class="chart-grid-2">
+          <div>
+            <div class="chart-label" style="text-align:center;">Monthly Net PnL ($)</div>
+            <div id="chart-monthly" class="chart-medium"></div>
+          </div>
+          <div>
+            <div class="chart-label" style="text-align:center;">Yearly Net PnL ($)</div>
+            <div id="chart-yearly" class="chart-medium"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trade log (split by leg) -->
+      <div id="t-trades" class="tab-content">
+        <div class="trade-toolbar">
+          <input type="text" id="trade-search" placeholder="Search trades…" oninput="filterTrades()">
+          <span id="trade-count" style="font-size:0.78rem;color:var(--muted);"></span>
+          <select id="trade-reason-filter" onchange="filterTrades()">
+            <option value="">All Reasons</option>
+            <option value="MEAN_REVERT">Mean Revert</option>
+            <option value="TIME_STOP">Time Stop</option>
+            <option value="REVERSAL">Reversal</option>
+            <option value="REVERSAL_TRAIL">Reversal Trail</option>
+            <option value="Z_STOP">Z-Stop</option>
+          </select>
+        </div>
+
+        <!-- Inner sub-tabs: Coin A leg / Coin B leg -->
+        <div class="sub-tab-bar">
+          <button class="sub-tab-btn active" onclick="switchLegTab('leg-a', this)">
+            🔵 <span id="leg-a-tab-label">Coin A</span> Trades
+          </button>
+          <button class="sub-tab-btn" onclick="switchLegTab('leg-b', this)">
+            🟠 <span id="leg-b-tab-label">Coin B</span> Trades
+          </button>
+        </div>
+
+        <!-- Leg A table -->
+        <div id="leg-a" class="inner-tab-content active">
+          <div class="table-wrap" style="max-height:480px;overflow-y:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th><th>Entry Time</th><th>Exit Time</th><th>Side</th>
+                  <th>Entry Price</th><th>Exit Price</th><th>Hold</th>
+                  <th>Entry Z</th><th>R²</th><th>Exit Z</th>
+                  <th>Gross PnL</th><th>Fee</th><th>Net PnL</th>
+                  <th>MFE</th><th>MAE</th><th>Reason</th>
+                </tr>
+              </thead>
+              <tbody id="trade-tbody-a"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Leg B table -->
+        <div id="leg-b" class="inner-tab-content">
+          <div class="table-wrap" style="max-height:480px;overflow-y:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th><th>Entry Time</th><th>Exit Time</th><th>Side</th>
+                  <th>Entry Price</th><th>Exit Price</th><th>Hold</th>
+                  <th>Entry Z</th><th>R²</th><th>Exit Z</th>
+                  <th>Gross PnL</th><th>Fee</th><th>Net PnL</th>
+                  <th>MFE</th><th>MAE</th><th>Reason</th>
+                </tr>
+              </thead>
+              <tbody id="trade-tbody-b"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow tab -->
+      <div id="t-workflow" class="tab-content">
+        <div style="padding:20px 24px;overflow-y:auto;max-height:560px;font-size:0.88rem;line-height:1.75;color:var(--text)">
+
+          <!-- Demo chart -->
+          <canvas id="chart-wf-p10" style="display:block;width:100%;max-width:700px;border-radius:8px;margin:0 auto 16px"></canvas>
+          <script>
+          (function(){
+            function draw(){
+              var canvas=document.getElementById('chart-wf-p10');
+              if(!canvas)return;
+              var dpr=window.devicePixelRatio||1;
+              var W=680,H=320;
+              canvas.width=W*dpr;canvas.height=H*dpr;
+              canvas.style.width=W+'px';canvas.style.height=H+'px';
+              var ctx=canvas.getContext('2d');
+              ctx.scale(dpr,dpr);
+              var ML=58,MR=60,MT=46,MB=50;
+              var pw=W-ML-MR,ph=H-MT-MB;
+
+              ctx.fillStyle='#0a1220';ctx.fillRect(0,0,W,H);
+
+              // Cointegrated assets: both trend UP (same direction), A temporarily dips
+              var N=101,pa=[],pb=[],sp=[];
+              for(var i=0;i<N;i++){
+                var t=i/100;
+                pb[i]=18*t+3*Math.sin(i*0.22);           // B: steady uptrend with oscillations
+                var dip=0;
+                if(i>=35&&i<=55)dip=-(i-35)/20*8;        // A falls -8% behind B
+                if(i>55&&i<=75) dip=-8+(i-55)/20*8;      // A recovers back to B
+                pa[i]=18*t+3*Math.sin(i*0.22+0.3)+dip;   // A: same trend + dip
+                sp[i]=pa[i]-pb[i];                        // spread = OLS residual
+              }
+
+              // Y scales
+              var yMinL=-5,yMaxL=24;    // left: performance %
+              var yMinR=-10,yMaxR=3;    // right: spread %
+              function tx(b){return ML+b/100*pw;}
+              function ty(v){return MT+ph-(v-yMinL)/(yMaxL-yMinL)*ph;}
+              function tyr(v){return MT+ph-(v-yMinR)/(yMaxR-yMinR)*ph;}
+
+              // Entry zone shading (below -2.5σ threshold)
+              var thresh=-3.5;
+              ctx.fillStyle='rgba(34,197,94,0.05)';
+              ctx.fillRect(ML,tyr(thresh),pw,tyr(yMinR)-tyr(thresh));
+
+              // Grid
+              ctx.strokeStyle='#181828';ctx.lineWidth=1;
+              [0,5,10,15,20].forEach(function(v){var y=ty(v);ctx.beginPath();ctx.moveTo(ML,y);ctx.lineTo(ML+pw,y);ctx.stroke();});
+              [0,25,50,75,100].forEach(function(b){var x=tx(b);ctx.beginPath();ctx.moveTo(x,MT);ctx.lineTo(x,MT+ph);ctx.stroke();});
+
+              // Spread zero line (dashed)
+              ctx.strokeStyle='#253048';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);
+              ctx.beginPath();ctx.moveTo(ML,tyr(0));ctx.lineTo(ML+pw,tyr(0));ctx.stroke();
+              ctx.setLineDash([]);
+
+              // -2.5σ threshold line (green dashed, right axis)
+              ctx.strokeStyle='rgba(34,197,94,0.65)';ctx.lineWidth=1.5;ctx.setLineDash([7,4]);
+              ctx.beginPath();ctx.moveTo(ML,tyr(thresh));ctx.lineTo(ML+pw,tyr(thresh));ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Spread line (gray dashed, right axis)
+              ctx.strokeStyle='rgba(140,140,190,0.6)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+              ctx.beginPath();
+              sp.forEach(function(v,i){var x=tx(i),y=tyr(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();ctx.setLineDash([]);
+
+              // Asset B (purple — steady uptrend)
+              ctx.strokeStyle='#c084fc';ctx.lineWidth=2.5;
+              ctx.beginPath();
+              pb.forEach(function(v,i){var x=tx(i),y=ty(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();
+              ctx.fillStyle='#c084fc';
+              pb.forEach(function(v,i){if(i%10===0){ctx.beginPath();ctx.arc(tx(i),ty(v),3,0,2*Math.PI);ctx.fill();}});
+
+              // Asset A (blue — dips then recovers)
+              ctx.strokeStyle='#5b8af5';ctx.lineWidth=2.5;
+              ctx.beginPath();
+              pa.forEach(function(v,i){var x=tx(i),y=ty(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();
+              ctx.fillStyle='#5b8af5';
+              pa.forEach(function(v,i){if(i%10===0){ctx.beginPath();ctx.arc(tx(i),ty(v),3,0,2*Math.PI);ctx.fill();}});
+
+              // ENTRY vertical (bar 55 — CONFIRM TURN, spread starts recovering)
+              var xe=tx(55);
+              ctx.strokeStyle='#fbbf24';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+              ctx.beginPath();ctx.moveTo(xe,MT);ctx.lineTo(xe,MT+ph);ctx.stroke();
+              ctx.setLineDash([]);
+
+              // EXIT vertical (bar 75 — spread returns to mean, Z → 0)
+              var xx=tx(75);
+              ctx.strokeStyle='rgba(96,165,250,0.8)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+              ctx.beginPath();ctx.moveTo(xx,MT);ctx.lineTo(xx,MT+ph);ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Dot on spread at entry
+              ctx.fillStyle='#22c55e';ctx.beginPath();ctx.arc(xe,tyr(sp[55]),8,0,2*Math.PI);ctx.fill();
+              ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(xe,tyr(sp[55]),3.5,0,2*Math.PI);ctx.fill();
+
+              // Dot on spread at exit (Z→0, spread≈0)
+              ctx.fillStyle='#60a5fa';ctx.beginPath();ctx.arc(xx,tyr(sp[75]),8,0,2*Math.PI);ctx.fill();
+              ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(xx,tyr(sp[75]),3.5,0,2*Math.PI);ctx.fill();
+
+              // Labels
+              ctx.font='bold 11px "SF Mono","Fira Code",monospace';
+              ctx.fillStyle='#fbbf24';ctx.textAlign='center';ctx.fillText('CONFIRM TURN: Z = −2.5σ',xe,MT-16);
+              ctx.fillStyle='rgba(96,165,250,0.9)';ctx.fillText('EXIT: Z → 0',xx,MT-16);
+              ctx.fillStyle='#6fcf97';ctx.textAlign='left';ctx.font='bold 10px "SF Mono","Fira Code",monospace';
+              ctx.fillText('↑ LONG A',xe+8,tyr(sp[55])-22);
+              ctx.fillStyle='#ef4444';ctx.fillText('↓ SHORT B',xe+8,tyr(sp[55])+30);
+
+              // Threshold label (right axis)
+              ctx.fillStyle='rgba(34,197,94,0.8)';ctx.textAlign='left';ctx.font='9px "SF Mono","Fira Code",monospace';
+              ctx.fillText('−2.5σ threshold',ML+4,tyr(thresh)-4);
+              ctx.fillStyle='rgba(140,140,190,0.7)';
+              ctx.fillText('spread μ = 0',ML+4,tyr(0)+11);
+
+              // Axis ticks
+              ctx.fillStyle='#6070a0';ctx.font='10px "SF Mono","Fira Code",monospace';ctx.textAlign='right';
+              [0,5,10,15,20].forEach(function(v){ctx.fillText(v+'%',ML-5,ty(v)+4);});
+              ctx.textAlign='left';
+              [-8,-4,0].forEach(function(v){ctx.fillText(v+'%',ML+pw+5,tyr(v)+4);});
+              ctx.textAlign='center';
+              [0,25,50,75,100].forEach(function(b){ctx.fillText(b,tx(b),MT+ph+15);});
+
+              // Axis titles
+              ctx.fillStyle='#7070a0';ctx.font='10px "SF Mono","Fira Code",monospace';
+              ctx.save();ctx.translate(13,H/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.fillText('Normalized Performance (%)',0,0);ctx.restore();
+              ctx.save();ctx.translate(W-12,H/2);ctx.rotate(Math.PI/2);ctx.textAlign='center';ctx.fillText('Spread (OLS Residual, %)',0,0);ctx.restore();
+              ctx.textAlign='center';ctx.fillText('Time (Bars)',W/2,H-5);
+
+              // Legend
+              var items=[['#5b8af5','Asset A'],['#c084fc','Asset B'],['rgba(140,140,190,0.6)','Spread (OLS residual)']];
+              var ly=MT+ph+32;
+              items.forEach(function(item,i){
+                var lx=ML+5+i*160;
+                ctx.strokeStyle=item[0];ctx.lineWidth=2;
+                if(i===2)ctx.setLineDash([5,3]);
+                ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(lx+18,ly);ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.fillStyle='#8888bb';ctx.textAlign='left';ctx.font='9px "SF Mono","Fira Code",monospace';
+                ctx.fillText(item[1],lx+22,ly+3);
+              });
+            }
+            if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',draw);}else{draw();}
+            document.addEventListener('click',function(e){
+              if(e.target&&e.target.getAttribute&&(e.target.getAttribute('onclick')||'').indexOf('t-workflow')>=0){setTimeout(draw,20);}
+            });
+          })();
+          </script>
+
+          <!-- Execution logic card -->
+          <div style="background:#0f172a;border-radius:8px;padding:14px 18px;margin-bottom:20px;border:1px solid var(--border);display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px">ℹ️</div>
+            <div style="flex:1">
+              <div style="font-weight:700;color:#fff;margin-bottom:6px;font-size:0.9rem">Theoretical Execution Logic: Long Entry (Z = −2.5σ)</div>
+              <div style="color:var(--muted);font-size:0.8rem;line-height:1.65">
+                Both assets trend together (cointegrated). Asset A temporarily falls behind B, stretching the OLS residual spread below −2.5σ. At bar 55, the spread stops widening and ticks back up — <strong style="color:#93c5fd">CONFIRM_TURN</strong> fires. Engine enters Long A / Short B. As cointegration pulls the spread back to its mean, Z returns to 0 at bar 75 — <strong style="color:#93c5fd">MEAN_REVERT</strong> exit closes both legs.
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+                <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.35);border-radius:6px;padding:10px 14px">
+                  <div style="color:#86efac;font-weight:700;font-size:0.78rem;margin-bottom:3px">↗ LEG 1: LONG ASSET A</div>
+                  <div style="color:var(--muted);font-size:0.75rem">A was undervalued vs B — expecting reversion upward.</div>
+                </div>
+                <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.35);border-radius:6px;padding:10px 14px">
+                  <div style="color:#fca5a5;font-weight:700;font-size:0.78rem;margin-bottom:3px">↘ LEG 2: SHORT ASSET B</div>
+                  <div style="color:var(--muted);font-size:0.75rem">B was overvalued vs A — expecting reversion downward.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="color:#fff;margin:0 0 6px;font-size:1rem">Cointegrated Pairs Trading — Z-Score Mean Reversion</h3>
+          <p style="color:var(--muted);margin:0 0 12px;font-size:0.82rem;line-height:1.65">
+            <strong style="color:#e2e8f0">Concept: "The Rubber Band Effect"</strong><br>
+            This is a classic Statistical Arbitrage strategy. It finds two assets that historically move together (they are "cointegrated"). If one asset suddenly shoots up while the other stays flat, the "rubber band" between them stretches. The strategy bets that the rubber band will eventually snap back to its normal state.
+          </p>
+          <p style="color:var(--muted);margin:0 0 20px;font-size:0.82rem;line-height:1.65">
+            It exploits the stationary spread between two log-prices that share a common stochastic trend.
+            A long/short position is opened when the normalised spread deviates beyond ±2.5σ (maximum divergence) and closed as it reverts toward zero.
+          </p>
+
+          <div style="background:rgba(59,130,246,0.08);border-radius:8px;padding:14px 18px;margin-bottom:24px;border:1px solid rgba(59,130,246,0.2)">
+            <strong style="color:#93c5fd;font-size:0.85rem">Example Scenario: BTC & ETH</strong>
+            <ol style="color:var(--muted);font-size:0.8rem;line-height:1.6;margin:8px 0 0;padding-left:20px">
+              <li><strong>The Setup:</strong> BTC and ETH are cointegrated. The Z-score is floating around 0.</li>
+              <li><strong>The Anomaly:</strong> BTC pumps 8% while ETH only goes up 1%. The mathematical relationship is stretched. BTC is highly "overvalued" compared to ETH. The Z-score hits -2.8 (passing our -2.5 threshold).</li>
+              <li><strong>The Execution:</strong> We bet on them returning to equilibrium. We SHORT BTC (the overvalued asset) and LONG ETH (the undervalued asset).</li>
+              <li><strong>The Exit:</strong> Two days later, ETH catches up and BTC trades sideways. The Z-score returns to 0. We close both positions for a net profit.</li>
+            </ol>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">① OLS Hedge Ratio (rolling window = OLS_WINDOW = 120 bars)</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">log(P_A[i]) = α + β × log(P_B[i]) + ε[i]
+
+β  = hedge ratio  (slope of OLS regression)
+α  = intercept
+R² = coefficient of determination  →  must be ≥ MIN_R2 (0.80)</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">② Spread Construction</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">spread[i] = log(P_A[i]) − (α + β × log(P_B[i]))</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">③ Cointegration Test — Augmented Dickey-Fuller (ADF)</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">H₀: spread has a unit root (non-stationary)
+
+p-value &lt; 0.05  →  reject H₀  →  spread is stationary  →  pair is cointegrated
+
+Computed over OLS_WINDOW bars; re-checked every bar (rolling regime filter).</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">④ Ornstein-Uhlenbeck Half-Life → Maximum Hold Period</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">Δspread[i] = λ × spread[i−1] + ε   (OLS on consecutive spread differences)
+
+half_life = −log(2) / λ
+
+max_hold  = half_life × 2    (trade must close within 2 mean-reversion cycles)</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑤ Z-Score Normalisation (rolling window = ZSCORE_WINDOW = 48 bars)</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">μ[i] = mean(spread[i−ZSCORE_WINDOW : i])
+σ[i] = std (spread[i−ZSCORE_WINDOW : i])
+
+Z[i] = (spread[i] − μ[i]) / σ[i]</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑥ Entry Gates (ALL must be true)</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0">
+              <div style="margin-bottom:4px">1. <span style="color:#86efac">regime_ok</span>        — rolling ADF p-value &lt; 0.05 on current window</div>
+              <div style="margin-bottom:4px">2. <span style="color:#86efac">circuit_ok</span>       — no circuit-breaker tripped (max daily loss not hit)</div>
+              <div style="margin-bottom:4px">3. <span style="color:#86efac">R² ≥ MIN_R2</span>      — current window R² ≥ 0.80 (regression quality gate)</div>
+              <div style="margin-bottom:4px">4. <span style="color:#86efac">|Z| ≥ MIN_ENTRY_Z</span> — |Z[i]| ≥ 2.5  (signal is large enough)</div>
+              <div style="margin-bottom:4px">5. <span style="color:#86efac">|Z| &lt; Z_STOP</span>    — |Z[i]| &lt; 8.0  (spread not already blown out)</div>
+              <div style="margin-bottom:4px">6. <span style="color:#86efac">CONFIRM_TURN</span>     — Z moved back toward zero by ≥1 tick from its peak</div>
+              <div>7. No open position on this pair</div>
+            </div>
+            <div style="margin-top:8px;font-size:0.8rem;color:var(--muted)">
+              Direction: Z &gt; 0 → short A / long B &nbsp;|&nbsp; Z &lt; 0 → long A / short B
+            </div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑦ Position Sizing</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">capital_per_leg = CAPITAL × RISK_FRACTION / 2
+
+size_A = capital_per_leg / P_A[entry]
+size_B = capital_per_leg / P_B[entry] × β    (β-adjusted for delta-neutrality)
+
+fee_per_trade = 4 × capital_per_leg × TRADING_FEE   (2 legs × open + close)</div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑧ Exit Priority Ladder (checked every bar, highest priority first)</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0">
+              <div style="margin-bottom:6px">1. <span style="color:#fca5a5">Z_STOP</span>          — |Z[i]| ≥ 8.0  — spread blew out, cut immediately</div>
+              <div style="margin-bottom:6px">2. <span style="color:#fbbf24">REVERSAL_TRAIL</span>  — Z crossed zero then re-diverged past trail threshold</div>
+              <div style="margin-bottom:6px">3. <span style="color:#86efac">MEAN_REVERT</span>     — |Z[i]| ≤ 0  — full mean reversion achieved</div>
+              <div style="margin-bottom:6px">4. <span style="color:#93c5fd">TIME_STOP</span>       — bars_held ≥ max_hold  (= half_life × 2)</div>
+              <div>5. <span style="color:#c4b5fd">REVERSAL</span>        — Z reversed direction without reaching mean</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:18px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑨ P&amp;L Calculation</div>
+            <div style="background:#020817;border-radius:8px;padding:12px 16px;font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap">gross_pnl = (exit_P_A − entry_P_A) × size_A × dir_A
+           + (exit_P_B − entry_P_B) × size_B × dir_B
+           (dir = +1 long, −1 short)
+
+fee      = 4 × capital_per_leg × TRADING_FEE
+net_pnl  = gross_pnl − fee
+ROI      = net_pnl / (2 × capital_per_leg)</div>
+          </div>
+
+          <div style="margin-bottom:4px">
+            <div style="font-weight:700;color:#93c5fd;margin-bottom:6px">⑩ Optimised Parameters</div>
+            <table style="width:100%;border-collapse:collapse;font-size:0.8rem">
+              <thead>
+                <tr style="background:#0f172a;color:var(--muted)">
+                  <th style="padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)">Parameter</th>
+                  <th style="padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)">Value</th>
+                  <th style="padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:7px 12px;font-family:monospace">OLS_WINDOW</td>
+                  <td style="padding:7px 12px;color:#86efac;font-weight:700">120</td>
+                  <td style="padding:7px 12px;color:var(--muted)">Bars for OLS regression &amp; ADF test</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:7px 12px;font-family:monospace">ZSCORE_WINDOW</td>
+                  <td style="padding:7px 12px;color:#86efac;font-weight:700">48</td>
+                  <td style="padding:7px 12px;color:var(--muted)">Bars for μ/σ normalisation</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:7px 12px;font-family:monospace">MIN_ENTRY_Z</td>
+                  <td style="padding:7px 12px;color:#86efac;font-weight:700">2.5</td>
+                  <td style="padding:7px 12px;color:var(--muted)">Minimum |Z| to enter a position</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:7px 12px;font-family:monospace">Z_STOP_LOSS</td>
+                  <td style="padding:7px 12px;color:#fca5a5;font-weight:700">8.0</td>
+                  <td style="padding:7px 12px;color:var(--muted)">|Z| at which position is force-closed</td>
+                </tr>
+                <tr>
+                  <td style="padding:7px 12px;font-family:monospace">MIN_R2</td>
+                  <td style="padding:7px 12px;color:#86efac;font-weight:700">0.80</td>
+                  <td style="padding:7px 12px;color:var(--muted)">Minimum R² for OLS regression quality</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- end analytics card -->
+  </div><!-- end pair-detail -->
+
+  <!-- ═══ All Pairs Ranking Table ════════════════════════════════════════════ -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🏆</span><h2>All Pairs Ranking</h2>
+      <div class="card-header-right" style="font-size:0.78rem;color:var(--muted);">sorted by Sharpe — click a row to inspect</div>
+    </div>
+    <div class="table-wrap">
+      <table id="rank-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th onclick="sortBy('pair')">Pair</th>
+            <th onclick="sortBy('cointegrated')">Coint</th>
+            <th onclick="sortBy('adf_pvalue')">ADF p-val ↕</th>
+            <th onclick="sortBy('half_life_bars')">Half-Life ↕</th>
+            <th onclick="sortBy('median_hedge_ratio')">β ↕</th>
+            <th onclick="sortBy('roi')">ROI % ↕</th>
+            <th onclick="sortBy('sharpe')">Sharpe ↕</th>
+            <th onclick="sortBy('sharpe_a')">Sharpe A ↕</th>
+            <th onclick="sortBy('sharpe_b')">Sharpe B ↕</th>
+            <th onclick="sortBy('calmar')">Calmar ↕</th>
+            <th onclick="sortBy('max_drawdown')">MDD % ↕</th>
+            <th onclick="sortBy('win_rate')">Win % ↕</th>
+            <th onclick="sortBy('total_trades')">Trades ↕</th>
+            <th onclick="sortBy('exit_rev_pct')">Rev % ↕</th>
+            <th onclick="sortBy('total_fees')">Fees $ ↕</th>
+          </tr>
+        </thead>
+        <tbody id="rank-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end .main -->
+
+<script src="app.js?v=2"></script>
+</body>
+</html>

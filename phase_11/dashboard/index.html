@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phase 11 — Crossover Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- Header ─────────────────────────────────────────────────────────── -->
+<header class="header">
+  <h1>PHASE 11 <span>Anti-Correlation Crossover</span></h1>
+  <div class="summary-chips" id="summaryChips">
+    <div class="chip green"><span class="label">Total ROI</span><span class="val" id="chipROI">—</span></div>
+    <div class="chip blue"><span class="label">Pairs Active</span><span class="val" id="chipPairs">—</span></div>
+    <div class="chip yellow"><span class="label">Total Trades</span><span class="val" id="chipTrades">—</span></div>
+    <div class="chip"><span class="label">Period</span><span class="val" id="chipPeriod" style="font-size:12px">—</span></div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- Sidebar ─────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      Pairs
+      <button class="sort-btn" id="sortBtn" onclick="toggleSort()">▼ ROI</button>
+    </div>
+    <div class="pair-list" id="pairList"></div>
+  </aside>
+
+  <!-- Detail ──────────────────────────────────────────────────────── -->
+  <section class="detail" id="detail">
+
+    <!-- Stat cards -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="label">ROI</div>
+        <div class="val" id="sROI">—</div>
+        <div class="sub" id="sGrossROI">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Sharpe</div>
+        <div class="val" id="sSharpe">—</div>
+        <div class="sub" id="sMaxDD">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Win Rate</div>
+        <div class="val" id="sWR">—</div>
+        <div class="sub" id="sWRsub">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Trades</div>
+        <div class="val" id="sTrades">—</div>
+        <div class="sub" id="sHold">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Avg Correlation</div>
+        <div class="val" id="sCorr">—</div>
+        <div class="sub" id="sExitReasons">—</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <div class="tab active" onclick="showTab('spread')">📈 Spread</div>
+      <div class="tab" onclick="showTab('price')">🌊 Prices</div>
+      <div class="tab" onclick="showTab('corr')">🔗 Correlation</div>
+      <div class="tab" onclick="showTab('equity')">💰 Equity</div>
+      <div class="tab" onclick="showTab('phase')">🔄 Phase</div>
+      <div class="tab" onclick="showTab('log')">📋 Trade Log</div>
+      <div class="tab" onclick="showTab('rulebook')">📜 Rulebook</div>
+      <div class="tab" onclick="showTab('workflow')">📐 Workflow</div>
+    </div>
+
+    <!-- Chart area -->
+    <div class="chart-area">
+
+      <!-- Spread tab -->
+      <div class="tab-pane active" id="pane-spread">
+        <div class="chart-wrap">
+          <canvas id="chartSpread"></canvas>
+        </div>
+      </div>
+
+      <!-- Price tab -->
+      <div class="tab-pane" id="pane-price">
+        <div class="chart-wrap">
+          <canvas id="chartPrice"></canvas>
+        </div>
+      </div>
+
+      <!-- Correlation tab -->
+      <div class="tab-pane" id="pane-corr">
+        <div class="chart-wrap">
+          <canvas id="chartCorr"></canvas>
+        </div>
+      </div>
+
+      <!-- Equity tab -->
+      <div class="tab-pane" id="pane-equity">
+        <div class="chart-wrap">
+          <canvas id="chartEquity"></canvas>
+        </div>
+      </div>
+
+      <!-- Phase portrait tab -->
+      <div class="tab-pane" id="pane-phase">
+        <div class="phase-nav" id="phaseNav">
+          <button class="phase-btn" onclick="phaseNav(-1)">◀ Prev</button>
+          <button class="phase-btn" onclick="phaseNav(+1)">Next ▶</button>
+          <span id="phaseTradeLabel" class="phase-trade-label">—</span>
+          <button class="phase-btn phase-btn-dim" onclick="phaseNavOverview()" style="margin-left:auto">Overview</button>
+        </div>
+        <div class="phase-layout">
+          <div class="chart-wrap">
+            <canvas id="chartPhase"></canvas>
+          </div>
+          <div class="phase-legend" id="phaseLegend"></div>
+        </div>
+      </div>
+
+      <!-- Trade log tab -->
+      <div class="tab-pane" id="pane-log">
+        <div class="trade-log">
+          <div class="trade-log-header">
+            <span>Filter:</span>
+            <select class="tl-filter" id="tlFilter" onchange="renderTradeLog()">
+              <option value="">All exits</option>
+              <option value="profit">Profit</option>
+              <option value="recross">Recross</option>
+              <option value="time_stop">Time Stop</option>
+              <option value="hard_stop">Hard Stop</option>
+              <option value="liquidated">Liquidated</option>
+            </select>
+            <select class="tl-filter" id="tlDir" onchange="renderTradeLog()">
+              <option value="">All directions</option>
+              <option value="long_a_short_b">Long A / Short B</option>
+              <option value="short_a_long_b">Short A / Long B</option>
+            </select>
+            <span id="tlCount" style="margin-left:auto"></span>
+          </div>
+          <div class="table-wrap">
+            <table id="tradeTable">
+              <thead>
+                <tr>
+                  <th onclick="sortLog('entry_time')">#  Entry</th>
+                  <th onclick="sortLog('exit_time')">Exit</th>
+                  <th onclick="sortLog('hold_bars')">Hold</th>
+                  <th>Direction</th>
+                  <th>Coin</th>
+                  <th>Side</th>
+                  <th>Entry → Exit Price</th>
+                  <th>Leg P&amp;L</th>
+                  <th onclick="sortLog('prior_peak')">PriorPeak</th>
+                  <th onclick="sortLog('s_trade_exit')">S@Exit</th>
+                  <th onclick="sortLog('net_pnl')">Net P&amp;L</th>
+                  <th onclick="sortLog('exit_reason')">Reason</th>
+                </tr>
+              </thead>
+              <tbody id="tradeBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rulebook tab -->
+      <div class="tab-pane" id="pane-rulebook">
+        <div class="rulebook-wrap" id="rulebookWrap">
+          <div class="no-data">Loading rulebook…</div>
+        </div>
+      </div>
+
+      <!-- Workflow tab -->
+      <div class="tab-pane" id="pane-workflow">
+        <div style="flex:1;overflow-y:auto;padding:16px 20px;font-size:12px;line-height:1.8;color:var(--text)">
+
+          <!-- Demo chart -->
+          <canvas id="chart-wf-p11" style="display:block;width:100%;max-width:700px;border-radius:8px;margin:0 auto 16px"></canvas>
+          <script>
+          (function(){
+            function draw(){
+              var canvas=document.getElementById('chart-wf-p11');
+              if(!canvas)return;
+              var dpr=window.devicePixelRatio||1;
+              var W=660,H=310;
+              canvas.width=W*dpr;canvas.height=H*dpr;
+              canvas.style.width=W+'px';canvas.style.height=H+'px';
+              var ctx=canvas.getContext('2d');
+              ctx.scale(dpr,dpr);
+              var ML=58,MR=52,MT=46,MB=50;
+              var pw=W-ML-MR,ph=H-MT-MB;
+
+              ctx.fillStyle='#09090f';ctx.fillRect(0,0,W,H);
+
+              // Data: Asset A starts low ends high, Asset B starts high ends low
+              var N=101,pa=[],pb=[],sp=[];
+              for(var i=0;i<N;i++){
+                var t=i/100;
+                pa[i]=-11+22*t+2.5*Math.sin((i-50)*0.15);
+                pb[i]=11-22*t+2.5*Math.sin((i-50)*0.15+Math.PI);
+                sp[i]=pa[i]-pb[i];
+              }
+
+              var yMinL=-22,yMaxL=22,yMinR=-44,yMaxR=44;
+              function tx(b){return ML+b/100*pw;}
+              function ty(v){return MT+ph-(v-yMinL)/(yMaxL-yMinL)*ph;}
+              function tyr(v){return MT+ph-(v-yMinR)/(yMaxR-yMinR)*ph;}
+
+              // Grid
+              ctx.strokeStyle='#191926';ctx.lineWidth=1;
+              [-20,-10,0,10,20].forEach(function(v){var y=ty(v);ctx.beginPath();ctx.moveTo(ML,y);ctx.lineTo(ML+pw,y);ctx.stroke();});
+              [0,25,50,75,100].forEach(function(b){var x=tx(b);ctx.beginPath();ctx.moveTo(x,MT);ctx.lineTo(x,MT+ph);ctx.stroke();});
+
+              // Zero line dashed
+              ctx.strokeStyle='#2d2d4a';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);
+              ctx.beginPath();ctx.moveTo(ML,ty(0));ctx.lineTo(ML+pw,ty(0));ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Spread line (right axis, dashed gray)
+              ctx.strokeStyle='rgba(140,140,180,0.55)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+              ctx.beginPath();
+              sp.forEach(function(v,i){var x=tx(i),y=tyr(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();ctx.setLineDash([]);
+
+              // Asset B (purple)
+              ctx.strokeStyle='#c084fc';ctx.lineWidth=2.5;
+              ctx.beginPath();
+              pb.forEach(function(v,i){var x=tx(i),y=ty(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();
+              ctx.fillStyle='#c084fc';
+              pb.forEach(function(v,i){if(i%10===0){ctx.beginPath();ctx.arc(tx(i),ty(v),3,0,2*Math.PI);ctx.fill();}});
+
+              // Asset A (blue)
+              ctx.strokeStyle='#5b8af5';ctx.lineWidth=2.5;
+              ctx.beginPath();
+              pa.forEach(function(v,i){var x=tx(i),y=ty(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+              ctx.stroke();
+              ctx.fillStyle='#5b8af5';
+              pa.forEach(function(v,i){if(i%10===0){ctx.beginPath();ctx.arc(tx(i),ty(v),3,0,2*Math.PI);ctx.fill();}});
+
+              // Zero-cross vertical line
+              var x50=tx(50),y0=ty(0);
+              ctx.strokeStyle='#fbbf24';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+              ctx.beginPath();ctx.moveTo(x50,MT);ctx.lineTo(x50,MT+ph);ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Red dot at crossing
+              ctx.fillStyle='#ef4444';ctx.beginPath();ctx.arc(x50,y0,8,0,2*Math.PI);ctx.fill();
+              ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x50,y0,3.5,0,2*Math.PI);ctx.fill();
+
+              // Labels
+              ctx.font='bold 11px "SF Mono","Fira Code",monospace';
+              ctx.fillStyle='#fbbf24';ctx.textAlign='center';ctx.fillText('ZERO CROSS: EXECUTE PAIR',x50,MT-16);
+              ctx.fillStyle='#6fcf97';ctx.textAlign='left';ctx.font='bold 10px "SF Mono","Fira Code",monospace';
+              ctx.fillText('↑ LONG A',x50+10,y0-22);
+              ctx.fillStyle='#ef4444';ctx.fillText('↓ SHORT B',x50+10,y0+30);
+
+              // Axis ticks
+              ctx.fillStyle='#6070a0';ctx.font='10px "SF Mono","Fira Code",monospace';
+              ctx.textAlign='right';
+              [-20,-10,0,10,20].forEach(function(v){ctx.fillText(v,ML-6,ty(v)+4);});
+              ctx.textAlign='left';
+              [-40,-20,0,20,40].forEach(function(v){ctx.fillText(v,ML+pw+5,tyr(v)+4);});
+              ctx.textAlign='center';
+              [0,25,50,75,100].forEach(function(b){ctx.fillText(b,tx(b),MT+ph+15);});
+
+              // Axis titles
+              ctx.fillStyle='#7070a0';ctx.font='10px "SF Mono","Fira Code",monospace';
+              ctx.save();ctx.translate(12,H/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.fillText('Normalized Performance (%)',0,0);ctx.restore();
+              ctx.save();ctx.translate(W-11,H/2);ctx.rotate(Math.PI/2);ctx.textAlign='center';ctx.fillText('Spread S[i] (%)',0,0);ctx.restore();
+              ctx.textAlign='center';ctx.fillText('Time (Bars)',W/2,H-5);
+
+              // Legend
+              var items=[['#5b8af5','Asset A'],['#c084fc','Asset B'],['rgba(140,140,180,0.55)','Spread (A−B)']];
+              var ly=MT+ph+32;
+              items.forEach(function(item,i){
+                var lx=ML+10+i*148;
+                ctx.strokeStyle=item[0];ctx.lineWidth=2;
+                if(i===2)ctx.setLineDash([5,3]);
+                ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(lx+18,ly);ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.fillStyle='#8888bb';ctx.textAlign='left';ctx.font='9px "SF Mono","Fira Code",monospace';
+                ctx.fillText(item[1],lx+22,ly+3);
+              });
+            }
+            if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',draw);}else{draw();}
+            document.addEventListener('click',function(e){
+              if(e.target&&e.target.getAttribute&&(e.target.getAttribute('onclick')||'').indexOf("'workflow'")>=0){setTimeout(draw,20);}
+            });
+          })();
+          </script>
+
+          <!-- Execution logic card -->
+          <div style="background:var(--bg2);border-radius:8px;padding:14px 18px;margin-bottom:16px;border:1px solid #2d2d45;display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#1c1c30;border:1px solid #3d3d60;display:flex;align-items:center;justify-content:center;font-size:14px">ℹ️</div>
+            <div style="flex:1">
+              <div style="font-weight:700;color:var(--text);margin-bottom:6px">Theoretical Execution Logic: Cross Up</div>
+              <div style="color:var(--muted);font-size:11px;line-height:1.65">
+                Prior to the signal, Asset B was outperforming Asset A, driving the spread negative. As the assets begin to mean-revert, the spread narrows. The exact moment the spread hits zero (Bar 50), the algorithm determines that momentum has shifted to Asset A.
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+                <div style="background:rgba(22,163,74,0.12);border:1px solid rgba(22,163,74,0.4);border-radius:6px;padding:10px 14px">
+                  <div style="color:#6fcf97;font-weight:700;font-size:11px;margin-bottom:3px">↗ LEG 1: LONG ASSET A</div>
+                  <div style="color:var(--muted);font-size:10px">Expecting Asset A to continue climbing.</div>
+                </div>
+                <div style="background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.4);border-radius:6px;padding:10px 14px">
+                  <div style="color:#ef4444;font-weight:700;font-size:11px;margin-bottom:3px">↘ LEG 2: SHORT ASSET B</div>
+                  <div style="color:var(--muted);font-size:10px">Expecting Asset B to continue falling.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="color:var(--accent2);font-weight:700;font-size:13px;margin-bottom:4px;letter-spacing:0.5px">ANTI-CORRELATION CROSSOVER — MOMENTUM ROTATION</div>
+          <div style="color:var(--muted);margin-bottom:12px;font-size:11px;line-height:1.65">
+            <strong style="color:#d1d5db">Concept: "The Changing of the Guard"</strong><br>
+            Unlike Phase 10 which relies on long-term gravity (mean reversion), Phase 11 relies on momentum shifts. It watches two diverging assets. It waits for the exact moment the underdog steals the momentum (the spread crosses zero). You bet that the trend has broken and capital is rotating from the winner into the loser.
+          </div>
+          <div style="color:var(--muted);margin-bottom:20px;font-size:11px;line-height:1.65">
+            Trades the zero-crossing of relative performance between two assets.
+            When the faster asset has led and the spread crosses zero, momentum is expected to rotate
+            to the lagging asset — we go long the lagging, short the leading right at the intersection point.
+          </div>
+
+          <div style="background:rgba(168,85,247,0.08);border-radius:8px;padding:14px 18px;margin-bottom:24px;border:1px solid rgba(168,85,247,0.2)">
+            <strong style="color:#d8b4fe;font-size:12px">Example Scenario: SOL & ADA</strong>
+            <ol style="color:var(--muted);font-size:11px;line-height:1.6;margin:8px 0 0;padding-left:20px">
+              <li><strong>The Divergence:</strong> Over 48 hours, SOL is up 15% and ADA is down 5%. SOL is the undisputed leader.</li>
+              <li><strong>The Shift:</strong> Market sentiment shifts. SOL drops to +2% while ADA climbs to +2%.</li>
+              <li><strong>The Zero Cross:</strong> At the exact moment they both hit +2%, the Spread hits exactly 0. ADA's momentum has officially overtaken SOL's momentum.</li>
+              <li><strong>The Execution:</strong> We LONG ADA (the new leader) and SHORT SOL (the dying leader). We hold until ADA out-gains SOL by our target amount.</li>
+            </ol>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">① RELATIVE PERFORMANCE SPREAD (NORM_WINDOW = 48h)</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">S[i] = (P_A[i] / P_A[i−N] − 1) − (P_B[i] / P_B[i−N] − 1)
+
+S &gt; 0  →  A has outperformed B over the lookback window
+S &lt; 0  →  B has outperformed A over the lookback window
+N       =  NORM_WINDOW bars</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">② PRIOR DIVERGENCE GUARD (PRIOR_DIV_WINDOW = 24h)</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">prior_peak = max(|S[i−PRIOR_DIV_WINDOW : i]|)
+
+Entry only fires if prior_peak ≥ MIN_DIVERGENCE (0.08)
+
+Ensures a meaningful divergence existed BEFORE the crossover —
+not a noise signal hovering near zero.</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">③ ZERO-CROSSING ENTRY SIGNAL</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">cross_up   =  S[i−1] &lt; 0  AND  S[i] &gt;= 0   (B led, now A catches up)
+cross_down =  S[i−1] &gt; 0  AND  S[i] &lt;= 0   (A led, now B catches up)
+
+Signal fires the exact bar the spread changes sign.</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">④ DIRECTION LOGIC</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">cross_up   (S: − → +):  A was lagging, now catching up
+  → Long A  /  Short B
+
+cross_down (S: + → −):  B was lagging, now catching up
+  → Short A  /  Long B</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑤ ENTRY GATES (ALL must be true)</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45">
+              <div style="margin-bottom:3px">1. <span style="color:#6fcf97">cross_up OR cross_down</span>       — spread crossed zero this bar</div>
+              <div style="margin-bottom:3px">2. <span style="color:#6fcf97">prior_peak ≥ MIN_DIVERGENCE</span>  — prior divergence ≥ 0.08</div>
+              <div style="margin-bottom:3px">3. <span style="color:#6fcf97">MIN_PEAK_BARS (4)</span>            — divergence persisted ≥ 4 consecutive bars above threshold</div>
+              <div>4. No open position on this pair</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑥ POSITION SIZING</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">capital_per_leg = CAPITAL × RISK_FRACTION / 2
+
+size_A = capital_per_leg / P_A[entry]   (equal-dollar legs)
+size_B = capital_per_leg / P_B[entry]
+
+fee = 4 × capital_per_leg × TRADING_FEE   (2 legs × open + close)</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑦ IN-TRADE SPREAD — S_trade</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">ret_A = P_A[i] / P_A[entry] − 1
+ret_B = P_B[i] / P_B[entry] − 1
+
+S_trade = ret_A − ret_B   (relative outperformance of A over B since entry)
+
+Long A / Short B direction:  profit when S_trade &gt; 0
+Short A / Long B direction:  profit when S_trade &lt; 0</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑧ EXIT CONDITIONS (checked every bar)</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45">
+              <div style="margin-bottom:5px">1. <span style="color:#6fcf97">PROFIT</span>    — |S_trade| ≥ PROFIT_TARGET (10%) in the winning direction</div>
+              <div style="margin-bottom:5px">2. <span style="color:#f2c94c">RECROSS</span>   — S[i] crosses zero against the trade direction
+                                  with buffer: |S[i]| ≥ RECROSS_BUFFER (3%) before triggering</div>
+              <div style="margin-bottom:5px">3. <span style="color:#eb5757">HARD_STOP</span> — |S_trade| ≥ HARD_STOP_PCT (15%) in the losing direction</div>
+              <div>4. <span style="color:#a29bfe">TIME_STOP</span>  — bars_held ≥ MAX_HOLD_BARS (24h × bars_per_hour)</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑨ P&amp;L CALCULATION</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">Long leg:   pnl_x = size_x × (exit_px − entry_px)
+Short leg:  pnl_x = size_x × (entry_px − exit_px)
+
+gross_pnl = pnl_A + pnl_B
+net_pnl   = gross_pnl − fee
+ROI       = net_pnl / (2 × capital_per_leg)</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑩ ROLLING PEARSON CORRELATION (visualised in Correlation tab)</div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px 14px;border:1px solid #2d2d45;white-space:pre-wrap">ret_a[i] = log(P_A[i] / P_A[i−1])
+ret_b[i] = log(P_B[i] / P_B[i−1])
+
+ρ[i] = Pearson( ret_a[i−W : i],  ret_b[i−W : i] )
+
+W = CORR_WINDOW bars
+
+Pair selection targets ρ &lt; −0.3 (negative correlation confirms
+assets move in opposite directions — prerequisite for rotation signal).</div>
+          </div>
+
+          <div style="margin-bottom:4px">
+            <div style="color:var(--accent2);font-weight:700;margin-bottom:6px">⑪ KEY PARAMETERS</div>
+            <table style="width:100%;border-collapse:collapse;font-size:11px">
+              <thead>
+                <tr style="color:var(--muted);border-bottom:1px solid #2d2d45">
+                  <th style="padding:6px 10px;text-align:left">Parameter</th>
+                  <th style="padding:6px 10px;text-align:left">Value</th>
+                  <th style="padding:6px 10px;text-align:left">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">NORM_WINDOW</td>
+                  <td style="padding:5px 10px;color:#6fcf97;font-weight:700">48h</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Lookback for S[i] spread</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">PRIOR_DIV_WINDOW</td>
+                  <td style="padding:5px 10px;color:#6fcf97;font-weight:700">24h</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Lookback for prior divergence check</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">MIN_DIVERGENCE</td>
+                  <td style="padding:5px 10px;color:#6fcf97;font-weight:700">0.08</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Min prior_peak to allow entry</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">MIN_PEAK_BARS</td>
+                  <td style="padding:5px 10px;color:#6fcf97;font-weight:700">4</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Divergence must persist ≥ N bars</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">PROFIT_TARGET</td>
+                  <td style="padding:5px 10px;color:#6fcf97;font-weight:700">10%</td>
+                  <td style="padding:5px 10px;color:var(--muted)">S_trade threshold for profit exit</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">RECROSS_BUFFER</td>
+                  <td style="padding:5px 10px;color:#f2c94c;font-weight:700">3%</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Buffer before recross exit triggers</td>
+                </tr>
+                <tr style="border-bottom:1px solid #2d2d45">
+                  <td style="padding:5px 10px">HARD_STOP_PCT</td>
+                  <td style="padding:5px 10px;color:#eb5757;font-weight:700">15%</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Max adverse S_trade before hard stop</td>
+                </tr>
+                <tr>
+                  <td style="padding:5px 10px">MAX_HOLD_BARS</td>
+                  <td style="padding:5px 10px;color:#a29bfe;font-weight:700">24h</td>
+                  <td style="padding:5px 10px;color:var(--muted)">Maximum trade duration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- chart-area -->
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

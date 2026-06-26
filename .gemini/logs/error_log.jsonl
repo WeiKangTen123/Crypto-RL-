@@ -1,0 +1,62 @@
+{"ts": "2026-05-27T03:23:22.547239", "error": "Strategy 1 failed: Unknown datetime string format, unable to parse: invalid-date"}
+{"ts": "2026-05-27T03:52:28.296607", "error": "Strategy 1 failed: Unknown datetime string format, unable to parse: invalid-date"}
+{"ts": "2026-05-29T13:45:21.040884", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T13:45:28.876979", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T13:45:32.959386", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T13:45:40.577771", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T13:48:22.592812", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T13:50:48.758214", "error": "No module named 'freqtrade.strategy'"}
+{"ts": "2026-05-29T14:07:03.040900", "error": "No module named 'numpy.rec'"}
+{"ts": "2026-05-29T14:18:55.140189", "error": "No module named 'numpy.rec'"}
+{"ts": "2026-06-03T20:13:28.979786", "error": "Strategy 99 failed: 'trading_fee'"}
+{"ts": "2026-06-03T20:16:00.938492", "error": "Strategy 99 failed: TA_RSI function failed with error code 2: Bad Parameter (TA_BAD_PARAM)"}
+{"ts": "2026-06-03T20:16:57.860433", "error": "Strategy 99 failed: TA_RSI function failed with error code 2: Bad Parameter (TA_BAD_PARAM)"}
+{"ts": "2026-06-03T20:17:23.937286", "error": "Strategy 99 failed: TA_RSI function failed with error code 2: Bad Parameter (TA_BAD_PARAM)"}
+{"ts": "2026-06-03T20:18:00.581703", "error": "Strategy 99 failed: TA_RSI function failed with error code 2: Bad Parameter (TA_BAD_PARAM)"}
+{"ts": "2026-06-03T20:18:25.021823", "error": "Strategy 99 failed: TA_RSI function failed with error code 2: Bad Parameter (TA_BAD_PARAM)"}
+{"ts": "2026-06-08T17:38:01.962371", "error": "unexpected indent (settings.py, line 1167)"}
+{"ts": "2026-06-08T17:38:07.051843", "error": "unexpected indent (settings.py, line 1167)"}
+{"ts": "2026-06-08T17:38:33.675561", "error": "unexpected indent (settings.py, line 1167)"}
+{"ts": "2026-06-10T18:28:21.459684", "error": "No module named 'numpy.strings'"}
+{"ts": "2026-06-14T22:27:28.457468", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:27:32.454595", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:31:54.064405", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:32:47.574730", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:35:00.425397", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:35:02.907937", "error": "invalid literal for int() with base 10: '108_REJECTED'"}
+{"ts": "2026-06-14T22:38:14.766362", "error": "No module named 'freqtrade.optimize.hyperopt_helper'"}
+{"ts": "2026-06-17T11:23:40.340463", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:23:42.951096", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:23:45.718810", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:10.464492", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:10.576257", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:12.383906", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:54.127425", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:55.505567", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:24:58.193343", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T11:25:00.290531", "error": "invalid syntax (settings.py, line 977)"}
+{"ts": "2026-06-17T13:29:02.372443", "error": "name 'false' is not defined"}
+{"ts": "2026-06-17T13:29:03.377844", "error": "name 'false' is not defined"}
+{"ts": "2026-06-18T14:29:27.711042", "error": "cannot import name 'detect_candle_bearish_engulfing' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-18T14:47:57.813345", "error": "attempted relative import with no known parent package"}
+{"ts": "2026-06-18T14:51:58.594508", "error": "attempted relative import with no known parent package"}
+{"ts": "2026-06-18T14:52:08.311503", "error": "attempted relative import with no known parent package"}
+{"ts": "2026-06-19T10:02:30.741315", "error": "Strategy 129 failed: Unknown filter: htf_ema_trend"}
+{"ts": "2026-06-19T10:03:04.429814", "error": "Strategy 129 failed: Unknown filter: htf_ema_trend"}
+{"ts": "2026-06-19T10:11:12.198208", "error": "Strategy 129 failed: Unknown filter: htf_ema_trend"}
+{"ts": "2026-06-19T14:23:55.143827", "error": "cannot import name 'calc_adx' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-19T14:30:27.085855", "error": "cannot import name 'calc_adx' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-19T14:36:59.033075", "error": "cannot import name 'calc_adx' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-19T14:37:07.886233", "error": "cannot import name 'calc_adx' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-19T14:37:14.422963", "error": "cannot import name 'calc_adx' from 'strategy_backtest.library' (/Users/weikangten/Desktop/Crypto-RL/strategy_backtest/library.py)"}
+{"ts": "2026-06-22T23:20:11.511735", "error": "invalid literal for int() with base 10: 'KFM'"}
+{"ts": "2026-06-22T23:20:16.522909", "error": "invalid literal for int() with base 10: 'KFM'"}
+{"ts": "2026-06-22T23:29:53.987038", "error": "invalid literal for int() with base 10: 'KFM'"}
+{"ts": "2026-06-22T23:32:19.200857", "error": "invalid literal for int() with base 10: 'KFM'"}
+{"ts": "2026-06-24T10:40:11.841948", "error": "No module named 'engine'"}
+{"ts": "2026-06-24T13:45:10.886602", "error": "unexpected indent (settings.py, line 221)"}
+{"ts": "2026-06-24T13:45:15.664676", "error": "unexpected indent (settings.py, line 221)"}
+{"ts": "2026-06-24T13:50:06.259833", "error": "unexpected indent (settings.py, line 344)"}
+{"ts": "2026-06-24T13:50:06.471927", "error": "unexpected indent (settings.py, line 344)"}
+{"ts": "2026-06-24T16:43:12.246363", "error": "Strategy 38 failed: cannot convert float NaN to integer"}
+{"ts": "2026-06-25T11:30:57.421849", "error": "Strategy 14 failed: '_Bar' object has no attribute 'is_bullish'"}

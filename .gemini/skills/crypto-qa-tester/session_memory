@@ -1,0 +1,36 @@
+
+--- GEMINI SESSION START: gemini-2.5-flash-lite ---
+[2026-06-12 14:15:17] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:15:17] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:15:17] Ripgrep is not available. Falling back to GrepTool.
+[2026-06-12 14:15:51] The QA test suite has been successfully executed. All 79 tests passed (0 failures, 0 warnings). The results have been logged, the `AGENT_COLLABORATION.md` has been updated to reflect the successful run, and the `main_controller/heartbeat.json` now indicates the completion of the QA test cycle.
+
+--- GEMINI SESSION START: gemini-2.5-flash-lite ---
+[2026-06-12 14:22:23] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:22:23] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:22:23] Ripgrep is not available. Falling back to GrepTool.
+[2026-06-12 14:22:51] The automated QA test suite was successfully executed (`./venv/bin/python .gemini/skills/crypto-qa-tester/scripts/system_test.py --once`).
+[2026-06-12 14:22:51] **Test Results Summary:**
+[2026-06-12 14:22:51] - **Status:** PASS
+[2026-06-12 14:22:51] - **Details:** 79 PASS, 0 FAIL, 0 WARN
+[2026-06-12 14:22:51] - **Duration:** ~1s
+[2026-06-12 14:22:51] The system is healthy, and no failures required routing to other agents. The `heartbeat.json` for `crypto-qa-tester` has been updated with the summary.
+
+--- GEMINI SESSION START: gemini-2.5-flash-lite ---
+[2026-06-12 14:28:16] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:28:16] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-12 14:28:16] Ripgrep is not available. Falling back to GrepTool.
+[2026-06-12 14:28:22] Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5268ms...
+[2026-06-12 14:28:49] The automated QA test suite has been successfully executed, confirming system integrity across all tested components.
+[2026-06-12 14:28:49] - **System Health:** 79 Passed, 0 Failed, 0 Warnings.
+[2026-06-12 14:28:49] - **Flask Routes, Strategy Imports, and Data Linkage:** Validated as healthy.
+[2026-06-12 14:28:49] - **Collaboration Log:** Updated (`.gemini/shared/AGENT_COLLABORATION.md`).
+[2026-06-12 14:28:49] - **Heartbeat:** Updated (`main_controller/heartbeat.json`).
+[2026-06-12 14:28:49] No failures were detected, and no routing was required.
+
+--- GEMINI SESSION START: gemini-2.5-flash-lite ---
+[2026-06-14 21:43:21] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-14 21:43:21] YOLO mode is enabled. All tool calls will be automatically approved.
+[2026-06-14 21:43:21] Ripgrep is not available. Falling back to GrepTool.
+[2026-06-14 21:43:36] Error executing tool replace: Error: Failed to edit, expected 1 occurrence but found 8.
+[2026-06-14 21:43:49] The scheduled QA test suite was successfully executed. One failure was identified in the backtest smoke testing for `sid=99` (Sandbox Runtime Crash), which was automatically routed to `@crypto-fullstack`. All necessary documentation and state updates have been performed.

@@ -1,0 +1,5 @@
+{
+  "status": "Triggering Agent...",
+  "detail": "Strategy 14 failed: '_Bar' object has no attribute 'is_bullish'",
+  "ts": "2026-06-25T11:30:57.422589"
+}

@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Breakouts are often "faked" by low-volume algorithms or retail noise. However, when a price breakout is accompanied by **(1) high Trade Intensity** and **(2) aggressive Taker Buying**, it indicates that "Smart Money" or large institutional orders are hitting the market with urgency. By filtering price movements using the `num_trades` and `taker_buy_base_vol` columns, we can distinguish between a "dead cat bounce" and a genuine trend shift.

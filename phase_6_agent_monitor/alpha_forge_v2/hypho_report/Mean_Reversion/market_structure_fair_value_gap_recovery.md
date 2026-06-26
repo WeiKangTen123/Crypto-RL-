@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Fair Value Gaps (FVGs) represent areas of price inefficiency where a rapid, impulsive move occurred, leaving many orders unfilled. Market participants (especially institutional players or algorithms) often seek to re-test or "fill" these gaps to achieve a more efficient price discovery. These zones act as magnets for price re-balancing. Trading the recovery (retrace) into these gaps exploits the tendency of markets to return to equilibrium before continuing a trend.

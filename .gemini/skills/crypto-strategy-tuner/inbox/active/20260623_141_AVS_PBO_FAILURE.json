@@ -1,0 +1,8 @@
+{
+  "message_type": "FACTOR_FAILURE_REPORT",
+  "strategy_id": "141",
+  "strategy_name": "AVS_BTC_4H",
+  "status": "REJECTED",
+  "reason": "PBO Audit/WFO Rejection: PBO check T2-03 failed with PBO = 0.400 and OOS Loss Probability = 0.800 (thresholds: PBO < 0.50, OOS Loss Prob < 0.30). Strategy failed Tier 1 Fatal Gates with Sharpe = -0.820 and Return = -36.58%.",
+  "autopsy_report_path": "phase_6_agent_monitor/alpha_forge_v2/autopsy_report/20260623_141_AVS_BTC_4H_autopsy.md"
+}

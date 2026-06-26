@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+The MACD Zero-Cross signals that the short-term Exponential Moving Average (12) has crossed the long-term EMA (26). This represents a shift in the mathematical "equilibrium" of the price, suggesting that a new momentum-driven trend is establishing itself.

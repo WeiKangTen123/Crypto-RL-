@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-06-24T11:31:23+08:00",
+  "topic": "NEW_FACTOR_DISCOVERED",
+  "priority": "HIGH",
+  "payload": {
+    "message": "Alpha Researcher has extracted 3 novel MFT strategies: EFR-MR, LER, and FRDS. They exploit Funding Rates and Order Book Depth. Hypothesis reports and Candidate Cards are ready. Please begin FACTOR_ENG implementation.",
+    "factors": ["EFR-MR", "LER", "FRDS"]
+  }
+}

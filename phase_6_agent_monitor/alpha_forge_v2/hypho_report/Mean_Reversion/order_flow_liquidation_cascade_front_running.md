@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+BTC price gravitates toward high-liquidity zones where large clusters of leveraged positions are likely to be forcibly liquidated. Market makers and whales often push the price toward these clusters to "harvest" liquidity. When a cluster is hit, it triggers a chain reaction (cascade/squeeze) as forced orders hit the market. Front-running the entry into these zones or trading the reversal after the "sweep" exploits the predictable, non-discretionary nature of liquidation orders.

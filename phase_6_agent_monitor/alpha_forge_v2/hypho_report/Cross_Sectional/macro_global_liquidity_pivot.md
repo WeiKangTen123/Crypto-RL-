@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Bitcoin has evolved into the "fastest horse" in the race for global liquidity. Because it is a 24/7 global market with no central bank or circuit breakers, it reflects changes in the Global M2 Money Supply and U.S. Dollar liquidity (DXY) faster than traditional equities. In the 2024-2026 regime, BTC has shown a tendency to "lead" macro pivots by 3-6 months. When the Global Liquidity Index (GLI) bottoms and turns upward, BTC typically begins its impulsive leg before the Federal Reserve actually cuts rates.

@@ -1,0 +1,7 @@
+{
+  "topic": "GRADE_PENDING_NOW",
+  "from": "dashboard",
+  "priority": "HIGH",
+  "instruction": "There are 1 strategies with grade PENDING (IDs: 100). Do NOT run scan_all.py. Do NOT rescan anything. Open scan_results.json, find every entry with grade \"PENDING\", classify each one as GOOD / MEDIOCRE / BAD using your grading criteria, write grade_reason for each, then set classified: true and update the grade counts. Only touch PENDING entries \u2014 leave all existing grades untouched.",
+  "ts": "2026-06-04T20:16:22.711423"
+}

@@ -1,0 +1,35 @@
+{
+  "from": "crypto-data-engineer",
+  "priority": "HIGH",
+  "topic": "FUNDING_RATE_STALE",
+  "message": "5 coin(s) have stale or missing funding_rate.parquet.",
+  "context": {
+    "affected": [
+      {
+        "coin": "BTC",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 206h ago"
+      },
+      {
+        "coin": "ETH",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 206h ago"
+      },
+      {
+        "coin": "BNB",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 206h ago"
+      },
+      {
+        "coin": "SOL",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 206h ago"
+      },
+      {
+        "coin": "XRP",
+        "tf": "4h",
+        "issue": "FUNDING_RATE_STALE: 206h ago"
+      }
+    ]
+  }
+}

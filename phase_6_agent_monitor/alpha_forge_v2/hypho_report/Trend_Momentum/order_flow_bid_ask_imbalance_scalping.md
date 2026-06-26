@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Prices in high-frequency environments tend to move toward the "thinner" side of the order book (the side with less volume). A significant imbalance suggests that one side (e.g., buyers) is overwhelming the other (e.g., sellers), or that the "thick" side acts as a temporary price floor/ceiling that is harder to penetrate than the "thin" side. This exploits short-term liquidity exhaustion and the reactive behavior of market participants and market-making algorithms.

@@ -1,0 +1,19 @@
+# Global Long-Term Memory (GLTM)
+
+### Purpose
+System-wide insights that affect multiple agents or the overall architecture of Crypto-RL.
+
+### Key Learnings
+- 2026-06-04 | LTM Architecture implemented across all agents to prevent regression and knowledge loss.
+- 2026-06-04 | Standardized LTM updates into the "Visibility Protocol" to ensure "wisdom" is captured as a first-class citizen alongside action logs.
+- 2026-06-04 | Repeated fine-tuning attempts on strategies with consistently low or negative Sharpe ratios often indicate a fundamental flaw in the strategy logic itself, rather than sub-optimal parameters. Future efforts for such strategies should focus on redesign or deeper analysis of their core principles.
+- 2026-06-08 | Syntax errors in settings.py (like unexpected indents) often stem from malformed dictionary structures in STRATEGY_LIBRARY.
+- 2026-06-14 | **Engine Action Contract**: `manage_trade` must return ONLY these strings: `'SL'`, `'TP'`, `'TS'`, `'EXIT'`, `'REVERSE'`, `'HOLD'`, `'SKIP'`, `'ADD'`. Any other string (e.g. `'TRAIL_STOP'`, `'FIXED_TP'`, `'CLOSE'`) is silently ignored — position stays open forever. `'TS'` (trailing stop) was added to the engine on 2026-06-14.
+- 2026-06-14 | **State Reset in manage_trade**: `_s`-style state dicts persist across trades of the same side. Must track `entry_price` and reinitialize SL/TP/TS when `entry_price` changes, otherwise subsequent trades inherit wrong targets from the previous trade.
+- 2026-06-14 | **Exit Mode Names**: Use `'FIXED_RR'` (fixed risk:reward) and `'TRAILING_STOP'` only. `'FIXED_TP'` does not exist as a mode in any strategy — strategies receiving it silently fall through to TRAILING_STOP.
+- 2026-06-14 | **Signal Condition Validation**: Always count signals from `generate_signals()` before running the engine. AND-chaining extreme indicator conditions with price direction (e.g. `z < -3 AND Close > Close.shift(1)`) can produce 0 signals — at extreme lows, price is always falling, never rising. Use crossover signals instead: `(indicator.shift(1) < threshold) & (indicator >= threshold)`.
+- 2026-06-14 | **Data Universe (all agents)**: Supported coins are BTC, ETH, BNB, SOL, XRP only. Available timeframes are 5m, 15m, 1h, 4h, 1d only. 30m exists but is unused — avoid. known_data_gaps.md logs partial gaps within datasets, NOT unusable pairs — all 5 coins are usable across all 5 timeframes.
+- 2026-06-14 | **Coin/TF from Candidate Card**: Primary coin = first in card's `coins` YAML field. Primary timeframe = first in card's `timeframes` YAML field. Cross-asset checks use the SAME timeframe on the other listed coins — never switch timeframes for cross-asset. date_to always 2026-05-31. date_from by tf: 5m→2025-05-31, 15m→2024-05-31, 1h→2023-05-31, 4h→2023-05-31, 1d→2022-05-31. Use card's "Minimum history" if it requires a longer window.
+- 2026-06-14 | **Finetune Before WFO**: At Stage 5 (DEV_REPORT), after registering in settings.py with default params, run `python .gemini/skills/crypto-strategy-tuner/scripts/finetune.py --strategy_id {id}` BEFORE running WFO/PBO. WFO must test the Optuna-optimized strategy, not defaults — a good strategy can falsely fail WFO on poor default params. The dev report must use finetuned metrics, not baseline defaults. Even if rejected at WFO/PBO, settings.py retains the best-found params so the tuner can salvage it later.
+- 2026-06-14 | **WFO Does Not Produce Best Params**: WFO (Stage 6) tests stability across sliding time windows — it does NOT run Optuna trials. Never update settings.py params from "WFO best" — that concept does not exist. Only finetune.py (Optuna) produces best params. Stage 8 MANIFEST should verify params, not overwrite them.
+- 2026-06-19 | **Stale Module Caching in Flask**: Always force reload `strategy_backtest.library` and `strategy_backtest.strategies` packages before executing backtests or validation runs to avoid cached imports throwing `ImportError`.

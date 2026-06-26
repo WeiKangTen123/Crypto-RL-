@@ -1,0 +1,1 @@
+[2026-06-22] | Warm-up Bars Constraint | Backtest windows shorter than indicator lookback periods (e.g. 20-30 bars) fail to generate signals/trades due to NaN values in indicators like Bollinger Bands or Chandelier Exit. Make sure backtest ranges include sufficient warm-up periods to prevent zero-trade false alarms.

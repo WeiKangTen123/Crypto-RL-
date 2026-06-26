@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto-RL | Command Center</title>
+    <link rel="stylesheet" href="monitor_styles.css">
+</head>
+<body class="cyber-theme">
+
+    <!-- HIGH PRIORITY ALERT BANNER -->
+    <div id="alert-banner" class="alert-banner" style="display:none"></div>
+
+    <div class="command-center">
+        <header>
+            <div class="brand">
+                <h1>AGENTS_CENTER_<span class="glitch" data-text="06">06</span></h1>
+                <p id="system-time">SYNCING...</p>
+            </div>
+            <div class="system-metrics">
+                <div class="metric"><span class="label">DISK_FREE</span> <span id="disk-val">--</span> GB</div>
+                <div class="metric"><span class="label">AGENTS</span> <span id="pid-val">--</span><span style="opacity:0.5;font-size:0.75em">/5</span></div>
+                <div class="metric"><span class="label">HEALTH</span>
+                    <span id="health-badge-global" class="health-badge-global">--</span>
+                </div>
+                <div class="metric"><span class="label">PULSE</span> <div class="pulse-indicator"></div></div>
+                <div class="search-wrap" style="position:relative">
+                    <input type="text" id="global-search" class="global-search-input" placeholder="⌕  Search ideas, strategies..." oninput="handleGlobalSearch(this.value)" onblur="setTimeout(()=>closeSearch(),200)" autocomplete="off">
+                    <div id="search-dropdown" class="search-dropdown" style="display:none"></div>
+                </div>
+                <button class="btn-network" onclick="openNetworkModal()" title="View agent relationships and live flow">⬡ NETWORK</button>
+                <button class="btn-network" style="border-color: var(--danger); color: var(--danger);" onclick="openFailureModal()" title="View historical failures and rejected strategies">⬢ FAILURE_VAULT</button>
+            </div>
+        </header>
+
+        <!-- AGENT TERMINAL GRID -->
+        <section class="agent-terminal-grid">
+
+            <!-- Fullstack -->
+            <div class="terminal-card" id="term-fullstack">
+                <div class="term-header">
+                    <span class="agent-name">@crypto-fullstack</span>
+                    <span class="agent-status" id="status-fullstack">IDLE</span>
+                    <span class="agent-last-seen" id="last-seen-fullstack"></span>
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-fullstack">--</span>
+                    <span class="badge badge-health" id="health-badge-fullstack">--</span>
+                    <span class="badge badge-error" id="error-badge-fullstack">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-fullstack" onclick="event.stopPropagation();toggleInboxPreview('fullstack','crypto-fullstack')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-fullstack" style="display:none"></div>
+                <div class="agent-controls" id="controls-fullstack"></div>
+                <div class="term-body" id="log-fullstack">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+
+            <!-- Data Engineer -->
+            <div class="terminal-card" id="term-data">
+                <div class="term-header">
+                    <span class="agent-name">@crypto-data-engineer</span>
+                    <span class="agent-status" id="status-data">SCANNING</span>
+                    <span class="agent-last-seen" id="last-seen-data"></span>
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-data">--</span>
+                    <span class="badge badge-health" id="health-badge-data">--</span>
+                    <span class="badge badge-error" id="error-badge-data">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-data" onclick="event.stopPropagation();toggleInboxPreview('data','crypto-data-engineer')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-data" style="display:none"></div>
+                <div class="agent-controls" id="controls-data"></div>
+                <div class="term-body" id="log-data">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+
+            <!-- Alpha Researcher -->
+            <div class="terminal-card" id="term-researcher">
+                <div class="term-header">
+                    <span class="agent-name">@alpha-researcher</span>
+                    <span class="agent-status" id="status-researcher">IDLE</span>
+                    <span class="agent-last-seen" id="last-seen-researcher"></span>
+                </div>
+                <div class="agent-progress-container" id="progress-researcher">
+                    <!-- Progress bar will be injected here -->
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-researcher">--</span>
+                    <span class="badge badge-health" id="health-badge-researcher">--</span>
+                    <span class="badge badge-error" id="error-badge-researcher">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-researcher" onclick="event.stopPropagation();toggleInboxPreview('researcher','alpha-researcher')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-researcher" style="display:none"></div>
+                <div class="agent-controls" id="controls-researcher"></div>
+                <div class="term-body" id="log-researcher">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+
+            <!-- Alpha Developer -->
+            <div class="terminal-card" id="term-developer">
+                <div class="term-header">
+                    <span class="agent-name">@alpha-developer</span>
+                    <span class="agent-status" id="status-developer">IDLE</span>
+                    <span class="agent-last-seen" id="last-seen-developer"></span>
+                </div>
+                <div class="agent-progress-container" id="progress-developer">
+                    <!-- Progress bar 1-2-3-4 will be injected here -->
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-developer">--</span>
+                    <span class="badge badge-health" id="health-badge-developer">--</span>
+                    <span class="badge badge-error" id="error-badge-developer">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-developer" onclick="event.stopPropagation();toggleInboxPreview('developer','alpha-developer')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-developer" style="display:none"></div>
+                <div class="agent-controls" id="controls-developer"></div>
+                <div class="term-body" id="log-developer">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+
+            <!-- Strategy Tuner -->
+            <div class="terminal-card terminal-card-tuner" id="term-tuner">
+                <div class="term-header">
+                    <span class="agent-name">@crypto-strategy-tuner</span>
+                    <span class="agent-status" id="status-tuner">IDLE</span>
+                    <span class="agent-last-seen" id="last-seen-tuner"></span>
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-tuner">--</span>
+                    <span class="badge badge-tuner-scan" id="tuner-scan-badge">NO SCAN</span>
+                    <span class="badge badge-error" id="error-badge-tuner">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-tuner" onclick="event.stopPropagation();toggleInboxPreview('tuner','crypto-strategy-tuner')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-tuner" style="display:none"></div>
+                <div class="agent-controls" id="controls-tuner"></div>
+                <div class="term-body" id="log-tuner">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+
+            <!-- QA Tester -->
+            <div class="terminal-card terminal-card-qa" id="term-qa">
+                <div class="term-header">
+                    <span class="agent-name">@crypto-qa-tester</span>
+                    <span class="agent-status" id="status-qa">IDLE</span>
+                    <span class="agent-last-seen" id="last-seen-qa"></span>
+                </div>
+                <div class="agent-badges">
+                    <span class="badge badge-model" id="model-badge-qa">--</span>
+                    <span class="badge badge-qa-score" id="qa-score-badge">NO RUNS</span>
+                    <span class="badge badge-error" id="error-badge-qa">0 ERR</span>
+                    <span class="badge badge-inbox" id="inbox-badge-qa" onclick="event.stopPropagation();toggleInboxPreview('qa','crypto-qa-tester')" style="display:none">0 MSG</span>
+                </div>
+                <div class="inbox-preview-panel" id="inbox-preview-qa" style="display:none"></div>
+                <div class="agent-controls" id="controls-qa"></div>
+                <div class="term-body" id="log-qa">
+                    <div class="line">Initializing terminal feed...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALPHA_FORGE_V2 PIPELINE -->
+        <div class="forge-container">
+            <div class="forge-header">ALPHA_FORGE_V2</div>
+            <section class="pipeline-row">
+                <div class="pipeline-stage" id="stage-0" onclick="openStageModal(0)">
+                    <span class="stage-num">00</span>
+                    <span class="stage-name">RAW_IDEA</span>
+                    <div class="stage-val" id="val-stage-0">--</div>
+                    <div class="stage-sub" id="stage-0-sub"></div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-stage" id="stage-1" onclick="openStageModal(1)">
+                    <span class="stage-num">01</span>
+                    <span class="stage-name">HYPOTHESIS</span>
+                    <div class="stage-val" id="val-stage-1">--</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-stage" id="stage-2" onclick="openStageModal(2)">
+                    <span class="stage-num">02</span>
+                    <span class="stage-name">DEVELOPMENT</span>
+                    <div class="stage-val" id="val-stage-2">--</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-stage" id="stage-3" onclick="openStageModal(3)">
+                    <span class="stage-num">03</span>
+                    <span class="stage-name">BACKTEST</span>
+                    <div class="stage-val" id="val-stage-3">--</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-stage" id="stage-4" onclick="openStageModal(4)">
+                    <span class="stage-num">04</span>
+                    <span class="stage-name">PAPER_READY</span>
+                    <div class="stage-val" id="val-stage-4">--</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-stage" id="stage-5" onclick="openStageModal(5)">
+                    <span class="stage-num">05</span>
+                    <span class="stage-name">PAPER_TRADE</span>
+                    <div class="stage-val" id="val-stage-5">--</div>
+                </div>
+                <div class="pipeline-arrow" style="color: var(--danger);">☠</div>
+                <div class="pipeline-stage" id="stage-graveyard" onclick="openFailureModal()" style="border-color: var(--danger); background: rgba(127, 29, 29, 0.1);">
+                    <span class="stage-num">XX</span>
+                    <span class="stage-name" style="color: var(--danger);">GRAVEYARD</span>
+                    <div class="stage-val" id="val-stage-graveyard" style="color: var(--danger);">--</div>
+                </div>
+            </section>
+            <!-- Pipeline conversion funnel -->
+            <div class="pipeline-funnel" id="pipeline-funnel"></div>
+        </div>
+
+        <!-- MODEL USAGE MONITOR -->
+        <section class="collapsible-section" id="section-model-usage">
+            <div class="section-header" onclick="toggleSection('model-usage')">
+                <span>MODEL_USAGE_MONITOR</span>
+                <span id="model-usage-summary" class="section-count">--</span>
+                <span class="section-toggle" id="toggle-model-usage">▼</span>
+            </div>
+            <div class="section-body" id="body-model-usage">
+                <table id="model-usage-table">
+                    <thead>
+                        <tr>
+                            <th>MODEL</th>
+                            <th>CALLS</th>
+                            <th>DONE</th>
+                            <th>AVG TIME</th>
+                            <th>TOTAL TIME</th>
+                            <th>QUOTA HITS</th>
+                            <th>LAST USED</th>
+                            <th>AGENT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="model-usage-body">
+                        <tr><td colspan="8" style="opacity:0.5;text-align:center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- STRATEGY TUNER PANEL -->
+        <section class="collapsible-section" id="section-tuner">
+            <div class="section-header" onclick="toggleSection('tuner')">
+                <span>STRATEGY TUNER — Scan · Grade · Optimize</span>
+                <span id="tuner-summary" class="section-count">no scan yet</span>
+                <span class="section-toggle" id="toggle-tuner">▼</span>
+            </div>
+            <div class="section-body" id="body-tuner">
+                <div class="tuner-controls">
+                    <div class="tuner-controls-left">
+                        <span class="tuner-hint">All strategies · sorted by ID · check rows to queue fine-tuning</span>
+                    </div>
+                    <div class="tuner-controls-right">
+                        <button class="tuner-queue-btn" id="tuner-queue-btn" onclick="queueSelectedFinetunes()" disabled>
+                            Queue Selected <span id="tuner-sel-count">(0)</span>
+                        </button>
+                        <button class="btn-cyber tuner-rescan-btn" id="tuner-force-rescan-btn" onclick="triggerForceRescan()" title="Force a fresh scan even if results already exist">↺ FORCE RESCAN</button>
+                        <button class="btn-cyber" id="tuner-scan-new-btn" onclick="triggerScanNew()" title="Scan only strategies not yet in results — no quota used">⊕ SCAN NEW</button>
+                        <button class="btn-cyber" id="tuner-grade-pending-btn" onclick="triggerGradePending()" title="Grade PENDING strategies only — no rescan, minimal quota">✦ GRADE PENDING</button>
+                        <button class="btn-cyber" onclick="triggerTunerScan()" id="tuner-scan-btn">⟳ RUN SCAN</button>
+                    </div>
+                </div>
+                <table id="tuner-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="tuner-select-all" onclick="tunerToggleAll(this)" title="Select all"></th>
+                            <th>ID</th>
+                            <th>STRATEGY</th>
+                            <th>COIN</th>
+                            <th>TF</th>
+                            <th>SHARPE</th>
+                            <th>RETURN</th>
+                            <th>MAX DD</th>
+                            <th>TRADES</th>
+                            <th>PF</th>
+                            <th>GRADE</th>
+                            <th>REASON</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tuner-body">
+                        <tr><td colspan="12" style="opacity:0.5;text-align:center">Run a scan to see results</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ACTIVITY TIMELINE -->
+        <section class="collapsible-section" id="section-timeline">
+            <div class="section-header" onclick="toggleSection('timeline')">
+                <span>AGENT_TIMELINE — Last 24h</span>
+                <span class="section-toggle" id="toggle-timeline">▼</span>
+            </div>
+            <div class="section-body" id="body-timeline">
+                <div class="timeline-container">
+                    <div class="timeline-axis">
+                        <span>NOW-24h</span><span>-18h</span><span>-12h</span><span>-6h</span><span>NOW</span>
+                    </div>
+                    <div class="swimlane">
+                        <span class="lane-label">FULLSTACK</span>
+                        <div class="lane-track" id="lane-fullstack"></div>
+                    </div>
+                    <div class="swimlane">
+                        <span class="lane-label">DATA</span>
+                        <div class="lane-track" id="lane-data"></div>
+                    </div>
+                    <div class="swimlane">
+                        <span class="lane-label">RESEARCHER</span>
+                        <div class="lane-track" id="lane-researcher"></div>
+                    </div>
+                    <div class="swimlane">
+                        <span class="lane-label">DEVELOPER</span>
+                        <div class="lane-track" id="lane-developer"></div>
+                    </div>
+                    <div class="swimlane">
+                        <span class="lane-label">QA</span>
+                        <div class="lane-track" id="lane-qa"></div>
+                    </div>
+                    <div class="timeline-legend">
+                        <span class="tl-dot tl-online"></span>ONLINE
+                        <span class="tl-dot tl-offline"></span>OFFLINE
+                        <span class="tl-dot tl-done"></span>DONE
+                        <span class="tl-dot tl-error"></span>ERROR
+                        <span class="tl-dot tl-quota"></span>QUOTA
+                        <span class="tl-dot tl-start"></span>START
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEM CHANGELOG -->
+        <section class="collapsible-section" id="section-syslog">
+            <div class="section-header" onclick="toggleSection('syslog')">
+                <span>SYSTEM_CHANGELOG — All Agent File Changes</span>
+                <span class="section-toggle" id="toggle-syslog">▼</span>
+            </div>
+            <div class="section-body" id="body-syslog">
+                <div class="syslog-scroll">
+                    <div id="syslog-feed"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOWER DECKS — 4 panels -->
+        <section class="lower-decks">
+            <div class="collab-window">
+                <div class="window-header">AGENT_COLLABORATION.md — Task Ledger &amp; Agent Handoffs</div>
+                <div class="window-body" id="collab-feed"></div>
+            </div>
+            <div class="health-window">
+                <div class="window-header">system_health.log — Data Health Scout</div>
+                <div class="window-body" id="health-feed"></div>
+            </div>
+            <div class="protocol-window">
+                <div class="window-header">CROSS-AGENT INBOX — Pending Messages</div>
+                <div class="window-body" id="protocol-feed"></div>
+            </div>
+            <div class="archive-window">
+                <div class="window-header">INBOX_ARCHIVE — Resolved Messages</div>
+                <div class="window-body" id="archive-feed"></div>
+            </div>
+            <div class="qa-window">
+                <div class="window-header">QA_RESULTS.log — Last Test Run</div>
+                <div class="window-body" id="qa-feed"></div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="controls">
+                <button class="btn-cyber" onclick="triggerManual('REPAIR')">FORCED_REPAIR</button>
+                <button class="btn-cyber" onclick="triggerManual('RESEARCH')">HUNT_ALPHA</button>
+                <button class="btn-cyber alert" onclick="triggerManual('KILL_ALL')">TERMINATE_PROCESSES</button>
+            </div>
+            <div class="version">BUILD_2026.06.15_STABLE</div>
+        </footer>
+    </div>
+
+    <!-- Agent Network Modal -->
+    <div id="network-modal" class="modal" onclick="if(event.target===this)closeNetworkModal()">
+        <div class="modal-content network-modal-content">
+            <div class="modal-header">
+                <h2>⬡ AGENT_NETWORK — Live Architecture</h2>
+                <span class="close-btn" onclick="closeNetworkModal()">&times;</span>
+            </div>
+            <div class="network-modal-body">
+                <!-- LEFT: SVG diagram -->
+                <div class="network-diagram-panel">
+                    <svg id="network-svg" viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Arrow marker definitions -->
+                        <defs>
+                            <marker id="arr-default" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#374151"/>
+                            </marker>
+                            <marker id="arr-active" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#10b981"/>
+                            </marker>
+                            <marker id="arr-high" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#ef4444"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Layer labels — aligned to actual row centres -->
+                        <text x="8" y="58"  class="net-layer-label">DATA</text>
+                        <text x="8" y="168" class="net-layer-label">BUILD</text>
+                        <text x="8" y="278" class="net-layer-label">DISCOVER</text>
+                        <text x="8" y="378" class="net-layer-label">MAINTAIN</text>
+
+                        <!-- ── ARROWS first so boxes paint on top, hiding segments that pass through nodes ── -->
+                        <!-- data → fullstack: arcs left and down -->
+                        <path id="arr-data-fullstack" d="M 220,80 C 160,160 130,200 135,250" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- data → researcher: arc down to DISCOVER tier -->
+                        <path id="arr-data-researcher" d="M 355,60 C 460,100 490,190 425,250" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- tuner → fullstack: straight vertical drop -->
+                        <path id="arr-tuner-fullstack" d="M 135,190 L 135,250" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- developer → tuner: horizontal arc left across BUILD tier -->
+                        <path id="arr-dev-tuner" d="M 350,165 C 310,148 250,148 210,165" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- researcher → developer: upward arc right side DISCOVER→BUILD -->
+                        <path id="arr-researcher-dev" d="M 425,250 C 458,228 458,198 425,190" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- qa → fullstack: diagonal arc left and up -->
+                        <path id="arr-qa-fullstack" d="M 350,370 C 290,345 215,320 210,295" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- qa → data: right-gutter arc, box z-order hides researcher overlap -->
+                        <path id="arr-qa-data" d="M 425,350 C 505,320 505,80 355,60" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- qa → tuner: arc through centre gap -->
+                        <path id="arr-qa-tuner" d="M 425,350 C 380,290 260,270 210,175" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- tuner → researcher: arc right and down -->
+                        <path id="arr-tuner-researcher" d="M 210,165 C 270,165 290,275 350,275" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- researcher → data: arc up left gutter -->
+                        <path id="arr-researcher-data" d="M 350,260 C 300,190 280,130 280,80" class="net-arrow" marker-end="url(#arr-default)"/>
+
+                        <!-- ── AGENT BOXES (rendered after arrows so they paint over arrow segments inside nodes) ── -->
+                        <!-- data-engineer: row1 centre -->
+                        <g id="net-box-data" class="net-agent-box" transform="translate(205,30)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@data-engineer</text>
+                            <text x="75" y="32" id="net-status-data" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-data" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- strategy-tuner: row2 left (OPTIMISE) -->
+                        <g id="net-box-tuner" class="net-agent-box" transform="translate(60,140)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@strategy-tuner</text>
+                            <text x="75" y="32" id="net-status-tuner" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-tuner" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- alpha-developer: row2 right (BUILD) -->
+                        <g id="net-box-developer" class="net-agent-box" transform="translate(350,140)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@alpha-developer</text>
+                            <text x="75" y="32" id="net-status-developer" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-developer" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- alpha-researcher: row3 right (DISCOVER) -->
+                        <g id="net-box-researcher" class="net-agent-box" transform="translate(350,250)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@alpha-researcher</text>
+                            <text x="75" y="32" id="net-status-researcher" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-researcher" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- fullstack: row3 left (DISCOVER) -->
+                        <g id="net-box-fullstack" class="net-agent-box" transform="translate(60,250)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@fullstack</text>
+                            <text x="75" y="32" id="net-status-fullstack" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-fullstack" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- qa-tester: row4 right (MAINTAIN) -->
+                        <g id="net-box-qa" class="net-agent-box" transform="translate(350,350)">
+                            <rect width="150" height="50" rx="6"/>
+                            <text x="75" y="18" class="net-agent-name">@qa-tester</text>
+                            <text x="75" y="32" id="net-status-qa" class="net-agent-status">OFFLINE</text>
+                            <text x="75" y="44" id="net-action-qa" class="net-agent-action">—</text>
+                        </g>
+
+                        <!-- ── LEGEND ── -->
+                        <line x1="60" y1="435" x2="100" y2="435" stroke="#374151" stroke-width="1.5"/>
+                        <text x="108" y="439" class="net-legend-text">idle</text>
+                        <line x1="160" y1="435" x2="200" y2="435" stroke="#10b981" stroke-width="2"/>
+                        <text x="208" y="439" class="net-legend-text">active message</text>
+                        <rect x="300" y="428" width="10" height="10" rx="2" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="316" y="439" class="net-legend-text">ONLINE</text>
+                        <rect x="380" y="428" width="10" height="10" rx="2" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                        <text x="396" y="439" class="net-legend-text">STANDBY</text>
+                        <rect x="460" y="428" width="10" height="10" rx="2" fill="none" stroke="#4b5563" stroke-width="1.5"/>
+                        <text x="476" y="439" class="net-legend-text">OFFLINE</text>
+                    </svg>
+                </div>
+
+                <!-- RIGHT: Task summary -->
+                <div class="network-summary-panel">
+                    <div class="net-summary-title">AGENT TASK SUMMARY</div>
+                    <table class="net-summary-table">
+                        <thead>
+                            <tr>
+                                <th>AGENT</th>
+                                <th>STATUS</th>
+                                <th>CURRENT ACTION</th>
+                                <th>NEXT RUN</th>
+                                <th>INBOX</th>
+                            </tr>
+                        </thead>
+                        <tbody id="net-summary-body">
+                            <tr><td colspan="5" style="opacity:0.4;text-align:center">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="net-summary-title" style="margin-top:20px">MESSAGE ROUTES</div>
+                    <div class="net-routes-list">
+                        <div class="net-route"><span class="net-route-from">data</span><span class="net-route-arrow">→</span><span class="net-route-to">fullstack</span><span class="net-route-topic">STALE_CRITICAL · dtype</span></div>
+                        <div class="net-route"><span class="net-route-from">data</span><span class="net-route-arrow">→</span><span class="net-route-to">researcher</span><span class="net-route-topic">ANOMALY · DATA_GAP</span></div>
+                        <div class="net-route"><span class="net-route-from">tuner</span><span class="net-route-arrow">→</span><span class="net-route-to">fullstack</span><span class="net-route-topic">BUG · WRITE_FAIL</span></div>
+                        <div class="net-route"><span class="net-route-from">tuner</span><span class="net-route-arrow">→</span><span class="net-route-to">researcher</span><span class="net-route-topic">FINETUNE_PROMOTED (≥1.0 only)</span></div>
+                        <div class="net-route"><span class="net-route-from">researcher</span><span class="net-route-arrow">→</span><span class="net-route-to">developer</span><span class="net-route-topic">NEW_FACTOR_DISCOVERED</span></div>
+                        <div class="net-route"><span class="net-route-from">developer</span><span class="net-route-arrow">→</span><span class="net-route-to">fullstack</span><span class="net-route-topic">NEW_STRATEGY_READY · STRATEGY_BUG</span></div>
+                        <div class="net-route"><span class="net-route-from">developer</span><span class="net-route-arrow">→</span><span class="net-route-to">tuner</span><span class="net-route-topic">FINETUNE</span></div>
+                        <div class="net-route"><span class="net-route-from">researcher</span><span class="net-route-arrow">→</span><span class="net-route-to">data</span><span class="net-route-topic">DATA_VALIDATION_REQUEST</span></div>
+                        <div class="net-route"><span class="net-route-from">qa</span><span class="net-route-arrow">→</span><span class="net-route-to">fullstack</span><span class="net-route-topic">ROUTE_FAILURE · IMPORT_ERROR</span></div>
+                        <div class="net-route"><span class="net-route-from">qa</span><span class="net-route-arrow">→</span><span class="net-route-to">data</span><span class="net-route-topic">PARQUET_MISSING</span></div>
+                        <div class="net-route"><span class="net-route-from">qa</span><span class="net-route-arrow">→</span><span class="net-route-to">tuner</span><span class="net-route-topic">SCAN_CORRUPT</span></div>
+                        <div class="net-route"><span class="net-route-from">dashboard</span><span class="net-route-arrow">→</span><span class="net-route-to">tuner</span><span class="net-route-topic">FINETUNE · RUN_SCAN_NOW</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Dossier Modal -->
+    <div id="agent-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-agent-name">AGENT_DOSSIER</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="dossier-grid">
+                    <div class="dossier-section">
+                        <h4>CURRENT_FOCUS</h4>
+                        <p id="modal-focus">Initializing...</p>
+                    </div>
+                    <div class="dossier-section">
+                        <h4>ACTIVITY_MODE</h4>
+                        <div id="modal-mode" class="mode-tag">IDLE</div>
+                    </div>
+                    <div class="dossier-section">
+                        <h4>INBOX_PENDING</h4>
+                        <ul id="modal-inbox-list">
+                            <li>No pending tasks</li>
+                        </ul>
+                    </div>
+                    <div class="dossier-section">
+                        <h4>ACTIVE_TOOLS</h4>
+                        <div id="modal-tools-list">None</div>
+                    </div>
+                </div>
+
+                <!-- LIVE TASK EVOLUTION -->
+                <div class="dossier-log-view" id="modal-progress-container" style="display:none; margin-bottom: 25px;">
+                    <h4>LIVE_TASK_EVOLUTION — Interactive Status</h4>
+                    <div id="modal-task-stepper" class="dossier-stepper-container">
+                        <!-- Progress circles injected here -->
+                    </div>
+                </div>
+
+                <div class="dossier-log-view">
+                    <h4>ACTIVITY_LOG — Task Ledger</h4>
+                    <div id="modal-extended-log" class="term-body"></div>
+                </div>
+                <div class="dossier-log-view">
+                    <h4>CHANGE_LOG — What This Agent Modified</h4>
+                    <div id="modal-changes-log" class="term-body changes-log-body"></div>
+                </div>
+                <div class="dossier-log-view">
+                    <h4>SESSION_LOG — Reasoning &amp; Background Output</h4>
+                    <div id="modal-session-log" class="term-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fine-tune Modal -->
+    <div id="ft-modal" class="modal">
+        <div class="modal-content bt-modal-content">
+            <div class="modal-header">
+                <h2 id="ft-modal-title">FINE-TUNE STRATEGY</h2>
+                <span class="close-btn" onclick="closeFtModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="bt-controls">
+                    <label class="bt-lbl">TRIALS</label>
+                    <select id="ft-trials" class="bt-date-input">
+                        <option value="30">30 (fast)</option>
+                        <option value="50">50 (balanced)</option>
+                        <option value="100">100 (deep)</option>
+                    </select>
+                    <label class="bt-lbl">FROM</label>
+                    <input type="date" id="ft-date-from" value="2023-01-01" class="bt-date-input">
+                    <label class="bt-lbl">TO</label>
+                    <input type="date" id="ft-date-to" value="2024-01-01" class="bt-date-input">
+                    <button class="btn-cyber" id="ft-confirm-btn" onclick="confirmFinetune()">⚡ QUEUE FINE-TUNE</button>
+                </div>
+                <div id="ft-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backtest Quick-Run Modal -->
+    <div id="bt-modal" class="modal">
+        <div class="modal-content bt-modal-content">
+            <div class="modal-header">
+                <h2 id="bt-modal-title">BACKTEST</h2>
+                <span class="close-btn" onclick="closeBtModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="bt-controls">
+                    <label class="bt-lbl">FROM</label>
+                    <input type="date" id="bt-date-from" value="2023-01-01" class="bt-date-input">
+                    <label class="bt-lbl">TO</label>
+                    <input type="date" id="bt-date-to" value="2026-05-31" class="bt-date-input">
+                    <button class="btn-cyber" id="bt-run-btn" onclick="runLeaderboardBacktest()">▶ RUN BACKTEST</button>
+                </div>
+                <div id="bt-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure Vault Modal -->
+    <div id="failure-modal" class="modal" onclick="if(event.target===this)closeFailureModal()">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2 style="color: var(--danger);">⬢ FAILURE_VAULT — Historical Audit</h2>
+                <span class="close-btn" onclick="closeFailureModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="dossier-section">
+                    <h4>SYSTEM_MORTALITY_REPORT</h4>
+                    <p style="opacity:0.7">This ledger tracks strategies that failed stress tests and runtime errors that halted the pipeline.</p>
+                </div>
+                <div class="lb-scroll">
+                    <table id="failure-table" style="width:100%; border-collapse: collapse; font-size: 0.7rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--danger); text-align: left; color: var(--danger);">
+                                <th style="padding: 8px;">TIMESTAMP</th>
+                                <th style="padding: 8px;">TYPE</th>
+                                <th style="padding: 8px;">TARGET</th>
+                                <th style="padding: 8px;">STAGE_LOST</th>
+                                <th style="padding: 8px;">FAILURE_REASON</th>
+                            </tr>
+                        </thead>
+                        <tbody id="failure-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stage Dossier Modal -->
+    <div id="stage-modal" class="modal" onclick="if(event.target===this)closeStageModal()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-stage-title">PIPELINE_STAGE_DETAILS</h2>
+                <span class="close-btn" onclick="closeStageModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="dossier-section">
+                    <h4 id="modal-stage-subtitle">DESCRIPTION</h4>
+                    <p id="modal-stage-desc">Initializing...</p>
+                </div>
+                <div class="dossier-log-view">
+                    <h4 id="modal-stage-list-title">ACTIVE_ITEMS</h4>
+                    <div id="modal-stage-items" class="term-body" style="max-height: 400px; overflow-y: auto;">
+                        <!-- List of items in this stage -->
+                    </div>
+                </div>
+                <div class="dossier-section" id="modal-stage-action-box" style="display:none; margin-top:20px;">
+                    <h4>QUICK_ACTIONS</h4>
+                    <div id="modal-stage-actions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Factor Card Viewer Modal -->
+    <div id="card-viewer-modal" class="modal card-viewer-modal" onclick="if(event.target===this)closeCardViewer()" style="display:none;align-items:center;justify-content:center;">
+        <div class="modal-content card-viewer-content">
+            <div class="modal-header">
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                    <h2 id="cv-title" style="margin:0">FACTOR_CARD</h2>
+                    <span id="cv-status" class="badge" style="font-size:0.7rem">—</span>
+                    <div id="cv-fm-badges" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <button id="cv-dispatch-btn" class="btn-cyber" style="display:none;font-size:0.65rem;padding:4px 10px;" onclick="dispatchToResearcher()">⚡ DISPATCH TO RESEARCHER</button>
+                    <span class="close-btn" onclick="closeCardViewer()">&times;</span>
+                </div>
+            </div>
+            <div id="cv-content" class="cv-body"></div>
+        </div>
+    </div>
+
+    <script src="monitor_app.js"></script>
+</body>
+</html>

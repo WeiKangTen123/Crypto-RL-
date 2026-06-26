@@ -1,0 +1,7 @@
+{
+  "from": "System_Server",
+  "priority": "HIGH",
+  "topic": "RUNTIME_ERROR_DETECTED",
+  "message": "A runtime error occurred: Strategy 14 failed: '_Bar' object has no attribute 'is_bullish'",
+  "ts": "2026-06-25T11:30:57.422670"
+}

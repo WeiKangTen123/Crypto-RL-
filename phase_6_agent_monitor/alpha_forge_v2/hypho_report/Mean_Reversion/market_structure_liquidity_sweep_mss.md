@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+Bitcoin is a highly manipulated market where "Smart Money" (institutional algorithms) often hunts retail stop-losses (liquidity) before initiating a real move. By waiting for a "Liquidity Sweep"—where price runs through a key level like the previous day's high or low—we are entering at the same time as institutions. The "Market Structure Shift" (MSS) acts as our confirmation that the manipulation is over and the real trend has begun, allowing us to enter with a tight stop-loss and high Reward-to-Risk ratio.

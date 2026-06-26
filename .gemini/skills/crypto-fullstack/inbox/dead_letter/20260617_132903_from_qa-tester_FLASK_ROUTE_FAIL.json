@@ -1,0 +1,14 @@
+{
+  "from": "crypto-qa-tester",
+  "priority": "HIGH",
+  "topic": "FLASK_ROUTE_FAIL",
+  "message": "1 Flask route(s) returned non-200 status.",
+  "context": {
+    "failed": [
+      {
+        "route": "/api/strategy_list",
+        "http_code": 500
+      }
+    ]
+  }
+}

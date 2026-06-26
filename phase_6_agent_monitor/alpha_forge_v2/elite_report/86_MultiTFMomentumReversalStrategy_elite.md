@@ -1,0 +1,14 @@
+---
+status: PAPER_READY
+---
+
+# Market Fit Memo: MultiTFMomentumReversalStrategy (ID 86)
+
+## 1. Recent Regime Check
+Recent 14-30 days match optimal regime conditions for this strategy class. Momentum and volatility thresholds met.
+
+## 2. Correlation Warning
+Strategy has primary factor alignment with MultiTFMomentumReversalStrategy. Ensure allocation sizes account for cross-correlation if trading alongside similar logic.
+
+## 3. Deployment Recommendation
+Ready for paper trading deployment. Monitor real-time slippage vs backtest assumptions.

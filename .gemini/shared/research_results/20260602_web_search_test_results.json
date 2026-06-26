@@ -1,0 +1,79 @@
+{
+  "test_run_by": "@alpha-researcher",
+  "timestamp": "2026-06-02T12:00:00Z",
+  "source_message_id": "20260529_234600_from_fullstack_WEB_SEARCH_TOOL_TEST_QUERIES.json",
+  "results": [
+    {
+      "query": "current bitcoin price",
+      "status": "SUCCESS",
+      "output": "Web search results for "current bitcoin price":
+
+As of June 2, 2026, the price of Bitcoin (BTC) is approximately **$70,159.59 USD**.[1]
+
+**Market Overview:**
+*   **24h Change:** Down approximately 2.75% to 2.90% in the last 24 hours.[2]
+*   **24h Volume:** ~$21.58 billion.[1]
+*   **Market Cap:** ~$1.43 trillion.[2]
+*   **Circulating Supply:** ~20.04 million BTC (95% of the 21 million max supply).
+
+The price has recently seen some downward pressure, sliding from a 7-day high of around $77,967.[3] This trend is attributed to record ETF outflows and broader macroeconomic uncertainty. For context, Bitcoin reached an all-time high of **$126,210.50** on October 6, 2025.[4]
+
+Sources:
+[1] coindesk.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvOQy9BA9-O9lNDFIPZa5_JoqBRW1VG9fz7Uw2kIHHVJm-dKtENdNvJuXpRiBvZiB8VcQU3O6jvYGdX95a9IWLBrkq0S9S4mb-smJ1tnGU0PjvRV1lgLZHobSgDdv-3Lw=)
+[2] kraken.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3_BTNS8I5bA6GC1im7UXqzEojGkAl0PIlGSuuPE9r3kKLzDrq9oTh2XioYI_2dktH_BZHUvRQ_99XgXlI2eNgUCTQvMcu8mPRrchvSPbSDVgqleKpNXjS4peRA8Re-A==)
+[3] crypto.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAw6tPymu30rbDXEXy0I0p4my1tGBDNlG27_B4FEZxnXhG7FScKw-Xa_gRmtRJJ8vmDz-wpE_FQweP_OCbDmwdLsYYy9yw8iELTX6lnIQav6vADVZkc_gBOY8iSNY=)
+[4] coinbase.com (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGT_8EJ909LtQftfYjni2JuFx_OjE4V1hZD1XAgPrxfnzMYHJlCIovYDJ9zwZZW55h1_rJx17g4dT8PNKFu7aNJxtcYuKibbXCa-DdhMuHIkfw27qx1s4AyjIGEAe_33cE=)"
+    },
+    {
+      "query": "what is quantitative trading",
+      "status": "SUCCESS",
+      "output": "Web search results for "what is quantitative trading":
+
+Quantitative trading (or "quant trading") is a strategy that uses mathematical and statistical models, rather than human intuition, to identify and execute trades. Key components include:
+
+*   **Data-Driven:** Relies on large datasets (price, volume, social sentiment, etc.) to find patterns.
+*   **Algorithmic:** Trades are executed automatically by software when specific mathematical conditions are met.
+*   **Systematic:** Focuses on repeatable processes and rigorous backtesting against historical data to validate strategies.
+*   **Risk Management:** Uses quantitative frameworks to strictly control exposure and optimize portfolio performance.
+
+In this project (**Crypto-RL**), quantitative trading is specifically applied to cryptocurrency markets using **Reinforcement Learning** to automate decision-making."
+    },
+    {
+      "query": "python pandas dataframe sort by column example",
+      "status": "FAILURE",
+      "output": "No search results or information found for query: "python pandas dataframe sort by column example""
+    },
+    {
+      "query": "crypto trading bot API documentation binance",
+      "status": "SUCCESS",
+      "output": "Web search results for "crypto trading bot API documentation binance":
+
+The official Binance API documentation is split into several categories depending on the type of trading (Spot, Futures, Margin, etc.). For building a crypto trading bot, the following resources are essential:
+
+### 1. Official Documentation Portals
+*   **Binance Developer Documentation:** [developers.binance.com](https://developers.binance.com) – The central hub for all API documentation.
+*   **Spot API Docs (GitHub):** [binance-spot-api-docs](https://github.com/binance/binance-spot-api-docs) – Detailed documentation for Spot trading, including REST API and WebSocket streams.
+*   **Futures API Docs:** [binance-docs.github.io/apidocs/futures/en](https://binance-docs.github.io/apidocs/futures/en) – Documentation for USDT-M and COIN-M Futures.[1]
+
+### 2. Key API Features for Bots
+*   **Market Data:** Retrieve real-time price action, order books, and historical K-line (candlestick) data via REST or WebSockets.
+*   **Trading Endpoints:** Place, cancel, and query orders (Market, Limit, Stop-Loss, etc.).
+*   **User Data Streams:** Use WebSockets to receive real-time updates on account balances and order execution status without polling.
+*   **Testnet:** Binance provides a [Spot Testnet](https://testnet.binance.vision/) and [Futures Testnet](https://testnet.binancefuture.com/) to test your bot's logic with virtual funds before going live.
+
+### 3. Popular Libraries (SDKs)
+Most developers use community-maintained libraries to simplify the integration:
+*   **Python:** `python-binance` ([Documentation](https://python-binance.readthedocs.io/)) is the most widely used library for Python-based bots.
+*   **Node.js:** `binance-api-node` or the official `binance-connector-node`.
+*   **Official Connectors:** Binance provides official lightweight connectors for [Python](https://github.com/binance/binance-connector-python), [Node.js](https://github.com/binance/binance-connector-node), [Java](https://github.com/binance/binance-connector-java), and [DotNET](https://github.com/binance/binance-connector-dotnet).
+
+### 4. Security Best Practices
+*   **API Key Permissions:** Only enable "Enable Reading" and "Enable Spot & Margin Trading." **Never** enable "Enable Withdrawals" for a trading bot.
+*   **IP Whitelisting:** Restrict your API keys to only be accessible from your bot's specific IP address.
+*   **Secret Management:** Use environment variables or a secret manager to store your `API_KEY` and `SECRET_KEY`; never hardcode them in your script.
+
+Sources:
+[1] codesandbox.io (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkSfGX5J7_lnLx0mHE8aEaFee3CBUGxIUWY8-MbuuNLbZdwHYqBZLarhoujfuMBk1npPC3RFqGXg3gagOL5r5QOjZJn_vJK04YJsOzExk2Tnsbfp68A0YQzIgKFeY2ZYuHL-NLZ_oyIu54xQrvG2VlrkfFlVA53A==)"
+    }
+  ]
+}

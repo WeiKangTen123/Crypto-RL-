@@ -1,0 +1,6 @@
+- [2026-06-10] Volatility squeeze followed by breakout, confirmed by volume and RSI, shows promise as an institutional-grade alpha concept, particularly for high-volatility assets like ETH. This factor should be explored further for diverse market regimes.
+- [2026-06-10] | ICT_TRINITY_IMPLEMENTED | FACTOR_LIBRARY_UPDATED
+- [2026-06-11] | DISCOVERY_NEW_FACTORS | LLM_NARRATIVE_FILTER, CROSS_L2_ARB
+- [2026-06-12] | DATA_QUALITY_ISSUE | RESTRICT_LOWER_TF_AND_FUNDING for BNB, BTC, ETH, SOL, XRP
+- [2026-06-14] | DATA_QUALITY_ISSUE | WIDESPREAD_STALE_AND_ANOMALIES_ACROSS_COINS_AND_TF
+- [2026-06-18] | AVOID_FACTOR_CLASS | MACDKDJStrategy, MeanReversionVRSI, VWAPATRReversionStrategy, SupertrendProStrategy, SuperFVMAStrategy, EMACrossoverStrategy, LiquiditySweepReversalStrategy, DMIADXStrategy, WaveTrendMFIDivergenceStrategy, MeanReversionFundingRateStrategy, NowoIchimokuMTFStrategy

@@ -1,0 +1,114 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#validated",
+      "color": {
+        "a": 1,
+        "rgb": 16776960
+      }
+    },
+    {
+      "query": "tag:#in_progress",
+      "color": {
+        "a": 1,
+        "rgb": 16750848
+      }
+    },
+    {
+      "query": "path:_Concepts",
+      "color": {
+        "a": 1,
+        "rgb": 16041008
+      }
+    },
+    {
+      "query": "file:_Index",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    },
+    {
+      "query": "file:README",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    },
+    {
+      "query": "path:Trend_Momentum",
+      "color": {
+        "a": 1,
+        "rgb": 51283
+      }
+    },
+    {
+      "query": "path:Mean_Reversion",
+      "color": {
+        "a": 1,
+        "rgb": 2718207
+      }
+    },
+    {
+      "query": "path:Volatility_Breakout",
+      "color": {
+        "a": 1,
+        "rgb": 16739584
+      }
+    },
+    {
+      "query": "path:Funding_Rate_Arb",
+      "color": {
+        "a": 1,
+        "rgb": 11141375
+      }
+    },
+    {
+      "query": "path:Cross_Sectional",
+      "color": {
+        "a": 1,
+        "rgb": 48340
+      }
+    },
+    {
+      "query": "path:Sentiment_OnChain",
+      "color": {
+        "a": 1,
+        "rgb": 15277667
+      }
+    },
+    {
+      "query": "path:HFT",
+      "color": {
+        "a": 1,
+        "rgb": 16717636
+      }
+    },
+    {
+      "query": "path:Market_Making",
+      "color": {
+        "a": 1,
+        "rgb": 16717636
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.5,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 180,
+  "scale": 0.9,
+  "close": false
+}

@@ -1,0 +1,136 @@
+{
+  "phases": {
+    "phase_0_macro": {
+      "status": "completed",
+      "last_run": "2026-05-14 14:51:28",
+      "description": "Download Macro Data (DXY, SPY, VIX, JPY)",
+      "script": "phase_0/dl_macro_data.py"
+    },
+    "phase_0_trainval": {
+      "status": "completed",
+      "last_run": "2026-05-14 14:51:37",
+      "description": "Download Train/Val Data (4h BTC/ETH)",
+      "script": "phase_0/dl_trainval_data.py",
+      "metadata": {
+        "tickers": [
+          "BTCUSDT"
+        ],
+        "timeframe": "4h",
+        "start_date": "2022-12-31 16:00:00",
+        "end_date": "2024-07-31 16:00:00",
+        "candles": 3469,
+        "features": [
+          "close",
+          "volume",
+          "quote_vol",
+          "num_trades",
+          "ignore",
+          "taker_buy_ratio",
+          "rsi",
+          "dx",
+          "ultosc",
+          "obv",
+          "ht_dcphase",
+          "atr",
+          "bband_width",
+          "ema_ratio",
+          "log_return",
+          "cross_price_ratio_eth",
+          "cross_volume_ratio_eth",
+          "cross_corr_20_eth",
+          "cross_price_ratio_dxy",
+          "cross_volume_ratio_dxy",
+          "cross_corr_20_dxy",
+          "cross_price_ratio_spy",
+          "cross_volume_ratio_spy",
+          "cross_corr_20_spy",
+          "cross_price_ratio_vix",
+          "cross_volume_ratio_vix",
+          "cross_corr_20_vix",
+          "cross_price_ratio_jpy",
+          "cross_volume_ratio_jpy",
+          "cross_corr_20_jpy",
+          "vix_log_return"
+        ],
+        "generated": "2026-06-16 13:43:40"
+      }
+    },
+    "phase_0_trade": {
+      "status": "completed",
+      "last_run": "2026-05-14 14:51:39",
+      "description": "Download Trade Data (Backtest period)",
+      "script": "phase_0/dl_trade_data.py",
+      "metadata": {
+        "tickers": [
+          "BTCUSDT"
+        ],
+        "timeframe": "4h",
+        "start_date": "2024-07-31 20:00:00",
+        "end_date": "2026-04-28 00:00:00",
+        "candles": 3812,
+        "features": [
+          "close",
+          "volume",
+          "quote_vol",
+          "num_trades",
+          "ignore",
+          "taker_buy_ratio",
+          "rsi",
+          "dx",
+          "ultosc",
+          "obv",
+          "ht_dcphase",
+          "atr",
+          "bband_width",
+          "ema_ratio",
+          "log_return",
+          "cross_price_ratio_eth",
+          "cross_volume_ratio_eth",
+          "cross_corr_20_eth",
+          "cross_price_ratio_dxy",
+          "cross_volume_ratio_dxy",
+          "cross_corr_20_dxy",
+          "cross_price_ratio_spy",
+          "cross_volume_ratio_spy",
+          "cross_corr_20_spy",
+          "cross_price_ratio_vix",
+          "cross_volume_ratio_vix",
+          "cross_corr_20_vix",
+          "cross_price_ratio_jpy",
+          "cross_volume_ratio_jpy",
+          "cross_corr_20_jpy",
+          "vix_log_return"
+        ],
+        "generated": "2026-06-14 21:20:56"
+      }
+    },
+    "phase_1": {
+      "status": "pending",
+      "last_run": null,
+      "description": "Hyperparameter Optimization (CPCV)",
+      "script": "phase_1/optimize_cpcv.py"
+    },
+    "phase_2": {
+      "status": "completed",
+      "last_run": "2026-05-26 09:46:31",
+      "description": "Model Validation",
+      "script": "phase_2/validate.py"
+    },
+    "phase_4": {
+      "status": "completed",
+      "last_run": "2026-06-14 (pickles regenerated)",
+      "description": "Out-of-Sample Backtesting",
+      "script": "phase_4/backtest.py"
+    },
+    "phase_5": {
+      "status": "completed",
+      "last_run": "2026-05-22 16:49:27",
+      "description": "Probability of Backtest Overfitting (PBO)",
+      "script": "phase_5/pbo.py"
+    }
+  },
+  "latest_results": {
+    "result_folder": null,
+    "best_trial": null
+  }
+}

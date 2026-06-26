@@ -1,0 +1,2 @@
+## Core Hypothesis — WHY should this strategy have an edge?
+While Bitcoin trades 24/7, institutional liquidity and volatility are concentrated during the opening hours of major traditional stock exchanges (London at 3:00 AM EST and New York at 9:30 AM EST). The price action during the first 30-60 minutes of these sessions often sets the "tone" or the directional bias for the rest of the day. A breakout from this initial range indicates that one side (buyers or sellers) has won the initial auction and is aggressively pushing price into a new trend.
