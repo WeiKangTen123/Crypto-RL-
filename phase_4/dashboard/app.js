@@ -268,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<td><strong>' + t.asset + '</strong> ' + badge + '</td>' +
           '<td style="font-size:0.8rem">' + t.entry_time + '</td>' +
           '<td style="font-size:0.8rem">' + t.exit_time  + '</td>' +
+          '<td style="font-family:monospace;color:#94a3b8">' + (t.qty != null ? t.qty.toLocaleString(undefined, {maximumFractionDigits:4}) : '—') + '</td>' +
           '<td>$' + t.entry_price.toLocaleString() + '</td>' +
           '<td>$' + t.exit_price.toLocaleString()  + '</td>' +
           '<td style="color:#64748b">$' + t.total_fees_usd.toLocaleString() + '</td>' +

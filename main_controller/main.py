@@ -1138,6 +1138,9 @@ def api_p10_run_backtest():
     cmd       = [VENV_PYTHON, script, '--date_from', date_from, '--date_to', date_to, '--timeframe', timeframe]
     if signal_tf:
         cmd += ['--signal_timeframe', signal_tf]
+    elif timeframe in ('4h', '1d'):
+        # Coarser TFs auto-route: signal_tf=chosen TF, execution_tf=1h (handled in backtest.py)
+        pass
     if mode:
         cmd += ['--mode', mode]
     if pair:
@@ -1189,8 +1192,19 @@ def api_p10_stop():
 @app.route('/api/phase_10/results')
 def api_p10_results():
     mode = request.args.get('mode', 'advanced')
-    filename = 'results_wright.json' if mode == 'wright' else 'results.json'
+    tf   = request.args.get('tf', '1h')
+    # Normalise mode to advanced|wright
+    if mode not in ('advanced', 'wright'):
+        mode = 'advanced'
+    # Primary: new unified naming results_{mode}_{tf}.json
+    filename = f'results_{mode}_{tf}.json'
     results_file = os.path.join(ROOT_DIR, 'phase_10', 'data', filename)
+    # Fallback to legacy filenames for backward compat
+    if not os.path.exists(results_file):
+        if mode == 'wright':
+            results_file = os.path.join(ROOT_DIR, 'phase_10', 'data', 'results_wright.json')
+        else:
+            results_file = os.path.join(ROOT_DIR, 'phase_10', 'data', 'results.json')
     if not os.path.exists(results_file):
         return jsonify({'error': 'No results yet. Run the backtest first.'}), 404
     try:
@@ -1198,6 +1212,24 @@ def api_p10_results():
             return jsonify(json.load(f))
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/phase_10/available_results')
+def api_p10_available_results():
+    """Return which (mode, timeframe) result files exist."""
+    data_dir = os.path.join(ROOT_DIR, 'phase_10', 'data')
+    available = {}
+    for mode in ('advanced', 'wright'):
+        available[mode] = []
+        for tf in ('5m', '15m', '1h', '4h', '1d'):
+            f = os.path.join(data_dir, f'results_{mode}_{tf}.json')
+            if os.path.exists(f):
+                available[mode].append(tf)
+        # Legacy fallback
+        legacy = 'results_wright.json' if mode == 'wright' else 'results.json'
+        if not available[mode] and os.path.exists(os.path.join(data_dir, legacy)):
+            available[mode].append('1h')
+    return jsonify(available)
 
 
 @app.route('/api/phase_11/run_backtest', methods=['POST', 'OPTIONS'])

@@ -3,9 +3,10 @@ coins: BTC, ETH
 interest: High
 name: trend-intensity-index-tii
 source: M.H. Pee / TradingPedia
-status: QUEUED
+status: IN_PROGRESS
 tags:
-- queued
+- built
+- backtested
 timeframes: 4h, 1d
 type: short-term | long-term
 ---

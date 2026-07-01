@@ -3,9 +3,10 @@ coins: BTC, ETH, BNB, SOL, XRP
 interest: High
 name: ema-ribbon-rsi-momentum
 source: TradingView (Popular Setup)
-status: QUEUED
+status: IN_PROGRESS
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: long-term
 ---

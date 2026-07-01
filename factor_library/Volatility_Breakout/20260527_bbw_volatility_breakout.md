@@ -3,9 +3,10 @@ coins: BTC, SOL, BNB
 interest: High
 name: bbw_volatility_breakout
 source: GitHub (Quantitative breakout strategies)
-status: QUEUED
+status: IN_PROGRESS
 tags:
-- queued
+- built
+- backtested
 timeframes: 15m, 1h
 type: short-term
 ---

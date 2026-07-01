@@ -3,9 +3,12 @@ coins: BTC, ETH, SOL
 interest: High
 name: Supertrend Pro
 source: Web research (refined from classic Supertrend)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- GOOD
 timeframes: 4h, 1d
 type: long-term
 ---
