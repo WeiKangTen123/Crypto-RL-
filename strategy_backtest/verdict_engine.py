@@ -17,6 +17,7 @@ Verdict outputs:
 import numpy as np
 import pandas as pd
 from enum import Enum
+from typing import List, Dict, Any, Optional, Tuple
 
 
 class Verdict(Enum):
@@ -39,17 +40,27 @@ class VerdictEngine:
       - CR: 3 crypto gates (funding, news blackout, weekend) — crypto-only
     """
 
-    def __init__(self, frequency=None):
+    def __init__(self, frequency: Optional[str] = None) -> None:
         """
         Args:
             frequency: Bar frequency ('5m', '15m', '30m', '1h', '4h', '1d') for adaptive thresholds
         """
-        self.frequency = frequency
-        self.results = []  # List of rule check results
-        self.verdict = None
-        self.score = 0.0
+        self.frequency: Optional[str] = frequency
+        self.results: List[Dict[str, Any]] = []
+        self.verdict: Optional[Verdict] = None
+        self.score: float = 0.0
+        self.wfo_results: Dict[str, Any] = {}
 
-    def check_all(self, metrics_dict, equity_curve, trades, timestamps, cfg=None, is_crypto=True, wfo_results=None):
+    def check_all(
+        self,
+        metrics_dict: Dict[str, Any],
+        equity_curve: List[float],
+        trades: Optional[List[Dict[str, Any]]] = None,
+        timestamps: Optional[pd.DatetimeIndex] = None,
+        cfg: Optional[Dict[str, Any]] = None,
+        is_crypto: bool = True,
+        wfo_results: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         """
         Run all 27 rules and compute verdict + score.
 
@@ -124,7 +135,7 @@ class VerdictEngine:
 
     # ── T0: Prerequisites ──────────────────────────────────────────────────────
 
-    def _check_T0_prerequisites(self, metrics_dict):
+    def _check_T0_prerequisites(self, metrics_dict: Dict[str, Any]) -> bool:
         """Check T0-01 and T0-02."""
         # T0-01: Data availability (basic check)
         if not metrics_dict or metrics_dict.get('error'):
@@ -155,9 +166,15 @@ class VerdictEngine:
 
     # ── T1: Fatal Gates ───────────────────────────────────────────────────────
 
-    def _check_T1_fatal_gates(self, metrics_dict, equity_curve, timestamps, cfg):
+    def _check_T1_fatal_gates(
+        self,
+        metrics_dict: Dict[str, Any],
+        equity_curve: List[float],
+        timestamps: Optional[pd.DatetimeIndex],
+        cfg: Optional[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
         """T1-01 through T1-11 (fatal gates)."""
-        results = []
+        results: List[Dict[str, Any]] = []
 
         # T1-01: Profitability (CAGR > 0)
         sharpe = self._parse_metric(metrics_dict, 'Sharpe Ratio')
@@ -280,9 +297,14 @@ class VerdictEngine:
 
     # ── T2: Blocking Gates ─────────────────────────────────────────────────────
 
-    def _check_T2_blocking_gates(self, metrics_dict, equity_curve, timestamps):
+    def _check_T2_blocking_gates(
+        self,
+        metrics_dict: Dict[str, Any],
+        equity_curve: List[float],
+        timestamps: Optional[pd.DatetimeIndex],
+    ) -> List[Dict[str, Any]]:
         """T2-01 through T2-06 (blocking gates)."""
-        results = []
+        results: List[Dict[str, Any]] = []
 
         # T2-01: Walk-Forward Efficiency (WFE ≥ 0.5)
         if self.wfo_results and 'wf_efficiency' in self.wfo_results:
@@ -367,9 +389,13 @@ class VerdictEngine:
 
     # ── T3: Robustness Advisories ─────────────────────────────────────────────
 
-    def _check_T3_robustness(self, metrics_dict, trades):
+    def _check_T3_robustness(
+        self,
+        metrics_dict: Dict[str, Any],
+        trades: Optional[List[Dict[str, Any]]],
+    ) -> List[Dict[str, Any]]:
         """T3-00 through T3-06 (advisory, non-blocking)."""
-        results = []
+        results: List[Dict[str, Any]] = []
 
         # T3-00: Data window confirm (≥ 6 years)
         results.append({
@@ -434,9 +460,14 @@ class VerdictEngine:
 
     # ── CR: Crypto Pack ────────────────────────────────────────────────────────
 
-    def _check_CR_crypto_pack(self, metrics_dict, equity_curve, timestamps):
+    def _check_CR_crypto_pack(
+        self,
+        metrics_dict: Dict[str, Any],
+        equity_curve: List[float],
+        timestamps: Optional[pd.DatetimeIndex],
+    ) -> List[Dict[str, Any]]:
         """CR-01, CR-02, CR-03 (crypto-only blocking gates)."""
-        results = []
+        results: List[Dict[str, Any]] = []
 
         # CR-01: Funding-cycle P&L booked, ratio ≤ 50%
         results.append({
@@ -467,7 +498,7 @@ class VerdictEngine:
     # ── Helpers ────────────────────────────────────────────────────────────────
 
     @staticmethod
-    def _parse_metric(metrics_dict, key, default=0.0):
+    def _parse_metric(metrics_dict: Dict[str, Any], key: str, default: float = 0.0) -> float:
         """Extract numeric value from formatted metric string."""
         v = metrics_dict.get(key, default)
         try:
@@ -477,14 +508,14 @@ class VerdictEngine:
             return default
 
     @staticmethod
-    def _total_return(equity_curve, initial_balance=1000):
+    def _total_return(equity_curve: List[float], initial_balance: float = 1000.0) -> float:
         """Calculate total return percentage."""
         if not equity_curve or len(equity_curve) == 0:
             return 0.0
         return (equity_curve[-1] - initial_balance) / initial_balance * 100
 
     @staticmethod
-    def _quick_mdd(equity_curve):
+    def _quick_mdd(equity_curve: List[float]) -> float:
         """Calculate max drawdown percentage."""
         arr = np.array(equity_curve)
         if len(arr) == 0:
@@ -494,7 +525,7 @@ class VerdictEngine:
         return float(np.max(dd))
 
     @staticmethod
-    def _calculate_pbo(sharpe_ratio, n_params=5, n_bars=1000):
+    def _calculate_pbo(sharpe_ratio: float, n_params: int = 5, n_bars: int = 1000) -> float:
         """
         Probability of Backtest Overfitting (Bailey et al., 2015).
 
@@ -525,7 +556,7 @@ class VerdictEngine:
             overfit_ratio = n_params / max(n_bars - n_params, 1)
             return min(0.5, 0.1 * overfit_ratio / sharpe_ratio)
 
-    def _format_output(self):
+    def _format_output(self) -> Dict[str, Any]:
         """Format verdict output."""
         blocking_rules = [r['rule_id'] for r in self.results if not r['passed'] and r['tier'] in ('T0', 'T1', 'T2', 'CR')]
         return {
@@ -536,7 +567,7 @@ class VerdictEngine:
         }
 
 
-def get_threshold(frequency, rule_key, default):
+def get_threshold(frequency: Optional[str], rule_key: str, default: float) -> float:
     """Convenience wrapper for frequency-based threshold lookup."""
     from strategy_backtest.frequency_utils import get_threshold as ft_get_threshold
     return ft_get_threshold(frequency, rule_key, default)

@@ -76,10 +76,10 @@ You MUST log progress using the `[X/7]` prefix. The pipeline interval is every 3
     3. Write Python code in `strategy_backtest/strategies/` by importing your new factor from `library.py`.
     4. You MUST include 2–3 **Logic Switches** in an `OPTIMIZATION_RANGES` dictionary.
     5. Declare `SIGNAL_PARAMS = frozenset({...})` with all params that affect signal generation (not risk). See `references/templates.md` for explanation.
-    6. In `__init__`: call `super().__init__(df, **kwargs)` first — BaseStrategy auto-assigns all kwargs via setattr. Only explicitly assign params that need type-casting.
-    7. `generate_signals()` must assign `self.df = df` before returning.
-    8. **Regime Injection**: Apply regime guards as inline boolean masks inside `generate_signals()` (e.g. `trend_up = df['Close'] > ema_200`), then AND with signals. There is NO `check_regime()` method in BaseStrategy — do not define one as an abstract override.
-    9. Override `validate_params(cls, params)` if the optimizer needs to skip invalid param combos (e.g. fast_period must be < slow_period).
+    6. If building a single-coin strategy, inherit from `BaseStrategy`. If building a multi-coin strategy, inherit from `MultiCoinBaseStrategy`. In `__init__`: call `super().__init__(df, **kwargs)` first — the base class auto-assigns all kwargs via setattr. Only explicitly assign params that need type-casting.
+    7. For single-coin `generate_signals()` must assign `self.df = df` before returning. For multi-coin, assign `self.dfs = dfs` before returning.
+    8. **Regime Injection**: Apply regime guards as inline boolean masks inside `generate_signals()`.
+    9. Override `validate_params(cls, params)` if the optimizer needs to skip invalid param combos.
 - **Mandatory Output**: `[2/7] SYNTHESIS: Assembling Strategy with Logic Switches and Regime Guards...`
 
 ... [rest of stages 3-4 remain same] ...

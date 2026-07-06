@@ -42,6 +42,9 @@ from strategy_backtest.settings  import STRATEGY_LIBRARY, DATASET_DIR
 from strategy_backtest.engine    import BacktestEngine
 from strategy_backtest.risk      import RiskManager
 from strategy_backtest.metrics   import compute_metrics, _extract_numeric
+from strategy_backtest.data_validator import DataValidator
+from strategy_backtest.multi_base_strategy import MultiCoinBaseStrategy
+from strategy_backtest.portfolio_engine import PortfolioBacktestEngine
 import strategy_backtest.strategies  # triggers auto-loader
 
 
@@ -184,15 +187,25 @@ def load_data(coins, timeframe: str, date_from: str, date_to: str, mode='portfol
     if not dfs:
         raise ValueError(f"No data loaded for symbols: {symbols}")
 
-    # Concatenate multi-coin DFs and sort by time (then by symbol for determinism)
     if not is_single_coin:
-        combined = pd.concat(dfs)
-        # Sort by time, then by symbol for reproducibility
-        combined = combined.sort_index().sort_values(['symbol'], kind='stable')
-        print(f"  Combined {len(symbols)} symbols: {len(combined):,} total bars")
-        return combined
+        df_dict = {sym: df for sym, df in zip(symbols, dfs)}
+        print(f"  Loaded {len(symbols)} symbols as dictionary.")
+        
+        # Validate each symbol's data separately
+        for sym, sym_data in df_dict.items():
+            validator = DataValidator(strict=False)
+            issues = validator.validate(sym_data, symbol=sym)
+            validator.print_summary()
+
+        return df_dict
     else:
         print(f"  Total: {len(dfs[0]):,} bars")
+
+        # Validate single-coin data
+        validator = DataValidator(strict=False)
+        issues = validator.validate(dfs[0], symbol=symbols[0])
+        validator.print_summary()
+
         return dfs[0]
 
 
@@ -240,15 +253,21 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None, mode: st
 
     # Load data (multi-coin if applicable)
     df = load_data(coins, data_cfg['timeframes'], d_from, d_to, mode=mode)
-    if df.empty:
+    
+    is_empty = False
+    if isinstance(df, dict):
+        if not df or all(d.empty for d in df.values()):
+            is_empty = True
+    elif df.empty:
+        is_empty = True
+        
+    if is_empty:
         print("  [SKIP] No data in requested range.")
         return {}
 
     # Warn if single-coin strategy with multi-coin data in portfolio mode
     if is_multi_coin and mode == 'portfolio':
-        print("  [WARN] Multi-coin data loaded in portfolio mode.")
-        print("         Strategy must key state by symbol (e.g., self._ema[event.symbol])")
-        print("         Otherwise: entries on BTC, exits on ETH (SCRAMBLE)!")
+        print("  [INFO] Multi-coin data loaded in portfolio mode. Using PortfolioBacktestEngine.")
 
     # Resolve strategy class from auto-loaded strategies module
     strat_cls = getattr(strategy_backtest.strategies, cfg['class'], None)
@@ -276,7 +295,12 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None, mode: st
             maintenance_margin_rate=risk_cfg['maintenance_margin_rate'],
             frequency=frequency,
         )
-        engine = BacktestEngine(df, strategy, rm, initial_balance=risk_cfg['initial_balance'])
+        if is_multi_coin and mode == 'portfolio':
+            if not issubclass(strat_cls, MultiCoinBaseStrategy):
+                raise TypeError(f"Strategy {cfg['class']} must inherit from MultiCoinBaseStrategy for portfolio mode.")
+            engine = PortfolioBacktestEngine(df, strategy, rm, initial_balance=risk_cfg['initial_balance'])
+        else:
+            engine = BacktestEngine(df, strategy, rm, initial_balance=risk_cfg['initial_balance'])
         equity_curve = engine.run()
     except Exception as e:
         print(f"  [ERROR] Strategy {cfg['id']} failed: {e}")
@@ -292,7 +316,7 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None, mode: st
     m = compute_metrics(
         equity=equity_curve,
         initial_balance=risk_cfg['initial_balance'],
-        timestamps=engine.df.index,
+        timestamps=engine._times if hasattr(engine, '_times') else engine.df.index,
         trades=engine.trades,
         total_slippage=engine.total_slippage,
     )

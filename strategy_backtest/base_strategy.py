@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from abc import ABC, abstractmethod
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Dict, Any
 
 
 class BaseStrategy(ABC):
@@ -14,15 +14,16 @@ class BaseStrategy(ABC):
 
     manage_trade CONTRACT
     ---------------------
-    action     : 'SL' | 'TP' | 'REVERSE' | 'EXIT' | 'HOLD'
+    action     : 'SL' | 'TP' | 'REVERSE' | 'EXIT' | 'HOLD' | 'ADD' | 'SKIP'
     exec_price : exact fill price for SL/TP, or None to use bar Close
     """
 
-    VALID_ACTIONS: frozenset = frozenset({'SL', 'TP', 'REVERSE', 'EXIT', 'HOLD', 'SKIP'})
+    VALID_ACTIONS: frozenset = frozenset({'SL', 'TP', 'TS', 'REVERSE', 'EXIT', 'HOLD', 'ADD', 'SKIP'})
     SIGNAL_PARAMS: frozenset = frozenset()
 
-    def __init__(self, df: pd.DataFrame, **kwargs):
-        self.df = df.copy()
+    def __init__(self, df: pd.DataFrame, **kwargs) -> None:
+        self.df: pd.DataFrame = df.copy()
+        self._state: Dict[str, Any] = {}
         for key, value in kwargs.items():
             setattr(self, key, value)
 

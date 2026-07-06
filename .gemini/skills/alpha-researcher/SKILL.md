@@ -82,7 +82,9 @@ You MUST log progress using the `[X/3]` prefix. The pipeline interval is every 3
     2. **Institutional Validation**: Apply the Poison/Library/Data checks.
     3. **Professional Candidate Card**: Document in `factor_library/{CATEGORY}/`.
     4. **YAML frontmatter — coin and timeframe rules (enforced)**:
-       - `coins:` MUST only list from: `BTC`, `ETH`, `BNB`, `SOL`, `XRP`. If the source strategy uses another coin (e.g. AVAX), replace it with the most correlated supported coin. List the primary coin first, then other supported coins the strategy suits.
+       - `coins:` MUST only list from: `BTC`, `ETH`, `BNB`, `SOL`, `XRP`.
+         * **Single-coin strategy**: Primary coin is used (first listed). Other coins denote what else the strategy can trade individually.
+         * **Multi-coin portfolio strategy**: If the strategy relies on analyzing multiple coins together (e.g. statistical arbitrage, pairs trading, sector momentum), explicitly mention "MULTI-COIN PORTFOLIO" in the description so the developer uses `MultiCoinBaseStrategy`. The `coins` list defines the exact portfolio universe to be loaded simultaneously.
        - `timeframes:` MUST only list from: `5m`, `15m`, `1h`, `4h`, `1d`. List primary timeframe first. Choose based on the strategy's trading frequency (see timeframe selection guide in §1 Guard 3).
     5. **Card Requirements**: You MUST include these sections:
         - **## Strategy Play Style**: What market conditions is this good for? (e.g., Aggressive Trend, Conservative Reversion).
