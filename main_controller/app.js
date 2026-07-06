@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (view === 'phase_6') {
         switchView('dashboard');
         dashboardFrame.src = '/agent_monitor';
-      } else if (view === 'phase_2' || view === 'phase_4' || view === 'phase_5' || view === 'phase_7' || view === 'phase_9' || view === 'phase_10' || view === 'phase_11' || view === 'phase_12') {
+      } else if (view === 'phase_2' || view === 'phase_4' || view === 'phase_5' || view === 'phase_7' || view === 'phase_9' || view === 'phase_10' || view === 'phase_11') {
         // If clicking from sidebar, show the dashboard frame but don't auto-run
         switchView('dashboard');
         dashboardFrame.src = path;
