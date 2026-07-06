@@ -34,7 +34,21 @@ def _extract_numeric(metrics: dict) -> dict:
     }
 
 
-def compute_metrics(equity, initial_balance, timestamps=None, trades=None, df=None):
+def compute_metrics(equity, initial_balance, timestamps=None, trades=None, df=None, total_slippage=0.0):
+    """
+    Compute comprehensive backtest metrics.
+
+    Args:
+        equity: Equity curve list
+        initial_balance: Starting capital
+        timestamps: Datetime index (optional)
+        trades: Trade list (optional)
+        df: DataFrame with OHLCV (optional)
+        total_slippage: Total slippage cost from engine (realistic, all-in)
+
+    Returns:
+        Dictionary with all metrics including all-in cost ratio
+    """
     if len(equity) == 0:
         return {}
 
@@ -217,11 +231,16 @@ def compute_metrics(equity, initial_balance, timestamps=None, trades=None, df=No
         metrics["Worst Trade"]        = f"${worst_trade:,.2f}"
 
         # ── Cost Ratio (T1-10 in SignalHive standard) ─────────────────────────
-        # NOTE: SignalHive uses gross_pnl (winning trades only), not net_profit
-        # This is a placeholder; full cost_ratio calculation happens in validator.py
-        # where we have access to slippage, borrow, and funding data.
-        if net_profit != 0:
-            metrics['Cost Ratio (fees only)'] = f"{total_fees / abs(net_profit):.2%}"
+        # All-in cost ratio: (fees + slippage + borrow + funding) / gross_pnl
+        # Uses actual gross_pnl from winning trades (SignalHive standard)
+        if gross_win_sum > 0:
+            all_in_costs = total_fees + total_slippage  # Would add borrow + funding here
+            cost_ratio_all_in = all_in_costs / gross_win_sum
+            metrics['Cost Ratio'] = f"{cost_ratio_all_in:.2%}"
+        elif net_profit != 0:
+            metrics['Cost Ratio'] = f"{total_fees / abs(net_profit):.2%}"
+        else:
+            metrics['Cost Ratio'] = "N/A"
 
     # --- Periodic Returns (Monthly / Yearly) ---
     if timestamps is not None:

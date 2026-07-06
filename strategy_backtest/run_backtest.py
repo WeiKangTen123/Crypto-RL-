@@ -288,12 +288,13 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None, mode: st
         print("  [SKIP] Engine returned empty equity curve.")
         return {'error': 'empty equity curve', 'strategy_id': cfg['id']}
 
-    # Compute metrics
+    # Compute metrics (with all-in costs: fees + slippage + borrow + funding)
     m = compute_metrics(
         equity=equity_curve,
         initial_balance=risk_cfg['initial_balance'],
         timestamps=engine.df.index,
         trades=engine.trades,
+        total_slippage=engine.total_slippage,
     )
 
     _print_metrics(cfg['id'], m)

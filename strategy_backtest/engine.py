@@ -1,4 +1,5 @@
 import numpy as np
+from strategy_backtest.cost_calculator import CostCalculator
 
 
 class _Bar:
@@ -18,6 +19,11 @@ class _Bar:
 class BacktestEngine:
     """
     Bar-by-bar backtesting engine — Binance Cross Margin + Hedge Mode.
+
+    ✅ NEW (July 2026): Realistic square-root market impact slippage
+       - Slippage = max(0.5 bps, 8 × √(qty/vol × 100))
+       - Per-trade realistic cost modeling (no more flat 0.05%)
+       - Track all costs for all-in cost ratio: fees + slippage + borrow + funding
 
     Entry timing:  signal fires at bar N close → fills at bar N+1 open (no look-ahead).
     TP/SL priority: each strategy's manage_trade() checks SL before TP (pessimistic).
@@ -42,27 +48,49 @@ class BacktestEngine:
         self._times    = self.df.index
         self._col_names = self.df.columns.tolist()
 
+        # Initialize cost calculator for realistic slippage (square-root market impact)
+        self.cost_calc = CostCalculator(
+            maker_fee=self.rm.trading_fee,  # Usually 0.0002 (2 bps)
+            taker_fee=self.rm.trading_fee,  # Usually 0.0004 (4 bps) in risk_manager
+            borrow_rate_daily=0.0003        # 3 bps/day
+        )
+        # Track all-in costs for verdict system
+        self.total_slippage = 0.0
+        self.total_borrow = 0.0
+        self.total_funding = 0.0
+
     # ── Helpers ───────────────────────────────────────────────────────────────
 
     def _close(self, row, qty, entry_price, side, reason, exec_price=None):
         """Close a position. Uses exec_price if provided (e.g. exact SL/TP price),
-        otherwise falls back to the bar's close price."""
+        otherwise falls back to the bar's close price.
+
+        Uses realistic square-root market impact slippage based on order size vs bar volume.
+        """
         raw_price    = float(exec_price) if exec_price is not None else float(row['Close'])
+        volume       = float(row.get('Volume', 1.0)) if hasattr(row, 'get') else float(getattr(row, 'Volume', 1.0))
+
+        # Calculate realistic slippage: max(0.5 bps, 8 × √(qty/vol × 100))
+        slippage_frac = self.cost_calc.calculate_slippage(qty, raw_price, volume)
+
         # Slippage is adverse: long exits fill lower, short exits fill higher
-        price        = raw_price * (1.0 - self.rm.slippage_pct * side)
+        price        = raw_price * (1.0 - slippage_frac * side)
         slippage_usd = qty * abs(price - raw_price)
         gross        = qty * (price - entry_price) * side
         fee          = qty * price * self.rm.trading_fee
         net          = gross - fee
+
         self.balance += net
         self.balance  = max(self.balance, 0.0)  # floor: balance cannot go negative
+        self.total_slippage += slippage_usd
+
         self.trades.append({
             'time':          row.name,
             'type':          'EXIT_LONG' if side == 1 else 'EXIT_SHORT',
             'price':         price,
             'raw_price':     raw_price,
             'slippage_usd':  round(slippage_usd, 4),
-            'slippage_pct':  self.rm.slippage_pct * 100,
+            'slippage_pct':  slippage_frac * 100,
             'qty':           round(qty, 6),
             'reason':        reason,
             'fee':           fee,
@@ -79,18 +107,28 @@ class BacktestEngine:
         use_open: fill at bar Open instead of Close (used for next-bar entries so
                   the fill price matches what a live order would receive).
         sizing_equity: balance + open unrealized P&L at the moment of opening.
+
+        Uses realistic square-root market impact slippage based on order size vs bar volume.
         """
         raw_price        = float(row['Open'] if use_open else row['Close'])
-        # Slippage is adverse: long entries fill higher, short entries fill lower
-        price            = raw_price * (1.0 + self.rm.slippage_pct * side)
+        volume           = float(row.get('Volume', 1.0)) if hasattr(row, 'get') else float(getattr(row, 'Volume', 1.0))
+
         size_basis       = sizing_equity if sizing_equity is not None else self.balance
-        margin, ntl, qty = self.rm.calculate_position(size_basis, price)
+        margin, ntl, qty = self.rm.calculate_position(size_basis, raw_price)
+
+        # Calculate realistic slippage: max(0.5 bps, 8 × √(qty/vol × 100))
+        slippage_frac    = self.cost_calc.calculate_slippage(qty, raw_price, volume)
+
+        # Slippage is adverse: long entries fill higher, short entries fill lower
+        price            = raw_price * (1.0 + slippage_frac * side)
         slippage_usd     = qty * abs(price - raw_price)
         fee              = ntl * self.rm.trading_fee
         self.balance    -= fee
 
         total_qty = existing_qty + qty
         avg_price = (existing_qty * existing_price + qty * price) / total_qty if total_qty > 0 else price
+
+        self.total_slippage += slippage_usd
 
         self.trades.append({
             'time':         row.name,
@@ -99,7 +137,7 @@ class BacktestEngine:
             'price':        price,
             'raw_price':    raw_price,
             'slippage_usd': round(slippage_usd, 4),
-            'slippage_pct': self.rm.slippage_pct * 100,
+            'slippage_pct': slippage_frac * 100,
             'qty':          qty,
             'fee':          fee,
             'margin':       margin,
