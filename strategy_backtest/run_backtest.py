@@ -66,95 +66,154 @@ def _safe_date(d, default):
         return default
 
 
-def load_data(coins: str, timeframe: str, date_from: str, date_to: str) -> pd.DataFrame:
+def load_data(coins, timeframe: str, date_from: str, date_to: str, mode='portfolio') -> pd.DataFrame:
     """
     Load OHLCV from Crypto-RL's shared parquet dataset.
-    Returns a DataFrame with Open/High/Low/Close/Volume columns
-    plus optional taker_buy_base_vol / num_trades.
+
+    Args:
+        coins: str or list
+            - str (e.g., "BTCUSDT"): Single coin, backward compatible
+            - list (e.g., ["BTCUSDT", "ETHUSDT"]): Multi-coin (portfolio mode only)
+        timeframe: Bar frequency (1m, 5m, 15m, 30m, 1h, 4h, 1d)
+        date_from, date_to: Date strings (ISO format)
+        mode: 'portfolio' or 'per_coin'
+            - 'portfolio': Concatenate all coins into one DF (default)
+            - 'per_coin': Load separately (handled by caller in loop)
+
+    Returns:
+        DataFrame with columns: symbol*, Open, High, Low, Close, Volume, ...
+        (* symbol column added only if multi-coin or mode='portfolio')
+
+    Multi-Coin Notes:
+        - When multi-coin: DF includes 'symbol' column for per-symbol keying
+        - Bars are interleaved and sorted by time (all symbols at each timestamp)
+        - Use in portfolio mode with state keying: self._ema[event.symbol]
+        - Use in per_coin mode by loading each symbol separately
     """
-    path = os.path.join(DATASET_DIR, coins, timeframe, 'spot_ohlcv.parquet')
-    if not os.path.exists(path):
-        raise FileNotFoundError(
-            f"Parquet not found: {path}\n"
-            f"Expected layout: dataset/{coins}/{timeframe}/spot_ohlcv.parquet"
-        )
+
+    # Normalize coins to list
+    if isinstance(coins, str):
+        symbols = [coins]
+        is_single_coin = True
+    else:
+        symbols = list(coins)
+        is_single_coin = False
 
     # Sanitize dates
     d_from = _safe_date(date_from, '2021-01-01')
     d_to   = _safe_date(date_to,   '2026-12-31')
 
-    df = pd.read_parquet(path)
-    df = df.rename(columns=_COL_MAP)
+    dfs = []
 
-    # Parse and set datetime index
-    if 'open_time' in df.columns:
-        df['open_time'] = pd.to_datetime(df['open_time'])
-        df = df.set_index('open_time')
-    df = df.sort_index()
+    for symbol in symbols:
+        path = os.path.join(DATASET_DIR, symbol, timeframe, 'spot_ohlcv.parquet')
+        if not os.path.exists(path):
+            print(f"  [WARN] Parquet not found: {path}")
+            continue
 
-    # Date filter
-    df = df[(df.index >= pd.Timestamp(d_from)) &
-            (df.index <= pd.Timestamp(d_to))]
+        df = pd.read_parquet(path)
+        df = df.rename(columns=_COL_MAP)
 
-    # Keep OHLCV + order-flow extras
-    cols_keep = ['Open', 'High', 'Low', 'Close', 'Volume']
-    for extra in ['taker_buy_base_vol', 'num_trades']:
-        if extra in df.columns:
-            cols_keep.append(extra)
-    df = df[cols_keep]
+        # Parse and set datetime index
+        if 'open_time' in df.columns:
+            df['open_time'] = pd.to_datetime(df['open_time'])
+            df = df.set_index('open_time')
+        df = df.sort_index()
 
-    # Cast order-flow columns to numeric — parquet can store them as object/string
-    for extra in ['taker_buy_base_vol', 'num_trades']:
-        if extra in df.columns:
-            df[extra] = pd.to_numeric(df[extra], errors='coerce').fillna(0.0)
+        # Date filter
+        df = df[(df.index >= pd.Timestamp(d_from)) &
+                (df.index <= pd.Timestamp(d_to))]
 
-    # Drop any parquet-only columns that slipped through
-    for drop_col in ['symbol', 'interval', 'close_time', 'quote_asset_volume',
-                     'taker_buy_quote_vol', 'ingested_at', 'tic']:
-        if drop_col in df.columns:
-            df = df.drop(columns=[drop_col])
+        # Keep OHLCV + order-flow extras
+        cols_keep = ['Open', 'High', 'Low', 'Close', 'Volume']
+        for extra in ['taker_buy_base_vol', 'num_trades']:
+            if extra in df.columns:
+                cols_keep.append(extra)
+        df = df[cols_keep]
 
-    df = df.dropna(subset=['Open', 'High', 'Low', 'Close', 'Volume'])
+        # Cast order-flow columns to numeric
+        for extra in ['taker_buy_base_vol', 'num_trades']:
+            if extra in df.columns:
+                df[extra] = pd.to_numeric(df[extra], errors='coerce').fillna(0.0)
 
-    # Merge funding_rate.parquet if it exists — required by funding-rate strategies
-    fr_path = os.path.join(DATASET_DIR, coins, timeframe, 'funding_rate.parquet')
-    if os.path.exists(fr_path):
-        try:
-            fr = pd.read_parquet(fr_path)
-            fr['open_time'] = pd.to_datetime(fr['open_time'])
-            fr = fr.set_index('open_time').sort_index()
-            fr = fr[(fr.index >= pd.Timestamp(d_from)) & (fr.index <= pd.Timestamp(d_to))]
-            if 'funding_rate' in fr.columns:
-                df = df.join(fr[['funding_rate']], how='left')
-                df['funding_rate'] = df['funding_rate'].ffill().fillna(0.0)
-        except Exception:
-            pass  # funding_rate column simply won't be present
+        # Drop unwanted columns
+        for drop_col in ['symbol', 'interval', 'close_time', 'quote_asset_volume',
+                         'taker_buy_quote_vol', 'ingested_at', 'tic']:
+            if drop_col in df.columns:
+                df = df.drop(columns=[drop_col])
 
-    # Merge order_book_depth.parquet if it exists
-    ob_path = os.path.join(DATASET_DIR, coins, timeframe, 'order_book_depth.parquet')
-    if os.path.exists(ob_path):
-        try:
-            ob = pd.read_parquet(ob_path)
-            ob['timestamp'] = pd.to_datetime(ob['timestamp'])
-            ob = ob.set_index('timestamp').sort_index()
-            ob = ob[(ob.index >= pd.Timestamp(d_from)) & (ob.index <= pd.Timestamp(d_to))]
-            
-            # Identify depth/notional columns
-            ob_cols = [c for c in ob.columns if c.startswith('depth_') or c.startswith('notional_')]
-            if ob_cols:
-                df = df.join(ob[ob_cols], how='left')
-                df[ob_cols] = df[ob_cols].ffill().fillna(0.0)
-        except Exception:
-            pass  # order book depth columns simply won't be present
+        df = df.dropna(subset=['Open', 'High', 'Low', 'Close', 'Volume'])
 
-    print(f"  Loaded {len(df):,} bars  ({df.index[0].date()} → {df.index[-1].date()})")
-    return df
+        # Add symbol column if multi-coin
+        if not is_single_coin:
+            df['symbol'] = symbol
+
+        # Merge funding_rate.parquet if exists
+        fr_path = os.path.join(DATASET_DIR, symbol, timeframe, 'funding_rate.parquet')
+        if os.path.exists(fr_path):
+            try:
+                fr = pd.read_parquet(fr_path)
+                fr['open_time'] = pd.to_datetime(fr['open_time'])
+                fr = fr.set_index('open_time').sort_index()
+                fr = fr[(fr.index >= pd.Timestamp(d_from)) & (fr.index <= pd.Timestamp(d_to))]
+                if 'funding_rate' in fr.columns:
+                    df = df.join(fr[['funding_rate']], how='left')
+                    df['funding_rate'] = df['funding_rate'].ffill().fillna(0.0)
+            except Exception:
+                pass
+
+        # Merge order_book_depth.parquet if exists
+        ob_path = os.path.join(DATASET_DIR, symbol, timeframe, 'order_book_depth.parquet')
+        if os.path.exists(ob_path):
+            try:
+                ob = pd.read_parquet(ob_path)
+                ob['timestamp'] = pd.to_datetime(ob['timestamp'])
+                ob = ob.set_index('timestamp').sort_index()
+                ob = ob[(ob.index >= pd.Timestamp(d_from)) & (ob.index <= pd.Timestamp(d_to))]
+
+                ob_cols = [c for c in ob.columns if c.startswith('depth_') or c.startswith('notional_')]
+                if ob_cols:
+                    df = df.join(ob[ob_cols], how='left')
+                    df[ob_cols] = df[ob_cols].ffill().fillna(0.0)
+            except Exception:
+                pass
+
+        dfs.append(df)
+        print(f"  Loaded {symbol}: {len(df):,} bars  ({df.index[0].date()} → {df.index[-1].date()})")
+
+    if not dfs:
+        raise ValueError(f"No data loaded for symbols: {symbols}")
+
+    # Concatenate multi-coin DFs and sort by time (then by symbol for determinism)
+    if not is_single_coin:
+        combined = pd.concat(dfs)
+        # Sort by time, then by symbol for reproducibility
+        combined = combined.sort_index().sort_values(['symbol'], kind='stable')
+        print(f"  Combined {len(symbols)} symbols: {len(combined):,} total bars")
+        return combined
+    else:
+        print(f"  Total: {len(dfs[0]):,} bars")
+        return dfs[0]
 
 
 # ── Strategy runner ───────────────────────────────────────────────────────────
 
-def run_strategy(cfg: dict, date_from: str = None, date_to: str = None) -> dict:
-    """Run a single strategy config and return metrics dict."""
+def run_strategy(cfg: dict, date_from: str = None, date_to: str = None, mode: str = 'portfolio') -> dict:
+    """
+    Run a single strategy config and return metrics dict.
+
+    Args:
+        cfg: Strategy config dict
+        date_from, date_to: Optional date overrides
+        mode: 'portfolio' (all coins in one run) or 'per_coin' (separate runs per coin)
+
+    Returns:
+        metrics dict with equity, trades, sharpe, etc.
+
+    Notes:
+        - Portfolio mode: All symbols share one equity book; strategy must key state by symbol
+        - Per-coin mode: Called once per symbol; each symbol runs isolated
+    """
 
     data_cfg = cfg['data']
     risk_cfg = cfg['risk']
@@ -163,18 +222,33 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None) -> dict:
     d_from = date_from or data_cfg['date_from']
     d_to   = date_to   or data_cfg['date_to']
 
+    # Get coins/symbols
+    coins = data_cfg.get('coins', data_cfg.get('symbols', 'BTC'))  # Backward compat
+    is_multi_coin = isinstance(coins, list) and len(coins) > 1
+
     print(f"\n{'='*60}")
     print(f"  Strategy : {cfg['id']}")
     print(f"  Desc     : {cfg['desc']}")
-    print(f"  Class    : {cfg['class']}   | TF: {data_cfg['timeframes']}   | Coin: {data_cfg['coins']}")
+    print(f"  Class    : {cfg['class']}   | TF: {data_cfg['timeframes']}")
+    if is_multi_coin:
+        print(f"  Symbols  : {coins}  | Mode: {mode}")
+    else:
+        coin_str = coins[0] if isinstance(coins, list) else coins
+        print(f"  Coin     : {coin_str}")
     print(f"  Period   : {d_from} → {d_to}")
     print(f"{'='*60}")
 
-    # Load data
-    df = load_data(data_cfg['coins'], data_cfg['timeframes'], d_from, d_to)
+    # Load data (multi-coin if applicable)
+    df = load_data(coins, data_cfg['timeframes'], d_from, d_to, mode=mode)
     if df.empty:
         print("  [SKIP] No data in requested range.")
         return {}
+
+    # Warn if single-coin strategy with multi-coin data in portfolio mode
+    if is_multi_coin and mode == 'portfolio':
+        print("  [WARN] Multi-coin data loaded in portfolio mode.")
+        print("         Strategy must key state by symbol (e.g., self._ema[event.symbol])")
+        print("         Otherwise: entries on BTC, exits on ETH (SCRAMBLE)!")
 
     # Resolve strategy class from auto-loaded strategies module
     strat_cls = getattr(strategy_backtest.strategies, cfg['class'], None)

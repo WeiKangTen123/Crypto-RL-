@@ -2,7 +2,15 @@ import numpy as np
 
 
 class _Bar:
-    """Reusable per-bar proxy — avoids allocating a pandas Series each iteration."""
+    """
+    Reusable per-bar proxy — avoids allocating a pandas Series each iteration.
+
+    For multi-coin portfolio mode, also includes:
+      - symbol: str (e.g., 'BTCUSDT') — use to key strategy state per symbol
+      - Example: self._ema[bar.symbol] = new_ema
+
+    Single-coin mode: symbol is not present (or can be ignored).
+    """
     def __getitem__(self, key):
         return getattr(self, key)
 
