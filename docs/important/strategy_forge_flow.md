@@ -595,7 +595,6 @@ Results land in `strategy_forge/results/`. Review top candidates and manually re
 | **New indicator** | `parabolic_sar_raw()` in `indicators/trend.py` — returns actual SAR price-level Series via `talib.SAR()`. |
 | **New script** | `alpha_forge_search.py`: targeted search applying quad-filter combo to new playstyle exits/entries. 4 modes: trend/reversion/structure/funding. Results to `phase_6_agent_monitor/alpha_forge_v2/dev_report/`. |
 | **Enhancement** | `dna.py` `manage_trade()` fully rewritten to use exit state persistence. Also pre-computes `_psar`/`_psar_prev` columns when exit is `psar_trail`. |
-| **Phase 12** | Alpha Forge Chatbot built: `phase_12/dashboard/` with streaming SSE, reasoning display, 5 free models, session management in localStorage. API key read from `open_router_API.txt` at runtime (never hardcoded). Backend at `/api/phase_12/chat` in `main_controller/main.py`. |
 
 ---
 

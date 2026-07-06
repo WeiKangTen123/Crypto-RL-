@@ -181,6 +181,7 @@
   },
   "active": "1c7dab272692c55c",
   "lastOpenFiles": [
+    "Cross_Sectional/relative_momentum_rank.md",
     "Mean_Reversion/OU_Mean_Reversion_195.md",
     "Mean_Reversion/Amihud_ILLIQ_194.md",
     "Trend_Momentum/20260703_hurst_regime_adaptive.md",
@@ -209,7 +210,6 @@
     "Breakout",
     "Trend/20260622_hmm_regime_classifier.md",
     "Volatility_Breakout/AVS_card.md",
-    "Trend/CGS_card.md",
     "Trend",
     "Momentum",
     "DRL",

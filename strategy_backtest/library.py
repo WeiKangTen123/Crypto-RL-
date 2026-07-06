@@ -1318,3 +1318,11 @@ def calc_ou_mr_speed(df, period=20):
     kappa = -np.log(phi.clip(1e-10, 0.999)) * 252
     return kappa
 
+# ── CROSS-SECTIONAL FACTORS ────────────────────────────────────────────────
+def calc_roc(df, period=14):
+    """
+    Calculates the Rate of Change (Momentum) of the Close price.
+    Returns: ROC Series (percentage).
+    """
+    return talib.ROC(df['Close'], timeperiod=period)
+

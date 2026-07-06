@@ -16,11 +16,11 @@ Phase 0 ──► Phase 1 ──► Phase 2 ──► Phase 4 ──► Phase 5
 
 TRACK B — Quantitative Strategy Research (Agentic)
 ──────────────────────────────────────────────────────────────────
-Phase 6 ──► Phase 7 ──► Phase 10 / Phase 11 / Phase 12
-Scan &       Pattern     Pairs        Anti-Corr    Strategy Forge
-Grade        Mining      Trading      Crossover    (AI-built)
-(6 agents)   (Wisdom     (Cointegr.   (Momentum    (Modular
-             Matrix)      Z-score)     Rotation)    Composer)
+Phase 6 ──► Phase 7 ──► Phase 10 / Phase 11
+Scan &       Pattern     Pairs        Anti-Corr
+Grade        Mining      Trading      Crossover
+(6 agents)   (Wisdom     (Cointegr.   (Momentum
+             Matrix)      Z-score)     Rotation)
 ```
 
 Both tracks are managed from a central **Flask dashboard** (`main_controller`) on port **5001** — start with `bash start_server.sh`.
@@ -439,51 +439,6 @@ Rolling N-bar return spread S[i]
 
 ---
 
-### Phase 12 — Strategy Forge (AI-Composed Strategies)
-
-**Purpose:** Modular strategy construction system where AI agents compose novel strategies from reusable signal building blocks, then Optuna fine-tunes the parameters.
-
-**Architecture:**
-```
-Entry Signal  +  Filter Signals (0–3)  +  Exit Method  =  ForgeStrategy
-```
-
-**Available Building Blocks:**
-
-| Category | Available Signals |
-|---|---|
-| **Entry** | `ema_cross`, `bb_breakout`, `cvd_cross`, `taker_momentum`, `williams_r_reversion`, `tip_breakout` |
-| **Filters** | `htf_ema_trend`, `adx_trend`, `atr_expansion`, `rsi_not_extreme`, `wr_not_extreme`, `htf_supertrend`, `zscore_gate` |
-| **Exit** | `chandelier_tp`, `atr_tp_sl_hold`, `psar_trail` |
-
-**Forge Pipeline:**
-```
-@alpha-researcher discovers idea
-        │
-        ▼  inbox: NEW_FACTOR_DISCOVERED
-@alpha-developer — 8-Stage Build Process:
-  [1/8] INGEST    → read candidate card, map math, verify library.py functions
-  [2/8] BUILD     → compose ForgeStrategy with entry + filters + exit + Logic Switches
-  [3/8] SYNTAX    → Python AST static check
-  [4/8] SMOKE     → signal sanity check (count longs/shorts on 1-month data)
-  [5/8] DEV_REPORT→ baseline → Optuna finetune → register in settings.py → dev report
-  [6/8] WFO_EVO   → 4-window walk-forward stability test
-  [7/8] PBO_AUDIT → overfitting audit (threshold PBO < 0.40)
-  [8/8] MANIFEST  → scan + classify + Obsidian sync → notify @crypto-fullstack
-        │
-        ▼  (on fail at any stage)
-  [!] AUTOPSY → write post-mortem, retain settings.py entry, notify @crypto-strategy-tuner
-```
-
-**Notable Strategies Built:**
-- **#125** — Best ROI: 854%
-- **#129** — FORGE_ETH_MTF_EMA_CROSS: Sharpe 1.12
-- **#142** — FORGE_ETH_EMA_CROSS_1H: Sharpe 1.91, ROI 195.9%, MDD 8.8%, 218 trades (GOOD)
-
-**Key files:** `strategy_forge/signals/entry_signals.py`, `strategy_forge/signals/filter_signals.py`, `strategy_forge/signals/exit_signals.py`, `strategy_forge/composer/`, `phase_12/dashboard/`
-
----
-
 ## The 6 Autonomous AI Agents
 
 All agents run via `Crypto_Agent/agent_watcher.py`, which polls each agent's inbox every **30 seconds** and fires a scheduled task when idle.
@@ -840,7 +795,6 @@ Crypto-RL/
 ├── phase_9_flow/                 # Agentic pipeline flow visualiser
 ├── phase_10/                     # Pairs trading (cointegration Z-score)
 ├── phase_11/                     # Anti-correlation crossover (momentum rotation)
-├── phase_12/                     # Strategy Forge dashboard
 ├── .gemini/
 │   ├── skills/                   # 6 agent skill definitions + inboxes + session memory
 │   │   ├── alpha-researcher/
