@@ -11,13 +11,39 @@ let pollTimer  = null;
 let lastLogLen = 0;
 
 // ── Load Results ──────────────────────────────────────────────────────────────
+function onViewChange() {
+  updateResultsTfOptions();
+  loadResults();
+}
+
+async function updateResultsTfOptions() {
+  // Fetch which TF files are available and update the results-tf dropdown
+  try {
+    const mode = document.getElementById('engine-mode')?.value || 'advanced';
+    const resp = await fetch(`${API}/api/phase_10/available_results`);
+    if (!resp.ok) return;
+    const avail = await resp.json();
+    const tfs = avail[mode] || [];
+    const sel = document.getElementById('results-tf');
+    if (!sel) return;
+    Array.from(sel.options).forEach(opt => {
+      opt.disabled = tfs.length > 0 && !tfs.includes(opt.value);
+      opt.textContent = opt.value + (tfs.includes(opt.value) ? '' : ' (no data)');
+    });
+    // If current selection has no data, switch to first available
+    if (tfs.length > 0 && !tfs.includes(sel.value)) {
+      sel.value = tfs[0];
+    }
+  } catch (_) {}
+}
+
 async function loadResults() {
   try {
-    const modeSelect = document.getElementById('engine-mode');
-    const mode = modeSelect ? modeSelect.value : 'advanced';
-    const r = await fetch(`${API}/api/phase_10/results?mode=${mode}`);
+    const mode = document.getElementById('engine-mode')?.value || 'advanced';
+    const tf   = document.getElementById('results-tf')?.value  || '1h';
+    const r = await fetch(`${API}/api/phase_10/results?mode=${mode}&tf=${tf}`);
     if (!r.ok) {
-      document.getElementById('run-meta').textContent = 'No results yet — click Run All Pairs';
+      document.getElementById('run-meta').textContent = `No results for ${mode.toUpperCase()} @ ${tf} — click Run All Pairs`;
       clearUI();
       return;
     }
@@ -44,6 +70,7 @@ function clearUI() {
   set('s-coint', '—');
   set('s-total-trades', '—');
   set('s-period', '—');
+  set('s-viewing', '—');
   const pairSelect = document.getElementById('pair-select');
   if (pairSelect) pairSelect.innerHTML = '<option value="">-- Select a Pair --</option>';
   const tbody = document.getElementById('rank-tbody');
@@ -70,11 +97,17 @@ function renderSummary() {
     ? ` · ${allData.signal_timeframe}->${allData.execution_timeframe}`
     : '';
   set('s-period',       `${allData.date_from} → ${allData.date_to}${tfLabel}`);
+  // Active view badge
+  const mode = document.getElementById('engine-mode')?.value || 'advanced';
+  const tf   = document.getElementById('results-tf')?.value  || '1h';
+  const modeLabel = mode === 'wright' ? 'Wright' : 'Advanced';
+  set('s-viewing', `${modeLabel} · ${tf}`);
 }
 
 // ── Pair selector ─────────────────────────────────────────────────────────────
 function populatePairSelect() {
   const sel    = document.getElementById('pair-select');
+  sel.innerHTML = '<option value="">-- Select a Pair --</option>';
   const sorted = [...pairs].sort((a, b) => (b.sharpe || 0) - (a.sharpe || 0));
   sorted.forEach(p => {
     const opt       = document.createElement('option');
@@ -173,7 +206,7 @@ function renderPairDetail(p) {
 
   const pfGross = (p.coin_a_pnl || 0) + (p.coin_b_pnl || 0);
   const pfFees = (p.total_fees || 0);
-  const pfNet = p.net_pnl;
+  const pfNet = p.final_balance - p.initial_balance;
   
   setM('m-pf-trades', p.total_trades);
   setM('m-pf-gross',  (pfGross >= 0 ? '+$' : '-$') + Math.abs(pfGross).toFixed(2), pfGross >= 0 ? 'pos' : 'neg');
@@ -600,7 +633,15 @@ async function pollStatus() {
       clearInterval(pollTimer); pollTimer = null;
       document.getElementById('run-status').textContent = 'Finished';
       document.getElementById('btn-run').disabled = false;
-      loadResults();
+      // Switch results-tf to match the signal TF (which determines the output filename)
+      const sigTf  = document.getElementById('signal-tf')?.value;
+      const execTf = document.getElementById('execution-tf')?.value;
+      const activeTf = sigTf || execTf;
+      if (activeTf) {
+        const sel = document.getElementById('results-tf');
+        if (sel) sel.value = activeTf;
+      }
+      onViewChange();
     }
   } catch (e) {}
 }
@@ -647,4 +688,4 @@ function pill(label, val) {
 
 function pct(n, tot) { return tot ? Math.round(n / tot * 100) : 0; }
 
-loadResults();
+onViewChange();

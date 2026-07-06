@@ -19,7 +19,7 @@ pf: 1.08
 - Profit Factor: 1.08
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy MTF_MACDKDJ_ADX_ATR_Strategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy MTF_MACDKDJ_ADX_ATR_Strategy produced 417 trades. Currently marked as MEDIOCRE.

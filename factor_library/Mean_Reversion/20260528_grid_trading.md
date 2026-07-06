@@ -3,9 +3,10 @@ coins: BTC
 interest: High
 name: grid-trading-btc
 source: Web Search (Bravos Research)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h
 type: short-term
 ---

@@ -1,0 +1,20 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "12",
+  "strategy_class": "VWAPATRReversionStrategy",
+  "original_sharpe": -1.14,
+  "best_sharpe": -0.28,
+  "best_params": {
+    "multiplier": 5.0239,
+    "sl_multiplier": 2.4912,
+    "atr_period": 86,
+    "max_hold_bars": 626,
+    "ema_slope_thresh": 0.2703,
+    "use_pattern_filter": false,
+    "use_vol_filter": false
+  },
+  "status": "BAD",
+  "message": "Strategy 12 (VWAPATRReversionStrategy) was fine-tuned. Sharpe improved from -1.14 to -0.28. Validation guards passed (stability passed, cross-asset failed). Graded BAD."
+}

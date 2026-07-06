@@ -1,5 +1,5 @@
 ---
-status: GOOD
+status: MEDIOCRE
 id: 117
 sharpe: 1.88
 return: 169.8
@@ -22,4 +22,4 @@ pf: 3.65
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy ForgeStrategy produced 37 trades. Currently marked as MEDIOCRE.

@@ -1,0 +1,21 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "8",
+  "strategy_class": "MeanReversionVRSI",
+  "original_sharpe": -0.09,
+  "best_sharpe": 0.65,
+  "best_params": {
+    "use_trend_filter": true,
+    "vrsi_period": 54,
+    "vrsi_oversold": 13.470387060963631,
+    "vrsi_overbought": 87.7027827589548,
+    "vwap_period": 65,
+    "vwap_std_mult": 3.0628997398879285,
+    "sl_pct": 0.09784204074799832,
+    "ema_period": 78
+  },
+  "status": "MEDIOCRE",
+  "message": "Strategy 8 (MeanReversionVRSI) was fine-tuned. Best trial Sharpe 0.65 compared to baseline -0.09 (parameters updated in settings.py and strategy file). Validation guards checked: parameter stability test failed due to high fragility in vrsi_overbought and vwap_std_mult, cross-asset test failed on ETH (-1.04 Sharpe). Graded MEDIOCRE."
+}

@@ -1,25 +1,25 @@
 ---
-status: MEDIOCRE
+status: BAD
 id: 21
-sharpe: 0.0
-return: 0.0
-mdd: 0.0
-win_rate: 0.0
-trades: 0
-pf: 99.0
+sharpe: 0.62
+return: 13.0
+mdd: 3.3
+win_rate: 55.6
+trades: 27
+pf: 2.01
 ---
 # Stage 03 Backtest Report: KeltnerRSIReversionStrategy
 
 ## Performance Table
-- Sharpe: 0.0
-- Return: 0.0%
-- MDD: 0.0%
-- Win Rate: 0.0%
-- Trades: 0
-- Profit Factor: 99.0
+- Sharpe: 0.62
+- Return: 13.0%
+- MDD: 3.3%
+- Win Rate: 55.6%
+- Trades: 27
+- Profit Factor: 2.01
 
 ## Stability & Robustness
 Validation Guard passed: Status is BAD.
 
 ## Expert Commentary
-Generated automatically. Strategy KeltnerRSIReversionStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy KeltnerRSIReversionStrategy produced 27 trades. Currently marked as BAD.

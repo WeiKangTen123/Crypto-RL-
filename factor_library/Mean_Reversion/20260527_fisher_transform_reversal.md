@@ -3,9 +3,12 @@ coins: BTC, ETH, SOL, BNB, XRP
 interest: High
 name: fisher-transform-reversal
 source: Ehlers (2002) / TradingView
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- BAD
 timeframes: 5m, 15m, 1h
 type: short-term
 ---

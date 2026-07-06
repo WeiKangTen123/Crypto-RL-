@@ -3,9 +3,11 @@ coins: BTC, ETH, SOL
 interest: High
 name: triple_confirm_fvma_zerolag
 source: Web Search (TradingView 2026)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- REJECTED
 timeframes: 1h, 4h
 type: short-term
 ---

@@ -1,0 +1,21 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "94",
+  "strategy_class": "ETHMomentumBreakoutStrategy",
+  "original_sharpe": -1.4,
+  "best_sharpe": -0.38,
+  "best_params": {
+    "bb_period": 21,
+    "bb_std": 2.311,
+    "intensity_period": 6,
+    "intensity_std": 2.8721,
+    "taker_threshold": 0.6883,
+    "sl_atr_mult": 1.3583,
+    "tp_atr_mult": 1.7081,
+    "max_hold_bars": 80
+  },
+  "status": "BAD",
+  "message": "Strategy 94 (ETHMomentumBreakoutStrategy) was fine-tuned. Sharpe improved from -1.4 to -0.38. Validation guards passed (stability passed, cross-asset partially passed). Graded BAD."
+}

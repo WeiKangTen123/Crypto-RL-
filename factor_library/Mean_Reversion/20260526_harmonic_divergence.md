@@ -3,9 +3,10 @@ coins: BTC, ETH
 interest: High
 name: harmonic-divergence
 source: GitHub (freqtrade-strategies) / FreqST
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: reversal
 ---

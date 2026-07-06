@@ -1,0 +1,19 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "140",
+  "strategy_class": "RsiMeanReversionStrategy",
+  "original_sharpe": -1.1,
+  "best_sharpe": 0.27,
+  "best_params": {
+    "rsi_period": 30,
+    "atr_period": 9,
+    "rsi_oversold": 26.9188,
+    "rsi_overbought": 79.7836,
+    "tp_multiplier": 5.9902,
+    "sl_multiplier": 0.8799
+  },
+  "status": "BAD",
+  "message": "Strategy 140 (RsiMeanReversionStrategy) was fine-tuned. Best trial Sharpe 0.27 compared to baseline -1.10 (parameter update saved). Validation guards checked: stability test failed (perturbations cause drops to negative Sharpe), cross-asset test failed on ETH (-0.46 Sharpe). Graded BAD."
+}

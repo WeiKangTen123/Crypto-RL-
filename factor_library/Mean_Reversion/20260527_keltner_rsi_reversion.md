@@ -3,9 +3,11 @@ coins: BTC, ETH, SOL
 interest: High
 name: keltner-rsi-reversion
 source: Web Research
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- REJECTED
 timeframes: 1h, 4h
 type: short-term
 ---

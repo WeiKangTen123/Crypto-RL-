@@ -1,0 +1,19 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "5",
+  "strategy_class": "FVG_Recovery_Strategy",
+  "original_sharpe": -0.34,
+  "best_sharpe": 0.31,
+  "best_params": {
+    "require_confirmation": true,
+    "use_trend_filter": true,
+    "min_gap_pct": 0.0241,
+    "retrace_depth": 0.6789,
+    "tp_multiplier": 4.1718,
+    "ema_period": 171
+  },
+  "status": "MEDIOCRE",
+  "message": "Strategy 5 (FVG_Recovery_Strategy) was fine-tuned. Sharpe improved from -0.34 to 0.31. Validation guards failed (stability failed due to high sensitivity in retrace_depth/ema_period, cross-asset failed on ETH/1d). Graded MEDIOCRE."
+}

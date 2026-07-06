@@ -1,0 +1,17 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "6_30M",
+  "strategy_class": "MeanReversionVRSI",
+  "original_sharpe": -0.08,
+  "best_sharpe": 0.23,
+  "best_params": {
+    "vrsi_period": 13,
+    "vwap_period": 184,
+    "exit_mode": "VRSI_RESET",
+    "entry_filter": "NONE"
+  },
+  "status": "BAD",
+  "message": "Strategy 6_30M (MeanReversionVRSI) was fine-tuned. Sharpe improved from -0.08 to 0.23. Parameters in settings.py and strategy source updated. Validation guards: stability check FAILED due to vwap_period sensitivity (Sharpe drops to -0.38 on -10% shift); cross-asset check FAILED on ETH (Sharpe -1.06). Graded BAD due to Sharpe remaining below 0.3 threshold, high parameter sensitivity, and narrow asset-specific profile."
+}

@@ -19,7 +19,7 @@ pf: 1.85
 - Profit Factor: 1.85
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy RSITrendFilterStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy RSITrendFilterStrategy produced 39 trades. Currently marked as MEDIOCRE.

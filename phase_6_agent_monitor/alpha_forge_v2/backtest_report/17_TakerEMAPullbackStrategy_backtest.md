@@ -19,7 +19,7 @@ pf: 1.32
 - Profit Factor: 1.32
 
 ## Stability & Robustness
-Validation Guard passed: Status is GOOD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy TakerEMAPullbackStrategy produced 0 trades. Currently marked as GOOD.
+Generated automatically. Strategy TakerEMAPullbackStrategy produced 275 trades. Currently marked as MEDIOCRE.

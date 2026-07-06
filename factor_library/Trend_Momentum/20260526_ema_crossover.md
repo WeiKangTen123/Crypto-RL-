@@ -5,9 +5,10 @@ coins:
 interest: High
 name: EMA Crossover
 source: TradingView
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes:
 - 1h
 - 4h

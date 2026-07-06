@@ -1,0 +1,14 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "60",
+  "strategy_class": "FisherTransformStrategy",
+  "original_sharpe": -5.4,
+  "best_sharpe": -5.54,
+  "best_params": {
+    "period": 22
+  },
+  "status": "BAD",
+  "message": "Strategy 60 (FisherTransformStrategy) was fine-tuned. Best trial Sharpe -5.54 compared to baseline -5.40 (no parameter update saved). Validation guards checked: stability test passed (technically, as it is already at the floor of -100% return), cross-asset test failed on ETH (-3.70 Sharpe). Graded BAD."
+}

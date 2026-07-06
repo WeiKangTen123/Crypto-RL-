@@ -3,9 +3,11 @@ coins: BTC, ETH, SOL
 interest: High
 name: golden-zone-fib-bos
 source: Web Research (2026 trend)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- REJECTED
 timeframes: 1h, 4h
 type: short-term
 ---

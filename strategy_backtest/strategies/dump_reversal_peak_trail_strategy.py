@@ -21,13 +21,13 @@ class DumpReversalPeakTrailStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        low_lookback: int = 288,
-        vol_ma_period: int = 20,
-        vol_multiplier: float = 2.0,
-        rsi_period: int = 14,
-        rsi_threshold: float = 30.0,
-        stop_loss_pct: float = 0.015,
-        peak_retrace_pct: float = 0.02,
+        low_lookback: int = 28,
+        vol_ma_period: int = 10,
+        vol_multiplier: float = 1.775,
+        rsi_period: int = 23,
+        rsi_threshold: float = 50.3995,
+        stop_loss_pct: float = 0.0239,
+        peak_retrace_pct: float = 0.3688,
         **kwargs
     ):
         super().__init__(

@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL
 interest: High
 name: t3-nexus-stiff-surge
 source: YouTube (Davidd Tech) / TradingView
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: trend-following
 ---

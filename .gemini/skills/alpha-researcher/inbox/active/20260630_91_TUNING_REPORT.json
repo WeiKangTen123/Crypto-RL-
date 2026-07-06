@@ -1,0 +1,18 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "91",
+  "strategy_class": "ChoppinessKeltnerBreakoutStrategy",
+  "original_sharpe": -0.69,
+  "best_sharpe": -0.69,
+  "best_params": {
+    "chop_period": 14,
+    "kc_period": 20,
+    "kc_mult": 2.0,
+    "chop_threshold": 50.0,
+    "sl_atr_multiplier": 2.6586
+  },
+  "status": "BAD",
+  "message": "Strategy 91 (ChoppinessKeltnerBreakoutStrategy) was fine-tuned. Sharpe remained -0.69 (best trial was -0.98, below baseline). Validation guards passed stability (+/-10% changes stable but unprofitable) but failed cross-asset (ETH Sharpe -0.52). Graded BAD."
+}

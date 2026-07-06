@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL
 interest: High
 name: dynamic-swing-anchored-vwap
 source: TradingView / 2026 Trend Analysis
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h
 type: short-term
 ---

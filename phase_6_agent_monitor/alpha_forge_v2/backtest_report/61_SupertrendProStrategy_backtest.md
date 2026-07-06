@@ -1,25 +1,25 @@
 ---
-status: MEDIOCRE
+status: GOOD
 id: 61
-sharpe: 0.19
-return: 7.4
-mdd: 52.2
-win_rate: 36.6
-trades: 101
-pf: 1.09
+sharpe: 3.4
+return: 253832.5
+mdd: 14.3
+win_rate: 74.2
+trades: 268
+pf: 7.62
 ---
 # Stage 03 Backtest Report: SupertrendProStrategy
 
 ## Performance Table
-- Sharpe: 0.19
-- Return: 7.4%
-- MDD: 52.2%
-- Win Rate: 36.6%
-- Trades: 101
-- Profit Factor: 1.09
+- Sharpe: 3.4
+- Return: 253832.5%
+- MDD: 14.3%
+- Win Rate: 74.2%
+- Trades: 268
+- Profit Factor: 7.62
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is GOOD.
 
 ## Expert Commentary
-Generated automatically. Strategy SupertrendProStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy SupertrendProStrategy produced 268 trades. Currently marked as GOOD.

@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 58
-sharpe: -2.19
-return: -99.1
-mdd: 99.3
-win_rate: 55.6
-trades: 2672
-pf: 0.84
+sharpe: 0.67
+return: 54.5
+mdd: 18.4
+win_rate: 67.7
+trades: 68
+pf: 1.64
 ---
 # Stage 03 Backtest Report: ZScoreStatArbStrategy
 
 ## Performance Table
-- Sharpe: -2.19
-- Return: -99.1%
-- MDD: 99.3%
-- Win Rate: 55.6%
-- Trades: 2672
-- Profit Factor: 0.84
+- Sharpe: 0.67
+- Return: 54.5%
+- MDD: 18.4%
+- Win Rate: 67.7%
+- Trades: 68
+- Profit Factor: 1.64
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ZScoreStatArbStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ZScoreStatArbStrategy produced 68 trades. Currently marked as MEDIOCRE.

@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 98
-sharpe: -0.24
-return: -49.3
-mdd: 67.2
-win_rate: 9.2
-trades: 358
-pf: 0.9
+sharpe: 0.37
+return: 7.0
+mdd: 8.0
+win_rate: 39.4
+trades: 33
+pf: 1.25
 ---
 # Stage 03 Backtest Report: ETHMomentumBreakoutStrategy
 
 ## Performance Table
-- Sharpe: -0.24
-- Return: -49.3%
-- MDD: 67.2%
-- Win Rate: 9.2%
-- Trades: 358
-- Profit Factor: 0.9
+- Sharpe: 0.37
+- Return: 7.0%
+- MDD: 8.0%
+- Win Rate: 39.4%
+- Trades: 33
+- Profit Factor: 1.25
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ETHMomentumBreakoutStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ETHMomentumBreakoutStrategy produced 33 trades. Currently marked as MEDIOCRE.

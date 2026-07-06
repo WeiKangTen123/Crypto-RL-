@@ -19,7 +19,7 @@ pf: 1.15
 - Profit Factor: 1.15
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy BBWVolatilityBreakoutStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy BBWVolatilityBreakoutStrategy produced 476 trades. Currently marked as MEDIOCRE.

@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL, BNB
 interest: High
 name: rsi-divergence-momentum-reversal
 source: Web Search (2026 Reversal Strategies)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: short-term
 ---

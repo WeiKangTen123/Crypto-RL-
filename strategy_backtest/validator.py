@@ -1,12 +1,29 @@
 """
-strategy_backtest/validator.py — 26-Rule Rulebook compliance validator.
+strategy_backtest/validator.py — 27-Rule Rulebook compliance validator (SignalHive standard).
 
 Runs every backtest-integrity check from T0 through the Crypto Pack,
-scores the strategy, and prints a structured report.
+scores the strategy per the SignalHive standard, and prints a structured report.
+
+27 Rules:
+  - T0: 2 prerequisites (data, reproducibility)
+  - T1: 11 fatal gates (profitability, risk, sample size, costs, walk-forward, lookahead, leverage)
+  - T2: 5 blocking gates (walk-forward efficiency, OOS decay, overfit, DSR, random label, P&L structure)
+  - T3: 7 robustness advisories (hit rate, param robustness, bootstrap, truncation)
+  - CR: 3 crypto-specific gates (funding, news blackout, weekend)
+
+Verdict logic (SignalHive standard):
+  - T0 fail → REJECTED
+  - T1 fail → FAIL
+  - T2 fail → FAIL
+  - CR fail (crypto only) → FAIL
+  - T3-only warnings → PASS_WITH_WARNINGS
+  - All clear → PASS
+
+Score: (T1 pass × 40) + (T2 pass × 30) + (T3 count × 4) + (CR pass × 10) = 0–100
 
 Usage:
     python strategy_backtest/validator.py --strategy 3
-    python strategy_backtest/validator.py --strategy 3 --folds 6
+    python strategy_backtest/validator.py --strategy 3 --folds 8
     python strategy_backtest/validator.py --strategy 3 --save report_3.json
     python strategy_backtest/validator.py --strategy 3 --quick   # skip slow PBO/bootstrap
 """
@@ -30,24 +47,36 @@ if _ROOT not in sys.path:
 
 import strategy_backtest.strategies  # auto-registers all strategy classes
 
-from strategy_backtest.settings   import STRATEGY_LIBRARY
-from strategy_backtest.engine     import BacktestEngine
-from strategy_backtest.risk       import RiskManager
-from strategy_backtest.metrics    import compute_metrics, _extract_numeric
-from strategy_backtest.run_backtest import load_data
+from strategy_backtest.settings       import STRATEGY_LIBRARY
+from strategy_backtest.engine         import BacktestEngine
+from strategy_backtest.risk           import RiskManager
+from strategy_backtest.metrics        import compute_metrics, _extract_numeric
+from strategy_backtest.run_backtest   import load_data
+from strategy_backtest.frequency_utils import detect_frequency, classify_frequency, get_threshold
 from strategy_backtest.scripts.wfo_runner import run_wfo
 
 
-# ── Thresholds ────────────────────────────────────────────────────────────────
+# ── Global Thresholds (overridable per-frequency) ────────────────────────────
 
 THRESH = {
-    'sharpe':           0.50,
-    'total_return':     0.00,
-    'max_dd_pct':      50.00,
-    'win_rate':        30.00,
-    'profit_factor':    1.00,
-    'worst_daily_loss':-20.00,
-    'cost_ratio':       0.50,
+    'sharpe':           0.50,      # T1-01
+    'total_return':     0.00,      # T1-02
+    'max_dd_pct':      20.00,      # T1-02 (corrected from 50 → 20)
+    'win_rate':        30.00,      # T1-04 (overridden per frequency)
+    'profit_factor':    1.00,      # T1-05
+    'worst_daily_loss':-20.00,     # T1-06 (overridden per frequency)
+    'cost_ratio':       0.50,      # T1-10 (overridden per frequency, 50% for HFT, 30% intraday, 15% swing, 5% position)
+    'wf_efficiency':    0.50,      # T2-01 (overridden per frequency)
+    'oos_is_mdd_ratio': 1.50,      # T1-03b
+    'oos_sharpe_decay': 0.50,      # T2-02
+    'dsr_p':            0.05,       # T2-04
+    'random_label_pct': 0.95,      # T2-05
+    'monthly_gtp':      1.00,      # T2-06
+    'bootstrap_pos':    0.60,      # T3-03
+    'lookahead_tol':    0.15,      # T1-09
+    'funding_impact':   0.25,      # CR-01
+    'news_daily_loss': -0.05,      # CR-02
+}
     'wf_efficiency':    0.50,
     'oos_is_mdd_ratio': 1.50,
     'oos_sharpe_decay': 0.50,
@@ -62,11 +91,19 @@ THRESH = {
     'news_daily_loss': -0.05,
 }
 
+# ── Scoring Formula (SignalHive standard) ──────────────────────────────────────
+# Score = (T1_pass × 40) + (T2_pass × 30) + (T3_count_pass × 4) + (CR_pass × 10)
+# Max score = 100 (all pass)
+# T1 pass: +40 pts (1 rule set, binary)
+# T2 pass: +30 pts (1 rule set, binary)
+# T3 count: +4 pts each (6 rules counted: T3-00 through T3-05; T3-06 is advisory only)
+# CR pass: +10 pts (1 rule set, binary, crypto-only)
+
 SCORE_WEIGHTS = {
-    'T1': 4.0,
-    'T2': 5.0,
-    'T3': 4.0,
-    'CR': 10.0 / 3.0,
+    'T1_pass': 40.0,      # All T1 rules pass → +40
+    'T2_pass': 30.0,      # All T2 rules pass → +30
+    'T3_each': 4.0,       # Each T3 rule (max 6) → +4 each (T3-00 to T3-05)
+    'CR_pass': 10.0,      # All CR rules pass → +10
 }
 
 REGIME_DATES = {

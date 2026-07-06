@@ -22,4 +22,4 @@ pf: 1.06
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy ForgeStrategy produced 341 trades. Currently marked as MEDIOCRE.

@@ -78,8 +78,8 @@ for cls, fname in sorted(unregistered.items()):
     next_id += 1
 
 # Insert before the closing `}` of STRATEGY_LIBRARY
-closing = '\n    }\n'
-insert_point = settings_content.rfind(closing)
+closing = '\n}\n\n# --- Current Active Strategy'
+insert_point = settings_content.find(closing)
 if insert_point == -1:
     print("ERROR: Could not find STRATEGY_LIBRARY closing brace. Edit settings.py manually.")
     sys.exit(1)

@@ -3020,7 +3020,230 @@ STRATEGY_LIBRARY = {
         },
     },
 
+    "183": {
+        "id":   "SUPERTREND_PRO_VOL_BTC_4H",
+        "desc": "Supertrend Pro Volatility Breakout — ST flip + RV>1.57 + RSI zone. Sharpe 0.92, ROI 349%, MDD 35%, 123 trades (MEDIOCRE). 2021+72% 2022+57% 2023+37% 2024+20% 2025+19% 2026-14%",
+        "class": "SupertrendProVolatilityStrategy",
+        "data": {"coins": "BTC", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "st_period":      15,
+            "st_multiplier":  3.0438,
+            "rv_period":      37,
+            "rv_threshold":   1.5717,
+            "rsi_period":     14,
+            "atr_period":     13,
+            "atr_trail_mult": 4.6781,
+        },
+    },
+
+    "184": {
+        "id":   "DIAMOND_TRIANGLE_BTC_4H",
+        "desc": "Diamond Triangle Breakout — BB squeeze + vol spike + ADX trail. Sharpe 1.26, ROI 837%, MDD 28%, 209 trades (GOOD). 2021+74% 2022+64% 2023+68% 2024+130% 2025-5% 2026-10%",
+        "class": "DiamondTriangleBreakoutStrategy",
+        "data": {"coins": "BTC", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "bb_period":      13,
+            "bb_std":         1.5704,
+            "squeeze_pct":    0.0586,
+            "squeeze_bars":   3,
+            "vol_period":     27,
+            "vol_spike_mult": 1.4286,
+            "adx_period":     11,
+            "adx_threshold":  24.6852,
+            "atr_period":     8,
+            "sl_atr_mult":    2.0913,
+            "atr_trail_mult": 3.6772,
+        },
+    },
+
+    "185": {
+        "id":   "RSI_DIVERGENCE_MR_BTC_4H",
+        "desc": "RSI Divergence Mean Reversion — RSI div + ADX filter, BB midline TP (BTC 4H). Sharpe -0.04, ROI -0.9%, MDD 8.3%, 34 trades (BAD). Structural edge failure on BTC 4H; signal starvation confirmed after finetune.",
+        "class": "RsiDivergenceMeanReversionStrategy",
+        "data": {"coins": "BTC", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "rsi_period":    13,
+            "div_lookback":  47,
+            "adx_period":    9,
+            "adx_threshold": 32.0026,
+            "bb_period":     11,
+            "bb_std":        1.6958,
+            "atr_period":    10,
+            "sl_atr_mult":   2.6718,
+        },
+    },
+
+    "186": {
+        "id":   "FISHER_EXTREME_REVERSAL_BTC_1H",
+        "desc": "Fisher Extreme Reversal — Fisher spike>1.84 + signal cross, TP at zero-cross (BTC 1H). Sharpe 0.07, ROI +1.3%, MDD 7%, 34 trades (BAD). Too few signals on BTC 1H.",
+        "class": "FisherExtremeReversalStrategy",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "fisher_period":  13,
+            "signal_period":  12,
+            "extreme_thresh": 1.8414,
+            "atr_period":     14,
+            "sl_atr_mult":    0.5034,
+        },
+    },
+
+    "187": {
+        "id":   "TIGHT_BB_SCALPER_BTC_1H",
+        "desc": "Tight BB Scalper — 1.95std close-back-inside + flat EMA-247 filter (BTC 1H). Sharpe -5.65, ROI -100%, 3124 trades (BAD). Structural over-trading on trending BTC.",
+        "class": "TightBollingerScalperStrategy",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "bb_period":        17,
+            "bb_std":           1.9507,
+            "ema_period":       247,
+            "ema_slope_thresh": 0.0064,
+            "atr_period":       9,
+            "sl_atr_mult":      1.312,
+        },
+    },
+
+    "188": {
+        "id":   "HMM_REGIME_CLASSIFIER_BTC_4H",
+        "desc": "HMM Regime Classifier — 3-state Gaussian HMM on log_return+norm_ATR, EMA-89 trend gate (BTC 4H). Sharpe 0.39, ROI +50.3%, MDD 48.38%, 199 trades (MEDIOCRE). 2021-12% 2022+13% 2023+25% 2024+27% 2025-18% 2026+16%",
+        "class": "HMMRegimeClassifierStrategy",
+        "data": {"coins": "BTC", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "n_states":       3,
+            "ema_period":     89,
+            "atr_period":     7,
+            "sl_atr_mult":    1.5617,
+            "atr_trail_mult": 3.8031,
+        },
+    },
+
+    "189": {
+        "id":   "PRICE_MOMENTUM_ACCEL_ETH_1H",
+        "desc": "Price Momentum Acceleration — Alpha#46 2nd-order price diff z-score ±2.79σ (ETH 1H). Sharpe 0.75, ROI +233%, MDD 34%, 214 trades (MEDIOCRE). ALL YEARS POSITIVE: 2021+32% 2022+28% 2023+27% 2024+13% 2025+16% 2026+19%",
+        "class": "PriceMomentumAccelerationStrategy",
+        "data": {"coins": "ETH", "timeframes": "1h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "fast_period":     5,
+            "slow_period":     39,
+            "zscore_period":   150,
+            "entry_threshold": 2.7866,
+            "atr_period":      8,
+            "sl_atr_mult":     2.506,
+            "atr_trail_mult":  5.0669,
+        },
+    },
+
+    "190": {
+        "id":   "BAR_STRENGTH_MOMENTUM_BTC_4H",
+        "desc": "Bar Strength Momentum — Alpha#53 bar-strength delta + ADX(32) gate (BTC 4H). Sharpe 0.44, ROI +65.2%, MDD 39%, 327 trades (MEDIOCRE). 2021+32% 2022+16% 2023+13% 2024+19% 2025-18% 2026-3%",
+        "class": "BarStrengthMomentumStrategy",
+        "data": {"coins": "BTC", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "bs_period":       11,
+            "entry_threshold": 0.2657,
+            "adx_period":      13,
+            "adx_threshold":   32.3649,
+            "atr_period":      7,
+            "sl_atr_mult":     2.2915,
+            "atr_trail_mult":  4.9986,
+        },
+    },
+
+    "191": {
+        "id":   "VOL_CAPITULATION_REVERSAL_ETH_4H",
+        "desc": "Volume Capitulation Reversal — Alpha#43 vol_rank×decline_rank product (ETH 4H). Sharpe -1.04, ROI -91.8%, MDD 94.4%, 950 trades (BAD). Level-signal over-trading: win_rate 19.79% insufficient to overcome fee drag.",
+        "class": "VolumeCapitulationReversalStrategy",
+        "data": {"coins": "ETH", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "adv_period":       21,
+            "rank_v_period":    39,
+            "momentum_period":  12,
+            "rank_m_period":    14,
+            "signal_threshold": 0.2124,
+            "atr_period":       9,
+            "sl_atr_mult":      1.1162,
+            "atr_trail_mult":   4.5985,
+        },
+    },
+
+    "192": {
+        "id":   "INTRABAR_EFF_MOMENTUM_BTC_1H",
+        "desc": "Intrabar Efficiency Momentum — Alpha#101 (close-open)/(high-low) EMA-179 smoothed gate (BTC 1H). Sharpe 0.32, ROI +19.7%, MDD 16.2%, 60 trades (MEDIOCRE). 4/6 years positive; best MDD in library; low trade count limits growth.",
+        "class": "IntrabarEfficiencyMomentumStrategy",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "smooth_period":   13,
+            "entry_threshold": 0.3529,
+            "ema_period":      179,
+            "atr_period":      9,
+            "sl_atr_mult":     1.9388,
+            "atr_trail_mult":  3.5561,
+        },
+    },
+
+    "193": {
+        "id":   "HURST_REGIME_ADAPTIVE_ETH_4H",
+        "desc": "Hurst Regime Adaptive — VR-167 regime switch: momentum (VR>1.38) vs MR (VR<0.62) on ETH 4H. Sharpe 0.80, ROI +166.6%, MDD 39.3%, 68 trades (MEDIOCRE). PF=1.65. 5/6 positive: 2021+10% 2022-12% 2023+17% 2024+36% 2025+29% 2026+34%",
+        "class": "HurstRegimeAdaptiveStrategy",
+        "data": {"coins": "ETH", "timeframes": "4h", "date_from": "2021-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "vr_window":         167,
+            "vr_k":              11,
+            "vr_band":           0.3781,
+            "mom_period":        26,
+            "rev_zscore_period": 19,
+            "rev_threshold":     2.5796,
+            "atr_period":        7,
+            "sl_atr_mult":       1.3872,
+            "atr_trail_mult":    4.0786,
+        },
+    },
+    "194": {
+        "id":   "AMIHUD_ILLIQ_MR_BTC_1H",
+        "desc": "Amihud Illiquidity Mean-Reversion Strategy (1H)",
+        "class": "AmihudIlliqMrStrategy194",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2023-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "illiq_period": 20, "zscore_period": 200, "atr_period": 7, "tp_mult": 1.5, "sl_mult": 1.5
+        },
+    },
+    "195": {
+        "id":   "OU_MR_SPEED_BTC_1H",
+        "desc": "Ornstein-Uhlenbeck Mean-Reversion Speed Strategy (1H)",
+        "class": "OuMrSpeedStrategy195",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2023-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "period": 22, "atr_period": 29, "tp_mult": 1.5, "sl_mult": 1.5, "kappa_thresh": 5.0
+        },
+    },
 }
+
+
 
 # --- Current Active Strategy (for optimizer) ---
 ACTIVE_STRATEGY = "141" # Strategy 141 rejected by WFO (Sharpe Ratios: +0.210, -1.660, +0.120, -1.310)

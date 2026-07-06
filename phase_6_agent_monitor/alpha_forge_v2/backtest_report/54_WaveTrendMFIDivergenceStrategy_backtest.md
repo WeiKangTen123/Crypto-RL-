@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 54
-sharpe: -0.74
-return: -82.2
-mdd: 86.5
-win_rate: 18.6
-trades: 1308
-pf: 0.88
+sharpe: 1.4
+return: 97.0
+mdd: 4.3
+win_rate: 71.0
+trades: 38
+pf: 3.87
 ---
 # Stage 03 Backtest Report: WaveTrendMFIDivergenceStrategy
 
 ## Performance Table
-- Sharpe: -0.74
-- Return: -82.2%
-- MDD: 86.5%
-- Win Rate: 18.6%
-- Trades: 1308
-- Profit Factor: 0.88
+- Sharpe: 1.4
+- Return: 97.0%
+- MDD: 4.3%
+- Win Rate: 71.0%
+- Trades: 38
+- Profit Factor: 3.87
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy WaveTrendMFIDivergenceStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy WaveTrendMFIDivergenceStrategy produced 38 trades. Currently marked as MEDIOCRE.

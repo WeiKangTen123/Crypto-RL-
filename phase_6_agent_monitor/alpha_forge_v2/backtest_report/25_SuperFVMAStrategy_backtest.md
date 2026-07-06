@@ -1,5 +1,5 @@
 ---
-status: GOOD
+status: MEDIOCRE
 id: 25
 sharpe: 1.0
 return: 806.0
@@ -22,4 +22,4 @@ pf: 2.05
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy SuperFVMAStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy SuperFVMAStrategy produced 85 trades. Currently marked as MEDIOCRE.

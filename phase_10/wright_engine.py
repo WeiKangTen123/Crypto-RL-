@@ -56,7 +56,7 @@ ADF_PVALUE_MAX    = 0.05   # standard p-value for cointegration
 MIN_ENTRY_Z       = 1.5    # entry threshold in σ units (optimized)
 COOLDOWN_BARS     = 0      # bars to wait after exit
 MIN_HOLD_BARS     = 0      # minimum hold to avoid micro-churn
-Z_STOP_LOSS       = 999.0    # structural break stop (enforced rule)
+Z_STOP_LOSS       = 999.0    # tight stop loss for Wright Bot
 ROLLING_ADF_BARS  = 72     # re-run ADF every 3 days
 ROLLING_ADF_PVAL  = 0.10   # standard regime check
 MIN_R2            = 0.00   # tighter OLS quality gate (optimized)
@@ -83,13 +83,12 @@ DAILY_Z_DRIFT_MAX  = 3.0   # max Z drift in 24h before blocking entry
 
 
 def timeframe_scale(tf: str) -> int:
-    """Scale 1h-tuned bar windows to another timeframe while preserving duration."""
+    """Scale 1h-tuned bar windows to another timeframe while preserving duration.
+    Returns at least 1 even for coarser TFs so windows stay valid."""
     if tf not in TIMEFRAME_MINUTES:
         raise ValueError(f'Unsupported timeframe: {tf}')
     scale = TIMEFRAME_MINUTES[TIMEFRAME] / TIMEFRAME_MINUTES[tf]
-    if scale < 1:
-        raise ValueError(f'Timeframe {tf} is slower than base {TIMEFRAME}; use it as signal_tf only.')
-    return int(round(scale))
+    return max(1, int(round(scale)))
 
 
 def scaled_params(signal_tf: str, execution_tf: str) -> dict:

@@ -1,0 +1,21 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "47",
+  "strategy_class": "AroonRSIStrategy",
+  "original_sharpe": -1.12,
+  "best_sharpe": 0.32,
+  "best_params": {
+    "aroon_period": 18,
+    "rsi_period": 28,
+    "ema_period": 178,
+    "aroon_threshold": 52,
+    "rsi_lower": 27,
+    "rsi_upper": 78,
+    "tp_atr_mult": 7.789,
+    "sl_atr_mult": 0.662
+  },
+  "status": "MEDIOCRE",
+  "message": "Strategy 47 (AroonRSIStrategy) was fine-tuned. Sharpe improved from -1.12 to 0.32. Validation guards failed (stability failed due to high sensitivity in rsi_period/rsi_lower/rsi_upper, cross-asset failed on ETH/4h). Graded MEDIOCRE."
+}

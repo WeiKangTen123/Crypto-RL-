@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL
 interest: High
 name: supertrend-atr-momentum
 source: Web Search (TradingView momentum trends 2024)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: long-term
 ---

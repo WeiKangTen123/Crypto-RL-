@@ -1,11 +1,14 @@
 """
 Phase 10 — Pairs Trading Backtest Runner
-Runs all 10 pair combinations for BTC/ETH/BNB/SOL/XRP and saves results.json.
+Runs all 36 pair combinations across configurable timeframes and saves results.
+
+Output filename: results_{mode}_{timeframe}.json
+  e.g. results_advanced_1h.json, results_wright_4h.json
 
 Usage:
   python phase_10/backtest.py
   python phase_10/backtest.py --pair BTC-ETH
-  python phase_10/backtest.py --date_from 2023-01-01 --date_to 2026-05-31
+  python phase_10/backtest.py --mode wright --timeframe 4h
   python phase_10/backtest.py --signal_timeframe 1h --timeframe 15m
 """
 
@@ -20,11 +23,8 @@ if _ROOT not in sys.path:
     sys.path.insert(0, _ROOT)
 
 import importlib
-# We will import the engine dynamically based on mode
 
-DATASET_DIR  = os.path.join(_ROOT, 'dataset')
-RESULTS_FILE = os.path.join(_ROOT, 'phase_10', 'data', 'results.json')
-RESULTS_WRIGHT_FILE = os.path.join(_ROOT, 'phase_10', 'data', 'results_wright.json')
+DATASET_DIR = os.path.join(_ROOT, 'dataset')
 
 
 def run_all(pairs, date_from, date_to, timeframe, signal_timeframe):
@@ -68,25 +68,43 @@ def run_all(pairs, date_from, date_to, timeframe, signal_timeframe):
 
 def main():
     parser = argparse.ArgumentParser(description='Phase 10 Pairs Trading Backtest')
-    parser.add_argument('--pair',      default=None,     help='Single pair e.g. BTC-ETH (default: all 10)')
+    parser.add_argument('--pair',      default=None,  help='Single pair e.g. BTC-ETH (default: all pairs)')
     parser.add_argument('--date_from', default='2023-01-01', help='Start date YYYY-MM-DD')
-    parser.add_argument('--date_to',   default='2026-05-31',   help='End date YYYY-MM-DD')
-    parser.add_argument('--timeframe', default='1h',
-                        help='Execution timeframe, e.g. 1h, 15m, 5m')
+    parser.add_argument('--date_to',   default='2026-05-31', help='End date YYYY-MM-DD')
+    parser.add_argument('--timeframe', default='1h',  help='Execution timeframe, e.g. 1h, 15m, 5m, 4h, 1d')
     parser.add_argument('--signal_timeframe', default=None,
-                        help='Signal/model timeframe. Use 1h with 15m/5m execution for MTF mode.')
+                        help='Signal/model timeframe for MTF mode (e.g. 1h with 15m execution).')
     parser.add_argument('--mode', default='advanced', choices=['advanced', 'wright'],
-                        help='Which engine to run: advanced (default) or wright (from website)')
+                        help='Which engine to run: advanced (OLS/Z-score) or wright')
     args = parser.parse_args()
 
     if args.mode == 'wright':
         engine = importlib.import_module('phase_10.wright_engine')
-        results_file = RESULTS_WRIGHT_FILE
     else:
         engine = importlib.import_module('phase_10.engine')
-        results_file = RESULTS_FILE
 
-    global run_pair_backtest
+    # Coarser-than-1h TFs must run as signal_tf with 1h execution.
+    COARSE_TFS = {'4h', '1d', '2d'}
+    execution_tf = args.timeframe
+    signal_tf    = args.signal_timeframe
+    if args.timeframe in COARSE_TFS and not args.signal_timeframe:
+        signal_tf    = args.timeframe
+        execution_tf = '1h'
+
+    # Output file label: for fine-grained execution TFs, use execution_tf (e.g. 15m run → _15m).
+    # For coarser signal-only TFs with 1h execution, use signal_tf (e.g. 4h signal → _4h).
+    if signal_tf and signal_tf != execution_tf:
+        # Coarse signal / fine execution (MTF): label by signal_tf
+        tf_label = signal_tf if signal_tf in COARSE_TFS else execution_tf
+    else:
+        tf_label = execution_tf
+
+    # Auto-name output file: results_{mode}_{tf_label}.json
+    results_file = os.path.join(
+        _ROOT, 'phase_10', 'data',
+        f'results_{args.mode}_{tf_label}.json'
+    )
+
     run_all.__globals__['engine'] = engine
     run_all.__globals__['results_file'] = results_file
 
@@ -101,10 +119,11 @@ def main():
 
     print(f'Phase 10 Pairs Trading Backtest ({args.mode.upper()} MODE)')
     print(f'Period : {args.date_from} → {args.date_to}')
-    print(f'TF     : signal={args.signal_timeframe or args.timeframe} execution={args.timeframe}')
+    print(f'TF     : signal={signal_tf or execution_tf} execution={execution_tf}')
     print(f'Pairs  : {len(pairs)} pairs')
+    print(f'Output : {results_file}')
     print('-' * 50)
-    run_all(pairs, args.date_from, args.date_to, args.timeframe, args.signal_timeframe)
+    run_all(pairs, args.date_from, args.date_to, execution_tf, signal_tf)
 
 
 if __name__ == '__main__':

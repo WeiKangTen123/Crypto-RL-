@@ -1,0 +1,8 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "136",
+  "strategy_class": "AVSStrategy",
+  "message": "Strategy 136 (AVSStrategy) was fine-tuned. Baseline Sharpe improved from -1.73 to 0.16. However, it fails parameter stability tests (bb_period and bb_std perturbations crash performance) and cross-asset stress tests (ETH Sharpe -1.41). Graded BAD (Sharpe 0.16 < 0.3) and not recommended for paper trading or deployment."
+}

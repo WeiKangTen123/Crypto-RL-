@@ -185,17 +185,29 @@ def run_strategy(cfg: dict, date_from: str = None, date_to: str = None) -> dict:
     # Build strategy + engine
     try:
         strategy = strat_cls(df, **params)
+
+        # Frequency-based risk defaults (SignalHive standard)
+        frequency = data_cfg['timeframes'] if 'timeframes' in data_cfg else None
+        risk_per_trade = risk_cfg.get('risk_per_trade')
+        if risk_per_trade is None and frequency:
+            # Auto-set per-frequency default
+            risk_per_trade = RiskManager.FREQUENCY_DEFAULTS.get(frequency, 0.15)
+            print(f"  [INFO] Risk per trade auto-set to {risk_per_trade:.1%} (frequency={frequency})")
+
         rm = RiskManager(
-            risk_per_trade=risk_cfg['risk_per_trade'],
+            risk_per_trade=risk_per_trade or risk_cfg.get('risk_per_trade', 0.15),
             leverage=risk_cfg['leverage'],
             trading_fee=risk_cfg['trading_fee'],
-            slippage_pct=risk_cfg.get('slippage_pct', 0.0005),
+            slippage_pct=0.0,  # DEPRECATED — use CostCalculator for realistic slippage
             maintenance_margin_rate=risk_cfg['maintenance_margin_rate'],
+            frequency=frequency,
         )
         engine = BacktestEngine(df, strategy, rm, initial_balance=risk_cfg['initial_balance'])
         equity_curve = engine.run()
     except Exception as e:
         print(f"  [ERROR] Strategy {cfg['id']} failed: {e}")
+        import traceback
+        traceback.print_exc()
         return {'error': str(e), 'strategy_id': cfg['id']}
 
     if not equity_curve:

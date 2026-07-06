@@ -22,4 +22,4 @@ pf: 1.68
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy DualEMAVolatilityStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy DualEMAVolatilityStrategy produced 55 trades. Currently marked as MEDIOCRE.

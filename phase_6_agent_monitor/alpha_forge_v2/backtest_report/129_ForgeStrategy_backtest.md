@@ -22,4 +22,4 @@ pf: 1.42
 Validation Guard passed: Status is GOOD.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as GOOD.
+Generated automatically. Strategy ForgeStrategy produced 298 trades. Currently marked as GOOD.

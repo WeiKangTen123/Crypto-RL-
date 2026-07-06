@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 41
-sharpe: -0.04
-return: -99.9
-mdd: 99.9
-win_rate: 24.6
-trades: 398
-pf: 0.67
+sharpe: 0.8
+return: 197.1
+mdd: 31.0
+win_rate: 51.4
+trades: 35
+pf: 2.21
 ---
 # Stage 03 Backtest Report: DMIADXStrategy
 
 ## Performance Table
-- Sharpe: -0.04
-- Return: -99.9%
-- MDD: 99.9%
-- Win Rate: 24.6%
-- Trades: 398
-- Profit Factor: 0.67
+- Sharpe: 0.8
+- Return: 197.1%
+- MDD: 31.0%
+- Win Rate: 51.4%
+- Trades: 35
+- Profit Factor: 2.21
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy DMIADXStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy DMIADXStrategy produced 35 trades. Currently marked as MEDIOCRE.

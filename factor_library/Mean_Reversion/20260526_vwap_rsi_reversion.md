@@ -3,9 +3,10 @@ coins: BTC, ETH
 interest: High
 name: vwap-rsi-reversion
 source: Web Search (TradingView mean reversion 2024)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 15m, 1h
 type: short-term
 ---

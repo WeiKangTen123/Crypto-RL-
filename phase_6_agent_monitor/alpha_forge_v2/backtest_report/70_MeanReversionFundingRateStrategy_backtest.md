@@ -22,4 +22,4 @@ pf: 1.11
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy MeanReversionFundingRateStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy MeanReversionFundingRateStrategy produced 73 trades. Currently marked as MEDIOCRE.

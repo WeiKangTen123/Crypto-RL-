@@ -1,0 +1,18 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "79",
+  "strategy_class": "GridTradingBTCStrategy",
+  "original_sharpe": -0.55,
+  "best_sharpe": -0.55,
+  "best_params": {
+    "grid_levels": [28000, 29000, 30000, 31000, 32000],
+    "grid_spacing": 1000,
+    "order_size": 0.001,
+    "initial_balance": 10000,
+    "stop_loss_pct": 0.0437
+  },
+  "status": "BAD",
+  "message": "Strategy 79 (GridTradingBTCStrategy) was fine-tuned. Sharpe remained unchanged at -0.55 (original parameters kept). Validation guards failed cross-asset stress test on ETH due to absolute price grids. Graded BAD."
+}

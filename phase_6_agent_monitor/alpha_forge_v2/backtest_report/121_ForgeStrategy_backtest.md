@@ -1,5 +1,5 @@
 ---
-status: GOOD
+status: MEDIOCRE
 id: 121
 sharpe: 1.07
 return: 271.1
@@ -19,7 +19,7 @@ pf: 1.24
 - Profit Factor: 1.24
 
 ## Stability & Robustness
-Validation Guard passed: Status is GOOD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as GOOD.
+Generated automatically. Strategy ForgeStrategy produced 72 trades. Currently marked as MEDIOCRE.

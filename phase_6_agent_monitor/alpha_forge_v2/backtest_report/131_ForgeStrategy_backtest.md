@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 131
-sharpe: -0.11
-return: -2.1
-mdd: 18.2
-win_rate: 30.6
-trades: 543
-pf: 0.98
+sharpe: 0.45
+return: 3.1
+mdd: 6.6
+win_rate: 31.5
+trades: 73
+pf: 1.16
 ---
 # Stage 03 Backtest Report: ForgeStrategy
 
 ## Performance Table
-- Sharpe: -0.11
-- Return: -2.1%
-- MDD: 18.2%
-- Win Rate: 30.6%
-- Trades: 543
-- Profit Factor: 0.98
+- Sharpe: 0.45
+- Return: 3.1%
+- MDD: 6.6%
+- Win Rate: 31.5%
+- Trades: 73
+- Profit Factor: 1.16
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ForgeStrategy produced 73 trades. Currently marked as MEDIOCRE.

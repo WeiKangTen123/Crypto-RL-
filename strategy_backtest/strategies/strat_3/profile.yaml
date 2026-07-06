@@ -1,0 +1,5 @@
+name: "macd_kdj_adx_atr_btc_4h"
+symbol: "BTCUSDT"
+timeframe: "4h"
+risk_per_trade: 0.1
+leverage: 10

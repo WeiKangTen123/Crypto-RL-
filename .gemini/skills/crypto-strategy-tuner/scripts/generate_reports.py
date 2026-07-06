@@ -19,10 +19,10 @@ for s_data in data.get('results', []):
     s_class = s_data['class']
     status = s_data.get('grade', 'PENDING')
     sharpe = s_data.get('sharpe', 0.0)
-    ret = s_data.get('return_pct', 0.0)
-    mdd = s_data.get('mdd_pct', 0.0)
+    ret = s_data.get('total_return', 0.0)
+    mdd = s_data.get('max_drawdown', 0.0)
     win_rate = s_data.get('win_rate', 0.0)
-    trades = s_data.get('trades', 0)
+    trades = s_data.get('total_trades', 0)
     pf = s_data.get('profit_factor', 0.0)
     
     if status in ['BAD', 'MEDIOCRE']:

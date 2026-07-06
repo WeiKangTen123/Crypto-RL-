@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL
 interest: High
 name: liquidity-sweep-reversal
 source: Web Research (Institutional Liquidity Patterns 2026)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: short-term
 ---

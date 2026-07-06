@@ -26,7 +26,9 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .ctrl-group{display:flex;flex-direction:column;gap:5px;}
 .ctrl-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);}
 select,input[type=date],input[type=text]{background:#0f172a;color:var(--text);border:1px solid var(--border);padding:9px 12px;border-radius:8px;font-size:0.85rem;cursor:pointer;}
-select{min-width:160px;}
+select{min-width:140px;}
+#results-tf{border-color:#3b82f6;color:#93c5fd;font-weight:700;min-width:110px;}
+#engine-mode{min-width:180px;}
 .btn{border:none;padding:10px 20px;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.15s;}
 .btn-blue{background:var(--accent);color:#fff;}
 .btn-blue:hover{background:#2563eb;}

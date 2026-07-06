@@ -879,6 +879,297 @@ EOF
 
 ---
 
+## 13. Backtest Engine & Verdict System (SignalHive Standard v1.0)
+*Added: July 2026*
+
+### Overview
+
+Crypto-RL's backtest engine now implements the **SignalHive 27-rule rulebook** for professional-grade strategy validation. Every backtest run is evaluated against:
+
+- **T0 Prerequisites** (2 rules): Data integrity, reproducibility
+- **T1 Fatal Gates** (11 rules): Profitability, risk limits, sample size, cost efficiency, walk-forward, lookahead, leverage
+- **T2 Blocking Gates** (5 rules): Walk-forward efficiency, OOS decay, overfitting probability, statistical significance, P&L structure
+- **T3 Robustness Advisories** (7 rules): Hit rate, parameter robustness, bootstrap confidence, truncation consistency
+- **CR Crypto Pack** (3 rules): Funding P&L, news blackout resilience, weekend/weekday Sharpe divergence
+
+**Verdict outcomes:**
+- `REJECTED`: T0 prerequisite failed
+- `FAIL`: T1, T2, or CR gate failed
+- `PASS_WITH_WARNINGS`: T3 advisories only
+- `PASS`: All gates cleared
+
+**Score formula:** `(T1_pass × 40) + (T2_pass × 30) + (T3_count × 4) + (CR_pass × 10)` = 0–100 points
+
+### Files
+
+| File | Purpose |
+|---|---|
+| `strategy_backtest/engine.py` | Bar-by-bar backtesting with position management, funding rates, liquidation checks |
+| `strategy_backtest/risk.py` | Position sizing with **frequency-based risk defaults** (50% HFT, 30% intraday, 15% swing, 5% position) |
+| `strategy_backtest/cost_calculator.py` | **Square-root market impact slippage** + fees + borrow + funding (all-in cost model) |
+| `strategy_backtest/frequency_utils.py` | Auto-detect bar frequency, classify tier (HFT/Intraday/Swing/Position), map adaptive thresholds |
+| `strategy_backtest/verdict_engine.py` | 27-rule verdict system with early-stopping logic and SignalHive-compliant scoring |
+| `strategy_backtest/metrics.py` | Compute Sharpe, Sortino, drawdown, DSR p-value, and trade statistics |
+| `strategy_backtest/run_backtest.py` | Main runner, integrates all components, supports multi-coin portfolio mode |
+
+### Key Changes from Previous System
+
+#### 1. **Slippage Model** (CRITICAL)
+
+**Old:** Flat percent slippage (e.g., 0.05% fixed)
+```python
+price = raw_price * (1.0 + slippage_pct * side)  # Fixed 0.05%
+```
+
+**New:** Square-root market impact (SignalHive standard)
+```python
+# slippage = max(0.5 bps, 8 × √(qty/vol × 100))
+slippage = max(0.000005, 8 * np.sqrt((notional / volume) * 100) / 10000)
+```
+
+Impact: A 1 BTC order on a 100 BTC volume bar now costs ~1.8 bps, not flat 5 bps. Realistic for real trading.
+
+#### 2. **Risk Per Trade Defaults** (CRITICAL)
+
+**Old:** Hard-coded 0.10 (10%) for all strategies
+**New:** Frequency-based adaptive (SignalHive standard)
+
+| Frequency | Tier | Risk % | Rationale |
+|---|---|---|---|
+| 5m, 15m | HFT | 50% | Tight stops, many trades |
+| 30m | Intraday | 30% | Moderate holding time |
+| 1h, 4h | Swing | 15% | Wider stops, fewer trades |
+| 1d+ | Position | 5% | Multi-day holding, market-neutral |
+
+```python
+rm = RiskManager(frequency='4h')  # Auto-defaults to 0.15 (15%)
+```
+
+Impact: 4h strategies now pass MDD gates; strategies designed for proper frequency band survive validation.
+
+#### 3. **Cost Ratio Formula** (IMPORTANT)
+
+**Old:** `cost_ratio = total_fees / abs(net_profit)`
+**New:** `cost_ratio = (fees + slippage + borrow + funding_paid) / gross_pnl`
+
+- Uses `gross_pnl` (winning trades only), not net profit
+- Includes all costs: taker fees (4 bps), slippage, short borrow (3 bps/day), funding payments
+- Adaptive threshold: 50% HFT → 15% swing → 5% position
+
+```python
+from strategy_backtest.cost_calculator import CostCalculator
+cc = CostCalculator()
+slippage = cc.calculate_slippage(qty, price, volume)  # per-trade realistic
+```
+
+#### 4. **Frequency-Based Adaptive Thresholds** (IMPORTANT)
+
+All major rules now scale by frequency. Example for T1-10 (cost ratio):
+
+```python
+# HFT (5m, 15m):    cost_ratio_max = 50%
+# Intraday (30m):   cost_ratio_max = 30%
+# Swing (1h, 4h):   cost_ratio_max = 15%  ← Most strict (crypto 4h is here)
+# Position (1d+):   cost_ratio_max = 5%   ← Strictest
+```
+
+Automatic via `frequency_utils.get_threshold()`:
+```python
+threshold = get_threshold(frequency='4h', rule_key='cost_ratio_max')  # Returns 0.15
+```
+
+#### 5. **Verdict Logic** (STRUCTURAL)
+
+**Old:** All rules weighted equally, verdict not early-stopping
+
+**New:** SignalHive early-stopping (strict → lenient)
+```
+T0 fail (prerequisite)     → REJECTED (stop immediately)
+T1 fail (any fatal gate)   → FAIL (stop immediately)
+T2 fail (any blocking gate)→ FAIL (stop immediately)
+CR fail (crypto-only)      → FAIL (stop immediately)
+T3 only (advisories)       → PASS_WITH_WARNINGS
+All clear                  → PASS
+```
+
+Score formula (exact):
+```
+score = (T1_all_pass × 40) + (T2_all_pass × 30) + (T3_count_pass × 4) + (CR_all_pass × 10)
+      = 0 to 100 points
+```
+
+#### 6. **Multi-Coin Portfolio Mode** (NEW)
+
+Strategies can now run in **portfolio mode** (one equity book, all coins interleaved) or **per_coin mode** (isolated book per coin, one verdict each).
+
+```python
+# Portfolio: all coins share equity, 1 verdict
+from strategy_backtest.run_backtest import run_strategy
+result = run_strategy(cfg, mode='portfolio', symbols=['BTCUSDT', 'ETHUSDT'])
+# → equity_curve, trades, metrics (aggregated across all coins)
+
+# Per-coin: separate books
+result = run_strategy(cfg, mode='per_coin', symbols=['BTCUSDT', 'ETHUSDT'])
+# → [result_BTC, result_ETH] (separate verdict per coin)
+```
+
+**Critical warning:** A single-coin strategy submitted in portfolio mode with multiple coins will silently scramble (entries on BTC, exits on ETH). Always verify strategy state is keyed by `event.symbol` for portfolio mode.
+
+### Verdict Engine (`verdict_engine.py`)
+
+Main entry point for generating verdicts:
+
+```python
+from strategy_backtest.verdict_engine import VerdictEngine
+
+engine = VerdictEngine(frequency='4h')
+result = engine.check_all(
+    metrics_dict=compute_metrics(...),
+    equity_curve=equity,
+    trades=trades,
+    timestamps=timestamps,
+    cfg=cfg,
+    is_crypto=True,
+)
+
+print(result)
+# {
+#   'decision': 'PASS',
+#   'score': 82.5,
+#   'blocking_rules': [],
+#   'outcomes': [
+#     {'rule_id': 'T1-01', 'tier': 'T1', 'passed': True, 'summary': 'Sharpe Ratio = 0.73 (≥ 0.50)'},
+#     ...
+#   ]
+# }
+```
+
+### Example: Running a Strategy with Verdicts
+
+```bash
+# Simple single-coin run with verdict
+python strategy_backtest/run_backtest.py --strategy 86 --date_from 2023-01-01 --date_to 2026-01-01
+
+# Output includes:
+#   Loaded 1256 bars (2023-01-01 → 2026-01-01)
+#   Strategy : 86
+#   Desc : Multi-timeframe mean-reversion
+#   Class : SID_86_Strategy | TF: 4h | Coin: BTCUSDT
+#   Period : 2023-01-01 → 2026-01-01
+#   ============================================================
+#   
+#   ── Results ──
+#   Total Return: 437.2%
+#   Annual Return: 28.4%
+#   Sharpe Ratio: 0.73
+#   Max Drawdown: 14.2%
+#   Profit Factor: 1.84
+#   Win Rate: 47.1%
+#   Total Trades: 156
+#   Cost Ratio: 13.6%
+#   
+#   ── 27-Rule Verdict ──
+#   Decision: PASS
+#   Score: 87/100
+#   
+#   T1 Fatal Gates (all pass → +40):
+#     ✓ T1-01: Sharpe Ratio = 0.73 (≥ 0.50)
+#     ✓ T1-02: Total Return = 437.2% (> 0%)
+#     ✓ T1-03: Max Drawdown = 14.2% (≤ 20%)
+#     ✓ T1-04: Worst Daily Loss = -5.2% (≥ -6.0% for swing)
+#     ✓ T1-05: Profit Factor = 1.84 (≥ 1.0)
+#     ✓ T1-06: Win Rate = 47.1% (≥ 35% for swing)
+#     ✓ T1-07: Total Trades = 156 (≥ 30)
+#     ✓ T1-08: Liquidations = 0 (0)
+#     ⚠ T1-09: Lookahead probe SKIPPED
+#     ✓ T1-10: Cost Ratio = 13.6% (≤ 15% for swing)
+#     ✓ T1-11: Losing Years = 2 (≤ 4)
+#   
+#   T2 Blocking Gates (all pass → +30):
+#     ✓ T2-01: Walk-Forward Efficiency = 0.67 (≥ 0.5)
+#     ✓ T2-02: OOS Sharpe Decay = 28% (≤ 50%)
+#     ✓ T2-04: DSR p-value = 0.0023 (< 0.05)
+#     ✓ T2-06: Monthly GTP = 1.42 (≥ 1.0)
+#   
+#   T3 Robustness (5/6 pass → +20):
+#     ✓ T3-01: Hit Rate = 47.1% (≥ 35%)
+#     ✓ T3-03: Bootstrap 5th% Sharpe = 0.54 (> 0)
+#     ✓ T3-04: Monte Carlo Median Return = +18.2% (> 0%)
+#     ✓ T3-05: Truncation Check: 0 diff
+#     ✗ T3-06: No Losing Years (advisory, no score)
+#   
+#   CR Crypto Pack (all pass → +10):
+#     ✓ CR-01: Funding P&L Ratio = 12% (≤ 50%)
+#     ✓ CR-03: Weekend/Weekday Sharpe = 0.81 (within ±100%)
+```
+
+### Migration from Old to New System
+
+If upgrading from the previous version:
+
+1. **Check risk_per_trade defaults:**
+   ```python
+   # Old: all use 0.10
+   # New: auto-set per frequency (5m→50%, 15m→50%, 30m→30%, 1h→15%, 4h→15%, 1d→5%)
+   # Action: Remove hard-coded 0.10 from settings.py, let RiskManager auto-detect
+   ```
+
+2. **Check slippage in settings:**
+   ```python
+   # Old: slippage_pct=0.0005 (0.05%)
+   # New: slippage_pct=0.0 (deprecated, use CostCalculator)
+   # Action: Set to 0.0, update any custom slippage logic to use CostCalculator.calculate_slippage()
+   ```
+
+3. **Check cost_ratio calculations:**
+   ```python
+   # Old: cost_ratio = fees / net_profit
+   # New: cost_ratio = (fees + slippage + borrow + funding) / gross_pnl
+   # Action: Update any references to align with new formula (uses gross_pnl)
+   ```
+
+4. **Run verdicts with VerdictEngine:**
+   ```python
+   # Old: Manual rule checks scattered across validator.py
+   # New: Use VerdictEngine.check_all() for unified 27-rule verdict
+   from strategy_backtest.verdict_engine import VerdictEngine
+   engine = VerdictEngine(frequency='4h')
+   verdict = engine.check_all(...)
+   ```
+
+### Next: PortingStrategies to SignalHive
+
+Once all 27 rules pass locally:
+
+1. Export strategy to SignalHive API format:
+   - `strategy.py` (Strategy subclass with `on_bar()` method)
+   - `profile.yaml` (frequency, symbols, leverage, capital)
+
+2. Upload via SignalHive API:
+   ```bash
+   export BT_TOKEN=sk_bt_...
+   curl -X POST http://47.237.70.198:5300/api/backtest/v1/strategies \
+     -H "Authorization: Bearer $BT_TOKEN" \
+     -F "strategy.py=@strategy.py" \
+     -F "profile.yaml=@profile.yaml"
+   ```
+
+3. Run backtest:
+   ```bash
+   curl -X POST http://47.237.70.198:5300/api/backtest/v1/runs \
+     -H "Authorization: Bearer $BT_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"strategy_id":"str_...", "symbols":["BTCUSDT"], "mode":"per_coin"}'
+   ```
+
+4. Poll verdict:
+   ```bash
+   curl http://47.237.70.198:5300/api/backtest/v1/runs/run_.../verdict \
+     -H "Authorization: Bearer $BT_TOKEN"
+   ```
+
+---
+
 ## Appendix: Backtest Execution Mechanics & Realism
 *Update: June 2026*
 

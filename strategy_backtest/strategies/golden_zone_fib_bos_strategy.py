@@ -11,6 +11,16 @@ class GoldenZoneFibBOSStrategy(BaseStrategy):
     """
     SIGNAL_PARAMS = frozenset({'swing_window', 'fib_retrace', 'fib_ext', 'sl_fib', 'rsi_period', 'rsi_long', 'rsi_short'})
 
+    OPTIMIZATION_RANGES = {
+        'swing_window': (5, 50),
+        'fib_retrace': (0.3, 0.8),
+        'fib_ext': (1.1, 2.5),
+        'sl_fib': (0.5, 1.5),
+        'rsi_period': (5, 30),
+        'rsi_long': (30, 70),
+        'rsi_short': (30, 70)
+    }
+
     def __init__(self, df: pd.DataFrame, **kwargs):
         super().__init__(df, **kwargs)
         self.swing_window = getattr(self, 'swing_window', 20)

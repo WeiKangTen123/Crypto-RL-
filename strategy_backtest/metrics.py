@@ -216,9 +216,12 @@ def compute_metrics(equity, initial_balance, timestamps=None, trades=None, df=No
         metrics["Best Trade"]         = f"${best_trade:,.2f}"
         metrics["Worst Trade"]        = f"${worst_trade:,.2f}"
 
-        # ── Cost Ratio (T1-07) ───────────────────────────────────────────────
+        # ── Cost Ratio (T1-10 in SignalHive standard) ─────────────────────────
+        # NOTE: SignalHive uses gross_pnl (winning trades only), not net_profit
+        # This is a placeholder; full cost_ratio calculation happens in validator.py
+        # where we have access to slippage, borrow, and funding data.
         if net_profit != 0:
-            metrics['Cost Ratio'] = f"{total_fees / abs(net_profit):.2%}"
+            metrics['Cost Ratio (fees only)'] = f"{total_fees / abs(net_profit):.2%}"
 
     # --- Periodic Returns (Monthly / Yearly) ---
     if timestamps is not None:

@@ -34,15 +34,15 @@ class ETHMomentumBreakoutStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        bb_period: int = 45,
-        bb_std: float = 2.2327,
+        bb_period: int = 16,
+        bb_std: float = 3.3453,
         kc_period: int = 20,
         kc_mult: float = 1.5,
-        rsi_period: int = 13,
-        atr_period: int = 8,
-        tp_rr: float = 2.2541,
+        rsi_period: int = 18,
+        atr_period: int = 14,
+        tp_rr: float = 11.6536,
         squeeze_duration: int = 3,
-        entry_confirmation: str = 'VOLUME_SPIKE',
+        entry_confirmation: str = 'RSI_FILTER',
         exit_mode: str = 'FIXED_RR',
         **kwargs
     ):

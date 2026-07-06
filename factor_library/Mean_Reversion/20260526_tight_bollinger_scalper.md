@@ -3,9 +3,12 @@ coins: BTC, ETH, BNB, SOL, XRP
 interest: High
 name: tight-bollinger-band-scalper
 source: bitget.com / GitHub (benorgera)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- BAD
 timeframes: 15m, 1h
 type: short-term
 ---

@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 46
-sharpe: -0.2
-return: -38.9
-mdd: 67.7
-win_rate: 33.5
-trades: 164
-pf: 0.94
+sharpe: 0.91
+return: 176.6
+mdd: 34.8
+win_rate: 40.3
+trades: 149
+pf: 1.21
 ---
 # Stage 03 Backtest Report: ICTHolyTrinityConfluenceStrategy
 
 ## Performance Table
-- Sharpe: -0.2
-- Return: -38.9%
-- MDD: 67.7%
-- Win Rate: 33.5%
-- Trades: 164
-- Profit Factor: 0.94
+- Sharpe: 0.91
+- Return: 176.6%
+- MDD: 34.8%
+- Win Rate: 40.3%
+- Trades: 149
+- Profit Factor: 1.21
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ICTHolyTrinityConfluenceStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ICTHolyTrinityConfluenceStrategy produced 149 trades. Currently marked as MEDIOCRE.

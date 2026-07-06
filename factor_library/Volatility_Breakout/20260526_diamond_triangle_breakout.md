@@ -3,9 +3,12 @@ coins: BTC, ETH, SOL
 interest: High
 name: diamond-triangle-breakout
 source: TradingView / General Quant Research
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- GOOD
 timeframes: 1h, 4h
 type: short-term
 ---

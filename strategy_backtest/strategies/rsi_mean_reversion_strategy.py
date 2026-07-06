@@ -28,12 +28,12 @@ class RsiMeanReversionStrategy(BaseStrategy):
     })
 
     def __init__(self, df: pd.DataFrame, 
-                 rsi_period: int = 14, 
-                 atr_period: int = 14, 
-                 rsi_oversold: float = 30.0,
-                 rsi_overbought: float = 70.0,
-                 tp_multiplier: float = 3.0,
-                 sl_multiplier: float = 1.0,
+                 rsi_period: int = 30, 
+                 atr_period: int = 9, 
+                 rsi_oversold: float = 26.9188,
+                 rsi_overbought: float = 79.7836,
+                 tp_multiplier: float = 5.9902,
+                 sl_multiplier: float = 0.8799,
                  **kwargs):
         """
         Initializes the RsiMeanReversionStrategy with DataFrame and strategy parameters.

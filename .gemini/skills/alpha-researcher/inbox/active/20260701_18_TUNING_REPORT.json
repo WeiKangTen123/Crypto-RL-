@@ -1,0 +1,21 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "18",
+  "strategy_class": "MACDKDJStrategy",
+  "original_sharpe": 0.24,
+  "best_sharpe": 0.77,
+  "best_params": {
+    "macd_fast": 18,
+    "macd_slow": 28,
+    "macd_signal": 16,
+    "kdj_period": 28,
+    "kdj_oversold": 38,
+    "kdj_overbought": 89,
+    "stop_loss_pct": 0.0957,
+    "take_profit_pct": 0.0822
+  },
+  "status": "MEDIOCRE",
+  "message": "Strategy 18 (MACDKDJStrategy) was fine-tuned. Sharpe improved from 0.24 to 0.77. Parameters in settings.py and strategy source updated. Validation guards: stability check FAILED due to kdj_period sensitivity (Sharpe drops to -0.05 on +10% shift); cross-asset check FAILED (BTC Sharpe 0.02, ETH Sharpe 0.11). Graded MEDIOCRE due to high parameter sensitivity and narrow asset-specific profile."
+}

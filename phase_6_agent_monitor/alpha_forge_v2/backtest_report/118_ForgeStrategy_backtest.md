@@ -19,7 +19,7 @@ pf: 1.12
 - Profit Factor: 1.12
 
 ## Stability & Robustness
-Validation Guard passed: Status is GOOD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as GOOD.
+Generated automatically. Strategy ForgeStrategy produced 83 trades. Currently marked as MEDIOCRE.

@@ -1,0 +1,18 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "147",
+  "strategy_class": "HVEStrategy",
+  "original_sharpe": 0.03,
+  "best_sharpe": 0.03,
+  "best_params": {
+    "dc_period": 16,
+    "vrsi_period": 10,
+    "vrsi_thresh": 29.959655857716147,
+    "vol_z_thresh": 2.2863138646382675,
+    "vol_z_period": 24
+  },
+  "status": "BAD",
+  "message": "Strategy 147 (HVEStrategy) was fine-tuned. Best trial Sharpe 0.03 compared to baseline 0.03 (parameter update skipped as it was below saving threshold). Validation guards checked: parameter stability test failed (dc_period/vrsi_period/vrsi_thresh perturbations drop to negative Sharpe), cross-asset test failed on ETH (-0.370 Sharpe) and BTC (-0.130 Sharpe). Graded BAD."
+}

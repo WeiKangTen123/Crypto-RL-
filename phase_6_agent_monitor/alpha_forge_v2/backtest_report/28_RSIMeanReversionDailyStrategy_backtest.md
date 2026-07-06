@@ -19,7 +19,7 @@ pf: 1.34
 - Profit Factor: 1.34
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy RSIMeanReversionDailyStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy RSIMeanReversionDailyStrategy produced 74 trades. Currently marked as MEDIOCRE.

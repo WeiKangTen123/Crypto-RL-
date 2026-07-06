@@ -1,76 +1,101 @@
 # Session Memory — @crypto-strategy-tuner
 <!-- Append new sessions at the TOP (below this header). Keep max 10 entries — delete oldest when exceeded. -->
 
+## [2026-07-01 11:58] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~4m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified. Identified worst eligible BAD strategy (ID 6_30M, MeanReversionVRSI, baseline Sharpe -0.08) that hasn't been optimized in the last 24 hours. Executed proactive Optuna fine-tuning on Strategy 6_30M (best trial Sharpe 0.23 vs baseline -0.08, updated parameters saved to source code and settings.py). Ran scripts/verify_strategy.py validation guards (parameter stability failed on vwap_period perturbations; cross-asset checks failed on ETH). Strategy remains BAD (Sharpe 0.23). Generated detailed Stage 03 Backtest Reports at root and Mean_Reversion subfolder. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated LTM.md, activity.log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** strategy_backtest/strategies/mean_reversion_vrsi_strategy.py, strategy_backtest/settings.py, .gemini/skills/crypto-strategy-tuner/data/scan_results.json, .gemini/skills/crypto-strategy-tuner/data/finetune_results.json, phase_6_agent_monitor/alpha_forge_v2/backtest_report/6_30M_MeanReversionVRSI_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Mean_Reversion/6_30M_MeanReversionVRSI_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260701_6_30M_TUNING_REPORT.json, .gemini/skills/crypto-strategy-tuner/LTM.md, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260701_6_30M_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 6_30M completed. Sharpe improved from -0.08 to 0.23, settings.py and strategy file updated. Strategy remains BAD (due to Sharpe < 0.3) and fails validation guards. Backtest reports and researcher inbox handoff sent.
+
 ---
 
-## [2026-06-04 20:30] | Model: gemini-2.5-flash | Trigger: Inbox 4 msg | Duration: ~1500s
 
-**Actions:** Fine-tuned strategies 66, 73, 74, and 87. None improved.
-**File changes:** .gemini/skills/crypto-strategy-tuner/data/finetune_results.json
+## [2026-07-01 11:47] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified. Identified worst eligible BAD strategy (ID 180, GridTradingBTCStrategy, baseline Sharpe -0.55) that hasn't been optimized in the last 24 hours. Executed proactive Optuna fine-tuning on Strategy 180 (best trial Sharpe -0.55 vs baseline -0.55, original parameters kept). Ran scripts/verify_strategy.py validation guards (parameter stability passed, cross-asset checks failed on ETH due to absolute nominal price levels). Generated detailed Stage 03 Backtest Report with stability analysis and expert commentary. Ran Obsidian sync bridge. Updated activity log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** phase_6_agent_monitor/alpha_forge_v2/backtest_report/180_GridTradingBTCStrategy_backtest.md, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, .gemini/skills/crypto-strategy-tuner/activity.log, .gemini/skills/crypto-strategy-tuner/heartbeat.json, heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
 **Communications:** None
 **Open items:** None
-**Outcome:** All requested fine-tuning tasks complete; no strategies improved.
-
+**Outcome:** Proactive fine-tuning cycle for Strategy 180 completed. Sharpe remained at -0.55 (no parameter update saved). Backtest report generated with expert commentary highlighting absolute price level fragility.
 
 ---
 
-## [2026-06-04 20:14] | Model: gemini-2.5-flash | Trigger: Inbox 5 msg | Duration: ~180s
+## [2026-07-01 11:19] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~3m
 
-**Actions:** Fine-tuned strategies 27, 41, 47, 55, and 60. Strategy 55 improved to Sharpe 1.38 and was promoted to leaderboard.
-**File changes:** wavetrend_mfi_divergence_strategy.py, settings.py, scan_results.json, STRATEGY_LEADERBOARD.md
-**Communications:** -> to @alpha-researcher: FINETUNE_PROMOTED (ID 55)
-**Open items:** None
-**Outcome:** All requested fine-tuning tasks complete; Strategy 55 improved and promoted.
-
-## [2026-06-04 12:50] | Model: gemini-2.5-flash | Trigger: Inbox 3 msg | Duration: ~300s
-
-**Actions:** Fine-tuned strategies 70, 73, and 74. Strategy 70 improved and promoted to leaderboard. Fixed NameError bug in finetune.py.
-**File changes:** .gemini/skills/crypto-strategy-tuner/scripts/finetune.py, STRATEGY_LEADERBOARD.md, settings.py, scan_results.json
-**Communications:** -> to @alpha-researcher: FINETUNE_PROMOTED (ID 70)
-**Open items:** None
-**Outcome:** Strategy 70 fine-tuned and promoted; 73, 74 processed but no improvement.
----
-
-## [2026-06-04 12:40] | Model: gemini-2.5-flash | Trigger: Inbox 3 msg | Duration: ~20m
-
-**Actions:** Fine-tuned strategies 83, 84, and 85. Fixed bug in finetune.py regarding string parameter handling. Strategy 85 promoted to leaderboard.
-**File changes:** .gemini/skills/crypto-strategy-tuner/scripts/finetune.py, nowo_ichimoku_mtf_strategy.py, supertrend_atr_momentum_strategy.py, settings.py, STRATEGY_LEADERBOARD.md, scan_results.json
-**Communications:** -> to @alpha-researcher: FINETUNE_PROMOTED (ID 85)
-**Open items:** None
-**Outcome:** All fine-tuning tasks complete; Strategy 85 improved and promoted.
----
-
-## [2026-06-03 19:40] | Model: gemini-3.1-pro-preview | Trigger: User Directive | Duration: ~180s
-
-**Actions:** Verified "Scan New" functionality. Scanned and classified 3 new strategies (84, 85, 86).
-**File changes:** .gemini/skills/crypto-strategy-tuner/data/scan_results.json, .gemini/shared/SYSTEM_CHANGELOG.md, .gemini/shared/AGENT_COLLABORATION.md
-**Communications:** None
-**Open items:** Strategy 86 is GOOD (Sharpe 1.63), should be promoted to leaderboard.
-**Outcome:** "Scan New" button logic verified. 3 new strategies processed.
----
-
-## [2026-06-03 19:15] | Model: gemini-2.5-flash | Trigger: Inbox 2 msg | Duration: ~15m
-
-**Actions:** Processed FINETUNE requests for strategy 75 and 82; performed proactive fine-tuning for worst strategy 6.
-**File changes:** .gemini/skills/crypto-strategy-tuner/data/finetune_results.json, .gemini/shared/SYSTEM_CHANGELOG.md, .gemini/shared/AGENT_COLLABORATION.md
-**Communications:** <- from @alpha-researcher: FINETUNE (processed)
-**Open items:** None
-**Outcome:** All fine-tuning tasks complete; no improvements to Sharpe identified.
----
-
-## [2026-06-03 19:01] | Model: gemini-2.5-flash | Trigger: Inbox 1 msg | Duration: ~5m
-
-**Actions:** Handled GRADE_PENDING_NOW inbox message. Classified 0 pending strategies as scan_results.json already classified.
-**File changes:** main_controller/heartbeat.json, .gemini/skills/crypto-strategy-tuner/activity.log, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Actions:** Identified and ran proactive Optuna fine-tuning on Strategy 18 (MACDKDJStrategy) on BNB/4h. Sharpe ratio improved from 0.24 to 0.77 (MEDIOCRE). Updated default params in macd_kdj_strategy.py and settings.py. Executed verify_strategy.py to run validation guards: stability tests failed due to kdj_period sensitivity (Sharpe drops to -0.05 on +10% shift), and cross-asset checks failed (ETH Sharpe 0.11, BTC Sharpe 0.02). Generated detailed Stage 03 Backtest Report with stability analysis and expert commentary. Appended summary to AGENT_COLLABORATION.md and updated heartbeats.
+**File changes:** strategy_backtest/strategies/macd_kdj_strategy.py, strategy_backtest/settings.py, .gemini/skills/crypto-strategy-tuner/data/scan_results.json, .gemini/skills/crypto-strategy-tuner/data/finetune_results.json, phase_6_agent_monitor/alpha_forge_v2/backtest_report/18_MACDKDJStrategy_backtest.md, .gemini/skills/crypto-strategy-tuner/activity.log, .gemini/shared/AGENT_COLLABORATION.md, .gemini/skills/crypto-strategy-tuner/heartbeat.json, heartbeat.json, .gemini/shared/heartbeat.json
 **Communications:** None
 **Open items:** None
-**Outcome:** Tuner handled GRADE_PENDING_NOW. No action required as no pending strategies found.
+**Outcome:** Proactive fine-tuning cycle for Strategy 18 completed. Sharpe improved to 0.77, and source code/settings were updated. Validation guards highlighted high parameter fragility and lack of cross-asset validity.
+
 ---
 
-## [2026-06-03 18:35] | Model: gemini-2.5-flash | Trigger: User Direct Request | Duration: ~30s
+## [2026-07-01 10:48] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
 
-**Actions:** Tried tuner online and verified session_log existence.
-**File changes:** heartbeat.json, activity.log, session_memory.md
+**Actions:** Audited strategy registrations and discovered duplicate strategy IDs `"79"` and `"80"` in settings.py STRATEGY_LIBRARY. Fixed registrations by remapping `GridTradingBTCStrategy` to ID `"180"` and `TimeSeriesMomentumStrategy` to ID `"181"`, freeing up `"79"` for `GoldenZoneFibBOSStrategy` and `"80"` for `SupertrendProStrategy`. Cleaned scan_results.json and finetune_results.json. Scanned missing strategies 79 and 80 (both graded BAD). Executed proactive Optuna fine-tuning on Strategy 80 (best trial Sharpe -0.47 vs baseline -0.47, parameter update skipped). Ran verify_strategy.py validation guards (stability passed technically but flat, cross-asset failed on ETH). Generated Stage 03 Backtest Reports at root and Trend subfolder. Dropped tuning report JSON to alpha-researcher active inbox. Updated activity log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** strategy_backtest/settings.py, .gemini/skills/crypto-strategy-tuner/data/scan_results.json, .gemini/skills/crypto-strategy-tuner/data/finetune_results.json, phase_6_agent_monitor/alpha_forge_v2/backtest_report/79_GoldenZoneFibBOSStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/79_GoldenZoneFibBOSStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/80_SupertrendProStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/80_SupertrendProStrategy_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260701_80_TUNING_REPORT.json, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260701_80_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 80 completed. Sharpe remained at -0.47 (no parameter update saved). Duplicate strategy registration bug in settings.py resolved. Backtest reports and researcher inbox handoff sent.
+
+---
+
+## [2026-07-01 10:38] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 136, AVSStrategy, baseline Sharpe 0.16) that hasn't been optimized in the last 24 hours. Executed proactive Optuna fine-tuning on Strategy 136 (best trial Sharpe 0.16 vs baseline 0.16, parameter update skipped). Ran scripts/verify_strategy.py validation guards (parameter stability failed on bb_period/bb_std perturbations, cross-asset checks failed on ETH). Generated Stage 03 Backtest Reports for Strategy 136 at root and Volatility_Breakout subfolder with detailed Expert Commentary. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated activity log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** phase_6_agent_monitor/alpha_forge_v2/backtest_report/136_AVSStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Volatility_Breakout/136_AVSStrategy_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260701_136_TUNING_REPORT.json, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260701_136_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 136 completed. Sharpe remained at 0.16 (no parameter update saved). Backtest reports and inbox message sent.
+
+---
+
+## [2026-07-01 10:29] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 95, ChoppinessKeltnerBreakoutStrategy, baseline Sharpe -0.69) that hasn't been optimized in the last 24 hours. Executed proactive Optuna fine-tuning on Strategy 95 (best trial Sharpe -0.98 vs baseline -0.69, parameter update skipped). Ran scripts/verify_strategy.py validation guards (parameter stability failed, cross-asset checks failed on ETH). Generated Stage 03 Backtest Reports for Strategy 95 at root and Trend subfolder with detailed Expert Commentary. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated LTM.md, activity log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** phase_6_agent_monitor/alpha_forge_v2/backtest_report/95_ChoppinessKeltnerBreakoutStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/95_ChoppinessKeltnerBreakoutStrategy_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260701_95_TUNING_REPORT.json, .gemini/skills/crypto-strategy-tuner/LTM.md, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260701_95_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 95 completed. Sharpe remained at -0.69 (no parameter update saved). Backtest reports and inbox message sent.
+
+---
+
+## [2026-07-01 10:10] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~4m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 161, ForgeStrategy, baseline Sharpe 0.16) that hasn't been optimized in the last 24 hours. Executed proactive Optuna fine-tuning on Strategy 161 (best trial Sharpe 0.16 vs baseline 0.16, parameter update skipped). Ran scripts/verify_strategy.py validation guards (parameter stability failed, cross-asset checks failed on ETH). Generated Stage 03 Backtest Reports for Strategy 161 at root and Trend subfolder. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated activity log, agent collaboration log, system changelog, and heartbeats.
+**File changes:** phase_6_agent_monitor/alpha_forge_v2/backtest_report/161_ForgeStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/161_ForgeStrategy_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260701_161_TUNING_REPORT.json, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260701_161_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 161 completed. Sharpe remained at 0.16 (no parameter update saved). Backtest reports and inbox message sent.
+
+---
+
+## [2026-06-30 22:20] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~3m
+
+**Actions:** Checked strategy registration (all registered). Skipped scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 8, MeanReversionVRSI, baseline Sharpe -0.09) and executed proactive Optuna fine-tuning. Optuna tuning completed with best Sharpe 0.65 (parameters updated in settings.py and strategy source). Executed `verify_strategy.py` validation guards; parameter stability check failed (10% shift in vrsi_overbought and vwap_std_mult crashed Sharpe) and cross-asset checks failed (ETH Sharpe -1.04). Strategy remains graded MEDIOCRE. Generated Stage 03 Backtest Reports at root and Mean_Reversion subfolder. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated agent collaboration log, system changelog, and heartbeats.
+**File changes:** strategy_backtest/strategies/mean_reversion_vrsi_strategy.py, strategy_backtest/settings.py, phase_6_agent_monitor/alpha_forge_v2/backtest_report/8_MeanReversionVRSI_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Mean_Reversion/8_MeanReversionVRSI_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260630_8_TUNING_REPORT.json, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260630_8_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 8 completed. Sharpe improved from -0.09 to 0.65, settings.py and strategy file updated. Strategy remains MEDIOCRE (due to parameter stability and cross-asset failures) and backtest reports generated.
+
+---
+
+## [2026-06-30 22:11] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
+
+**Actions:** Checked strategy registration (all registered). Skipped full scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 147, HVEStrategy, baseline Sharpe 0.03) and executed proactive Optuna fine-tuning. Optuna tuning completed with best Sharpe 0.03 (no parameter update saved in settings.py as it was below threshold). Executed `verify_strategy.py` validation guards; parameter stability check failed (10% shift in dc_period/vrsi_period/vrsi_thresh crashed Sharpe to negative) and cross-asset checks failed (ETH Sharpe -0.370, BTC -0.130). Strategy remains BAD. Generated detailed Stage 03 Backtest Reports at root and Trend subfolder. Dropped tuning report JSON in alpha-researcher active inbox. Ran Obsidian sync bridge. Updated agent collaboration log, system changelog, and heartbeats.
+**File changes:** phase_6_agent_monitor/alpha_forge_v2/backtest_report/147_HVEStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/147_HVE_reversion_strategy_backtest.md, .gemini/skills/alpha-researcher/inbox/active/20260630_147_TUNING_REPORT.json, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
+**Communications:** -> to @alpha-researcher: TUNING_REPORT (20260630_147_TUNING_REPORT.json)
+**Open items:** None
+**Outcome:** Proactive fine-tuning cycle for Strategy 147 completed. Sharpe remained at 0.03 (no parameter update saved). Backtest reports and inbox message sent.
+
+---
+
+## [2026-06-30 22:03] | Model: Gemini 3.5 Flash | Trigger: Scheduled Task | Duration: ~5m
+
+**Actions:** Checked strategy registration (all registered). Skipped full scan as scan_results.json is fully classified and has no PENDING entries. Identified worst eligible BAD strategy (ID 177, ForgeStrategy, baseline Sharpe -0.02) and executed proactive Optuna fine-tuning. Optuna tuning successfully ran 200 trials and improved Sharpe to 1.23. Executed `verify_strategy.py` validation guards; parameter stability check failed (10% shift in `ema_slow` crashed Sharpe from 1.23 to 0.59) and cross-asset checks failed (BTC was negative). Downgraded Strategy 177 from GOOD to MEDIOCRE in `scan_results.json` due to parameter fragility. Generated Stage 03 Backtest Reports at root and Trend subfolder. Ran Obsidian sync bridge. Updated agent collaboration log, system changelog, and heartbeats.
+**File changes:** strategy_backtest/settings.py, .gemini/skills/crypto-strategy-tuner/data/scan_results.json, .gemini/skills/crypto-strategy-tuner/data/finetune_results.json, .gemini/skills/crypto-strategy-tuner/data/strategy_177_validation.json, phase_6_agent_monitor/alpha_forge_v2/backtest_report/177_ForgeStrategy_backtest.md, phase_6_agent_monitor/alpha_forge_v2/backtest_report/Trend/177_ForgeStrategy_backtest.md, .gemini/shared/AGENT_COLLABORATION.md, .gemini/shared/SYSTEM_CHANGELOG.md, heartbeat.json, .gemini/skills/crypto-strategy-tuner/heartbeat.json, .gemini/shared/heartbeat.json, .gemini/skills/crypto-strategy-tuner/session_memory.md
 **Communications:** None
 **Open items:** None
-**Outcome:** Tuner is ONLINE and session_log is confirmed.
+**Outcome:** Proactive fine-tuning cycle for Strategy 177 completed. Sharpe improved from -0.02 to 1.23, settings.py updated. Strategy downgraded to MEDIOCRE and backtest reports generated.

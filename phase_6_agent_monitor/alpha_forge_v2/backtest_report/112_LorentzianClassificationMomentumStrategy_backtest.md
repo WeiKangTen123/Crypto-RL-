@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: ERROR
 id: 112
-sharpe: -16.12
-return: -100.0
-mdd: 100.0
-win_rate: 23.7
-trades: 3664
-pf: 0.23
+sharpe: None
+return: None
+mdd: None
+win_rate: None
+trades: None
+pf: None
 ---
 # Stage 03 Backtest Report: LorentzianClassificationMomentumStrategy
 
 ## Performance Table
-- Sharpe: -16.12
-- Return: -100.0%
-- MDD: 100.0%
-- Win Rate: 23.7%
-- Trades: 3664
-- Profit Factor: 0.23
+- Sharpe: None
+- Return: None%
+- MDD: None%
+- Win Rate: None%
+- Trades: None
+- Profit Factor: None
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is ERROR.
 
 ## Expert Commentary
-Generated automatically. Strategy LorentzianClassificationMomentumStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy LorentzianClassificationMomentumStrategy produced None trades. Currently marked as ERROR.

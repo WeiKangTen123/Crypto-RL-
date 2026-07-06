@@ -5,9 +5,10 @@ coins:
 interest: High
 name: RSI Trend Filter
 source: TradingView
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes:
 - 1h
 - 4h

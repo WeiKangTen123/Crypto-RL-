@@ -3,28 +3,23 @@ status: MEDIOCRE
 id: 152
 sharpe: 0.64
 return: 61.4
-MDD: 35.9
+mdd: 35.9
 win_rate: 25.0
 trades: 224
-PF: 1.18
+pf: 1.18
 ---
-# Stage 03 Backtest Report: 152 (FRDSStrategy)
+# Stage 03 Backtest Report: FRDSStrategy
 
-## 1. Performance Table
-| Metric | Value |
-|--------|-------|
-| Sharpe | 1.30 |
-| Return | 293.9% |
-| MDD | 39.9% |
-| Win Rate | 25.9% |
-| Trades | 429 |
-| Profit Factor | N/A |
+## Performance Table
+- Sharpe: 0.64
+- Return: 61.4%
+- MDD: 35.9%
+- Win Rate: 25.0%
+- Trades: 224
+- Profit Factor: 1.18
 
-## 2. Stability & Robustness
-- **Stability**: Good parameter stability. Meets the hard trade floor constraint.
-- **Robustness**: High return but significant drawdown indicates volatile equity curve.
+## Stability & Robustness
+Validation Guard passed: Status is MEDIOCRE.
 
-## 3. Expert Commentary
-- **Trade Character**: Trend following/squeeze profile with low win-rate but large winners.
-- **Chop Warnings**: Susceptible to whipsaws (hence the low win rate), but TP multipliers offset the losses.
-- **Hypothesis Alignment**: Strongly aligns with the divergence squeeze hypothesis.
+## Expert Commentary
+Generated automatically. Strategy FRDSStrategy produced 224 trades. Currently marked as MEDIOCRE.

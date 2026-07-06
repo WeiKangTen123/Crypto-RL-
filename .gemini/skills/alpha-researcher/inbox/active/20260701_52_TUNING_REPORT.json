@@ -1,0 +1,22 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "52",
+  "strategy_class": "WaveTrendMFIDivergenceStrategy",
+  "original_sharpe": 0.49,
+  "best_sharpe": 0.98,
+  "best_params": {
+    "wt_n1": 12,
+    "wt_n2": 14,
+    "wt_oversold": -67,
+    "wt_overbought": 64,
+    "mfi_period": 17,
+    "ema_period": 93,
+    "divergence_lookback": 15,
+    "tp_rr": 4.0437,
+    "sl_atr_mult": 1.2181
+  },
+  "status": "MEDIOCRE",
+  "message": "Strategy 52 (WaveTrendMFIDivergenceStrategy) was fine-tuned. Sharpe improved from 0.49 to 0.98. Parameters in settings.py and strategy source updated. Validation guards: stability check FAILED due to mfi_period sensitivity (Sharpe drops to 0.46 on shift to 15) and wt_n2 sensitivity (Sharpe drops to 0.50 on shift to 15); cross-asset check FAILED (BTC Sharpe 0.02, SOL Sharpe -1.01). Graded MEDIOCRE due to parameter fragility and lack of cross-asset validation."
+}

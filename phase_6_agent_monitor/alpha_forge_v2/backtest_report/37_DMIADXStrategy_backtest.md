@@ -22,4 +22,4 @@ pf: 1.69
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy DMIADXStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy DMIADXStrategy produced 60 trades. Currently marked as MEDIOCRE.

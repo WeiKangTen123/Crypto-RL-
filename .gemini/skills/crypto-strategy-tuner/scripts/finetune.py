@@ -267,7 +267,11 @@ def update_strategy_file(class_name, best_params):
         updated = content
         changed = []
         for param, value in best_params.items():
-            if isinstance(value, float):
+            if isinstance(value, bool):
+                val_str = str(value)
+                # Matches: param: bool = True
+                pattern = rf'(\b{re.escape(param)}\s*:[^=\n]*=\s*)(True|False|true|false)'
+            elif isinstance(value, float):
                 val_str = str(round(value, 4))
                 # Matches: param: float = 2.5  OR  param: Optional[float] = 2.5
                 pattern = rf'(\b{re.escape(param)}\s*:[^=\n]*=\s*)[0-9]+\.?[0-9]*'
@@ -312,7 +316,7 @@ def _update_settings_params_locked(sid, best_params):
         content = f.read()
 
     # Find the start of this strategy's block: "sid": {
-    sid_pattern = rf'["\']{{0,1}}{re.escape(str(sid))}\b["\']{{0,1}}\s*:\s*\{{'
+    sid_pattern = rf'(?<!\d)["\']{re.escape(str(sid))}["\']\s*:\s*\{{'
     m = re.search(sid_pattern, content)
     if not m:
         print(f'  [WARN] Strategy ID {sid} not found in settings.py')
@@ -335,7 +339,10 @@ def _update_settings_params_locked(sid, best_params):
     changed = []
 
     for param, value in best_params.items():
-        if isinstance(value, float):
+        if isinstance(value, bool):
+            val_str = str(value)
+            pattern = rf'("{re.escape(param)}"\s*:\s*)(True|False|true|false)'
+        elif isinstance(value, float):
             val_str = str(round(value, 4))
             pattern = rf'("{re.escape(param)}"\s*:\s*)[0-9]+\.?[0-9]*'
         elif isinstance(value, int):
@@ -579,10 +586,10 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
             if isinstance(r, list):
                 trial_params[k] = trial.suggest_categorical(k, r)
             elif isinstance(v, int):
-                lo, hi = r
+                lo, hi = r[:2]
                 trial_params[k] = trial.suggest_int(k, int(lo), int(hi))
             else:
-                lo, hi = r
+                lo, hi = r[:2]
                 trial_params[k] = trial.suggest_float(k, float(lo), float(hi))
         try:
             # Let strategy reject degenerate param combos early
@@ -677,7 +684,7 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
         r = ranges[k]
         if isinstance(r, list): continue
             
-        lo, hi = r
+        lo, hi = r[:2]
         val = best_params[k]
         span = hi - lo
         if span > 0:
@@ -717,10 +724,10 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
                 if isinstance(r, list):
                     trial_params[k] = trial.suggest_categorical(k, r)
                 elif isinstance(v, int):
-                    lo, hi = r
+                    lo, hi = r[:2]
                     trial_params[k] = trial.suggest_int(k, int(lo), int(hi))
                 else:
-                    lo, hi = r
+                    lo, hi = r[:2]
                     trial_params[k] = trial.suggest_float(k, float(lo), float(hi))
             try:
                 if not strat_cls.validate_params(trial_params):
@@ -822,7 +829,7 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
         if isinstance(r, list):
             continue  # Boundaries don't apply to categorical switches
             
-        lo, hi = r
+        lo, hi = r[:2]
         val = best_params[k]
         # Threshold: equal to bound or within 0.5% of the range span
         span = hi - lo

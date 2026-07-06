@@ -30,7 +30,7 @@ Parameters
   kdj_period        : KDJ lookback window                       (default 9)
   kdj_oversold      : K threshold for long entry                (default 30)
   kdj_overbought    : K threshold for short entry               (default 70)
-  stop_loss_pct     : Price-based SL — % from entry price       (default 0.05 = 0.0225%)
+  stop_loss_pct     : Price-based SL — % from entry price       (default 0.05 = 0.0957%)
   take_profit_pct   : Optional TP from entry price              (default None)
   entry_window      : Bars to look back for both signals        (default 5)
   max_hold_bars     : Force-close after N bars (None = off)     (default 30)
@@ -59,13 +59,13 @@ class MACDKDJStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        macd_fast: int = 15,
-        macd_slow: int = 83,
-        macd_signal: int = 14,
-        kdj_period: int = 10,
-        kdj_oversold: float = 24.0,
+        macd_fast: int = 18,
+        macd_slow: int = 28,
+        macd_signal: int = 16,
+        kdj_period: int = 28,
+        kdj_oversold: float = 38.0,
         kdj_overbought: float = 89.0,
-        stop_loss_pct: float = 0.0225,
+        stop_loss_pct: float = 0.0957,
         take_profit_pct: Optional[float] = None,
         entry_window: int = 20,
         max_hold_bars: Optional[int] = 122,

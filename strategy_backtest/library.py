@@ -937,3 +937,384 @@ def calc_linear_regression_slope(series, period=12):
         return np.sum((y - np.mean(y)) * x_diff) / x_var
 
     return series.rolling(window=period).apply(slope, raw=True)
+
+# ── PURE PYTHON INDICATORS (FOR BT.CORE) ──────────────────────────────────────
+import collections
+import math
+
+class PureEMA:
+    def __init__(self, period):
+        self.period = period
+        self.alpha = 2.0 / (period + 1)
+        self.val = None
+    def update(self, price):
+        if self.val is None:
+            self.val = price
+        else:
+            self.val = self.alpha * price + (1 - self.alpha) * self.val
+        return self.val
+
+class PureSMA:
+    def __init__(self, period):
+        self.period = period
+        self.q = collections.deque(maxlen=period)
+    def update(self, val):
+        if val is None: return None
+        self.q.append(val)
+        if len(self.q) == self.period:
+            return sum(self.q)/self.period
+        return None
+
+class PureMACD:
+    def __init__(self, fast, slow, sig):
+        self.fast_ema = PureEMA(fast)
+        self.slow_ema = PureEMA(slow)
+        self.sig_ema = PureEMA(sig)
+    def update(self, price):
+        f = self.fast_ema.update(price)
+        s = self.slow_ema.update(price)
+        if f is None or s is None:
+            return None, None, None
+        macd = f - s
+        sig = self.sig_ema.update(macd)
+        if sig is None:
+            return macd, None, None
+        return macd, sig, macd - sig
+
+class PureRSI:
+    def __init__(self, period):
+        self.period = period
+        self.gains = PureEMA(period)
+        self.losses = PureEMA(period)
+        self.prev = None
+        self.gains.alpha = 1.0 / period
+        self.losses.alpha = 1.0 / period
+    def update(self, price):
+        if self.prev is None:
+            self.prev = price
+            return None
+        change = price - self.prev
+        self.prev = price
+        gain = change if change > 0 else 0.0
+        loss = -change if change < 0 else 0.0
+        
+        avg_gain = self.gains.update(gain)
+        avg_loss = self.losses.update(loss)
+        if avg_loss == 0:
+            return 100.0
+        if avg_gain is None or avg_loss is None:
+            return None
+        rs = avg_gain / avg_loss
+        return 100.0 - (100.0 / (1.0 + rs))
+
+class PureATR:
+    def __init__(self, period):
+        self.period = period
+        self.ema = PureEMA(period)
+        self.ema.alpha = 1.0 / period
+        self.prev_close = None
+    def update(self, high, low, close):
+        if self.prev_close is None:
+            tr = high - low
+        else:
+            tr = max(high - low, abs(high - self.prev_close), abs(low - self.prev_close))
+        self.prev_close = close
+        return self.ema.update(tr)
+
+class PureKDJ:
+    def __init__(self, period):
+        self.period = period
+        self.highs = collections.deque(maxlen=period)
+        self.lows = collections.deque(maxlen=period)
+        self.k_ema = PureEMA(3)
+        self.k_ema.alpha = 1/3.0
+        self.d_ema = PureEMA(3)
+        self.d_ema.alpha = 1/3.0
+    def update(self, high, low, close):
+        self.highs.append(high)
+        self.lows.append(low)
+        hh = max(self.highs)
+        ll = min(self.lows)
+        if hh == ll:
+            rsv = 0.0
+        else:
+            rsv = (close - ll) / (hh - ll) * 100.0
+        k = self.k_ema.update(rsv)
+        if k is None: k = 50.0
+        d = self.d_ema.update(k)
+        if d is None: d = 50.0
+        j = 3.0 * k - 2.0 * d
+        return k, d, j
+
+class PureVWAP:
+    def __init__(self, reset_bars=0):
+        self.reset_bars = reset_bars
+        self.bars = 0
+        self.cum_pv = 0.0
+        self.cum_v = 0.0
+    def update(self, price, vol):
+        self.bars += 1
+        if self.reset_bars and self.bars > self.reset_bars:
+            self.cum_pv = 0.0
+            self.cum_v = 0.0
+            self.bars = 1
+        self.cum_pv += price * vol
+        self.cum_v += vol
+        if self.cum_v == 0: return price
+        return self.cum_pv / self.cum_v
+    def reset(self):
+        self.cum_pv = 0.0
+        self.cum_v = 0.0
+        self.bars = 0
+
+class PureVWMA:
+    def __init__(self, period):
+        self.period = period
+        self.pvs = collections.deque(maxlen=period)
+        self.vs = collections.deque(maxlen=period)
+    def update(self, price, vol):
+        self.pvs.append(price * vol)
+        self.vs.append(vol)
+        v_sum = sum(self.vs)
+        if v_sum == 0: return price
+        return sum(self.pvs) / v_sum
+
+class PureSupertrend:
+    def __init__(self, period, multiplier):
+        self.period = period
+        self.multiplier = multiplier
+        self.atr = PureATR(period)
+        self.final_ub = None
+        self.final_lb = None
+        self.direction = 1
+        self.prev_close = None
+    def update(self, high, low, close):
+        atr_val = self.atr.update(high, low, close)
+        if atr_val is None:
+            self.prev_close = close
+            return None, self.direction
+        hl2 = (high + low) / 2.0
+        basic_ub = hl2 + self.multiplier * atr_val
+        basic_lb = hl2 - self.multiplier * atr_val
+        
+        if self.final_ub is None:
+            self.final_ub = basic_ub
+            self.final_lb = basic_lb
+            
+        if self.prev_close is not None:
+            if basic_ub < self.final_ub or self.prev_close > self.final_ub:
+                self.final_ub = basic_ub
+            if basic_lb > self.final_lb or self.prev_close < self.final_lb:
+                self.final_lb = basic_lb
+                
+        if self.direction == -1 and close > self.final_ub:
+            self.direction = 1
+            self.final_lb = basic_lb
+        elif self.direction == 1 and close < self.final_lb:
+            self.direction = -1
+            self.final_ub = basic_ub
+            
+        self.prev_close = close
+        st = self.final_lb if self.direction == 1 else self.final_ub
+        return st, self.direction
+
+class PureRollingStats:
+    def __init__(self, period):
+        self.period = period
+        self.q = collections.deque(maxlen=period)
+    def update(self, val):
+        self.q.append(val)
+        n = len(self.q)
+        if n == self.period:
+            mean = sum(self.q) / n
+            var = sum((x - mean)**2 for x in self.q) / n
+            std = math.sqrt(var)
+            return mean, std
+        return None, None
+
+class RollingCondition:
+    def __init__(self, window):
+        self.window = window
+        self.q = collections.deque(maxlen=window)
+    def update(self, cond):
+        self.q.append(cond)
+        return any(self.q)
+
+class PureCross:
+    def __init__(self):
+        self.prev_a = None
+        self.prev_b = None
+    def update(self, a, b):
+        if self.prev_a is None or a is None or b is None:
+            self.prev_a = a
+            self.prev_b = b
+            return False, False
+        cross_up = (a > b) and (self.prev_a <= self.prev_b)
+        cross_down = (a < b) and (self.prev_a >= self.prev_b)
+        self.prev_a = a
+        self.prev_b = b
+        return cross_up, cross_down
+
+class PureTurn:
+    def __init__(self):
+        self.prev = None
+    def update(self, val):
+        if self.prev is None or val is None:
+            self.prev = val
+            return False, False
+        turn_pos = (val > 0) and (self.prev <= 0)
+        turn_neg = (val < 0) and (self.prev >= 0)
+        self.prev = val
+        return turn_pos, turn_neg
+
+class PureZLEMA:
+    def __init__(self, period):
+        self.ema1 = PureEMA(period)
+        self.ema2 = PureEMA(period)
+    def update(self, price):
+        e1 = self.ema1.update(price)
+        if e1 is None: return None
+        e2 = self.ema2.update(e1)
+        if e2 is None: return None
+        return e1 + (e1 - e2)
+
+class PureZeroLagMACD:
+    def __init__(self, fast, slow, sig):
+        self.z_fast = PureZLEMA(fast)
+        self.z_slow = PureZLEMA(slow)
+        self.z_sig = PureZLEMA(sig)
+        self.prev_macd = None
+    def update(self, price):
+        f = self.z_fast.update(price)
+        s = self.z_slow.update(price)
+        if f is None or s is None: return None, None, None
+        macd = f - s
+        sig = self.z_sig.update(macd)
+        self.prev_macd = macd
+        if sig is None: return macd, None, None
+        return macd, sig, macd - sig
+
+
+# ── 16. TREND INTENSITY INDEX (TII) ─────────────────────────────────────────
+
+def calc_trend_intensity_index(close: pd.Series, major_period: int = 60, minor_period: int = 30) -> pd.Series:
+    """
+    Trend Intensity Index (TII) — M.H. Pee.
+
+    Measures the percentage of positive deviation relative to total absolute deviation
+    from a long-term SMA. Values above 80 indicate a strong uptrend; below 20 a strong
+    downtrend.
+
+    Args:
+        close: Close price series.
+        major_period: Lookback for the long-term SMA (default 60).
+        minor_period: Rolling sum window for deviation aggregation (default 30).
+
+    Returns:
+        pd.Series of TII values in [0, 100].
+    """
+    ma = close.rolling(window=major_period).mean()
+    dev = close - ma
+
+    sd_plus  = dev.clip(lower=0).rolling(window=minor_period).sum()
+    sd_minus = dev.clip(upper=0).abs().rolling(window=minor_period).sum()
+
+    total = sd_plus + sd_minus
+    tii = 100.0 * sd_plus / total.replace(0, np.nan)
+    return tii.fillna(50.0)
+
+
+def calc_bbw(df: pd.DataFrame, bb_period: int = 20, bb_std: float = 2.0) -> pd.Series:
+    """
+    Bollinger Band Width (BBW) — normalized.
+
+    BBW = (Upper Band - Lower Band) / Middle Band.
+    Low values indicate squeeze / consolidation; high values indicate expansion.
+
+    Args:
+        df: DataFrame with 'Close' column.
+        bb_period: Bollinger Band window (default 20).
+        bb_std: Standard deviation multiplier (default 2.0).
+
+    Returns:
+        pd.Series of BBW values.
+    """
+    upper, mid, lower = talib.BBANDS(df['Close'], timeperiod=bb_period, nbdevup=bb_std, nbdevdn=bb_std)
+    bbw = (upper - lower) / mid.replace(0, np.nan)
+    return bbw.fillna(0.0)
+
+
+def calc_hmm_regime_classifier(df: pd.DataFrame, n_states: int = 3) -> pd.Series:
+    """
+    Hidden Markov Model regime classifier using Gaussian emissions.
+
+    Fits a GaussianHMM on (log_return, norm_ATR) features and decodes states,
+    then sorts them by mean log return:  0=bearish, 1=sideways, 2=bullish.
+
+    Args:
+        df:       DataFrame with Open/High/Low/Close columns.
+        n_states: Number of HMM hidden states (default 3).
+
+    Returns:
+        pd.Series of int regime labels: 0=bearish, 1=sideways, 2=bullish.
+    """
+    from hmmlearn import hmm
+
+    close    = df['Close'].astype(float)
+    log_ret  = np.log(close / close.shift(1))
+    atr      = calc_atr(df, 14)
+    norm_vol = (atr / close.replace(0, np.nan))
+
+    features = pd.concat([log_ret, norm_vol], axis=1)
+    features.replace([np.inf, -np.inf], np.nan, inplace=True)
+    valid    = features.notna().all(axis=1)
+    X        = features[valid].values.astype(float)
+
+    # Default to sideways when not enough data
+    regime = pd.Series(1, index=df.index, dtype=int)
+
+    if len(X) < n_states * 50:
+        return regime
+
+    try:
+        model = hmm.GaussianHMM(
+            n_components=n_states, covariance_type='full',
+            n_iter=100, random_state=42, tol=1e-4,
+        )
+        model.fit(X)
+        raw_states = model.predict(X)
+    except Exception:
+        return regime
+
+    # Sort raw state IDs by mean log return (feature col 0) → ascending
+    state_means   = [X[raw_states == s, 0].mean() if (raw_states == s).sum() > 0 else 0.0
+                     for s in range(n_states)]
+    sorted_order  = sorted(range(n_states), key=lambda s: state_means[s])
+    raw_to_named  = {raw: named for named, raw in enumerate(sorted_order)}
+
+    named_states        = pd.Series([raw_to_named[r] for r in raw_states], index=df.index[valid])
+    regime.loc[valid]   = named_states
+    return regime
+
+def calc_amihud_illiq(df, period=20):
+    """
+    Calculates Amihud Illiquidity ratio: abs(returns) / volume.
+    Returns: ILLIQ Series.
+    """
+    illiq = df['Close'].pct_change().abs() / (df['Volume'] + 1e-10)
+    return illiq.rolling(window=period).mean()
+
+def calc_ou_mr_speed(df, period=20):
+    """
+    Calculates Ornstein-Uhlenbeck mean-reversion speed (kappa).
+    Uses price deviation from EMA(period).
+    Returns: kappa Series.
+    """
+    dev = df['Close'] - df['Close'].ewm(span=period).mean()
+    # AR(1) coefficient (phi)
+    phi = dev.rolling(window=period).corr(dev.shift(1))
+    # Kappa formula: -log(phi) * 252 (annualized)
+    # Clip phi to (0, 1) to avoid log of non-positive
+    kappa = -np.log(phi.clip(1e-10, 0.999)) * 252
+    return kappa
+

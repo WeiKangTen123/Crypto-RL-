@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL, BNB, XRP
 interest: High
 name: nowo-ichimoku-mtf
 source: Freqst / NowoIchimoku5mV2
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 5m, 1h
 type: short-term
 ---

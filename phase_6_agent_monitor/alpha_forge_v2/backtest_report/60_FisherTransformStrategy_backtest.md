@@ -22,4 +22,4 @@ pf: 0.87
 Validation Guard passed: Status is BAD.
 
 ## Expert Commentary
-Generated automatically. Strategy FisherTransformStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy FisherTransformStrategy produced 8729 trades. Currently marked as BAD.

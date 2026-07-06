@@ -3,9 +3,12 @@ coins: BTC, ETH, SOL
 interest: High
 name: supertrend-pro-volatility-breakout
 source: Web Search (TradingView Trends 2026)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- MEDIOCRE
 timeframes: 4h, 1d
 type: long-term
 ---

@@ -1,0 +1,23 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "67",
+  "strategy_class": "T3NexusStiffStrategy",
+  "original_sharpe": -0.3,
+  "best_sharpe": -0.72,
+  "best_params": {
+    "t3_length": 22,
+    "t3_vf": 0.9556428757689246,
+    "wae_sensitivity": 233,
+    "wae_fast_len": 20,
+    "wae_slow_len": 29,
+    "wae_bb_len": 16,
+    "wae_bb_mult": 1.116167224336399,
+    "wae_deadzone": 44,
+    "stiff_len": 68,
+    "stiff_threshold": 0.8540362888980227
+  },
+  "status": "BAD",
+  "message": "Strategy 67 (T3NexusStiffStrategy) was fine-tuned. Best trial Sharpe was -0.72 compared to baseline -0.30 (parameter update skipped since performance did not exceed threshold). Validation guards checked: stability passed technically but has severe downward sensitivity, cross-asset checks failed on ETH (-0.54 Sharpe). Graded BAD."
+}

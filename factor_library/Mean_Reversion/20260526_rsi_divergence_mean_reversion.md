@@ -3,9 +3,12 @@ coins: BTC, ETH, BNB, SOL, XRP
 interest: High
 name: rsi-divergence-mean-reversion
 source: TradingView / GitHub (fmzquant)
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- finetuned
+- BAD
 timeframes: 1h, 4h
 type: short-term
 ---

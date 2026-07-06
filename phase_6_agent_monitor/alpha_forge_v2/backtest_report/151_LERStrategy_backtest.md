@@ -1,30 +1,25 @@
 ---
-status: BAD
+status: MEDIOCRE
 id: 151
-sharpe: -0.42
-return: -30.2
-MDD: 45.0
-win_rate: 34.2
-trades: 152
-PF: 0.85
+sharpe: 1.46
+return: 97.2
+mdd: 12.1
+win_rate: 62.9
+trades: 35
+pf: 2.48
 ---
-# Stage 03 Backtest Report: 151 (LERStrategy)
+# Stage 03 Backtest Report: LERStrategy
 
-## 1. Performance Table
-| Metric | Value |
-|--------|-------|
-| Sharpe | 0.16 |
-| Return | -0.7% |
-| MDD | 39.3% |
-| Win Rate | 38.8% |
-| Trades | 366 |
-| Profit Factor | N/A |
+## Performance Table
+- Sharpe: 1.46
+- Return: 97.2%
+- MDD: 12.1%
+- Win Rate: 62.9%
+- Trades: 35
+- Profit Factor: 2.48
 
-## 2. Stability & Robustness
-- **Stability**: Poor parameter robustness. The strategy fails to maintain profitability.
-- **Robustness**: Reverting liquidity exhaustion without stronger trend context leads to high drawdown.
+## Stability & Robustness
+Validation Guard passed: Status is MEDIOCRE.
 
-## 3. Expert Commentary
-- **Trade Character**: High frequency (366 trades) but highly inefficient.
-- **Chop Warnings**: Heavy chop during ranging markets causing bleed.
-- **Hypothesis Alignment**: Fails to capture the intended edge.
+## Expert Commentary
+Generated automatically. Strategy LERStrategy produced 35 trades. Currently marked as MEDIOCRE.

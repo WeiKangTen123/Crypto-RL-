@@ -1,25 +1,25 @@
 ---
 status: MEDIOCRE
 id: 59
-sharpe: 0.28
-return: 15.0
-mdd: 45.8
-win_rate: 32.9
-trades: 356
-pf: 1.05
+sharpe: 0.92
+return: 247.7
+mdd: 25.9
+win_rate: 45.5
+trades: 77
+pf: 1.69
 ---
 # Stage 03 Backtest Report: EMARibbonRSIMomentumStrategy
 
 ## Performance Table
-- Sharpe: 0.28
-- Return: 15.0%
-- MDD: 45.8%
-- Win Rate: 32.9%
-- Trades: 356
-- Profit Factor: 1.05
+- Sharpe: 0.92
+- Return: 247.7%
+- MDD: 25.9%
+- Win Rate: 45.5%
+- Trades: 77
+- Profit Factor: 1.69
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy EMARibbonRSIMomentumStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy EMARibbonRSIMomentumStrategy produced 77 trades. Currently marked as MEDIOCRE.

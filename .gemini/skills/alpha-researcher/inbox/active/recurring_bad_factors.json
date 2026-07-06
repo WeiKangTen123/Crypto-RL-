@@ -1,0 +1,6 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "FACTOR_FAILURE_REPORT",
+  "priority": "MEDIUM",
+  "message": "The following factor classes have >=3 BAD/MEDIOCRE strategies. Avoid proposing these factor classes until a structural fix is identified:\nMACDKDJStrategy: 3 BAD/MEDIOCRE\nMeanReversionVRSI: 7 BAD/MEDIOCRE\nVWAPATRReversionStrategy: 5 BAD/MEDIOCRE\nSuperFVMAStrategy: 3 BAD/MEDIOCRE\nEMACrossoverStrategy: 3 BAD/MEDIOCRE\nLiquiditySweepReversalStrategy: 5 BAD/MEDIOCRE\nDMIADXStrategy: 4 BAD/MEDIOCRE\nWaveTrendMFIDivergenceStrategy: 4 BAD/MEDIOCRE\nOrderBlockSMCStrategy: 3 BAD/MEDIOCRE\nMeanReversionFundingRateStrategy: 5 BAD/MEDIOCRE\nNowoIchimokuMTFStrategy: 3 BAD/MEDIOCRE\nETHMomentumBreakoutStrategy: 3 BAD/MEDIOCRE\nForgeStrategy: 37 BAD/MEDIOCRE"
+}

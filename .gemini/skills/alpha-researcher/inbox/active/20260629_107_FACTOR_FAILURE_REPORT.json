@@ -1,0 +1,10 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "FACTOR_FAILURE_REPORT",
+  "priority": "MEDIUM",
+  "strategy_id": "107",
+  "strategy_class": "LorentzianClassificationMomentumStrategy",
+  "failure_type": "CRASH",
+  "factor_class": "LorentzianClassification",
+  "message": "Strategy 107 (LorentzianClassificationMomentumStrategy) crashed during scan with Can't instantiate abstract class LorentzianClassificationMomentumStrategy with abstract methods populate_buy_trend, populate_sell_trend. Researcher should avoid reusing this factor pattern without explicit fix."
+}

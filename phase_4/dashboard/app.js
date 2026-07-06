@@ -907,12 +907,12 @@ document.addEventListener('DOMContentLoaded', function () {
        mt['Total Return'] > 0,
        'Return = ' + ((mt['Total Return'] || 0) >= 0 ? '+' : '') + (mt['Total Return'] || 0).toFixed(2) + '%', W1);
 
-    ck('T1-03', 'T1', 'Max Drawdown < 50%',
-       Math.abs(mt['Max Drawdown %'] || 0) < 50,
+    ck('T1-03', 'T1', 'Max Drawdown < 20%',
+       Math.abs(mt['Max Drawdown %'] || 0) < 20,
        'MDD = ' + Math.abs(mt['Max Drawdown %'] || 0).toFixed(2) + '%', W1);
 
-    ck('T1-04', 'T1', 'Win Rate ≥ 30%',
-       (mt['Win Rate'] || 0) >= 30,
+    ck('T1-04', 'T1', 'Win Rate ≥ 40%',
+       (mt['Win Rate'] || 0) >= 40,
        'Win Rate = ' + (mt['Win Rate'] || 0).toFixed(1) + '%', W1);
 
     ck('T1-05', 'T1', 'Profit Factor ≥ 1.0',
@@ -926,19 +926,19 @@ document.addEventListener('DOMContentLoaded', function () {
     var wdlRaw = fmt['Worst Daily Loss'];
     if (wdlRaw) {
       var wdl = parseFloat(wdlRaw.replace('%', ''));
-      ck('T1-06', 'T1', 'Worst Daily Loss ≥ −20%', wdl >= -20,
+      ck('T1-06', 'T1', 'Worst Daily Loss ≥ −4%', wdl >= -4,
          'Worst day = ' + wdl.toFixed(2) + '%', W1);
     } else {
-      ck('T1-06', 'T1', 'Worst Daily Loss ≥ −20%', null, 'N/A', W1);
+      ck('T1-06', 'T1', 'Worst Daily Loss ≥ −4%', null, 'N/A', W1);
     }
 
     var crRaw = fmt['Cost Ratio'];
     if (crRaw) {
       var cr = parseFloat(crRaw.replace('%', ''));
-      ck('T1-07', 'T1', 'Cost Ratio < 50%', cr < 50,
+      ck('T1-07', 'T1', 'Cost Ratio < 30%', cr < 30,
          'Cost ratio = ' + cr.toFixed(1) + '%', W1);
     } else {
-      ck('T1-07', 'T1', 'Cost Ratio < 50%', null, 'N/A (zero profit)', W1);
+      ck('T1-07', 'T1', 'Cost Ratio < 30%', null, 'N/A (zero profit)', W1);
     }
 
     var dsrRaw = fmt['DSR p-value'];
@@ -969,7 +969,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var rdStr   = Object.entries(rdRaw).map(function(e) {
         return e[0].replace('_', ' ') + ': ' + e[1].toFixed(1) + '%';
       }).join('  ');
-      ck('T3-03', 'T3', 'Regime MDD > −40%', rdWorst > -40, rdStr, W3);
+      ck('T3-03', 'T3', 'Regime MDD > −30%', rdWorst > -30, rdStr, W3);
     } else {
       ck('T3-03', 'T3', 'Regime MDD > −40%', null, 'N/A', W3);
     }
@@ -979,11 +979,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (wkdRaw && wkndRaw) {
       var wkd    = parseFloat(wkdRaw);
       var wknd   = parseFloat(wkndRaw);
-      var ratio  = Math.abs(wkd) > 0.001 ? Math.abs(wknd / wkd) : 0;
-      ck('T3-04', 'T3', 'Weekend/Weekday ratio ≥ 0.30', ratio >= 0.30,
-         'Weekday = ' + wkd.toFixed(2) + '  Weekend = ' + wknd.toFixed(2) + '  ratio = ' + ratio.toFixed(2), W3);
+      var divPct = Math.abs(wkd) > 0.001 ? Math.abs(wknd - wkd) / Math.abs(wkd) : 999;
+      ck('CR-03', 'CR', 'Weekend/Weekday Sharpe divergence ≤ 100%', divPct <= 1.0,
+         'Weekday = ' + wkd.toFixed(2) + '  Weekend = ' + wknd.toFixed(2) + '  divergence = ' + (divPct * 100).toFixed(0) + '%', W3);
     } else {
-      ck('T3-04', 'T3', 'Weekend/Weekday ratio ≥ 0.30', null, 'N/A', W3);
+      ck('CR-03', 'CR', 'Weekend/Weekday Sharpe divergence ≤ 100%', null, 'N/A', W3);
     }
 
     // ── Score ─────────────────────────────────────────────────────────────
@@ -1017,6 +1017,7 @@ document.addEventListener('DOMContentLoaded', function () {
       {key: 'T1', label: 'Tier 1 — Fatal Gates', pts: W1},
       {key: 'T2', label: 'Tier 2 — Quality Gates', pts: W2},
       {key: 'T3', label: 'Tier 3 — Warnings', pts: W3},
+      {key: 'CR', label: 'Crypto Pack', pts: W3},
     ];
 
     tiers.forEach(function(tier) {

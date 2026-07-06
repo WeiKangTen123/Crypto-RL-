@@ -19,7 +19,7 @@ pf: 1.02
 - Profit Factor: 1.02
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy SMCOrderBlockReversal produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy SMCOrderBlockReversal produced 362 trades. Currently marked as MEDIOCRE.

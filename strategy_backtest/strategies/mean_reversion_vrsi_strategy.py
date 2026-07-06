@@ -59,23 +59,23 @@ class MeanReversionVRSI(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        vrsi_period: int = 71,
-        vrsi_oversold: float = 8.1484,
-        vrsi_overbought: float = 79.9282,
-        vwap_period: int = 400,
-        vwap_std_mult: float = 5.8187,
-        sl_pct: float = 0.0255,          # 0.4% hard stop
+        vrsi_period: int = 13,
+        vrsi_oversold: float = 5.9741,
+        vrsi_overbought: float = 89.0952,
+        vwap_period: int = 184,
+        vwap_std_mult: float = 5.8956,
+        sl_pct: float = 0.0819,          # 0.4% hard stop
         vrsi_extreme_low: float = 10.0,  # V-RSI below this = trending down, not reverting
         vrsi_extreme_high: float = 90.0,
         extreme_bars: int = 3,
-        ema_period: int = 67,
-        use_trend_filter: bool = False,
-        exit_mode: str = 'DYNAMIC_TRAILING',
-        entry_filter: str = 'VOL_SPIKE',
-        max_hold_bars: int = 90,         # Force close if not reverting fast enough
+        ema_period: int = 78,
+        use_trend_filter: bool = True,
+        exit_mode: str = 'VRSI_RESET',
+        entry_filter: str = 'NONE',
+        max_hold_bars: int = 13,         # Force close if not reverting fast enough
         consecutive_signals: int = 1,    # Require N consecutive bars of signal
-        adx_period: int = 20,
-        adx_threshold: float = 27.0,
+        adx_period: int = 34,
+        adx_threshold: float = 44.0,
         **kwargs,
     ):
         super().__init__(df, **kwargs)

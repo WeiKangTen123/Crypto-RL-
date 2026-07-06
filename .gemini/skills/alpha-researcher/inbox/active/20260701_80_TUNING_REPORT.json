@@ -1,0 +1,16 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "80",
+  "strategy_class": "SupertrendProStrategy",
+  "original_sharpe": -0.47,
+  "best_sharpe": -0.47,
+  "best_params": {
+    "rsi_period": 14,
+    "rsi_low": 39,
+    "rsi_high": 75
+  },
+  "status": "BAD",
+  "message": "Strategy 80 (SupertrendProStrategy) was fine-tuned. Sharpe remained -0.47 (best trial was -0.47). Validation guards passed stability (performance completely invariant at -0.47) but failed cross-asset (ETH Sharpe -0.76). Graded BAD due to structural unprofitability."
+}

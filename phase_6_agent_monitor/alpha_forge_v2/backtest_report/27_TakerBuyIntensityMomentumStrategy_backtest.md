@@ -19,7 +19,7 @@ pf: 1.09
 - Profit Factor: 1.09
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy TakerBuyIntensityMomentumStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy TakerBuyIntensityMomentumStrategy produced 378 trades. Currently marked as MEDIOCRE.

@@ -1,0 +1,21 @@
+{
+  "from": "crypto-strategy-tuner",
+  "topic": "TUNING_REPORT",
+  "priority": "LOW",
+  "strategy_id": "136",
+  "strategy_class": "AVSStrategy",
+  "original_sharpe": 0.16,
+  "best_sharpe": 0.16,
+  "best_params": {
+    "bb_period": 43,
+    "bb_std": 1.4214162328169146,
+    "intensity_period": 8,
+    "intensity_std": 1.0682365243020078,
+    "taker_threshold": 0.6795673979054474,
+    "sl_atr_mult": 0.8910694061858582,
+    "tp_atr_mult": 5.050325314058541,
+    "max_hold_bars": 181
+  },
+  "status": "BAD",
+  "message": "Strategy 136 (AVSStrategy) was fine-tuned. Sharpe remained 0.16 (best trial was 0.16). Validation guards failed stability (bb_period/bb_std perturbations crash performance) and failed cross-asset (ETH Sharpe -1.41). Graded BAD due to parameter fragility and low performance."
+}

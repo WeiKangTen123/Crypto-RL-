@@ -46,7 +46,7 @@ OLS_WINDOW        = 120    # 120 hours at 1h — stable hedge ratio (optimized)
 ZSCORE_WINDOW     = 48     # 48 hours at 1h — rolling z-score mean/std (optimized)
 BB_WINDOW         = 20     # bars for Bollinger Band on Z-score (visualization only)
 BB_STD            = 2.0    # BB multiplier (visualization only)
-EXIT_ZSCORE       = 0.0    # close when |z| falls below this; 0 disables noisy MR exits
+EXIT_ZSCORE       = 1.0    # close when |z| falls below this; locking profits early
 CAPITAL_PER_LEG   = 1000   # USD margin allocated per individual leg (coin A or B)
 LEVERAGE          = 3.0    # Position multiplier applied to capital
 TRADING_FEE       = 0.0005 # 0.05% taker fee per leg (4 legs per round-trip)
@@ -56,7 +56,7 @@ ADF_PVALUE_MAX    = 0.05   # standard p-value for cointegration
 MIN_ENTRY_Z       = 2.5    # entry threshold in σ units (optimized)
 COOLDOWN_BARS     = 6      # bars to wait after exit
 MIN_HOLD_BARS     = 2      # minimum hold to avoid micro-churn
-Z_STOP_LOSS       = 3.0    # structural break stop (enforced rule)
+Z_STOP_LOSS       = 3.5    # wider structural break stop (enforced rule)
 ROLLING_ADF_BARS  = 72     # re-run ADF every 3 days
 ROLLING_ADF_PVAL  = 0.10   # standard regime check
 MIN_R2            = 0.80   # tighter OLS quality gate (optimized)
@@ -83,13 +83,12 @@ DAILY_Z_DRIFT_MAX  = 3.0   # max Z drift in 24h before blocking entry
 
 
 def timeframe_scale(tf: str) -> int:
-    """Scale 1h-tuned bar windows to another timeframe while preserving duration."""
+    """Scale 1h-tuned bar windows to another timeframe while preserving duration.
+    Returns at least 1 even for coarser TFs so windows stay valid."""
     if tf not in TIMEFRAME_MINUTES:
         raise ValueError(f'Unsupported timeframe: {tf}')
     scale = TIMEFRAME_MINUTES[TIMEFRAME] / TIMEFRAME_MINUTES[tf]
-    if scale < 1:
-        raise ValueError(f'Timeframe {tf} is slower than base {TIMEFRAME}; use it as signal_tf only.')
-    return int(round(scale))
+    return max(1, int(round(scale)))
 
 
 def scaled_params(signal_tf: str, execution_tf: str) -> dict:

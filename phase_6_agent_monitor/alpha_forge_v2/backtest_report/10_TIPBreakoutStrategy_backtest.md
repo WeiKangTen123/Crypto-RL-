@@ -1,25 +1,25 @@
 ---
-status: BAD
+status: GOOD
 id: 10
-sharpe: -1.15
-return: -63.5
-mdd: 69.1
-win_rate: 15.2
-trades: 892
-pf: 0.78
+sharpe: 1.11
+return: 74.6
+mdd: 11.5
+win_rate: 32.8
+trades: 180
+pf: 1.62
 ---
 # Stage 03 Backtest Report: TIPBreakoutStrategy
 
 ## Performance Table
-- Sharpe: -1.15
-- Return: -63.5%
-- MDD: 69.1%
-- Win Rate: 15.2%
-- Trades: 892
-- Profit Factor: 0.78
+- Sharpe: 1.11
+- Return: 74.6%
+- MDD: 11.5%
+- Win Rate: 32.8%
+- Trades: 180
+- Profit Factor: 1.62
 
 ## Stability & Robustness
-Validation Guard passed: Status is MEDIOCRE.
+Validation Guard passed: Status is GOOD.
 
 ## Expert Commentary
-Generated automatically. Strategy TIPBreakoutStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy TIPBreakoutStrategy produced 180 trades. Currently marked as GOOD.

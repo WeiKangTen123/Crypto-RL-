@@ -3,9 +3,10 @@ coins: BTC, ETH
 interest: High
 name: rsi-mean-reversion-daily
 source: Reddit / Pine Script 2024 Strategies
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1d
 type: long-term
 ---

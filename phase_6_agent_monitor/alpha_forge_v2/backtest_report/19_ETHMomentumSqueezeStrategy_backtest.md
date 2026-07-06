@@ -1,25 +1,25 @@
 ---
 status: BAD
 id: 19
-sharpe: -0.34
-return: -75.1
-mdd: 79.9
-win_rate: 31.7
-trades: 60
-pf: 0.64
+sharpe: 0.05
+return: -3.1
+mdd: 47.7
+win_rate: 26.3
+trades: 19
+pf: 0.97
 ---
 # Stage 03 Backtest Report: ETHMomentumSqueezeStrategy
 
 ## Performance Table
-- Sharpe: -0.34
-- Return: -75.1%
-- MDD: 79.9%
-- Win Rate: 31.7%
-- Trades: 60
-- Profit Factor: 0.64
+- Sharpe: 0.05
+- Return: -3.1%
+- MDD: 47.7%
+- Win Rate: 26.3%
+- Trades: 19
+- Profit Factor: 0.97
 
 ## Stability & Robustness
 Validation Guard passed: Status is BAD.
 
 ## Expert Commentary
-Generated automatically. Strategy ETHMomentumSqueezeStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ETHMomentumSqueezeStrategy produced 19 trades. Currently marked as BAD.

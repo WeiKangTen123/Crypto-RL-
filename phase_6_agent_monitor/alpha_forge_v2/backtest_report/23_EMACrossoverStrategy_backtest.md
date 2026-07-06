@@ -22,4 +22,4 @@ pf: 1.33
 Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy EMACrossoverStrategy produced 0 trades. Currently marked as MEDIOCRE.
+Generated automatically. Strategy EMACrossoverStrategy produced 160 trades. Currently marked as MEDIOCRE.

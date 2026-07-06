@@ -4,6 +4,7 @@ file_path = "strategy_backtest/settings.py"
 with open(file_path, "r") as f:
     lines = f.readlines()
 
+# find end of STRATEGY_LIBRARY by searching backwards from ACTIVE_STRATEGY
 active_idx = -1
 for i, line in enumerate(lines):
     if "ACTIVE_STRATEGY =" in line:
@@ -11,9 +12,10 @@ for i, line in enumerate(lines):
         break
 
 if active_idx == -1:
-    print("Could not find ACTIVE_STRATEGY")
+    print("Could not find ACTIVE_STRATEGY.")
     sys.exit(1)
 
+# Find the closing brace '}' before ACTIVE_STRATEGY
 end_idx = -1
 for i in range(active_idx - 1, -1, -1):
     if lines[i].strip() == "}":
@@ -21,45 +23,33 @@ for i in range(active_idx - 1, -1, -1):
         break
 
 if end_idx == -1:
-    print("Could not find STRATEGY_LIBRARY closing brace")
+    print("Could not find STRATEGY_LIBRARY closing brace.")
     sys.exit(1)
 
-coins = ["BTC", "ETH", "SOL", "XRP"]
-tfs = ["5m", "15m", "1h", "4h", "1d"]
-
-new_entries = []
-strat_id = 159
-
-for coin in coins:
-    for tf in tfs:
-        entry = f"""    "{strat_id}": {{
-        "id": "FORGE_EMA_MACD_{coin}_{tf.upper()}",
-        "desc": "EMA MACD Cross ({coin}, {tf})",
-        "class": "ForgeStrategy",
-        "data": {{"coins": "{coin}", "timeframes": "{tf}", "date_from": "2023-01-01", "date_to": "2026-06-01"}},
-        "risk": {{"initial_balance": 1000, "risk_per_trade": 0.1, "leverage": 10,
-                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005}},
-        "params": {{
-            "entry": "ema_macd_cross",
-            "filters": [],
-            "exit_method": "atr_tp_sl",
-            "ema_fast": 5,
-            "ema_slow": 20,
-            "macd_fast": 12,
-            "macd_slow": 26,
-            "macd_signal": 9,
-            "tp_atr_mult": 2.0,
-            "sl_atr_mult": 1.0,
-            "atr_period": 14
-        }},
-    }},
+entry = """    "179": {
+        "id": "EMA_STREAK_1H",
+        "desc": "EMA Streak 1H - Abacussa",
+        "class": "EMAStreakStrategy",
+        "data": {"coins": "BTC", "timeframes": "1h", "date_from": "2023-01-01", "date_to": "2026-05-31"},
+        "risk": {"initial_balance": 1000, "risk_per_trade": 0.06, "leverage": 20,
+                 "trading_fee": 0.0005, "maintenance_margin_rate": 0.005},
+        "params": {
+            "fast": 59, "slow": 261, "streakWin": 60, "momentumPct": 0.14, "useStreak": True,
+            "stopLossPct": 0.02, "leverage_param": 20, "riskPerTrade": 0.06,
+            "useTP": False, "takeProfitPct": 0.0, "safetyPinPct": 0.08, "safetyPinLockPct": 0.04
+        },
+    },
 """
-        new_entries.append(entry)
-        strat_id += 1
 
-lines.insert(end_idx, "".join(new_entries))
+lines.insert(end_idx, entry)
+
+# Also update ACTIVE_STRATEGY
+for i, line in enumerate(lines):
+    if "ACTIVE_STRATEGY =" in line:
+        lines[i] = 'ACTIVE_STRATEGY = "179"\n'
+        break
 
 with open(file_path, "w") as f:
     f.writelines(lines)
 
-print(f"Added {len(new_entries)} strategies before line {end_idx}")
+print("Added strategy 179 and updated ACTIVE_STRATEGY!")

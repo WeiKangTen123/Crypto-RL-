@@ -1,25 +1,25 @@
 ---
 status: BAD
 id: 138
-sharpe: -13.88
-return: -70.4
-mdd: 70.6
-win_rate: 11.4
-trades: 648
-pf: 0.18
+sharpe: -6.16
+return: -22.9
+mdd: 23.4
+win_rate: 13.3
+trades: 128
+pf: 0.23
 ---
 # Stage 03 Backtest Report: ForgeStrategy
 
 ## Performance Table
-- Sharpe: -13.88
-- Return: -70.4%
-- MDD: 70.6%
-- Win Rate: 11.4%
-- Trades: 648
-- Profit Factor: 0.18
+- Sharpe: -6.16
+- Return: -22.9%
+- MDD: 23.4%
+- Win Rate: 13.3%
+- Trades: 128
+- Profit Factor: 0.23
 
 ## Stability & Robustness
 Validation Guard passed: Status is BAD.
 
 ## Expert Commentary
-Generated automatically. Strategy ForgeStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ForgeStrategy produced 128 trades. Currently marked as BAD.

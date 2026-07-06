@@ -3,9 +3,11 @@ coins: BTC, ETH, SOL
 interest: High
 name: envelope-mean-reversion
 source: Web / YouTube / Pine Script Community 2024
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
+- REJECTED
 timeframes: 1h, 15m
 type: short-term
 ---

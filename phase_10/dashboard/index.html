@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phase 10: Quantitative Pairs Trading</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
 </head>
 <body>
@@ -20,6 +20,7 @@
       <div class="sum-item"><div class="sum-label">Cointegrated</div><div class="sum-value" id="s-coint">—</div></div>
       <div class="sum-item"><div class="sum-label">Total Trades</div><div class="sum-value" id="s-total-trades">—</div></div>
       <div class="sum-item"><div class="sum-label">Period</div><div class="sum-value" id="s-period" style="font-size:0.9rem">—</div></div>
+      <div class="sum-item"><div class="sum-label">Viewing</div><div class="sum-value" id="s-viewing" style="font-size:1rem">—</div></div>
     </div>
   </div>
 </div>
@@ -28,9 +29,19 @@
 <div class="controls-row">
   <div class="ctrl-group">
     <span class="ctrl-label">Engine Mode</span>
-    <select id="engine-mode" onchange="loadResults()">
-      <option value="advanced" selected>Advanced (Log/Z-Score)</option>
-      <option value="wright">Wright Research (Clean)</option>
+    <select id="engine-mode" onchange="onViewChange()">
+      <option value="advanced" selected>Advanced (OLS/Z-Score)</option>
+      <option value="wright">Wright Research</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Results Timeframe</span>
+    <select id="results-tf" onchange="onViewChange()">
+      <option value="5m">5m</option>
+      <option value="15m">15m</option>
+      <option value="1h" selected>1h</option>
+      <option value="4h">4h</option>
+      <option value="1d">1d</option>
     </select>
   </div>
   <div class="ctrl-group">
@@ -39,20 +50,24 @@
       <option value="">-- Select a Pair --</option>
     </select>
   </div>
-  <div class="ctrl-group">
-    <span class="ctrl-label">Signal TF</span>
+  <div class="ctrl-group" style="border-left:1px solid var(--border);padding-left:16px;">
+    <span class="ctrl-label" style="color:var(--muted)">Run: Signal TF</span>
     <select id="signal-tf">
       <option value="1h" selected>1h</option>
       <option value="15m">15m</option>
       <option value="5m">5m</option>
+      <option value="4h">4h</option>
+      <option value="1d">1d</option>
     </select>
   </div>
   <div class="ctrl-group">
-    <span class="ctrl-label">Execution TF</span>
+    <span class="ctrl-label" style="color:var(--muted)">Run: Execution TF</span>
     <select id="execution-tf">
-      <option value="15m" selected>15m</option>
       <option value="5m">5m</option>
-      <option value="1h">1h</option>
+      <option value="15m">15m</option>
+      <option value="1h" selected>1h</option>
+      <option value="4h">4h</option>
+      <option value="1d">1d</option>
     </select>
   </div>
   <div class="ctrl-group">
@@ -658,6 +673,6 @@ ROI      = net_pnl / (2 × capital_per_leg)</div>
 
 </div><!-- end .main -->
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

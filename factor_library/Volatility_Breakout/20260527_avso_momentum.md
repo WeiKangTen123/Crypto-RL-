@@ -3,9 +3,10 @@ coins: BTC, ETH, SOL
 interest: High
 name: avso-momentum
 source: Zeiierman (GitHub) / Pine Script Community
-status: QUEUED
+status: COMPLETED
 tags:
-- queued
+- built
+- backtested
 timeframes: 1h, 4h
 type: long-term
 ---

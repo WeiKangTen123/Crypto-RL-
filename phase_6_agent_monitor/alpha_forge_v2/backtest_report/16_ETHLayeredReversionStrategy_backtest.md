@@ -1,5 +1,5 @@
 ---
-status: GOOD
+status: MEDIOCRE
 id: 16
 sharpe: 1.08
 return: 49.7
@@ -19,7 +19,7 @@ pf: 1.18
 - Profit Factor: 1.18
 
 ## Stability & Robustness
-Validation Guard passed: Status is BAD.
+Validation Guard passed: Status is MEDIOCRE.
 
 ## Expert Commentary
-Generated automatically. Strategy ETHLayeredReversionStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy ETHLayeredReversionStrategy produced 171 trades. Currently marked as MEDIOCRE.

@@ -1,25 +1,25 @@
 ---
 status: BAD
 id: 12
-sharpe: -0.22
-return: -13.3
-mdd: 20.8
-win_rate: 40.0
-trades: 80
-pf: 0.77
+sharpe: -0.28
+return: -18.2
+mdd: 30.1
+win_rate: 16.3
+trades: 49
+pf: 0.62
 ---
 # Stage 03 Backtest Report: VWAPATRReversionStrategy
 
 ## Performance Table
-- Sharpe: -0.22
-- Return: -13.3%
-- MDD: 20.8%
-- Win Rate: 40.0%
-- Trades: 80
-- Profit Factor: 0.77
+- Sharpe: -0.28
+- Return: -18.2%
+- MDD: 30.1%
+- Win Rate: 16.3%
+- Trades: 49
+- Profit Factor: 0.62
 
 ## Stability & Robustness
 Validation Guard passed: Status is BAD.
 
 ## Expert Commentary
-Generated automatically. Strategy VWAPATRReversionStrategy produced 0 trades. Currently marked as BAD.
+Generated automatically. Strategy VWAPATRReversionStrategy produced 49 trades. Currently marked as BAD.

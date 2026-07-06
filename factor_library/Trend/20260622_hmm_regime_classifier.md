@@ -1,6 +1,6 @@
 ---
 name: Hidden Markov Model (HMM) Regime Classifier
-strategy_id: TBD
+strategy_id: 188
 type: short-term
 factor_class: Trend
 directional_bias: Symmetric
@@ -9,12 +9,12 @@ timeframes: 4h, 1h, 1d
 coins: BTC, ETH, BNB, SOL, XRP
 source: arXiv, GitHub
 interest: High
-status: QUEUED
-sharpe: 0.0
-win_rate: 0.0
-total_return: 0.0
-max_drawdown: 0.0
-tags: [alpha, factor, Trend, machine-learning, regime-classification, hmm]
+status: COMPLETED
+sharpe: 0.39
+win_rate: 31.16
+total_return: 50.27
+max_drawdown: 48.38
+tags: [alpha, factor, Trend, machine-learning, regime-classification, hmm, built, backtested, finetuned, MEDIOCRE]
 ---
 
 # Hidden Markov Model (HMM) Regime Classifier

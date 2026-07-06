@@ -19,11 +19,11 @@ class FRDSStrategy(BaseStrategy):
     }
 
     def __init__(self, df: pd.DataFrame, 
-                 trend_period: int = 24,
-                 use_spot_obi: bool = True,
+                 trend_period: int = 23,
+                 use_spot_obi: bool = False,
                  use_regime_filter: bool = True,
-                 tp_multiplier: float = 5.6645,
-                 sl_multiplier: float = 3.7243,
+                 tp_multiplier: float = 7.057,
+                 sl_multiplier: float = 2.1989,
                  **kwargs):
         super().__init__(df, **kwargs)
         self.trend_period = int(trend_period)
