@@ -59,6 +59,15 @@ class BacktestEngine:
         self.total_borrow = 0.0
         self.total_funding = 0.0
 
+        # Calculate bars per day for per-bar borrow cost accrual
+        if len(self._times) >= 2:
+            import pandas as pd
+            ts_idx = pd.DatetimeIndex(self._times)
+            median_sec = float(ts_idx.to_series().diff().dropna().dt.total_seconds().median())
+            self.bars_per_day = (24 * 3600 / median_sec) if median_sec > 0 else 1.0
+        else:
+            self.bars_per_day = 1.0
+
     # ── Helpers ───────────────────────────────────────────────────────────────
 
     def _close(self, row, qty, entry_price, side, reason, exec_price=None):
@@ -306,6 +315,15 @@ class BacktestEngine:
                         if short_qty > 0:
                             self.balance += short_qty * close * fr
                             self.balance  = max(self.balance, 0.0)
+
+            # ── Short borrow cost (accrued per-bar based on daily rate) ──
+            # Short positions pay 3 bps/day = 0.0003/day
+            # Distribute daily rate across bars: daily_rate / bars_per_day
+            if short_qty > 0:
+                borrow_cost_per_bar = short_qty * close * (self.cost_calc.borrow_rate_daily / self.bars_per_day)
+                self.balance -= borrow_cost_per_bar
+                self.balance  = max(self.balance, 0.0)
+                self.total_borrow += borrow_cost_per_bar
 
             # ── Mark-to-market equity ─────────────────────────────────────────
             unreal_l = long_qty  * (close - long_entry)  if long_qty  > 0 else 0.0

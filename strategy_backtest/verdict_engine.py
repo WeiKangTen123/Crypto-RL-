@@ -49,7 +49,7 @@ class VerdictEngine:
         self.verdict = None
         self.score = 0.0
 
-    def check_all(self, metrics_dict, equity_curve, trades, timestamps, cfg=None, is_crypto=True):
+    def check_all(self, metrics_dict, equity_curve, trades, timestamps, cfg=None, is_crypto=True, wfo_results=None):
         """
         Run all 27 rules and compute verdict + score.
 
@@ -60,11 +60,13 @@ class VerdictEngine:
             timestamps: Timestamp index
             cfg: Strategy config dict
             is_crypto: Whether to apply CR rules
+            wfo_results: Optional WFO results dict with keys: wf_efficiency, oos_is_decay, oos_is_mdd_ratio
 
         Returns:
             dict with keys: verdict, score, blocking_rules, outcomes
         """
         self.results = []
+        self.wfo_results = wfo_results or {}
 
         # ── T0: Prerequisites ──────────────────────────────────────────────────
         t0_pass = self._check_T0_prerequisites(metrics_dict)
@@ -282,28 +284,54 @@ class VerdictEngine:
         """T2-01 through T2-06 (blocking gates)."""
         results = []
 
-        # T2-01: Walk-Forward Efficiency (requires WFO result, skipped here)
-        results.append({
-            'rule_id': 'T2-01',
-            'tier': 'T2',
-            'passed': True,
-            'summary': "Walk-Forward Efficiency: SKIPPED (requires separate WFO run)",
-        })
+        # T2-01: Walk-Forward Efficiency (WFE ≥ 0.5)
+        if self.wfo_results and 'wf_efficiency' in self.wfo_results:
+            wfe = self.wfo_results.get('wf_efficiency', 0.0)
+            passed = wfe >= 0.50
+            results.append({
+                'rule_id': 'T2-01',
+                'tier': 'T2',
+                'passed': passed,
+                'summary': f"Walk-Forward Efficiency = {wfe:.2f} (≥ 0.50)" if passed else f"WFE = {wfe:.2f} < 0.50",
+            })
+        else:
+            results.append({
+                'rule_id': 'T2-01',
+                'tier': 'T2',
+                'passed': True,
+                'summary': "Walk-Forward Efficiency: Skipped (no WFO results provided)",
+            })
 
-        # T2-02: OOS Sharpe decay ≤ 50%
-        results.append({
-            'rule_id': 'T2-02',
-            'tier': 'T2',
-            'passed': True,
-            'summary': "OOS Sharpe Decay: SKIPPED (requires separate OOS run)",
-        })
+        # T2-02: OOS Sharpe decay ≤ 50% (IS - OOS)
+        if self.wfo_results and 'oos_is_decay' in self.wfo_results:
+            decay = self.wfo_results.get('oos_is_decay', 0.0)
+            passed = decay <= 0.50
+            results.append({
+                'rule_id': 'T2-02',
+                'tier': 'T2',
+                'passed': passed,
+                'summary': f"OOS Sharpe Decay = {decay:.2f} (≤ 0.50)" if passed else f"Decay = {decay:.2f} > 0.50",
+            })
+        else:
+            results.append({
+                'rule_id': 'T2-02',
+                'tier': 'T2',
+                'passed': True,
+                'summary': "OOS Sharpe Decay: Skipped (no WFO results provided)",
+            })
 
         # T2-03: PBO < 15% (low overfit probability)
+        # PBO = P(Out-of-Sample Sharpe < 0 | In-Sample Sharpe > 0)
+        # Simplified: uses parameter count and sample size
+        sharpe = self._parse_metric(metrics_dict, 'Sharpe Ratio')
+        n_bars = len(equity_curve) if equity_curve else 100
+        pbo = self._calculate_pbo(sharpe, n_params=5, n_bars=n_bars)  # Assume 5 params by default
+        passed = pbo < 0.15
         results.append({
             'rule_id': 'T2-03',
-            'tier': 'T2 (Advisory)',
-            'passed': True,
-            'summary': "PBO Check: SKIPPED (requires separate PBO analysis)",
+            'tier': 'T2',
+            'passed': passed,
+            'summary': f"PBO = {pbo:.1%} (< 15%)" if passed else f"PBO = {pbo:.1%} ≥ 15%",
         })
 
         # T2-04: DSR p-value < 0.05
@@ -464,6 +492,38 @@ class VerdictEngine:
         peak = np.maximum.accumulate(arr)
         dd = (peak - arr) / np.where(peak > 0, peak, 1) * 100
         return float(np.max(dd))
+
+    @staticmethod
+    def _calculate_pbo(sharpe_ratio, n_params=5, n_bars=1000):
+        """
+        Probability of Backtest Overfitting (Bailey et al., 2015).
+
+        Simplified formula: PBO ≈ P(Z < -sharpe * sqrt(n_params / (n_bars - n_params)))
+
+        Args:
+            sharpe_ratio: In-sample Sharpe ratio
+            n_params: Number of optimized parameters
+            n_bars: Number of observations (bars) in backtest
+
+        Returns:
+            PBO as fraction (e.g., 0.10 = 10% probability of overfitting)
+        """
+        if sharpe_ratio <= 0 or n_bars <= n_params:
+            return 1.0  # High overfit risk if Sharpe ≤ 0 or too few samples
+
+        try:
+            from scipy.stats import norm
+            # Overfitting ratio: how much parameter count relative to sample size
+            overfit_ratio = n_params / max(n_bars - n_params, 1)
+            # Z-score for overfitting threshold
+            z_score = -sharpe_ratio * np.sqrt(overfit_ratio)
+            # Probability that OOS Sharpe is negative (indication of overfitting)
+            pbo = norm.cdf(z_score)
+            return max(0.0, min(pbo, 1.0))
+        except Exception:
+            # Fallback if scipy unavailable: simple heuristic
+            overfit_ratio = n_params / max(n_bars - n_params, 1)
+            return min(0.5, 0.1 * overfit_ratio / sharpe_ratio)
 
     def _format_output(self):
         """Format verdict output."""
