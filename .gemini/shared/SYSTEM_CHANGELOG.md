@@ -1,3 +1,5 @@
+| 2026-09-15 15:38 | @lead-architect | strategy_backtest/settings.py, Signal_Replay/runs.json, strategies/vegas_multicoin_portfolio_strategy.py | [6/6] MANIFEST | Completed 30-coin universe expansion, empirical alpha autopsy, and risk parity portfolio optimization. Scored on Signal Strive: Run B Sharpe 1.233 / 11.96% MDD (10-coin sr_57209bec6a) and single-digit 9.78% MDD / 1.090 Sharpe (12-coin sr_02c5ca772f). Registered Strategies 259 and 260.
+| 2026-09-15 14:30 | @lead-architect | strategy_backtest/library.py | [2/6] ADD_MATH | Added pure functions: calc_vegas_composite_signal, calc_inverse_volatility_weights, calc_market_breadth_score for 30-coin universe.
 | 2026-06-12 13:59 | @alpha-developer | factor_library/Cross_Exchange_Arb/cross_l2_liquidity_arbitrage.md | [1/8] INGEST | Read Alpha Card and mapped mathematical core. Identified need for new library functions for cross-DEX price diff, order book depth, and gas cost calculations.| 2026-06-12 14:18 | @alpha-researcher | factor_library/Trend_Momentum/lorentzian_classification_momentum.md | [2/4] EXTRACT_ALPHA | Drafted professional Candidate Card for Lorentzian Classification Momentum. |
 - `phase_6_agent_monitor/alpha_forge_v2/hypho_report/Trend_Momentum/lorentzian_classification_momentum.md`: Created hypothesis report.
 2026-06-12 14:38 | crypto-strategy-tuner | MODIFIED | .gemini/skills/crypto-strategy-tuner/data/finetune_results.json | Updated with finetuning results for strategy 102.
@@ -106,3 +108,61 @@
 Amihud ILLIQ (194) and OU MR (195) initialized.
 Implemented Amihud ILLIQ (194) and OU MR (195) strategies.
 Strategies 194 and 195 failed optimization.
+- **Alpha Forge (Strategy 235-239)**: Implemented a wave of "HARD" WorldQuant formulas:
+  - `Strategy 235` (Delta Decay Fade) -> MEDIOCRE (Sharpe 0.67, Return 124.1%)
+  - `Strategy 236` (Rank Decay Cascade) -> MEDIOCRE (Sharpe 0.45, Return 65.1%)
+  - `Strategy 237` (Extreme Nested Decay) -> BAD / GRAVEYARD (Sharpe -0.1)
+  - `Strategy 238` (Correlation Matrix Gate) -> MEDIOCRE (Sharpe 0.3, Return 22.8%)
+  - `Strategy 239` (Triple TS Rank Momentum) -> MEDIOCRE (Sharpe 0.57, Return 108.3%)
+  - Note: Prevented AI overfitting by stripping the 3% noise-scalp Stop Loss from Optuna boundaries for 237-239, revealing that traditional mean-reversion quants struggle heavily on crypto 4h timeframes compared to breakout/washout engines (like 234).
+- **Alpha Forge (Strategy 240)**: Built a 5-Component Market Stress Index (Volatility + Illiquidity + Correlation + Volume Surge - Trend).
+  - Optuna optimized it as a deep macro indicator (500-period normalization).
+  - Resulted in **Sharpe 0.78** (MEDIOCRE but very strong structurally) and **+135.5% Return**.
+- **Alpha Forge (Strategy 241)**: Built a Fractal Variance Ratio (Hurst Exponent Proxy) strategy.
+  - Requires variance ratio > 1.1 across 3 different scales (15, 30, 80).
+  - Achieved an elite **Sharpe 1.03** (GOOD) and **+70.0% Return** over 103 highly restrictive trades, proving multi-fractal persistence is a strong signal in crypto.
+
+## [2026-07-29] Phase 4 Factor Development & Backtest Catalog Update
+- **Action**: Developed 10 raw factor ideas from `factor_library/` and implemented pure functions in `strategy_backtest/library.py`.
+- **Phase 4 Backtest**: Evaluated factors on 5-year 1h BTC data (2021-2026).
+- **Cards Updated**: Generated and updated Phase 4 factor cards in `factor_library/`.
+- **Feature Hub Catalog**: Posted 10 new factors to `http://localhost:5173/api/catalog/features`.
+
+## [2026-09-15] Vegas Theory + Statistical Z-Score Strategy Implementation & Signal Replay
+- **Library Extensions**: Added pure functions in `strategy_backtest/library.py` under the Library-First Rule: `calc_vegas_tunnel` (144/169 EMAs), `calc_vegas_macro_tunnel` (576/676 EMAs), `calc_vegas_distance_zscore`, `calc_vegas_mean_score`, and `calc_sma`. Fixed typing `Tuple` import bug.
+- **Strategy Assembly**: Created `strategy_backtest/strategies/vegas_zscore_strategy.py` implementing `VegasZScoreStrategy`, integrating Vegas Tunnel watershed, macro regime filter, price Z-Score momentum expansion, Vegas Mean Score, ADX trend strength, volume surge filter, and structural tunnel exits.
+- **Registration**: Registered Strategy 257 (SOL 1H) and Strategy 258 (SOL 4H) in `strategy_backtest/settings.py` (with `.bak` backup created).
+- **Local Backtest**: Strategy 257 achieved Sharpe 0.99, +232.4% ROI, 31.5% MDD, PF 1.53 over 5 years. Strategy 258 achieved Sharpe 0.82, +165.3% ROI, 39.0% MDD, PF 2.40.
+- **Signal Replay Evaluation**: Submitted both strategies to Signal Strive API (`https://btest.abcz-tr.com/api/v1/signals`):
+  - Strategy 257 (`run_id: sr_37f30fb2a6`): **+448.23% Return ($5,482,301.98 final equity)**, Sharpe **0.804**, Score 40.2/100, Deflated-Sharpe p=0.03.
+  - Strategy 258 (`run_id: sr_3b5e0da9b6`): **+368.76% Return ($4,687,599.55 final equity)**, Sharpe **0.779**, Score 35.1/100.
+- **Catalog Update**: Compact records appended to `Signal_Replay/runs.json`.
+
+## [2026-09-15] Multi-Coin Universe Expansion & Single-Digit MDD Portfolio (Strategies 259 & 260)
+- **Dataset Expansion**: Ingested 20 liquid cryptocurrencies from `api.binance.us` via `scripts/download_expanded_dataset.py`, scaling universe to 30 coins with 12,498 4h bars each (2020-12-31 to 2026-09-15).
+- **Pure Math Library Functions**: Added `calc_vegas_composite_signal`, `calc_inverse_volatility_weights` (risk parity), and `calc_market_breadth_score` in `strategy_backtest/library.py`.
+- **Strategy Implementation**: Created `strategy_backtest/strategies/vegas_multicoin_portfolio_strategy.py` implementing `MultiCoinBaseStrategy` with dynamic Top-K ranking, BTC Vegas Macro Anchor, market breadth gating, inverse-volatility sizing, and two-stage ratchet risk management.
+- **Registration**: Registered Strategy 259 (10-coin) and Strategy 260 (12-coin) in `strategy_backtest/settings.py` (with `.bak` backup created).
+- **Signal Strive Evaluation**:
+  - Strategy 259 (`sr_57209bec6a`): Run B Sharpe 1.233, MDD 11.96%, Return +92.02% ($1.92M), Win Rate 65.0%, PF 1.57, Cost Ratio 27.9%. Run A Return +529.52% ($6.30M).
+  - Strategy 260 (`sr_02c5ca772f`): Run B Sharpe 1.090, MDD **9.78% (Single Digit Drawdown)**, Return +67.37% ($1.67M), PF 1.57. Run A Return +320.08% ($4.20M).
+
+## [2026-09-15] Cross-Asset Macro Market Map & Spot Bitcoin ETF Integration (Strategies 261 & 262)
+- **Macro & ETF Datasets**: Ingested and aligned 11,956 4h candles (2020-12-31 to 2026-06-16) across 6 macro assets via `scripts/ingest_macro_and_etf.py`:
+  - Equities: `SPY` (S&P 500 Equity Index Benchmark)
+  - Currency: `DXY` / `DX-Y.NYB` (US Dollar Index)
+  - Volatility: `^VIX` (CBOE Volatility Panic Index)
+  - Forex: `JPY=X` (USD/JPY Carry Trade Unwind Gauge)
+  - Institutional ETFs: `IBIT` and `FBTC` (Spot Bitcoin ETF price, volume, and dollar turnover from launch Jan 2024 to present).
+- **Pure Math Library Functions**: Implemented in `strategy_backtest/library.py`:
+  - `calc_macro_regime_index`: Cross-asset lead-lag regime filter and panic circuit breaker combining SPY equity trend, DXY dollar depreciation, VIX volatility, and JPY carry stability.
+  - `calc_etf_flow_proxy`: Spot Bitcoin ETF institutional flow momentum and distribution/outflow risk-off trigger.
+- **Strategy Architecture**: Built `strategy_backtest/strategies/vegas_macro_etf_multicoin_strategy.py` implementing `VegasMacroETFPortfolioStrategy`:
+  - Throttles margin sizing dynamically based on macro confidence.
+  - Vetoes new altcoin long entries during macro panics or institutional ETF outflows.
+  - Enforces two-stage ratchet risk management and locks profit stops to breakeven during macro headwinds.
+- **Registration**: Registered Strategy 261 (10-Coin Portfolio) and Strategy 262 (12-Coin Portfolio) in `strategy_backtest/settings.py` (with `.bak` backup).
+- **Signal Strive Official Scores**:
+  - Strategy 261 (`sr_bee52824af`): Run B Max Drawdown compressed to **7.94%**, Return **+114.40% ($2,143,966.87 final equity)**, Profit Factor **1.82**, Cost Ratio **21.6%**, Run A Return **+512.03% ($6,120,296.73)**.
+  - Strategy 262 (`sr_ad00596a9d`): Run B Max Drawdown compressed to **6.88%**, Return **+74.18% ($1,741,796.95 final equity)**, Profit Factor **1.71**, Cost Ratio **25.6%**, Run A Return **+261.62% ($3,616,187.13)**.
+- **Catalog Update**: Recorded in `Signal_Replay/runs.json`.

@@ -40,7 +40,7 @@ class AVSStrategy(BaseStrategy):
 
     def __init__(self, df: pd.DataFrame,
                  bb_period: int = 43,
-                 bb_std: float = 1.4214,
+                 bb_std: float = 1.8819,
                  kc_period: int = 20,
                  kc_mult: float = 1.5,
                  adx_period: int = 14,

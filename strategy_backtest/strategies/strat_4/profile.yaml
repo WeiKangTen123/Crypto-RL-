@@ -1,5 +1,0 @@
-name: "mtf_macd_kdj_adx_atr_btc"
-symbol: "BTCUSDT"
-timeframe: "1h"
-risk_per_trade: 0.1
-leverage: 10

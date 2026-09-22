@@ -74,27 +74,31 @@ class NowoIchimokuMTFStrategy(BaseStrategy):
     def _calculate_ichimoku(self, df: pd.DataFrame) -> pd.DataFrame:
         """Helper to calculate Ichimoku components."""
         res = pd.DataFrame(index=df.index)
+        n = len(df)
+        w_tk = min(self.tenkan_period, max(1, n))
+        w_kj = min(self.kijun_period, max(1, n))
+        w_sb = min(self.senkou_b_period, max(1, n))
         
         # Tenkan-sen (Conversion Line): (9-period high + 9-period low) / 2
-        res['tenkan'] = (df['High'].rolling(window=self.tenkan_period).max() + 
-                         df['Low'].rolling(window=self.tenkan_period).min()) / 2
+        res['tenkan'] = (df['High'].rolling(window=self.tenkan_period, min_periods=w_tk).max() + 
+                         df['Low'].rolling(window=self.tenkan_period, min_periods=w_tk).min()) / 2
         
         # Kijun-sen (Base Line): (26-period high + 26-period low) / 2
-        res['kijun'] = (df['High'].rolling(window=self.kijun_period).max() + 
-                        df['Low'].rolling(window=self.kijun_period).min()) / 2
+        res['kijun'] = (df['High'].rolling(window=self.kijun_period, min_periods=w_kj).max() + 
+                        df['Low'].rolling(window=self.kijun_period, min_periods=w_kj).min()) / 2
         
         # Senkou Span A (Leading Span A): (Tenkan-sen + Kijun-sen) / 2
         # Shifted forward by displacement (26)
-        res['senkou_a'] = ((res['tenkan'] + res['kijun']) / 2).shift(self.displacement)
+        res['senkou_a'] = ((res['tenkan'] + res['kijun']) / 2).shift(self.displacement).bfill()
         
         # Senkou Span B (Leading Span B): (52-period high + 52-period low) / 2
         # Shifted forward by displacement (26)
-        res['senkou_b'] = ((df['High'].rolling(window=self.senkou_b_period).max() + 
-                            df['Low'].rolling(window=self.senkou_b_period).min()) / 2).shift(self.displacement)
+        res['senkou_b'] = ((df['High'].rolling(window=self.senkou_b_period, min_periods=w_sb).max() + 
+                            df['Low'].rolling(window=self.senkou_b_period, min_periods=w_sb).min()) / 2).shift(self.displacement).bfill()
         
         # Kumo Cloud boundaries
-        res['cloud_top'] = res[['senkou_a', 'senkou_b']].max(axis=1)
-        res['cloud_bottom'] = res[['senkou_a', 'senkou_b']].min(axis=1)
+        res['cloud_top'] = res[['senkou_a', 'senkou_b']].max(axis=1).bfill()
+        res['cloud_bottom'] = res[['senkou_a', 'senkou_b']].min(axis=1).bfill()
         
         return res
 
@@ -113,21 +117,19 @@ class NowoIchimokuMTFStrategy(BaseStrategy):
         # 2. Informative Timeframe Ichimoku
         df_inf = df.resample(self.informative_tf).agg({
             'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last'
-        })
+        }).dropna(subset=['Close'])
         inf_ichi = self._calculate_ichimoku(df_inf)
         
-        # Align back to base dataframe
-        df['inf_close'] = df_inf['Close'].reindex(df.index, method='ffill')
-        df['inf_cloud_top'] = inf_ichi['cloud_top'].reindex(df.index, method='ffill')
-        df['inf_cloud_bottom'] = inf_ichi['cloud_bottom'].reindex(df.index, method='ffill')
-        df['inf_tenkan'] = inf_ichi['tenkan'].reindex(df.index, method='ffill')
-        df['inf_kijun'] = inf_ichi['kijun'].reindex(df.index, method='ffill')
-        
+        # Align back to base dataframe with fallbacks to base timeframe if HTF data is short
+        df['inf_close'] = df_inf['Close'].reindex(df.index, method='ffill').fillna(df['Close'])
+        df['inf_cloud_top'] = inf_ichi['cloud_top'].reindex(df.index, method='ffill').fillna(df['base_cloud_top'])
+        df['inf_cloud_bottom'] = inf_ichi['cloud_bottom'].reindex(df.index, method='ffill').fillna(df['base_cloud_bottom'])
+        df['inf_tenkan'] = inf_ichi['tenkan'].reindex(df.index, method='ffill').fillna(df['base_tenkan'])
+        df['inf_kijun'] = inf_ichi['kijun'].reindex(df.index, method='ffill').fillna(df['base_kijun'])
         
         # 3. ATR for SL/TP
-        df.dropna(inplace=True) # Ensure no NaNs before TA-Lib calculations
         import talib
-        df['atr'] = talib.ATR(df['High'], df['Low'], df['Close'], timeperiod=self.atr_period)
+        df['atr'] = talib.ATR(df['High'], df['Low'], df['Close'], timeperiod=self.atr_period).bfill()
         
         # 4. Entry Conditions
         base_long = (df['Close'] > df['base_cloud_top']) & (df['base_tenkan'] > df['base_kijun'])

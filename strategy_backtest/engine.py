@@ -15,6 +15,15 @@ class _Bar:
     def __getitem__(self, key):
         return getattr(self, key)
 
+    def get(self, key, default=None):
+        """Mirror pandas Series.get(). The live engine hands strategies a real Series,
+        so a strategy written against `row.get('col', default)` -- e.g. the ELITE ports
+        #900/#901/#902 reading 'atr'/'psar' -- ran fine live but raised AttributeError
+        the moment it was backtested through this proxy, making those strategies
+        impossible to grade. Absent attributes now fall back to `default`, matching
+        Series.get() semantics."""
+        return getattr(self, key, default)
+
 
 class BacktestEngine:
     """

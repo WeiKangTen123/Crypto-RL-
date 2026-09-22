@@ -120,8 +120,8 @@ class RWAMomentumStrategy(BaseStrategy):
         long_cond = trend_up & contracting & breakout_long & vol_spike & rsi_long_ok
         short_cond = trend_down & contracting & breakout_short & vol_spike & rsi_short_ok
 
-        long_edge = long_cond & ~long_cond.shift(1).fillna(False)
-        short_edge = short_cond & ~short_cond.shift(1).fillna(False)
+        long_edge = long_cond & ~long_cond.shift(1, fill_value=False)
+        short_edge = short_cond & ~short_cond.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values] = 1

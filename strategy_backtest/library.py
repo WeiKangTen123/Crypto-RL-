@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import talib
+from typing import Tuple, List, Dict, Union, Optional
 
 """
 library.py — Centralized repository for proven mathematical factors.
@@ -305,6 +306,12 @@ def detect_swing_high_low(df, lookback=20):
 def calc_ema(df, period=20):
     """EMA of Close."""
     return talib.EMA(df['Close'], timeperiod=period)
+
+def calc_sma(series, period=20):
+    """SMA of a given series."""
+    if isinstance(series, pd.DataFrame):
+        series = series['Close']
+    return talib.SMA(series, timeperiod=period)
 
 def calc_rsi(series, period=14):
     """RSI of a given series."""
@@ -1325,4 +1332,982 @@ def calc_roc(df, period=14):
     Returns: ROC Series (percentage).
     """
     return talib.ROC(df['Close'], timeperiod=period)
+
+def calc_csi(df, period=20):
+    """
+    Candle Sentiment Index (CSI).
+    Formula: (POS_bars - NEG_bars) / period
+    POS_bar: Close > Open
+    NEG_bar: Close < Open
+    Returns: CSI Series ranging from -1 to 1.
+    """
+    pos_bars = (df['Close'] > df['Open']).astype(int)
+    neg_bars = (df['Close'] < df['Open']).astype(int)
+    
+    rolling_pos = pos_bars.rolling(window=period).sum()
+    rolling_neg = neg_bars.rolling(window=period).sum()
+    
+    csi = (rolling_pos - rolling_neg) / period
+    return csi
+
+def calc_volume_hurst(df: pd.DataFrame, period: int = 100) -> pd.Series:
+    """
+    Approximates the Hurst exponent of the Volume series using a rolling Variance Ratio.
+    H ≈ 0.5 + 0.5 * log2( Var(x - x_lag2) / (2 * Var(x - x_lag1)) )
+    
+    If H > 0.5: Persistent (trending volume - surges tend to follow surges)
+    If H < 0.5: Anti-persistent (mean-reverting volume - spikes die off quickly)
+    If H = 0.5: Random walk
+    """
+    v = df['Volume']
+    
+    # 1-period diff variance
+    diff1 = v.diff(1)
+    var1 = diff1.rolling(period).var()
+    
+    # 2-period diff variance
+    diff2 = v.diff(2)
+    var2 = diff2.rolling(period).var()
+    
+    # Avoid division by zero
+    var1 = var1.replace(0, np.nan)
+    
+    # Approximate Hurst
+    h_approx = 0.5 + 0.5 * np.log2(var2 / (2 * var1))
+    
+    return h_approx.fillna(0.5)
+
+def calc_ts_rank(series: pd.Series, period: int) -> pd.Series:
+    """
+    Time-Series Rank: Returns the percentile rank of the current value 
+    within its trailing window of length `period`.
+    Ranges from 0.0 to 1.0.
+    """
+    def _rank(x):
+        # Number of elements less than or equal to the last element
+        return (x <= x[-1]).sum() / len(x)
+    
+    return series.rolling(period).apply(_rank, raw=True)
+
+def calc_vol_change_momentum(df: pd.DataFrame, delta_p: int = 2, corr_p: int = 6, ts_p: int = 10) -> pd.Series:
+    """
+    Volume-change momentum anti-corr (WorldQuant Alpha #2 adaptation).
+    Formula: -corr(ts_rank(delta(log(vol), delta_p)), ts_rank((close-open)/open), corr_p)
+    """
+    # delta(log(vol), 2)
+    log_vol = np.log(df['Volume'].replace(0, np.nan))
+    d_log_vol = log_vol.diff(delta_p)
+    
+    # ts_rank of d_log_vol
+    rank_vol = calc_ts_rank(d_log_vol, ts_p)
+    
+    # (close-open)/open
+    ret_intra = (df['Close'] - df['Open']) / df['Open'].replace(0, np.nan)
+    rank_ret = calc_ts_rank(ret_intra, ts_p)
+    
+    # Rolling correlation
+    corr = rank_vol.rolling(corr_p).corr(rank_ret)
+    
+    # Return negative correlation
+    return -corr
+
+def calc_open_vol_anticorr(df: pd.DataFrame, ts_p: int = 10, corr_p: int = 10) -> pd.Series:
+    """
+    Open-volume anticorrelation (WorldQuant Alpha #3 adaptation).
+    Formula: -corr(rank(open), rank(vol), 10)
+    Using time-series rank for a single asset.
+    """
+    rank_open = calc_ts_rank(df['Open'], ts_p)
+    rank_vol = calc_ts_rank(df['Volume'].replace(0, np.nan), ts_p)
+    
+    corr = rank_open.rolling(corr_p).corr(rank_vol)
+    
+    return -corr
+
+def calc_vwap_dist_vol_delta(df: pd.DataFrame, ts_p: int = 10) -> pd.Series:
+    """
+    VWAP distance x volume delta (WorldQuant Alpha #5 adaptation).
+    Formula: rank(open - SMA(vwap, ts_p)) * sign(close - vwap) * rank(abs(close - vwap)) * rank(delta(volume, ts_p))
+    """
+    vwap = (df['High'] + df['Low'] + df['Close']) / 3
+
+    f1 = calc_ts_rank(df['Open'] - vwap.rolling(ts_p).mean(), ts_p)
+    f2 = np.sign(df['Close'] - vwap)
+    f3 = calc_ts_rank(np.abs(df['Close'] - vwap), ts_p)
+    f4 = calc_ts_rank(df['Volume'].replace(0, np.nan).diff(ts_p), ts_p)
+
+    alpha = f1 * f2 * f3 * f4
+
+    return alpha
+
+def calc_vol_regime_reversal(df: pd.DataFrame, std_p: int = 20, argmax_p: int = 5, ts_p: int = 10) -> pd.Series:
+    """
+    Volatility regime reversal signal (WorldQuant Alpha #1 adaptation).
+    Formula: rank(argmax(sign(ret<0) ? std(ret,20) : close, 5)) - 0.5
+    """
+    ret = df['Close'].pct_change()
+    
+    # Rolling std of returns
+    rolling_std = ret.rolling(std_p).std()
+    
+    # Condition array
+    val_array = np.where(ret < 0, rolling_std, df['Close'])
+    val_series = pd.Series(val_array, index=df.index)
+    
+    # argmax over `argmax_p` periods
+    argmax_series = val_series.rolling(argmax_p).apply(np.argmax, raw=True)
+    
+    # ts_rank - 0.5
+    alpha = calc_ts_rank(argmax_series, ts_p) - 0.5
+    
+    return alpha
+
+def calc_open_vol_corr_fade(df: pd.DataFrame, corr_p: int = 10) -> pd.Series:
+    """
+    Open-volume correlation fade (WorldQuant Alpha #6 adaptation).
+    Formula: -corr(open, vol, 10)
+    Uses linear correlation (Pearson).
+    """
+    corr = df['Open'].rolling(corr_p).corr(df['Volume'].replace(0, np.nan))
+    
+    return -corr
+
+def calc_vol_surge_momentum_fade(df: pd.DataFrame, sma_p: int = 20, delta_p: int = 7, ts_p: int = 60) -> pd.Series:
+    """
+    Volume surge momentum fade (WorldQuant Alpha #7).
+    Formula: (adv20 < vol) ? -ts_rank(abs(delta(close, 7)), 60) * sign(delta(close, 7)) : -1
+    """
+    adv = df['Volume'].rolling(sma_p).mean()
+    vol_cond = adv < df['Volume']
+    
+    d_close = df['Close'].diff(delta_p)
+    abs_d_close = np.abs(d_close)
+    
+    # ts_rank ranges from 0 to 1
+    rank_abs = calc_ts_rank(abs_d_close, ts_p)
+    
+    surge_val = -rank_abs * np.sign(d_close)
+
+    # 0 = neutral when no volume surge (original formula uses -1 but that creates
+    # an implicit short bias in single-asset context; 0 means no signal)
+    alpha = np.where(vol_cond, surge_val, 0)
+
+    return pd.Series(alpha, index=df.index)
+
+def calc_momentum_cross_term_reversal(df: pd.DataFrame, ts_p: int = 10, corr_p: int = 10, delta_p: int = 10, rank_p: int = 10) -> pd.Series:
+    """
+    Momentum cross-term reversal (WorldQuant Alpha #8 adaptation).
+    Formula: -1 * rank(2 * rank(correlation(ts_rank(close, 10), ts_rank(volume, 10), 10)) - rank(delta(close, 10)))
+    (Adapted to use time-series ranks entirely for a single-asset continuous alpha).
+    """
+    rank_close = calc_ts_rank(df['Close'], ts_p)
+    rank_vol = calc_ts_rank(df['Volume'].replace(0, np.nan), ts_p)
+    
+    corr = rank_close.rolling(corr_p).corr(rank_vol)
+    rank_corr = calc_ts_rank(corr, rank_p)
+    
+    d_close = df['Close'].diff(delta_p)
+    rank_delta = calc_ts_rank(d_close, rank_p)
+    
+    # inner term
+    inner = 2 * rank_corr - rank_delta
+    
+    # final rank
+    alpha = -calc_ts_rank(inner, rank_p)
+    
+    return alpha
+
+def calc_close_delta_conditional_flip(df: pd.DataFrame, delta_p: int = 1, ts_p: int = 5) -> pd.Series:
+    """
+    Close delta conditional flip (WorldQuant Alpha #9).
+    Formula: ((ts_min(delta(close, 1), 5) > 0) ? delta(close, 1) : 
+             ((ts_max(delta(close, 1), 5) < 0) ? delta(close, 1) : (-1 * delta(close, 1))))
+    """
+    d_close = df['Close'].diff(delta_p)
+    ts_min = d_close.rolling(ts_p).min()
+    ts_max = d_close.rolling(ts_p).max()
+    
+    cond1 = ts_min > 0
+    cond2 = ts_max < 0
+    
+    # if cond1 is true -> d_close
+    # else if cond2 is true -> d_close
+    # else -> -d_close
+    # Which simplifies to: if (cond1 OR cond2) then d_close else -d_close
+    alpha = np.where(cond1 | cond2, d_close, -d_close)
+    
+    return pd.Series(alpha, index=df.index)
+
+def calc_ranked_conditional_close_delta(df: pd.DataFrame, delta_p: int = 1, ts_p: int = 4, rank_p: int = 10) -> pd.Series:
+    """
+    Ranked conditional close delta (WorldQuant Alpha #10 adaptation).
+    Formula: rank(((ts_min(delta(close, 1), 4) > 0) ? delta(close, 1) : 
+             ((ts_max(delta(close, 1), 4) < 0) ? delta(close, 1) : (-1 * delta(close, 1)))))
+    """
+    d_close = df['Close'].diff(delta_p)
+    ts_min = d_close.rolling(ts_p).min()
+    ts_max = d_close.rolling(ts_p).max()
+    
+    cond1 = ts_min > 0
+    cond2 = ts_max < 0
+    
+    alpha_raw = np.where(cond1 | cond2, d_close, -d_close)
+    alpha_raw_series = pd.Series(alpha_raw, index=df.index)
+    
+    alpha = calc_ts_rank(alpha_raw_series, rank_p)
+    
+    return alpha
+
+def calc_vwap_deviation_vol_rank(df: pd.DataFrame, ts_p: int = 3, rank_p: int = 10) -> pd.Series:
+    """
+    VWAP deviation × volume rank (WorldQuant Alpha #11 adaptation).
+    Formula: ((rank(ts_max((vwap - close), 3)) + rank(ts_min((vwap - close), 3))) * rank(delta(volume, 3)))
+    (Adapted to use time-series ranks).
+    """
+    # Data loader only keeps OHLCV — compute bar VWAP inline as typical price
+    vwap = (df['High'] + df['Low'] + df['Close']) / 3
+    vwap_diff = vwap - df['Close']
+    
+    ts_max_diff = vwap_diff.rolling(ts_p).max()
+    ts_min_diff = vwap_diff.rolling(ts_p).min()
+    
+    rank_max = calc_ts_rank(ts_max_diff, rank_p)
+    rank_min = calc_ts_rank(ts_min_diff, rank_p)
+    
+    vol_delta = df['Volume'].diff(ts_p)
+    rank_vol = calc_ts_rank(vol_delta, rank_p)
+    
+    alpha = (rank_max + rank_min) * rank_vol
+    
+    return alpha
+
+def calc_volume_covariance_fade(df: pd.DataFrame, cov_p: int = 5, rank_p: int = 10) -> pd.Series:
+    """
+    Volume covariance fade (WorldQuant Alpha #13 adaptation).
+    Formula: -rank(covariance(rank(close), rank(volume), 5))
+    """
+    rank_close = calc_ts_rank(df['Close'], rank_p)
+    rank_vol = calc_ts_rank(df['Volume'].replace(0, np.nan), rank_p)
+    
+    cov = rank_close.rolling(cov_p).cov(rank_vol)
+    
+    alpha = -calc_ts_rank(cov, rank_p)
+    
+    return alpha
+
+def calc_vol_return_anticorr_fade(df: pd.DataFrame, delta_p: int = 3, corr_p: int = 10, rank_p: int = 10) -> pd.Series:
+    """
+    Volume-return anti-correlation fade (WorldQuant Alpha #14 adaptation).
+    Formula: -rank(delta(returns, 3)) * correlation(open, volume, 10)
+    """
+    returns = df['Close'].pct_change()
+    ret_delta = returns.diff(delta_p)
+    rank_ret_delta = calc_ts_rank(ret_delta, rank_p)
+    
+    corr = df['Open'].rolling(corr_p).corr(df['Volume'].replace(0, np.nan))
+    
+    alpha = -rank_ret_delta * corr
+    
+    return alpha
+
+def calc_high_vol_3corr_cascade(df: pd.DataFrame, corr_p: int = 3, sum_p: int = 3, rank_p: int = 10) -> pd.Series:
+    """
+    High-volume 3-corr cascade (WorldQuant Alpha #15 adaptation).
+    Formula: -1 * sum(rank(correlation(rank(high), rank(volume), 3)), 3)
+    """
+    rank_high = calc_ts_rank(df['High'], rank_p)
+    rank_vol = calc_ts_rank(df['Volume'].replace(0, np.nan), rank_p)
+    
+    corr = rank_high.rolling(corr_p).corr(rank_vol)
+    rank_corr = calc_ts_rank(corr, rank_p)
+    
+    alpha = -1 * rank_corr.rolling(sum_p).sum()
+    
+    return alpha
+
+def calc_high_vol_covariance_fade(df: pd.DataFrame, cov_p: int = 5, rank_p: int = 10) -> pd.Series:
+    """
+    High-volume covariance fade (WorldQuant Alpha #16 adaptation).
+    Formula: -rank(covariance(rank(high), rank(volume), 5))
+    """
+    rank_high = calc_ts_rank(df['High'], rank_p)
+    rank_vol = calc_ts_rank(df['Volume'].replace(0, np.nan), rank_p)
+    
+    cov = rank_high.rolling(cov_p).cov(rank_vol)
+    
+    alpha = -calc_ts_rank(cov, rank_p)
+    
+    return alpha
+
+def calc_triple_interaction_momentum(df: pd.DataFrame, ts_p1: int = 10, ts_p2: int = 5, sma_p: int = 20, rank_p: int = 10) -> pd.Series:
+    """
+    Triple-interaction momentum (WorldQuant Alpha #17 adaptation).
+    Formula: (((-1 * rank(ts_rank(close, 10))) * rank(delta(delta(close, 1), 1))) * rank(ts_rank((volume / adv20), 5)))
+    """
+    # Term 1: -1 * rank(ts_rank(close, 10))
+    t1_inner = calc_ts_rank(df['Close'], ts_p1)
+    term1 = -1 * calc_ts_rank(t1_inner, rank_p)
+    
+    # Term 2: rank(delta(delta(close, 1), 1)) -> basically acceleration of close
+    accel = df['Close'].diff(1).diff(1)
+    term2 = calc_ts_rank(accel, rank_p)
+    
+    # Term 3: rank(ts_rank((volume / adv20), 5))
+    adv20 = df['Volume'].rolling(sma_p).mean()
+    vol_ratio = df['Volume'] / adv20.replace(0, np.nan)
+    t3_inner = calc_ts_rank(vol_ratio, ts_p2)
+    term3 = calc_ts_rank(t3_inner, rank_p)
+    
+    alpha = term1 * term2 * term3
+    
+    return alpha
+
+def calc_stddev_gap_cross(df: pd.DataFrame, std_p: int = 5, ts_p: int = 5, rank_p: int = 10) -> pd.Series:
+    """
+    Standard deviation gap cross (WorldQuant Alpha #18 adaptation).
+    Formula: -rank(ts_rank(stddev(abs(close - open), 5), 5) + ts_rank(stddev(close, 5), 5))
+    """
+    body_abs = np.abs(df['Close'] - df['Open'])
+    std_body = body_abs.rolling(std_p).std()
+    ts_rank_body = calc_ts_rank(std_body, ts_p)
+    
+    std_close = df['Close'].rolling(std_p).std()
+    ts_rank_close = calc_ts_rank(std_close, ts_p)
+    
+    inner_sum = ts_rank_body + ts_rank_close
+    alpha = -calc_ts_rank(inner_sum, rank_p)
+    
+    return alpha
+
+def calc_close_return_cond_gap(df: pd.DataFrame, delta_p: int = 7, sum_p: int = 60, rank_p: int = 10) -> pd.Series:
+    """
+    Close-return conditional gap (WorldQuant Alpha #19 adaptation).
+    Formula: ((-1 * sign(((close - delay(close, 7)) + delta(close, 7)))) * (1 + rank(1 + sum(returns, 250))))
+    Simplifies to: -sign(delta(close, 7)) * (1 + rank(sum(returns, 250)))
+    """
+    d_close = df['Close'].diff(delta_p)
+    term1 = -np.sign(d_close)
+    
+    returns = df['Close'].pct_change()
+    sum_ret = returns.rolling(sum_p).sum()
+    term2 = 1 + calc_ts_rank(sum_ret, rank_p)
+    
+    alpha = term1 * term2
+    
+    return alpha
+
+def calc_open_close_gap_cascade(df: pd.DataFrame, rank_p: int = 10) -> pd.Series:
+    """
+    Open-close gap cascade (WorldQuant Alpha #20 adaptation).
+    Formula: (((-1 * rank((open - delay(high, 1)))) * rank((open - delay(close, 1)))) * rank((open - delay(low, 1))))
+    """
+    open_high_gap = df['Open'] - df['High'].shift(1)
+    open_close_gap = df['Open'] - df['Close'].shift(1)
+    open_low_gap = df['Open'] - df['Low'].shift(1)
+    
+    rank1 = -1 * calc_ts_rank(open_high_gap, rank_p)
+    rank2 = calc_ts_rank(open_close_gap, rank_p)
+    rank3 = calc_ts_rank(open_low_gap, rank_p)
+    
+    alpha = rank1 * rank2 * rank3
+    
+    return alpha
+
+def calc_adv_low_mean_revert(df: pd.DataFrame, adv_p: int = 20, corr_p: int = 5) -> pd.Series:
+    """
+    Adv-low mean-revert + close (WorldQuant Alpha #28 adaptation).
+    Formula: correlation(adv20, low, 5) + ((high + low) / 2) - close
+    """
+    adv = df['Volume'].rolling(adv_p).mean()
+    corr = adv.rolling(corr_p).corr(df['Low'])
+    
+    # Fill NaN correlations with 0 to prevent dropping signal
+    corr = corr.fillna(0)
+    
+    alpha = corr + ((df['High'] + df['Low']) / 2) - df['Close']
+    return alpha
+
+def calc_geom_mean_vwap(df: pd.DataFrame) -> pd.Series:
+    """
+    Geometric mean - VWAP (WorldQuant Alpha #41 adaptation).
+    Formula: sqrt(high * low) - vwap
+    Requires VWAP in dataframe.
+    """
+    # Use typical price proxy if true VWAP is missing
+    vwap = df.get('VWAP', (df['High'] + df['Low'] + df['Close']) / 3)
+    
+    geom_mean = np.sqrt(df['High'] * df['Low'])
+    alpha = geom_mean - vwap
+    return alpha
+
+def calc_vol_close_anti_mom(df: pd.DataFrame, delta_p: int = 1) -> pd.Series:
+    """
+    Volume-close anti-momentum (WorldQuant Alpha #12 adaptation).
+    Formula: sign(delta(volume, 1)) * (-1 * delta(close, 1))
+    """
+    vol_diff = df['Volume'].diff(delta_p)
+    close_diff = df['Close'].diff(delta_p)
+    
+    alpha = np.sign(vol_diff) * (-1 * close_diff)
+    return alpha
+
+def calc_open_close_ratio_rank(df: pd.DataFrame, rank_p: int = 10) -> pd.Series:
+    """
+    Open-close ratio rank (WorldQuant Alpha #33 adaptation).
+    Formula: rank(-1 * ((1 - (open / close))))
+    """
+    ratio = 1 - (df['Open'] / df['Close'])
+    ratio = ratio.replace([np.inf, -np.inf], np.nan).fillna(0)
+    
+    alpha = calc_ts_rank(-1 * ratio, rank_p)
+    return alpha
+
+def calc_close_open_ratio_mom(df: pd.DataFrame, rank_p: int = 10) -> pd.Series:
+    """
+    Close-open ratio momentum (WorldQuant Alpha #38 adaptation).
+    Formula: ts_rank(close / open, 10)
+    """
+    ratio = df['Close'] / df['Open']
+    ratio = ratio.replace([np.inf, -np.inf], np.nan).fillna(1.0)
+    
+    alpha = calc_ts_rank(ratio, rank_p)
+    return alpha
+
+def calc_ohlc_gap_ratio(df: pd.DataFrame) -> pd.Series:
+    """
+    OHLC gap ratio (WorldQuant Alpha #101 adaptation).
+    Formula: (close - open) / (high - low + 0.001)
+    """
+    numerator = df['Close'] - df['Open']
+    denominator = df['High'] - df['Low'] + 0.001
+    
+    alpha = numerator / denominator
+    return alpha
+
+def calc_return_vol_ratio(df: pd.DataFrame, short_vol_p: int = 2, long_vol_p: int = 5) -> pd.Series:
+    """
+    Return Vol Ratio + Close Delta (WorldQuant Alpha #34 adaptation).
+    Formula: rank(stddev(returns, 2) / stddev(returns, 5)) - rank(delta(close, 1))
+    """
+    returns = df['Close'].pct_change()
+    
+    std_short = returns.rolling(short_vol_p).std()
+    std_long = returns.rolling(long_vol_p).std()
+    
+    vol_ratio = std_short / (std_long + 1e-9)
+    close_delta = df['Close'].diff(1)
+    
+    # We rank both across time (say 10 periods) to normalize them
+    rank_vol = calc_ts_rank(vol_ratio, 10)
+    rank_delta = calc_ts_rank(close_delta, 10)
+    
+    alpha = rank_vol - rank_delta
+    return alpha
+
+def calc_decay_linear(series: pd.Series, window: int) -> pd.Series:
+    """
+    WorldQuant's decay_linear function.
+    Applies a linearly decaying weight to the last `window` periods.
+    The most recent period gets the highest weight (window), the oldest gets weight 1.
+    """
+    weights = np.arange(1, window + 1)
+    weights = weights / np.sum(weights)
+    
+    # Using np.dot with raw=True is the fastest way to apply a custom dot product filter in pandas
+    return series.rolling(window).apply(lambda x: np.dot(x, weights), raw=True)
+
+
+# ── 10 NEW ADVANCED ALPHA FACTORS ─────────────────────────────────────────────
+
+def calc_fractal_variance_ratio(df: pd.DataFrame, p1: int = 5, p2: int = 20, p3: int = 60) -> pd.Series:
+    """
+    1. Fractal Variance Ratio Factor
+    Computes multi-timeframe variance ratio as a proxy for the Hurst Exponent.
+    VR > 1.0 indicates trending persistence; VR < 1.0 indicates mean reversion.
+    """
+    ret = df['Close'].pct_change()
+    var1 = ret.rolling(p1).var()
+    var2 = ret.rolling(p2).var()
+    var3 = ret.rolling(p3).var()
+    
+    vr12 = (var2 / (p2 / p1)) / (var1 + 1e-8)
+    vr23 = (var3 / (p3 / p2)) / (var2 + 1e-8)
+    
+    # Combined fractal persistence index normalized to [-1, 1]
+    fractal_index = ((vr12 + vr23) / 2.0 - 1.0).clip(-1.0, 1.0)
+    return fractal_index.fillna(0.0)
+
+
+def calc_delta_decay_fade(df: pd.DataFrame, window: int = 24, decay_p: int = 12) -> pd.Series:
+    """
+    2. Delta Decay Fade Factor
+    Applies linear decay to directional volume delta (taker volume proxy) to detect fading momentum.
+    """
+    bar_direction = np.sign(df['Close'] - df['Open'])
+    volume_delta = bar_direction * df['Volume']
+    
+    decayed_delta = calc_decay_linear(volume_delta.fillna(0.0), decay_p)
+    mu = decayed_delta.rolling(window).mean()
+    sd = decayed_delta.rolling(window).std().replace(0, np.nan)
+    
+    z_score = ((decayed_delta - mu) / (sd + 1e-8)).clip(-3.0, 3.0) / 3.0
+    # Fade signal: invert extreme z-score
+    return (-z_score).fillna(0.0)
+
+
+def calc_cusum_sharpe_breakout(df: pd.DataFrame, window: int = 48, threshold: float = 1.5) -> pd.Series:
+    """
+    3. CUSUM Sharpe Breakout Factor
+    Calculates rolling Sharpe ratio and computes cumulative sum (CUSUM) deviations to trigger quality breakouts.
+    """
+    ret = df['Close'].pct_change()
+    mu = ret.rolling(window).mean()
+    sd = ret.rolling(window).std().replace(0, np.nan)
+    sharpe = (mu / (sd + 1e-8)) * np.sqrt(365 * 24)
+    
+    # CUSUM filter
+    sharpe_diff = sharpe.diff()
+    cusum_pos = sharpe_diff.clip(lower=0).rolling(window).sum()
+    cusum_neg = (-sharpe_diff.clip(upper=0)).rolling(window).sum()
+    
+    signal = pd.Series(0.0, index=df.index)
+    signal[cusum_pos > threshold] = 1.0
+    signal[cusum_neg > threshold] = -1.0
+    return signal.fillna(0.0)
+
+
+def calc_rank_decay_cascade(df: pd.DataFrame, short_p: int = 5, long_p: int = 20, rank_w: int = 10) -> pd.Series:
+    """
+    4. Rank Decay Cascade Factor
+    Measures cross-timeframe rank decay of price velocity to detect structural trend exhaustion.
+    """
+    vel_short = df['Close'].diff(short_p)
+    vel_long = df['Close'].diff(long_p)
+    
+    rank_s = calc_ts_rank(vel_short, rank_w)
+    rank_l = calc_ts_rank(vel_long, rank_w)
+    
+    decay_diff = calc_decay_linear(rank_s - rank_l, rank_w)
+    return decay_diff.clip(-1.0, 1.0).fillna(0.0)
+
+
+def calc_funding_oi_divergence(df: pd.DataFrame, window: int = 24) -> pd.Series:
+    """
+    5. Sentiment Funding-OI Divergence Factor
+    Combines funding rate Z-scores with Open Interest / Volume shifts to signal over-leveraged squeezes.
+    Uses taker buy volume ratio & volatility when explicit OI parquet is omitted.
+    """
+    close_ret = df['Close'].pct_change()
+    vol_z = (df['Volume'] - df['Volume'].rolling(window).mean()) / (df['Volume'].rolling(window).std() + 1e-8)
+    ret_z = (close_ret - close_ret.rolling(window).mean()) / (close_ret.rolling(window).std() + 1e-8)
+    
+    # Divergence between return momentum and volume intensity
+    divergence = (ret_z - vol_z).clip(-3.0, 3.0) / 3.0
+    return divergence.fillna(0.0)
+
+
+def calc_cvd_absorption_divergence(df: pd.DataFrame, window: int = 20) -> pd.Series:
+    """
+    6. CVD Absorption & Divergence Factor
+    Measures Cumulative Volume Delta vs price direction to spot passive limit order absorption.
+    """
+    if 'taker_buy_base_vol' in df.columns:
+        taker_buy = pd.to_numeric(df['taker_buy_base_vol'], errors='coerce').fillna(df['Volume'] * 0.5)
+    else:
+        taker_buy = df['Volume'] * 0.5
+    vol = pd.to_numeric(df['Volume'], errors='coerce').fillna(0.0)
+    taker_sell = vol - taker_buy
+    cvd = (taker_buy - taker_sell).cumsum()
+    
+    cvd_ret = cvd.pct_change(window)
+    price_ret = df['Close'].pct_change(window)
+    
+    cvd_z = (cvd_ret - cvd_ret.rolling(window).mean()) / (cvd_ret.rolling(window).std() + 1e-8)
+    price_z = (price_ret - price_ret.rolling(window).mean()) / (price_ret.rolling(window).std() + 1e-8)
+    
+    # Absorption: High volume delta but minimal price movement
+    absorption = (cvd_z - price_z).clip(-3.0, 3.0) / 3.0
+    return absorption.fillna(0.0)
+
+
+def calc_fvg_mitigation_recovery(df: pd.DataFrame, gap_threshold: float = 0.005) -> pd.Series:
+    """
+    7. Fair Value Gap (FVG) Mitigation Recovery Factor
+    Detects 3-bar Fair Value Gaps (SMC) and signals recovery / mean-reversion entries.
+    """
+    high_prev2 = df['High'].shift(2)
+    low_curr = df['Low']
+    
+    low_prev2 = df['Low'].shift(2)
+    high_curr = df['High']
+    
+    bullish_fvg = (low_curr - high_prev2) / df['Close']
+    bearish_fvg = (low_prev2 - high_curr) / df['Close']
+    
+    signal = pd.Series(0.0, index=df.index)
+    signal[bullish_fvg > gap_threshold] = 1.0
+    signal[bearish_fvg > gap_threshold] = -1.0
+    return signal.fillna(0.0)
+
+
+def calc_hurst_regime_adaptive(df: pd.DataFrame, window: int = 100, threshold: float = 0.55) -> pd.Series:
+    """
+    8. Hurst Regime Adaptive Factor
+    Estimates rolling Hurst exponent via log-range scaling to identify persistent trending vs mean-reverting regimes.
+    """
+    def _estimate_hurst(series):
+        if len(series) < 20 or series.std() == 0:
+            return 0.5
+        rets = np.diff(series)
+        z = np.cumsum(rets - np.mean(rets))
+        r = np.max(z) - np.min(z)
+        s = np.std(rets) + 1e-8
+        rs = r / s
+        n = len(rets)
+        if rs <= 0 or n <= 1:
+            return 0.5
+        h = np.log(rs) / np.log(n)
+        return float(np.clip(h, 0.0, 1.0))
+
+    hurst_series = df['Close'].rolling(window).apply(_estimate_hurst, raw=True)
+    regime = pd.Series(0.0, index=df.index)
+    regime[hurst_series > threshold] = 1.0     # Persistent Trend
+    regime[hurst_series < (1.0 - threshold)] = -1.0 # Mean Reverting
+    return regime.fillna(0.0)
+
+
+def calc_intrabar_efficiency_momentum(df: pd.DataFrame, smooth_p: int = 14, ema_p: int = 179) -> pd.Series:
+    """
+    9. Intrabar Efficiency Momentum Factor (Adapted from WorldQuant Alpha #101)
+    Measures bar directional efficiency (Close-Open)/(High-Low) gated by long EMA trend direction.
+    """
+    bar_eff = (df['Close'] - df['Open']) / (df['High'] - df['Low'] + 1e-8)
+    smooth_eff = bar_eff.rolling(smooth_p).mean()
+    ema_trend = talib.EMA(df['Close'], timeperiod=ema_p)
+    
+    signal = pd.Series(0.0, index=df.index)
+    signal[(smooth_eff > 0.35) & (df['Close'] > ema_trend)] = 1.0
+    signal[(smooth_eff < -0.35) & (df['Close'] < ema_trend)] = -1.0
+    return signal.fillna(0.0)
+
+
+def calc_triple_ts_rank_momentum(df: pd.DataFrame, p1: int = 5, p2: int = 15, p3: int = 30) -> pd.Series:
+    """
+    10. Triple TS-Rank Momentum Factor
+    Combines multi-period time-series percentile ranks of price momentum to isolate strong continuation / reversal setups.
+    """
+    ret1 = df['Close'].pct_change(p1)
+    ret2 = df['Close'].pct_change(p2)
+    ret3 = df['Close'].pct_change(p3)
+    
+    r1 = calc_ts_rank(ret1, 20)
+    r2 = calc_ts_rank(ret2, 20)
+    r3 = calc_ts_rank(ret3, 20)
+    
+    composite_rank = (r1 + r2 + r3) / 3.0
+    return composite_rank.clip(-1.0, 1.0).fillna(0.0)
+
+
+# ── 2026 INSTITUTIONAL ALPHA FACTORS ──────────────────────────────────────────
+
+def calc_wyckoff_spring_upthrust(df: pd.DataFrame, lookback: int = 72, atr_period: int = 14) -> Tuple[pd.Series, pd.Series]:
+    """
+    Calculates Wyckoff Spring and Upthrust factors (72-hour range break/reversal traps).
+    - Spring: Price dips below rolling lookback Low and closes back above it (Bear Trap).
+    - Upthrust: Price spikes above rolling lookback High and closes back below it (Bull Trap).
+    Returns: (spring_score, upthrust_score) normalized by ATR.
+    """
+    atr = calc_atr(df, atr_period).replace(0, np.nan).ffill().fillna(1.0)
+    low_roll = df['Low'].rolling(lookback, min_periods=max(12, lookback // 4)).min().shift(1).fillna(df['Low'])
+    high_roll = df['High'].rolling(lookback, min_periods=max(12, lookback // 4)).max().shift(1).fillna(df['High'])
+    
+    spring_cond = (df['Low'] < low_roll) & (df['Close'] > low_roll)
+    upthrust_cond = (df['High'] > high_roll) & (df['Close'] < high_roll)
+    
+    spring_val = np.where(spring_cond, (low_roll - df['Low']) / atr, 0.0)
+    upthrust_val = np.where(upthrust_cond, (df['High'] - high_roll) / atr, 0.0)
+    
+    return pd.Series(np.clip(spring_val, 0.0, 5.0), index=df.index), pd.Series(np.clip(upthrust_val, 0.0, 5.0), index=df.index)
+
+
+def calc_kaufman_efficiency_ratio(df: pd.DataFrame, period: int = 14) -> pd.Series:
+    """
+    Calculates Kaufman Efficiency Ratio (KER) measuring price path efficiency (0.0 = noise, 1.0 = direct trend).
+    """
+    change = (df['Close'] - df['Close'].shift(period)).abs()
+    volatility = df['Close'].diff().abs().rolling(period).sum()
+    ker = change / volatility.replace(0, np.nan)
+    return ker.clip(0.0, 1.0).fillna(0.5)
+
+
+def calc_dynamic_macro_regime_weight(df: pd.DataFrame, adx_period: int = 14, chop_period: int = 14, ema_period: int = 200) -> pd.Series:
+    """
+    Computes Continuous Dynamic Macro Regime Weight (G_t in [0.0, 1.0]).
+    Blends ADX trend strength, Kaufman Efficiency, and Choppiness with EMA200 trend alignment.
+    Returns: G_t Series in [0.0, 1.0] (1.0 = Strong Persistent Trend, 0.0 = Sideways Chop).
+    """
+    adx = calc_adx(df, adx_period).fillna(20.0)
+    adx_score = (adx / 50.0).clip(0.0, 1.0)
+    
+    chop = calc_choppiness_index(df, chop_period).fillna(50.0)
+    chop_score = (1.0 - (chop / 100.0)).clip(0.0, 1.0)
+    
+    ker = calc_kaufman_efficiency_ratio(df, chop_period).fillna(0.5)
+    ker_score = ker.clip(0.0, 1.0)
+    
+    ema = talib.EMA(df['Close'], timeperiod=ema_period)
+    trend_aligned = (df['Close'] > ema).astype(float)
+    
+    regime_weight = (adx_score * 0.35 + chop_score * 0.35 + ker_score * 0.30) * trend_aligned
+    return pd.Series(np.clip(regime_weight.fillna(0.5), 0.0, 1.0), index=df.index)
+
+
+def calc_cvd_absorption_divergence(df: pd.DataFrame, period: int = 24) -> Tuple[pd.Series, pd.Series]:
+    """
+    Calculates 24-hour Cumulative Volume Delta (CVD) pressure and absorption divergence.
+    Returns: (cvd_buying_pressure in [-1.0, 1.0], cvd_divergence in [-1.0, 1.0]).
+    """
+    vol = df['Volume'].astype(float).replace(0, np.nan).fillna(1.0)
+    tb_vol = df.get('taker_buy_base_volume', df.get('taker_buy_base_vol', vol * 0.5)).astype(float)
+    signed_vol = 2.0 * tb_vol - vol
+    
+    cvd = signed_vol.rolling(period, min_periods=1).sum()
+    vol_sum = vol.rolling(period, min_periods=1).sum().replace(0, 1.0)
+    cvd_pressure = (cvd / vol_sum).clip(-1.0, 1.0).fillna(0.0)
+    
+    price_ret = df['Close'].pct_change(period).fillna(0.0)
+    norm_ret = (price_ret - price_ret.rolling(period * 4, min_periods=period).mean()) / (price_ret.rolling(period * 4, min_periods=period).std() + 1e-6)
+    norm_cvd = (cvd_pressure - cvd_pressure.rolling(period * 4, min_periods=period).mean()) / (cvd_pressure.rolling(period * 4, min_periods=period).std() + 1e-6)
+    
+    absorption_div = (norm_cvd - norm_ret).clip(-3.0, 3.0).fillna(0.0) / 3.0
+    return pd.Series(cvd_pressure, index=df.index), pd.Series(absorption_div, index=df.index)
+
+
+# ── 2026 VEGAS THEORY & STATISTICAL Z-SCORE FACTORS ─────────────────────────
+
+def calc_vegas_tunnel(df: pd.DataFrame, fast_period: int = 144, slow_period: int = 169) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    """
+    Computes classic Vegas Tunnel moving averages (Fibonacci squares: 12^2=144, 13^2=169).
+    Returns: (ema_144, ema_169, vegas_midline).
+    """
+    ema_fast = talib.EMA(df['Close'], timeperiod=fast_period)
+    ema_slow = talib.EMA(df['Close'], timeperiod=slow_period)
+    vegas_mid = (ema_fast + ema_slow) / 2.0
+    return ema_fast, ema_slow, vegas_mid
+
+
+def calc_vegas_macro_tunnel(df: pd.DataFrame, macro_fast: int = 576, macro_slow: int = 676) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    """
+    Computes macro Vegas Tunnel moving averages (24^2=576, 26^2=676).
+    Returns: (ema_576, ema_676, macro_midline).
+    """
+    ema_macro_f = talib.EMA(df['Close'], timeperiod=macro_fast)
+    ema_macro_s = talib.EMA(df['Close'], timeperiod=macro_slow)
+    macro_mid = (ema_macro_f + ema_macro_s) / 2.0
+    return ema_macro_f, ema_macro_s, macro_mid
+
+
+def calc_vegas_distance_zscore(df: pd.DataFrame, fast_period: int = 144, slow_period: int = 169, z_period: int = 20) -> Tuple[pd.Series, pd.Series]:
+    """
+    Calculates the statistical deviation (Z-score) of Price from the Vegas Tunnel midline.
+    Returns: (z_distance, raw_distance).
+    """
+    _, _, vegas_mid = calc_vegas_tunnel(df, fast_period, slow_period)
+    dist = df['Close'] - vegas_mid
+    mean_dist = dist.rolling(z_period).mean()
+    std_dist = dist.rolling(z_period).std()
+    z_dist = (dist - mean_dist) / (std_dist + 1e-8)
+    return z_dist, dist
+
+
+def calc_vegas_mean_score(df: pd.DataFrame, fast_period: int = 144, slow_period: int = 169, atr_period: int = 14) -> pd.Series:
+    """
+    Calculates the normalized Vegas Mean Score (distance from Vegas midline divided by ATR).
+    Returns: mean_score Series.
+    """
+    _, _, vegas_mid = calc_vegas_tunnel(df, fast_period, slow_period)
+    atr = talib.ATR(df['High'], df['Low'], df['Close'], timeperiod=atr_period)
+    mean_score = (df['Close'] - vegas_mid) / (atr + 1e-8)
+    return mean_score
+
+
+def calc_vegas_composite_signal(df: pd.DataFrame, 
+                               fast_period: int = 144, 
+                               slow_period: int = 169, 
+                               macro_period: int = 576, 
+                               filter_period: int = 12, 
+                               z_period: int = 20, 
+                               adx_period: int = 14, 
+                               vol_ma_period: int = 20) -> Dict[str, pd.Series]:
+    """
+    Vectorized computation of all Vegas Theory, statistical Z-Score, and trend filters.
+    Returns: Dict containing ema_12, ema_144, ema_169, ema_576, z_score, mean_score, adx, vol_ratio, atr.
+    """
+    ema_fast = talib.EMA(df['Close'], timeperiod=fast_period)
+    ema_slow = talib.EMA(df['Close'], timeperiod=slow_period)
+    vegas_mid = (ema_fast + ema_slow) / 2.0
+    ema_macro = talib.EMA(df['Close'], timeperiod=macro_period)
+    ema_filter = talib.EMA(df['Close'], timeperiod=filter_period)
+    
+    # Statistical Z-Score of distance from Vegas midline
+    dist = df['Close'] - vegas_mid
+    mean_dist = dist.rolling(z_period).mean()
+    std_dist = dist.rolling(z_period).std()
+    z_score = (dist - mean_dist) / (std_dist + 1e-8)
+    
+    # Normalized Mean Score (distance / ATR)
+    atr = talib.ATR(df['High'], df['Low'], df['Close'], timeperiod=14)
+    mean_score = dist / (atr + 1e-8)
+    
+    # Trend & Volume filters
+    adx = talib.ADX(df['High'], df['Low'], df['Close'], timeperiod=adx_period)
+    vol_sma = talib.SMA(df['Volume'], timeperiod=vol_ma_period)
+    vol_ratio = df['Volume'] / (vol_sma + 1e-8)
+    
+    return {
+        'ema_12': ema_filter,
+        'ema_144': ema_fast,
+        'ema_169': ema_slow,
+        'vegas_mid': vegas_mid,
+        'ema_576': ema_macro,
+        'z_score': z_score,
+        'mean_score': mean_score,
+        'adx': adx,
+        'vol_ratio': vol_ratio,
+        'atr': atr
+    }
+
+
+def calc_inverse_volatility_weights(volatilities: pd.DataFrame, max_weight: float = 0.35, min_weight: float = 0.05) -> pd.DataFrame:
+    """
+    Calculates normalized inverse-volatility weights across assets for dynamic risk parity.
+    Weight_i = (1 / vol_i) / sum(1 / vol_j), clipped to [min_weight, max_weight].
+    """
+    inv_vol = 1.0 / (volatilities + 1e-8)
+    sum_inv = inv_vol.sum(axis=1).replace(0, np.nan)
+    raw_weights = inv_vol.div(sum_inv, axis=0)
+    clipped = raw_weights.clip(lower=min_weight, upper=max_weight)
+    weights = clipped.div(clipped.sum(axis=1), axis=0)
+    return weights.fillna(0.0)
+
+
+def calc_market_breadth_score(closes: pd.DataFrame, ema_144s: pd.DataFrame) -> pd.Series:
+    """
+    Calculates the proportion of universe assets trading above their Vegas Tunnel 144 EMA.
+    Breadth = Count(Close > EMA_144) / Total_Assets.
+    Returns: Series of breadth scores in [0.0, 1.0].
+    """
+    above = (closes > ema_144s).astype(int)
+    breadth = above.sum(axis=1) / closes.shape[1]
+    return breadth
+
+
+# ── 2026 CROSS-ASSET MACRO & SPOT ETF FLOW FACTORS ───────────────────────────
+
+def calc_macro_regime_index(
+    spy_df: pd.DataFrame,
+    dxy_df: pd.DataFrame,
+    vix_df: pd.DataFrame,
+    jpy_df: pd.DataFrame,
+    spy_ma_period: int = 50,
+    dxy_z_period: int = 30,
+    vix_panic_threshold: float = 26.0,
+    vix_spike_pct: float = 0.20,
+    jpy_rapid_drop_pct: float = -0.025
+) -> Tuple[pd.Series, pd.Series]:
+    """
+    Cross-Asset Macro Lead-Lag Regime Filter and Panic Circuit Breaker.
+    Intermarket synthesis across equities, currency, volatility, and forex carry.
+
+    1. Equity Trend (SPY > EMA 50): Global risk-on tailwind (+0.35 weight).
+    2. Currency Pressure (DXY Z-Score): Weakening dollar expands global M2 liquidity (+0.25 weight).
+    3. Equity Volatility (VIX): Normal volatility (<20) encourages leverage (+0.25 weight).
+    4. FX Carry Stability (USD/JPY): Stable yen prevents systemic carry trade unwinds (+0.15 weight).
+
+    Returns:
+    - macro_score: pd.Series in [0.0, 1.0] (1.0 = Maximum Risk-On, 0.0 = High Risk-Off).
+    - macro_veto: pd.Series of booleans (True = Acute Panic / Global Shock Veto).
+    """
+    spy_c = spy_df['Close'] if 'Close' in spy_df.columns else spy_df['close']
+    spy_ema = talib.EMA(spy_c, timeperiod=spy_ma_period)
+    spy_score = (spy_c > spy_ema).astype(float)
+
+    dxy_c = dxy_df['Close'] if 'Close' in dxy_df.columns else dxy_df['close']
+    dxy_z = (dxy_c - dxy_c.rolling(dxy_z_period).mean()) / (dxy_c.rolling(dxy_z_period).std() + 1e-8)
+    dxy_score = (1.0 - (dxy_z / 2.0).clip(-1.0, 1.0)) / 2.0
+
+    vix_c = vix_df['Close'] if 'Close' in vix_df.columns else vix_df['close']
+    vix_score = (1.0 - (vix_c - 12.0) / (vix_panic_threshold - 12.0)).clip(0.0, 1.0)
+    vix_3d_pct = vix_c.pct_change(18)
+
+    jpy_c = jpy_df['Close'] if 'Close' in jpy_df.columns else jpy_df['close']
+    jpy_3d_pct = jpy_c.pct_change(18)
+    jpy_score = pd.Series(np.where(jpy_3d_pct < jpy_rapid_drop_pct, 0.0, 1.0), index=spy_df.index)
+
+    macro_score = (spy_score * 0.35) + (dxy_score * 0.25) + (vix_score * 0.25) + (jpy_score * 0.15)
+    macro_score = macro_score.clip(0.0, 1.0).fillna(0.50)
+
+    # Acute Macro Shock / Panic Veto Condition
+    macro_veto = (
+        (vix_c >= vix_panic_threshold) |
+        ((vix_3d_pct >= vix_spike_pct) & (spy_c < spy_ema)) |
+        (dxy_z >= 2.2) |
+        (jpy_3d_pct <= jpy_rapid_drop_pct)
+    )
+
+    return macro_score, macro_veto
+
+
+def calc_etf_flow_proxy(
+    ibit_df: pd.DataFrame,
+    fbtc_df: pd.DataFrame,
+    flow_ma_periods: int = 30,
+    decel_bars: int = 18
+) -> Tuple[pd.Series, pd.Series]:
+    """
+    Spot Bitcoin ETF Institutional Flow Momentum & Outflow Alert.
+    Models institutional dollar volume and directional flow proxy across IBIT & FBTC.
+
+    Returns:
+    - etf_flow_score: pd.Series in [0.0, 1.0] (1.0 = Institutional Accumulation, 0.5 = Neutral/Pre-ETF, 0.0 = Severe Outflow).
+    - etf_outflow_alert: pd.Series of booleans (True = Institutional De-risking / Outflow Wave).
+    """
+    ibit_c = ibit_df['Close'] if 'Close' in ibit_df.columns else ibit_df['close']
+    ibit_v = ibit_df['Volume'] if 'Volume' in ibit_df.columns else ibit_df['volume']
+    ibit_o = ibit_df['Open'] if 'Open' in ibit_df.columns else ibit_df['open']
+
+    fbtc_c = fbtc_df['Close'] if 'Close' in fbtc_df.columns else fbtc_df['close']
+    fbtc_v = fbtc_df['Volume'] if 'Volume' in fbtc_df.columns else fbtc_df['volume']
+    fbtc_o = fbtc_df['Open'] if 'Open' in fbtc_df.columns else fbtc_df['open']
+
+    ibit_dollar = ibit_c * ibit_v
+    fbtc_dollar = fbtc_c * fbtc_v
+    total_dollar = ibit_dollar + fbtc_dollar
+
+    ibit_sign = np.sign(ibit_c - ibit_o)
+    fbtc_sign = np.sign(fbtc_c - fbtc_o)
+    flow_proxy = (ibit_sign * ibit_dollar) + (fbtc_sign * fbtc_dollar)
+
+    rolling_flow = flow_proxy.rolling(flow_ma_periods).sum()
+    rolling_vol = total_dollar.rolling(flow_ma_periods).sum().replace(0, np.nan)
+    flow_intensity = (rolling_flow / rolling_vol).fillna(0.0).clip(-1.0, 1.0)
+
+    # Pre-2024 ETF era flag
+    is_active = total_dollar.rolling(flow_ma_periods).max() > 0
+
+    etf_flow_score = pd.Series(0.50, index=ibit_df.index)
+    etf_flow_score[is_active] = (flow_intensity[is_active] + 1.0) / 2.0
+
+    neg_flow = (rolling_flow < 0) & is_active
+    outflow_alert = ((neg_flow.rolling(decel_bars).sum() >= decel_bars) | (flow_intensity < -0.40)) & is_active
+
+    return etf_flow_score, outflow_alert
+
+
+
+
+
+
+
+
 

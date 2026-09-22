@@ -76,8 +76,8 @@ class MacroTakerFlowExhaustionStrategy(BaseStrategy):
         long_cond = (close <= df['dc_low']) & (df['taker_ratio'] < self.taker_low_threshold)
 
         # Edge detection: fire only on the first bar conditions become true
-        long_edge  = long_cond  & ~long_cond.shift(1).fillna(False)
-        short_edge = short_cond & ~short_cond.shift(1).fillna(False)
+        long_edge  = long_cond  & ~long_cond.shift(1, fill_value=False)
+        short_edge = short_cond & ~short_cond.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values]  = 1

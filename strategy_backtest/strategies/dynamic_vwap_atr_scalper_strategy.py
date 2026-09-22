@@ -48,15 +48,15 @@ class DynamicVWAPATRScalperStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        atr_period: int = 10,
-        atr_multiplier: float = 3.2406,
-        rsi_period: int = 22,
-        rsi_oversold: float = 34.2043,
-        rsi_overbought: float = 78.9407,
-        vol_ma_period: int = 25,
-        vol_multiplier: float = 2.9699,
-        atr_multiplier_sl: float = 0.7978,
-        max_hold_bars: Optional[int] = 21,
+        atr_period: int = 19,
+        atr_multiplier: float = 1.408,
+        rsi_period: int = 29,
+        rsi_oversold: float = 27.3103,
+        rsi_overbought: float = 78.7521,
+        vol_ma_period: int = 12,
+        vol_multiplier: float = 2.6575,
+        atr_multiplier_sl: float = 1.0793,
+        max_hold_bars: Optional[int] = 65,
         mode: str = 'reversion',
         **kwargs,
     ):
@@ -125,8 +125,8 @@ class DynamicVWAPATRScalperStrategy(BaseStrategy):
             short_cond = (close >= band_upper) & (rsi > self.rsi_overbought) & vol_spike
 
         # Rising edge
-        long_edge = long_cond & ~long_cond.shift(1).fillna(False)
-        short_edge = short_cond & ~short_cond.shift(1).fillna(False)
+        long_edge = long_cond & ~long_cond.shift(1, fill_value=False)
+        short_edge = short_cond & ~short_cond.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values] = 1

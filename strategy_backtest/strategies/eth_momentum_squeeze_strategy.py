@@ -67,11 +67,11 @@ class ETHMomentumSqueezeStrategy(BaseStrategy):
         signals = np.zeros(len(df), dtype=int)
         
         if self.direction in ['both', 'long_only']:
-            long_edge = long_cond & ~long_cond.shift(1).fillna(False)
+            long_edge = long_cond & ~long_cond.shift(1, fill_value=False)
             signals[long_edge.values] = 1
             
         if self.direction in ['both', 'short_only']:
-            short_edge = short_cond & ~short_cond.shift(1).fillna(False)
+            short_edge = short_cond & ~short_cond.shift(1, fill_value=False)
             signals[short_edge.values] = -1
 
         df['signal'] = signals

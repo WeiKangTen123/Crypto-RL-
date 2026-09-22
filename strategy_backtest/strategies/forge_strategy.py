@@ -47,11 +47,17 @@ class ForgeStrategy(BaseStrategy):
         )
 
     def generate_signals(self) -> pd.DataFrame:
-        self.df = self._dna.generate_signals()
-        return self.df
+        self._dna.df = self.df
+        df = self._dna.generate_signals()
+        if getattr(self, 'invert_signals', False):
+            df['signal'] = -df['signal']
+        self.df = df
+        return df
 
     def manage_trade(self, row, position: float, entry_price: float,
                      wallet: float = 0) -> Tuple[str, Optional[float]]:
+        if hasattr(self, 'df') and self.df is not None:
+            self._dna.df = self.df
         return self._dna.manage_trade(row, position, entry_price, wallet)
 
     @classmethod

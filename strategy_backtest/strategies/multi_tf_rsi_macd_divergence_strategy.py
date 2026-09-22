@@ -30,13 +30,13 @@ class MultiTFRSIMACDDivergenceStrategy(BaseStrategy):
         self,
         df: pd.DataFrame,
         htf_ema_period: int = 800, # Proxy for 200 EMA on 4H if using 1H data
-        rsi_period: int = 12,
-        macd_fast: int = 4,
-        macd_slow: int = 40,
-        macd_signal: int = 3,
-        lookback: int = 43,
-        sl_pct: float = 0.0174,
-        tp_pct: float = 0.0772,
+        rsi_period: int = 15,
+        macd_fast: int = 5,
+        macd_slow: int = 39,
+        macd_signal: int = 13,
+        lookback: int = 40,
+        sl_pct: float = 0.0281,
+        tp_pct: float = 0.0709,
         **kwargs,
     ):
         super().__init__(df, **kwargs)

@@ -34,15 +34,15 @@ class WaveTrendMFIDivergenceStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        wt_n1: int = 12,
-        wt_n2: int = 14,
+        wt_n1: int = 14,
+        wt_n2: int = 19,
         wt_oversold: int = -40,
-        wt_overbought: int = 64,
-        mfi_period: int = 17,
-        ema_period: int = 93,
-        divergence_lookback: int = 15,
-        tp_rr: float = 4.0437,
-        sl_atr_mult: float = 1.2181,
+        wt_overbought: int = 43,
+        mfi_period: int = 29,
+        ema_period: int = 128,
+        divergence_lookback: int = 19,
+        tp_rr: float = 2.4448,
+        sl_atr_mult: float = 2.6629,
         signal_mode: str = 'STRICT_DIVERGENCE',
         **kwargs
     ):

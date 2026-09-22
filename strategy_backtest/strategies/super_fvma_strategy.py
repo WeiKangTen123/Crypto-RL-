@@ -130,7 +130,7 @@ class SuperFVMAStrategy(BaseStrategy):
         else: # TREND_FOLLOWING
             long_cond = above_fvma & st_long
             # For trend following, we only want to enter on the FIRST bar where both are true
-            long_cond = long_cond & ~(long_cond.shift(1).fillna(False))
+            long_cond = long_cond & ~(long_cond.shift(1, fill_value=False))
         
         df['signal'] = 0
         df.loc[long_cond, 'signal'] = 1

@@ -1,17 +1,27 @@
 ---
-name: DOT 4H BB Breakout — WR + RSI Filtered (Forge #144)
 category: Trend
-coins: [DOT]
-timeframes: [4h]
+coins:
+- DOT
+max_drawdown: 8.3
+name: DOT 4H BB Breakout — WR + RSI Filtered (Forge
+sharpe: 2.1
 status: IMPLEMENTED
 strategy_id: 144
-sharpe: 2.10
-win_rate: 58.6
+tags:
+- forge
+- trend
+- bb_breakout
+- psar_trail
+- wr_not_extreme
+- rsi_not_extreme
+- DOT
+- 4h
+- implemented
+timeframes:
+- 4h
 total_return: 94.4
-max_drawdown: 8.3
-tags: [forge, trend, bb_breakout, psar_trail, wr_not_extreme, rsi_not_extreme, DOT, 4h]
+win_rate: 58.6
 ---
-
 ## Alpha Premise
 Bollinger Band breakout on DOT 4H, quality-gated by Williams %R (not extreme) and RSI (not extreme) to filter out overbought/oversold breakouts that tend to reverse. Exits via PSAR trailing stop to lock in trend profits without capping upside.
 

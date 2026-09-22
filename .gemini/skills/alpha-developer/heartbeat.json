@@ -1,6 +1,6 @@
 {
-  "ts": "2026-06-23T00:37:31.507999",
-  "status": "OFFLINE",
-  "action": "Stopped by user",
-  "last_action": "Stopped by user"
+  "ts": "2026-07-10T22:52:00",
+  "status": "STANDBY",
+  "action": "Awaiting further direction",
+  "last_action": "Forged Strategies 240 (Market Stress) and 241 (Fractal VR)"
 }

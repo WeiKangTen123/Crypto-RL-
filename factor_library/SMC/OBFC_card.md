@@ -1,9 +1,15 @@
 ---
+author: alpha-researcher
+coins:
+- BTC
+- XRP
+- BNB
 name: Institutional Order Block Mitigation with Fisher Confirmation (OBFC)
 status: IMPLEMENTED
-coins: [BTC, XRP, BNB]
-timeframes: [4h]
-author: alpha-researcher
+tags:
+- implemented
+timeframes:
+- 4h
 ---
 ## Alpha Premise
 Order Blocks (OBs) represent institutional supply/demand zones. However, blindly entering on OB touches often leads to being stopped out by liquidity sweeps. By requiring a momentum shift confirmation using the Fisher Transform (which detects sharp price reversals with near-zero lag) shortly after the OB touch, we drastically improve the win rate and Sharpe ratio.

@@ -30,13 +30,13 @@ class VolumePriceCorrelationExtremasStrategy(BaseStrategy):
     })
 
     def __init__(self, df: pd.DataFrame, 
-                 window_1: int = 26,
-                 window_2: int = 28,
-                 alpha_threshold: float = 0.2932,
+                 window_1: int = 25,
+                 window_2: int = 30,
+                 alpha_threshold: float = 0.5047,
                  mode: str = 'reversion',
-                 atr_period: int = 12,
-                 tp_multiplier: float = 5.9237,
-                 sl_multiplier: float = 2.4034,
+                 atr_period: int = 20,
+                 tp_multiplier: float = 5.9141,
+                 sl_multiplier: float = 2.8397,
                  **kwargs):
         super().__init__(df, **kwargs)
         self.df = df

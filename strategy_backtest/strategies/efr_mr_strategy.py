@@ -20,12 +20,12 @@ class EFRMRStrategy(BaseStrategy):
     }
 
     def __init__(self, df: pd.DataFrame, 
-                 fr_zscore_period: int = 97,
-                 fr_zscore_thresh: float = 2.1989,
-                 spot_obi_thresh: float = 0.3974,
-                 use_obi_filter: bool = True,
-                 tp_multiplier: float = 3.9885,
-                 sl_multiplier: float = 1.1386,
+                 fr_zscore_period: int = 95,
+                 fr_zscore_thresh: float = 2.3294,
+                 spot_obi_thresh: float = 0.1553,
+                 use_obi_filter: bool = False,
+                 tp_multiplier: float = 3.353,
+                 sl_multiplier: float = 1.5247,
                  **kwargs):
         super().__init__(df, **kwargs)
         self.fr_zscore_period = int(fr_zscore_period)

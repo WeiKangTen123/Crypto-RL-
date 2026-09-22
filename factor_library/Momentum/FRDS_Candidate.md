@@ -1,7 +1,15 @@
 ---
-coins: [BTC, ETH, BNB, SOL, XRP]
-timeframes: [4h]
+coins:
+- BTC
+- ETH
+- BNB
+- SOL
+- XRP
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 4h
 ---
 # Funding Rate Divergence Squeeze (FRDS)
 

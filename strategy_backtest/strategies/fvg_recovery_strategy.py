@@ -37,12 +37,12 @@ class FVG_Recovery_Strategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        min_gap_pct: float = 0.0241,
-        retrace_depth: float = 0.6789,
-        ema_period: int = 171,
+        min_gap_pct: float = 0.018,
+        retrace_depth: float = 0.8576,
+        ema_period: int = 166,
         use_trend_filter: bool = True,
         require_confirmation: bool = True,
-        tp_multiplier: float = 4.1718,
+        tp_multiplier: float = 7.6267,
         **kwargs,
     ):
         super().__init__(df, **kwargs)

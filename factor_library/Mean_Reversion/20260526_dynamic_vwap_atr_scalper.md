@@ -6,6 +6,7 @@ source: Web (Meme scalping logic adaptation)
 status: IMPLEMENTED
 tags:
 - queued
+- implemented
 timeframes: 5m, 15m, 1h
 type: short-term
 ---

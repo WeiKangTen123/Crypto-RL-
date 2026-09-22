@@ -28,13 +28,13 @@ class MultiTFRSIDivergenceStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        rsi_period: int = 11,
-        lookback: int = 10,
-        pivot_window: int = 27,
-        rsi_low: float = 41.2016,
-        rsi_high: float = 79.3183,
-        sl_atr_mult: float = 1.6464,
-        tp_rr: float = 6.9345,
+        rsi_period: int = 10,
+        lookback: int = 31,
+        pivot_window: int = 25,
+        rsi_low: float = 37.1362,
+        rsi_high: float = 60.5831,
+        sl_atr_mult: float = 2.7497,
+        tp_rr: float = 3.8574,
         **kwargs,
     ):
         super().__init__(df, **kwargs)

@@ -1,7 +1,14 @@
 ---
-coins: [BTC, ETH, SOL]
-timeframes: [4h, 1h]
+coins:
+- BTC
+- ETH
+- SOL
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 4h
+- 1h
 ---
 # Liquidity Exhaustion Reversal (LER)
 

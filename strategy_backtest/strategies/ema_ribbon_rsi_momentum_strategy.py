@@ -106,8 +106,8 @@ class EMARibbonRSIMomentumStrategy(BaseStrategy):
 
         if self.require_crossover:
             # Only enter on the FIRST bar of alignment (crossover-style, avoids late entry)
-            df.loc[long_aligned  & (~long_aligned.shift(1).fillna(False)),  'signal'] = 1
-            df.loc[short_aligned & (~short_aligned.shift(1).fillna(False)), 'signal'] = -1
+            df.loc[long_aligned  & (~long_aligned.shift(1, fill_value=False)),  'signal'] = 1
+            df.loc[short_aligned & (~short_aligned.shift(1, fill_value=False)), 'signal'] = -1
         else:
             # Enter on every aligned bar (generates more trades)
             df.loc[long_aligned,  'signal'] = 1

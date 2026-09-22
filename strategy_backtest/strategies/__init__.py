@@ -19,3 +19,5 @@ for _fpath in _glob.glob(_os.path.join(_STRATEGY_DIR, '*.py')):
 from .avs_strategy import AVSStrategy
 
 from .taker_intensity_breakout_strategy import TIPBreakoutStrategy
+from .vegas_zscore_strategy import VegasZScoreStrategy
+from .vegas_multicoin_portfolio_strategy import VegasMultiCoinPortfolioStrategy

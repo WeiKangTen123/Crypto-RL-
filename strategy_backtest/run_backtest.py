@@ -106,9 +106,15 @@ def load_data(coins, timeframe: str, date_from: str, date_to: str, mode='portfol
     d_from = _safe_date(date_from, '2021-01-01')
     d_to   = _safe_date(date_to,   '2026-12-31')
 
+    # Sanitize timeframe
+    if isinstance(timeframe, list):
+        timeframe = timeframe[0]
+    timeframe = str(timeframe)
+
     dfs = []
 
     for symbol in symbols:
+        symbol = str(symbol)
         path = os.path.join(DATASET_DIR, symbol, timeframe, 'spot_ohlcv.parquet')
         if not os.path.exists(path):
             print(f"  [WARN] Parquet not found: {path}")

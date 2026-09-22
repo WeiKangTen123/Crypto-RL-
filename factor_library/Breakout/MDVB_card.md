@@ -1,9 +1,15 @@
 ---
+author: alpha-researcher
+coins:
+- BTC
+- ETH
+- SOL
 name: McGinley Dynamic Volume Breakout (MDVB)
 status: IMPLEMENTED
-coins: [BTC, ETH, SOL]
-timeframes: [4h]
-author: alpha-researcher
+tags:
+- implemented
+timeframes:
+- 4h
 ---
 ## Alpha Premise
 Traditional moving averages often suffer from lag and whipsawing in high-volatility crypto markets. The McGinley Dynamic indicator continuously adjusts its smoothing factor based on market speed, reducing false signals. By combining it with a Volume-Weighted RSI (VRSI) and the Choppiness Index, we filter out range-bound noise and enter high-probability momentum breakouts.

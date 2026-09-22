@@ -72,7 +72,7 @@ class DumpReversalPeakTrailStrategy(BaseStrategy):
         long_ok = dump_in_window & (confirm_green | confirm_rsi)
         
         # 6. Rising Edge
-        long_edge = long_ok & ~long_ok.shift(1).fillna(False)
+        long_edge = long_ok & ~long_ok.shift(1, fill_value=False)
         
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values] = 1

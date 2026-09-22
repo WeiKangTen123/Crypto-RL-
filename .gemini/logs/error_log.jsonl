@@ -60,3 +60,25 @@
 {"ts": "2026-06-24T13:50:06.471927", "error": "unexpected indent (settings.py, line 344)"}
 {"ts": "2026-06-24T16:43:12.246363", "error": "Strategy 38 failed: cannot convert float NaN to integer"}
 {"ts": "2026-06-25T11:30:57.421849", "error": "Strategy 14 failed: '_Bar' object has no attribute 'is_bullish'"}
+{"ts": "2026-07-06T17:38:00.555581", "error": "Strategy 999 failed: join() argument must be str, bytes, or os.PathLike object, not 'list'"}
+{"ts": "2026-07-07T13:23:02.495430", "error": "Strategy 209 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T13:23:13.126403", "error": "Strategy 209 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T13:50:03.915843", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T13:56:44.006178", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T14:37:20.321949", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:05:25.038754", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:12:21.834952", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:12:21.974442", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:12:22.117983", "error": "Strategy 216 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:15:20.578076", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:15:20.668828", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:15:20.787979", "error": "Strategy 216 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:23:29.102726", "error": "Strategy 196 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:27:55.909222", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:28:02.872575", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:32:58.027244", "error": "Strategy 196 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:32:58.149174", "error": "Strategy 214 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:32:58.268207", "error": "Strategy 215 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-07T15:32:58.387077", "error": "Strategy 216 failed: 'dict' object has no attribute 'empty'"}
+{"ts": "2026-07-10T14:37:34.193016", "error": "Strategy 237 failed: min() got an unexpected keyword argument 'level'"}
+{"ts": "2026-07-12T16:08:01.203111", "error": "Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe current application. To solve this, set up an application context\nwith app.app_context(). See the documentation for more information."}

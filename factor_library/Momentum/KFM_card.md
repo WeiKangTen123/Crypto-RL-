@@ -1,11 +1,18 @@
 ---
-name: Kalman Filtered Momentum (KFM)
 category: Momentum
-coins: [BTC, ETH, BNB, SOL, XRP]
-timeframes: [4h]
+coins:
+- BTC
+- ETH
+- BNB
+- SOL
+- XRP
+name: Kalman Filtered Momentum (KFM)
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 4h
 ---
-
 ## Alpha Premise
 Traditional moving averages (EMA/SMA) suffer from fixed lag. A Kalman Filter estimates the true underlying price state by continuously updating based on the variance of the asset. By calculating the first derivative (slope) of the Kalman state, we isolate structural medium-frequency momentum without getting whipsawed by short-term noise.
 

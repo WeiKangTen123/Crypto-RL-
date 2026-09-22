@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td style="color:' + wrColor + '">' + mt['Win Rate'].toFixed(1) + '%</td>' +
         '<td>' + mt['Total Trades'] + '</td>' +
         '<td style="font-family:monospace;color:#94a3b8">' + (s.leverage || '—') + 'x</td>' +
-        '<td style="color:' + pfColor + '">' + mt['Profit Factor'].toFixed(2) + '</td>';
+        '<td style="color:' + pfColor + '">' + (mt['Profit Factor'] >= 99 ? '∞' : mt['Profit Factor'].toFixed(2)) + '</td>';
 
       tr.addEventListener('click', function () {
         document.querySelectorAll('#strat-rank-tbody tr').forEach(function (r) { r.classList.remove('row-active'); });
@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ['Sharpe Ratio',     mt['Sharpe Ratio'].toFixed(2)],
         ['Sortino Ratio',    mt['Sortino Ratio'].toFixed(2)],
         ['Calmar Ratio',     mt['Calmar Ratio'].toFixed(2)],
-        ['Profit Factor',    mt['Profit Factor'].toFixed(2)],
+        ['Profit Factor',    mt['Profit Factor'] >= 99 ? '∞' : mt['Profit Factor'].toFixed(2)],
         ['Expectancy',       fmt['Expectancy'] || '—'],
         ['Recovery Factor',  mt['Recovery Factor'].toFixed(2)],
         ['Max Drawdown',     Math.abs(mt['Max Drawdown %']).toFixed(2) + '%'],
@@ -721,7 +721,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ['Worst Trade',      fmt['Worst Trade'] || '—'],
         ['Max Consec. Wins', fmt['Max Consec. Wins']   || '—'],
         ['Max Consec. Loss', fmt['Max Consec. Losses'] || '—'],
-        ['Avg Duration',     fmt['Avg Duration (days)'] || '—'],
+        ['Avg Duration',     fmt['Avg Duration (hrs)'] || '—'],
       ]},
     ];
 
@@ -755,67 +755,112 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderDetailPriceMarkers(s, colorIdx) {
-    const trips = s.round_trips || [];
+    var pricesByCoin = s.equity_prices_by_coin || {};
+    var coins        = Object.keys(pricesByCoin);
+    var isMulti      = coins.length > 1;
 
-    const longEntries  = trips.filter(function (t) { return t.side === 'LONG'; });
-    const shortEntries = trips.filter(function (t) { return t.side === 'SHORT'; });
-    const longExits    = trips.filter(function (t) { return t.side === 'LONG'; });
-    const shortExits   = trips.filter(function (t) { return t.side === 'SHORT'; });
+    // ── Coin selector (multi-coin only) ────────────────────────────────
+    var existing = document.getElementById('price-coin-selector');
+    if (existing) existing.remove();
 
-    const traces = [
-      // Price line
-      {
-        x: s.equity_times, y: s.equity_prices,
-        name: s.coin + ' Close',
-        type: 'scatter', mode: 'lines',
-        line: {color: '#94a3b8', width: 1.5},
-        hovertemplate: '%{x}<br>$%{y:,.2f}<extra></extra>'
-      },
-      // Long Entry — green triangle-up
-      {
-        x: longEntries.map(function (t) { return t.entry_time; }),
-        y: longEntries.map(function (t) { return t.entry_price; }),
-        name: 'Long Entry',
-        mode: 'markers',
-        marker: {color: '#16a34a', size: 12, symbol: 'triangle-up', line: {color: '#fff', width: 1}},
-        hovertemplate: 'LONG ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'
-      },
-      // Short Entry — red triangle-down
-      {
-        x: shortEntries.map(function (t) { return t.entry_time; }),
-        y: shortEntries.map(function (t) { return t.entry_price; }),
-        name: 'Short Entry',
-        mode: 'markers',
-        marker: {color: '#dc2626', size: 12, symbol: 'triangle-down', line: {color: '#fff', width: 1}},
-        hovertemplate: 'SHORT ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'
-      },
-      // Exit Long — green X
-      {
-        x: longExits.map(function (t) { return t.exit_time; }),
-        y: longExits.map(function (t) { return t.exit_price; }),
-        name: 'Exit Long',
-        mode: 'markers',
-        marker: {color: '#16a34a', size: 11, symbol: 'x', line: {color: '#16a34a', width: 2}},
-        hovertemplate: 'EXIT LONG<br>%{x}<br>$%{y:,.4f}<extra></extra>'
-      },
-      // Exit Short — red X
-      {
-        x: shortExits.map(function (t) { return t.exit_time; }),
-        y: shortExits.map(function (t) { return t.exit_price; }),
-        name: 'Exit Short',
-        mode: 'markers',
-        marker: {color: '#dc2626', size: 11, symbol: 'x', line: {color: '#dc2626', width: 2}},
-        hovertemplate: 'EXIT SHORT<br>%{x}<br>$%{y:,.4f}<extra></extra>'
-      }
-    ];
+    var chartEl = document.getElementById('chart-strat-detail-price');
 
-    Plotly.newPlot('chart-strat-detail-price', traces, {
-      template: 'plotly_white', hovermode: 'x unified',
-      yaxis: {title: 'Price (USD)', tickprefix: '$'},
-      xaxis: {title: 'Date'},
-      legend: {orientation: 'h', y: 1.14, font: {size: 11}},
-      margin: {t: 20, b: 50, l: 80, r: 20}
-    }, {responsive: true});
+    if (isMulti) {
+      var selectorWrap = document.createElement('div');
+      selectorWrap.id = 'price-coin-selector';
+      selectorWrap.style.cssText =
+        'display:flex;gap:6px;padding:6px 0 10px;flex-wrap:wrap;align-items:center';
+
+      var label = document.createElement('span');
+      label.textContent = 'Coin:';
+      label.style.cssText = 'font-size:0.8rem;font-weight:600;color:#64748b;margin-right:2px';
+      selectorWrap.appendChild(label);
+
+      coins.forEach(function (c, i) {
+        var btn = document.createElement('button');
+        btn.className = 'filter-pill' + (i === 0 ? ' fp-active' : '');
+        btn.textContent = c;
+        btn.dataset.coin = c;
+        btn.addEventListener('click', function () {
+          selectorWrap.querySelectorAll('.filter-pill').forEach(function (b) {
+            b.classList.remove('fp-active');
+          });
+          btn.classList.add('fp-active');
+          drawChart(c);
+        });
+        selectorWrap.appendChild(btn);
+      });
+
+      chartEl.parentNode.insertBefore(selectorWrap, chartEl);
+    }
+
+    // ── Draw chart for one coin ─────────────────────────────────────────
+    function drawChart(coin) {
+      var pricesArr = pricesByCoin[coin] || s.equity_prices || [];
+
+      var trips = (s.round_trips || []).filter(function (t) {
+        return !isMulti || t.coin === coin;
+      });
+
+      var longEntries  = trips.filter(function (t) { return t.side === 'LONG';  });
+      var shortEntries = trips.filter(function (t) { return t.side === 'SHORT'; });
+
+      var traces = [
+        {
+          x: s.equity_times, y: pricesArr,
+          name: coin + ' Close',
+          type: 'scatter', mode: 'lines',
+          line: {color: '#94a3b8', width: 1.5},
+          hovertemplate: '%{x}<br>$%{y:,.2f}<extra></extra>'
+        },
+        {
+          x: longEntries.map(function (t) { return t.entry_time; }),
+          y: longEntries.map(function (t) { return t.entry_price; }),
+          name: 'Long Entry',
+          mode: 'markers',
+          marker: {color: '#16a34a', size: 12, symbol: 'triangle-up',
+                   line: {color: '#fff', width: 1}},
+          hovertemplate: 'LONG ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'
+        },
+        {
+          x: shortEntries.map(function (t) { return t.entry_time; }),
+          y: shortEntries.map(function (t) { return t.entry_price; }),
+          name: 'Short Entry',
+          mode: 'markers',
+          marker: {color: '#dc2626', size: 12, symbol: 'triangle-down',
+                   line: {color: '#fff', width: 1}},
+          hovertemplate: 'SHORT ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'
+        },
+        {
+          x: longEntries.map(function (t) { return t.exit_time; }),
+          y: longEntries.map(function (t) { return t.exit_price; }),
+          name: 'Exit Long',
+          mode: 'markers',
+          marker: {color: '#16a34a', size: 11, symbol: 'x',
+                   line: {color: '#16a34a', width: 2}},
+          hovertemplate: 'EXIT LONG<br>%{x}<br>$%{y:,.4f}<extra></extra>'
+        },
+        {
+          x: shortEntries.map(function (t) { return t.exit_time; }),
+          y: shortEntries.map(function (t) { return t.exit_price; }),
+          name: 'Exit Short',
+          mode: 'markers',
+          marker: {color: '#dc2626', size: 11, symbol: 'x',
+                   line: {color: '#dc2626', width: 2}},
+          hovertemplate: 'EXIT SHORT<br>%{x}<br>$%{y:,.4f}<extra></extra>'
+        }
+      ];
+
+      Plotly.newPlot('chart-strat-detail-price', traces, {
+        template: 'plotly_white', hovermode: 'x unified',
+        yaxis: {title: 'Price (USD)', tickprefix: '$'},
+        xaxis: {title: 'Date'},
+        legend: {orientation: 'h', y: 1.14, font: {size: 11}},
+        margin: {t: 20, b: 50, l: 80, r: 20}
+      }, {responsive: true});
+    }
+
+    drawChart(coins[0] || s.price_coin || s.coin);
   }
 
   function renderDetailPeriodic(s) {
@@ -843,7 +888,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tbody.innerHTML = '';
     const trips = s.round_trips || [];
     if (!trips.length) {
-      tbody.innerHTML = '<tr><td colspan="16" style="text-align:center;color:#64748b;padding:20px">No completed round-trip trades.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="17" style="text-align:center;color:#64748b;padding:20px">No completed round-trip trades.</td></tr>';
       return;
     }
 
@@ -866,6 +911,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td style="font-size:0.8rem">' + t.entry_time + '</td>' +
         '<td style="font-size:0.8rem">' + t.exit_time  + '</td>' +
         '<td><span class="strat-side-' + t.side.toLowerCase() + '">' + t.side + '</span></td>' +
+        '<td style="font-weight:700;font-size:0.8rem;color:#1e293b">' + (t.coin || '—') + '</td>' +
         '<td style="font-family:monospace;color:#94a3b8">' + (t.qty != null ? t.qty.toLocaleString(undefined, {maximumFractionDigits:4}) : '—') + '</td>' +
         '<td>$' + t.entry_price.toLocaleString() + '</td>' +
         '<td>$' + t.exit_price.toLocaleString()  + '</td>' +
@@ -1520,27 +1566,82 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderMcDetailPrice(s, colorIdx) {
-    var trips  = s.round_trips || [];
-    var longs  = trips.filter(function(t){ return t.side === 'LONG'; });
-    var shorts = trips.filter(function(t){ return t.side === 'SHORT'; });
-    Plotly.newPlot('chart-mc-detail-price', [
-      {x:s.equity_times, y:s.equity_prices, name:s.coin + ' Close', type:'scatter', mode:'lines',
-       line:{color:'#94a3b8', width:1.5}},
-      {x:longs.map(function(t){return t.entry_time;}), y:longs.map(function(t){return t.entry_price;}),
-       name:'Long Entry', mode:'markers', marker:{color:'#16a34a',size:12,symbol:'triangle-up',line:{color:'#fff',width:1}}},
-      {x:shorts.map(function(t){return t.entry_time;}), y:shorts.map(function(t){return t.entry_price;}),
-       name:'Short Entry', mode:'markers', marker:{color:'#dc2626',size:12,symbol:'triangle-down',line:{color:'#fff',width:1}}},
-      {x:longs.map(function(t){return t.exit_time;}), y:longs.map(function(t){return t.exit_price;}),
-       name:'Exit Long', mode:'markers', marker:{color:'#16a34a',size:11,symbol:'x',line:{color:'#16a34a',width:2}}},
-      {x:shorts.map(function(t){return t.exit_time;}), y:shorts.map(function(t){return t.exit_price;}),
-       name:'Exit Short', mode:'markers', marker:{color:'#dc2626',size:11,symbol:'x',line:{color:'#dc2626',width:2}}}
-    ], {
-      template:'plotly_white', hovermode:'x unified',
-      yaxis:{title:'Price (USD)', tickprefix:'$'},
-      xaxis:{title:'Date'},
-      legend:{orientation:'h', y:1.14, font:{size:11}},
-      margin:{t:20,b:50,l:80,r:20}
-    }, {responsive:true});
+    var pricesByCoin = s.equity_prices_by_coin || {};
+    var coins        = Object.keys(pricesByCoin);
+    var isMulti      = coins.length > 1;
+
+    var existing = document.getElementById('mc-price-coin-selector');
+    if (existing) existing.remove();
+
+    var chartEl = document.getElementById('chart-mc-detail-price');
+
+    if (isMulti) {
+      var selectorWrap = document.createElement('div');
+      selectorWrap.id = 'mc-price-coin-selector';
+      selectorWrap.style.cssText =
+        'display:flex;gap:6px;padding:6px 0 10px;flex-wrap:wrap;align-items:center';
+
+      var label = document.createElement('span');
+      label.textContent = 'Coin:';
+      label.style.cssText = 'font-size:0.8rem;font-weight:600;color:#64748b;margin-right:2px';
+      selectorWrap.appendChild(label);
+
+      coins.forEach(function (c, i) {
+        var btn = document.createElement('button');
+        btn.className = 'filter-pill' + (i === 0 ? ' fp-active' : '');
+        btn.textContent = c;
+        btn.dataset.coin = c;
+        btn.addEventListener('click', function () {
+          selectorWrap.querySelectorAll('.filter-pill').forEach(function (b) {
+            b.classList.remove('fp-active');
+          });
+          btn.classList.add('fp-active');
+          drawMcChart(c);
+        });
+        selectorWrap.appendChild(btn);
+      });
+
+      chartEl.parentNode.insertBefore(selectorWrap, chartEl);
+    }
+
+    function drawMcChart(coin) {
+      var pricesArr = pricesByCoin[coin] || s.equity_prices || [];
+      var trips = (s.round_trips || []).filter(function (t) {
+        return !isMulti || t.coin === coin;
+      });
+      var longs  = trips.filter(function (t) { return t.side === 'LONG';  });
+      var shorts = trips.filter(function (t) { return t.side === 'SHORT'; });
+
+      Plotly.newPlot('chart-mc-detail-price', [
+        {x: s.equity_times, y: pricesArr, name: coin + ' Close', type: 'scatter', mode: 'lines',
+         line: {color: '#94a3b8', width: 1.5},
+         hovertemplate: '%{x}<br>$%{y:,.2f}<extra></extra>'},
+        {x: longs.map(function(t){return t.entry_time;}), y: longs.map(function(t){return t.entry_price;}),
+         name: 'Long Entry', mode: 'markers',
+         marker: {color:'#16a34a', size:12, symbol:'triangle-up', line:{color:'#fff',width:1}},
+         hovertemplate: 'LONG ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'},
+        {x: shorts.map(function(t){return t.entry_time;}), y: shorts.map(function(t){return t.entry_price;}),
+         name: 'Short Entry', mode: 'markers',
+         marker: {color:'#dc2626', size:12, symbol:'triangle-down', line:{color:'#fff',width:1}},
+         hovertemplate: 'SHORT ENTRY<br>%{x}<br>$%{y:,.4f}<extra></extra>'},
+        {x: longs.map(function(t){return t.exit_time;}), y: longs.map(function(t){return t.exit_price;}),
+         name: 'Exit Long', mode: 'markers',
+         marker: {color:'#16a34a', size:11, symbol:'x', line:{color:'#16a34a',width:2}},
+         hovertemplate: 'EXIT LONG<br>%{x}<br>$%{y:,.4f}<extra></extra>'},
+        {x: shorts.map(function(t){return t.exit_time;}), y: shorts.map(function(t){return t.exit_price;}),
+         name: 'Exit Short', mode: 'markers',
+         marker: {color:'#dc2626', size:11, symbol:'x', line:{color:'#dc2626',width:2}},
+         hovertemplate: 'EXIT SHORT<br>%{x}<br>$%{y:,.4f}<extra></extra>'}
+      ], {
+        template: 'plotly_white', hovermode: 'x unified',
+        yaxis: {title: 'Price (USD)', tickprefix: '$'},
+        xaxis: {title: 'Date'},
+        legend: {orientation: 'h', y: 1.14, font: {size: 11}},
+        margin: {t: 20, b: 50, l: 80, r: 20}
+      }, {responsive: true});
+    }
+
+    drawMcChart(coins[0] || s.price_coin || s.coin);
   }
 
   function renderMcDetailPeriodic(s) {
@@ -1568,7 +1669,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tbody.innerHTML = '';
     var trips = s.round_trips || [];
     if (!trips.length) {
-      tbody.innerHTML = '<tr><td colspan="16" style="text-align:center;color:#64748b;padding:20px">No completed round-trip trades.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="17" style="text-align:center;color:#64748b;padding:20px">No completed round-trip trades.</td></tr>';
       return;
     }
     trips.forEach(function(t) {
@@ -1584,6 +1685,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td style="font-size:0.8rem">' + t.entry_time + '</td>' +
         '<td style="font-size:0.8rem">' + t.exit_time  + '</td>' +
         '<td><span class="strat-side-' + t.side.toLowerCase() + '">' + t.side + '</span></td>' +
+        '<td style="font-weight:700;font-size:0.8rem;color:#1e293b">' + (t.coin || '—') + '</td>' +
         '<td style="font-family:monospace;color:#94a3b8">' + (t.qty != null ? t.qty.toLocaleString(undefined, {maximumFractionDigits:4}) : '—') + '</td>' +
         '<td>$' + t.entry_price.toLocaleString() + '</td>' +
         '<td>$' + t.exit_price.toLocaleString()  + '</td>' +

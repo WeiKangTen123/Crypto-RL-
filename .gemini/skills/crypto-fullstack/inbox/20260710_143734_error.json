@@ -1,0 +1,7 @@
+{
+  "from": "System_Server",
+  "priority": "HIGH",
+  "topic": "RUNTIME_ERROR_DETECTED",
+  "message": "A runtime error occurred: Strategy 237 failed: min() got an unexpected keyword argument 'level'",
+  "ts": "2026-07-10T14:37:34.193971"
+}

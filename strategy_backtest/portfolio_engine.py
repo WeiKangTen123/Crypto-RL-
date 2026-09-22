@@ -1,29 +1,65 @@
 import numpy as np
 import pandas as pd
+from strategy_backtest.cost_calculator import CostCalculator
 
 class _Bar:
     def __getitem__(self, key):
         return getattr(self, key)
 
+    def get(self, key, default=None):
+        """Mirror pandas Series.get() -- see the same method on engine._Bar. The live
+        engine passes strategies a real Series, so `row.get('col', default)` works there;
+        without this the same strategy raises AttributeError under backtest."""
+        return getattr(self, key, default)
+
 class PortfolioBacktestEngine:
     """
     Portfolio-level bar-by-bar backtesting engine.
     Supports running multiple coins simultaneously with a shared account balance.
+
+    Gross exposure cap: each symbol used to size its entry as risk_per_trade *
+    cur_equity independently, with no awareness of what other symbols already
+    had open — so several coins entering on the same bar could commit far more
+    aggregate notional than a real shared cross-margin book allows (external
+    replay platforms cap this, e.g. "one cross-margin book, gross exposure
+    capped at 3x, <=95% equity per position"). New entries are now sized
+    against remaining headroom under GROSS_EXPOSURE_CAP so simultaneous
+    multi-symbol entries share one exposure budget instead of each claiming
+    the same equity snapshot in full.
     """
-    def __init__(self, dfs: dict, strategy, risk_manager, initial_balance=10_000):
+    GROSS_EXPOSURE_CAP = 3.0   # total notional across all open positions, as a multiple of equity
+    MAX_POSITION_PCT = 0.95    # single position notional cap, as a fraction of equity * leverage
+
+    def __init__(self, dfs: dict, strategy, risk_manager, initial_balance=10_000, cost_calculator=None):
         self.strategy = strategy
         self.dfs = strategy.generate_signals()
         self.rm = risk_manager
+        # BacktestEngine (single-coin) always builds its own CostCalculator so
+        # every backtest gets realistic square-root market-impact slippage.
+        # This engine used to leave cost_calc as None whenever the caller
+        # didn't pass one — and none of run_backtest.py / scan_all.py /
+        # submit_batch.py ever did — so every multi-coin portfolio backtest
+        # in the system silently ran with zero slippage. Default to a real
+        # CostCalculator here too, matching BacktestEngine's behavior.
+        self.cost_calc = cost_calculator or CostCalculator(
+            maker_fee=self.rm.trading_fee,
+            taker_fee=self.rm.trading_fee,
+            borrow_rate_daily=0.0003,
+        )
         self.balance = float(initial_balance)
         self.equity_curve = []
         self.trades = []
+        self.total_slippage = 0.0
         
         self.symbols = list(self.dfs.keys())
         
         # Align timestamps across all dfs
-        all_times = pd.Index([])
+        all_times = None
         for df in self.dfs.values():
-            all_times = all_times.union(df.index)
+            if all_times is None:
+                all_times = df.index
+            else:
+                all_times = all_times.union(df.index)
         self._times = all_times.sort_values()
         
         self._data = {}
@@ -48,8 +84,18 @@ class PortfolioBacktestEngine:
 
     def _close(self, sym, row, qty, entry_price, side, reason, exec_price=None):
         raw_price = float(exec_price) if exec_price is not None else float(row['Close'])
-        price = raw_price * (1.0 - self.rm.slippage_pct * side)
+        
+        slippage_frac = 0.0
+        if self.cost_calc:
+            volume = float(row.get('Volume', 1.0)) if hasattr(row, 'get') else float(getattr(row, 'Volume', 1.0))
+            slippage_frac = self.cost_calc.calculate_slippage(qty, raw_price, volume)
+        else:
+            slippage_frac = self.rm.slippage_pct
+
+        price = raw_price * (1.0 - slippage_frac * side)
         slippage_usd = qty * abs(price - raw_price)
+        self.total_slippage += slippage_usd
+
         gross = qty * (price - entry_price) * side
         fee = qty * price * self.rm.trading_fee
         net = gross - fee
@@ -62,7 +108,7 @@ class PortfolioBacktestEngine:
             'price': price,
             'raw_price': raw_price,
             'slippage_usd': round(slippage_usd, 4),
-            'slippage_pct': self.rm.slippage_pct * 100,
+            'slippage_pct': slippage_frac * 100,
             'qty': round(qty, 6),
             'reason': reason,
             'fee': fee,
@@ -72,13 +118,52 @@ class PortfolioBacktestEngine:
         })
         return net
 
-    def _open(self, sym, row, side, existing_qty=0.0, existing_price=0.0, sizing_equity=None, use_open=False):
+    def _total_open_notional(self, positions):
+        """Aggregate notional (at cost) across every currently-open position."""
+        return sum(p['long_ntl'] + p['short_ntl'] for p in positions.values())
+
+    def _max_notional_for(self, equity_basis, positions):
+        """Remaining exposure budget for a new/added position: whichever is
+        tighter of the shared gross-exposure cap (headroom left in the book)
+        or the single-position cap (MAX_POSITION_PCT of this position's own
+        equity basis)."""
+        headroom = self.GROSS_EXPOSURE_CAP * equity_basis - self._total_open_notional(positions)
+        per_position_cap = self.MAX_POSITION_PCT * equity_basis * self.rm.leverage
+        return max(0.0, min(headroom, per_position_cap))
+
+    def _open(self, sym, row, side, existing_qty=0.0, existing_price=0.0, sizing_equity=None, use_open=False, max_notional=None):
         raw_price = float(row['Open'] if use_open else row['Close'])
-        price = raw_price * (1.0 + self.rm.slippage_pct * side)
+
+        slippage_frac = 0.0
+        if self.cost_calc:
+            volume = float(row.get('Volume', 1.0)) if hasattr(row, 'get') else float(getattr(row, 'Volume', 1.0))
+            # Rough estimate of slippage before qty is known for calculating margin
+            slippage_frac = self.rm.slippage_pct
+        else:
+            slippage_frac = self.rm.slippage_pct
+
         size_basis = sizing_equity if sizing_equity is not None else self.balance
+        # Use initial slippage estimate to calculate affordable qty
+        margin, ntl, qty = self.rm.calculate_position(size_basis, raw_price * (1.0 + slippage_frac * side))
+
+        # Scale down to fit the shared portfolio's remaining exposure headroom
+        # (see GROSS_EXPOSURE_CAP) — mirrors a real cross-margin book reducing
+        # an order to fit available margin rather than ignoring the cap.
+        if max_notional is not None and ntl > max_notional:
+            scale = max(0.0, max_notional) / ntl if ntl > 0 else 0.0
+            margin *= scale
+            ntl *= scale
+            qty *= scale
+
+        # Now calculate actual realistic slippage with known qty
+        if self.cost_calc:
+            volume = float(row.get('Volume', 1.0)) if hasattr(row, 'get') else float(getattr(row, 'Volume', 1.0))
+            slippage_frac = self.cost_calc.calculate_slippage(qty, raw_price, volume)
         
-        margin, ntl, qty = self.rm.calculate_position(size_basis, price)
+        price = raw_price * (1.0 + slippage_frac * side)
         slippage_usd = qty * abs(price - raw_price)
+        self.total_slippage += slippage_usd
+
         fee = ntl * self.rm.trading_fee
         self.balance -= fee
         
@@ -92,7 +177,7 @@ class PortfolioBacktestEngine:
             'price': price,
             'raw_price': raw_price,
             'slippage_usd': round(slippage_usd, 4),
-            'slippage_pct': self.rm.slippage_pct * 100,
+            'slippage_pct': slippage_frac * 100,
             'qty': qty,
             'fee': fee,
             'margin': margin,
@@ -113,7 +198,6 @@ class PortfolioBacktestEngine:
                      for sym in self.symbols}
         
         _last_funding_key = None
-        
         _bars = {sym: _Bar() for sym in self.symbols}
 
         for i in range(n):
@@ -124,7 +208,6 @@ class PortfolioBacktestEngine:
                     setattr(_bars[sym], col, self._data[sym][col][i])
                 _bars[sym].name = current_time
 
-                # Reset per-bar flags
                 positions[sym]['closed_long_this_bar'] = False
                 positions[sym]['closed_short_this_bar'] = False
                 positions[sym]['long_skipped'] = False
@@ -187,13 +270,16 @@ class PortfolioBacktestEngine:
                         pos['long_qty'] = pos['long_entry'] = pos['long_ntl'] = pos['long_entry_bal'] = 0.0
                         pos['closed_long_this_bar'] = True
                         _eq_r = self.balance + (pos['short_qty'] * (pos['short_entry'] - close) if pos['short_qty'] > 0 else 0.0)
-                        pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, pos['short_qty'], pos['short_entry'], sizing_equity=_eq_r)
+                        _cap = self._max_notional_for(_eq_r, positions)
+                        pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, pos['short_qty'], pos['short_entry'], sizing_equity=_eq_r, max_notional=_cap)
                         pos['short_entry_bal'] = self.balance
                         reversed_short_this_bar = True
                     elif action == 'ADD':
                         _ul = pos['long_qty'] * (close - pos['long_entry'])
                         _us = pos['short_qty'] * (pos['short_entry'] - close) if pos['short_qty'] > 0 else 0.0
-                        pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, pos['long_qty'], pos['long_entry'], sizing_equity=self.balance + _ul + _us)
+                        _eq_add = self.balance + _ul + _us
+                        _cap = self._max_notional_for(_eq_add, positions)
+                        pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, pos['long_qty'], pos['long_entry'], sizing_equity=_eq_add, max_notional=_cap)
                     elif action == 'SKIP':
                         pos['long_skipped'] = True
 
@@ -210,12 +296,15 @@ class PortfolioBacktestEngine:
                         pos['short_qty'] = pos['short_entry'] = pos['short_ntl'] = pos['short_entry_bal'] = 0.0
                         pos['closed_short_this_bar'] = True
                         _eq_r = self.balance + (pos['long_qty'] * (close - pos['long_entry']) if pos['long_qty'] > 0 else 0.0)
-                        pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, pos['long_qty'], pos['long_entry'], sizing_equity=_eq_r)
+                        _cap = self._max_notional_for(_eq_r, positions)
+                        pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, pos['long_qty'], pos['long_entry'], sizing_equity=_eq_r, max_notional=_cap)
                         pos['long_entry_bal'] = self.balance
                     elif action == 'ADD':
                         _ul = pos['long_qty'] * (close - pos['long_entry']) if pos['long_qty'] > 0 else 0.0
                         _us = pos['short_qty'] * (pos['short_entry'] - close)
-                        pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, pos['short_qty'], pos['short_entry'], sizing_equity=self.balance + _ul + _us)
+                        _eq_add = self.balance + _ul + _us
+                        _cap = self._max_notional_for(_eq_add, positions)
+                        pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, pos['short_qty'], pos['short_entry'], sizing_equity=_eq_add, max_notional=_cap)
                     elif action == 'SKIP':
                         pos['short_skipped'] = True
 
@@ -229,19 +318,28 @@ class PortfolioBacktestEngine:
             
             cur_equity = self.balance + total_unreal
 
-            # 3. Open new positions based on PREVIOUS bar's signal
+            # 3. Open new positions based on PREVIOUS bar's signal.
+            # Recompute headroom fresh before each call — if several symbols
+            # signal an entry on the same bar, each one claims from whatever
+            # exposure budget the PRIOR symbols in this loop left behind,
+            # instead of every symbol independently sizing off the same full
+            # cur_equity snapshot.
             for sym in self.symbols:
                 pos = positions[sym]
                 _b = _bars[sym]
                 prev_signal = int(self._data[sym]['signal'][i - 1]) if i > 0 else 0
-                
+
                 if (prev_signal == 1 and pos['long_qty'] == 0 and not pos['short_skipped'] and not pos['closed_long_this_bar']):
-                    pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, sizing_equity=cur_equity, use_open=True)
-                    pos['long_entry_bal'] = self.balance
-                    
+                    _cap = self._max_notional_for(cur_equity, positions)
+                    if _cap > 0:
+                        pos['long_qty'], pos['long_entry'], pos['long_ntl'] = self._open(sym, _b, 1, sizing_equity=cur_equity, use_open=True, max_notional=_cap)
+                        pos['long_entry_bal'] = self.balance
+
                 if (prev_signal == -1 and pos['short_qty'] == 0 and not pos['long_skipped'] and not pos['closed_short_this_bar']):
-                    pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, sizing_equity=cur_equity, use_open=True)
-                    pos['short_entry_bal'] = self.balance
+                    _cap = self._max_notional_for(cur_equity, positions)
+                    if _cap > 0:
+                        pos['short_qty'], pos['short_entry'], pos['short_ntl'] = self._open(sym, _b, -1, sizing_equity=cur_equity, use_open=True, max_notional=_cap)
+                        pos['short_entry_bal'] = self.balance
 
             # Funding rate logic
             _fkey = (current_time.date(), (current_time.hour // 8) * 8)

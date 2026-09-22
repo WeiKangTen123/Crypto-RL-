@@ -7,6 +7,7 @@ status: IN_PROGRESS
 tags:
 - built
 - backtested
+- in_progress
 timeframes: 4h, 1d
 type: short-term | long-term
 ---

@@ -76,8 +76,8 @@ class BB_Squeeze_Breakout_Strategy(BaseStrategy):
         short_ok = (~df['squeeze_on']) & (df['Close'] < df['bb_lower']) & (df['momentum'] < 0)
 
         signals = np.zeros(len(df), dtype=int)
-        long_edge = long_ok & ~long_ok.shift(1).fillna(False)
-        short_edge = short_ok & ~short_ok.shift(1).fillna(False)
+        long_edge = long_ok & ~long_ok.shift(1, fill_value=False)
+        short_edge = short_ok & ~short_ok.shift(1, fill_value=False)
         signals[long_edge.values] = 1
         signals[short_edge.values] = -1
         

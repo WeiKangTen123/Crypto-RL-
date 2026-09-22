@@ -21,8 +21,8 @@ class EMAStreakStrategy(BaseStrategy):
     })
 
     def __init__(self, df: pd.DataFrame,
-                 fast: int = 59,
-                 slow: int = 261,
+                 fast: int = 15,
+                 slow: int = 83,
                  streakWin: int = 60,
                  momentumPct: float = 0.14,
                  useStreak: bool = True,

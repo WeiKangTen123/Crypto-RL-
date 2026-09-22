@@ -1,5 +1,0 @@
-name: "macd_kdj_daily_profit"
-symbol: "BTCUSDT"
-timeframe: "1d"
-risk_per_trade: 0.2
-leverage: 10

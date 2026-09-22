@@ -160,8 +160,8 @@ class MACDKDJ_ADX_ATR_Strategy(BaseStrategy):
             & adx_strong
         )
 
-        long_edge  = long_ok  & ~long_ok.shift(1).fillna(False)
-        short_edge = short_ok & ~short_ok.shift(1).fillna(False)
+        long_edge  = long_ok  & ~long_ok.shift(1, fill_value=False)
+        short_edge = short_ok & ~short_ok.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values]  =  1

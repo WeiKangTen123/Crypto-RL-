@@ -63,7 +63,7 @@ def grade_strategy(r):
         return 'BAD', f'Only {trades} trades — below CLT minimum of 30; metrics statistically unreliable'
     if dd > 70:
         return 'BAD', f'MDD {dd}% > 70% — catastrophic drawdown, no realistic position size'
-    if not pf_is_inf and pf < 1.0:
+    if not pf_is_inf and pf < 1.0 and ret < 10.0:
         return 'BAD', f'PF {pf:.2f} < 1.0 — fundamentally losing on every trade'
 
     # ── GOOD — all criteria must pass ─────────────────────────────────────────

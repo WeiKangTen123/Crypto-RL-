@@ -18,9 +18,9 @@ class OrderBlockSMCStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        lookback: int = 7,
-        ob_volume_mult: float = 2.8206,
-        tp_rr: float = 3.821,
+        lookback: int = 20,
+        ob_volume_mult: float = 2.9013,
+        tp_rr: float = 3.1671,
         **kwargs,
     ):
         super().__init__(df, **kwargs)

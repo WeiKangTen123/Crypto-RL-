@@ -9,13 +9,20 @@ from strategy_backtest.library import calc_amihud_illiq, calc_zscore, calc_atr
 
 class AmihudIlliqMrStrategy194(BaseStrategy):
     SIGNAL_PARAMS: frozenset = frozenset({'illiq_period', 'zscore_period', 'atr_period', 'tp_mult', 'sl_mult'})
+    OPTIMIZATION_RANGES = {
+        'illiq_period':  (5,   60),
+        'zscore_period': (50, 300),
+        'atr_period':    (5,   30),
+        'tp_mult':       (1.0, 6.0),
+        'sl_mult':       (0.5, 3.0),
+    }
 
     def __init__(self, df: pd.DataFrame, 
-                 illiq_period: int = 20, 
-                 zscore_period: int = 200, 
-                 atr_period: int = 7,
-                 tp_mult: float = 1.5,
-                 sl_mult: float = 1.5,
+                 illiq_period: int = 25, 
+                 zscore_period: int = 288, 
+                 atr_period: int = 24,
+                 tp_mult: float = 3.9933,
+                 sl_mult: float = 0.89,
                  **kwargs):
         super().__init__(df, **kwargs)
         self.illiq_period = illiq_period
@@ -32,10 +39,10 @@ class AmihudIlliqMrStrategy194(BaseStrategy):
         df['mean_20'] = df['Close'].rolling(window=20).mean()
         df['atr'] = calc_atr(df, self.atr_period)
 
-        # Entry signals
+        # Entry signals — both directions require illiq spike (z > 2.0), symmetric mean-reversion
         df['signal'] = 0
         df.loc[(df['z_illiq'] > 2.0) & (df['Close'] < df['mean_20']), 'signal'] = 1
-        df.loc[(df['z_illiq'] < -2.0) & (df['Close'] > df['mean_20']), 'signal'] = -1
+        df.loc[(df['z_illiq'] > 2.0) & (df['Close'] > df['mean_20']), 'signal'] = -1
         
         self.df = df
         return self.df
@@ -43,9 +50,9 @@ class AmihudIlliqMrStrategy194(BaseStrategy):
     def manage_trade(self, row, position, entry_price, wallet=0):
         atr = row['atr']
         if position > 0:
-            if row['High'] >= entry_price + self.tp_mult * atr: return 'TP', entry_price + self.tp_mult * atr
             if row['Low'] <= entry_price - self.sl_mult * atr: return 'SL', entry_price - self.sl_mult * atr
+            if row['High'] >= entry_price + self.tp_mult * atr: return 'TP', entry_price + self.tp_mult * atr
         elif position < 0:
-            if row['Low'] <= entry_price - self.tp_mult * atr: return 'TP', entry_price - self.tp_mult * atr
             if row['High'] >= entry_price + self.sl_mult * atr: return 'SL', entry_price + self.sl_mult * atr
+            if row['Low'] <= entry_price - self.tp_mult * atr: return 'TP', entry_price - self.tp_mult * atr
         return 'HOLD', None

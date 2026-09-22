@@ -1,0 +1,7 @@
+{
+  "from": "System_Server",
+  "priority": "HIGH",
+  "topic": "RUNTIME_ERROR_DETECTED",
+  "message": "A runtime error occurred: Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe current application. To solve this, set up an application context\nwith app.app_context(). See the documentation for more information.",
+  "ts": "2026-07-12T16:08:01.204197"
+}

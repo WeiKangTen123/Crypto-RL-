@@ -22,19 +22,37 @@ dataset/
 *.tmp
 *.bak
 
-# Secrets & API keys
+# ── Secrets & API keys ────────────────────────────────────────────────────────
+# All credentials live in "API & others/" — the whole folder is ignored,
+# except the *.example templates that document each file's format.
+API & others/*
+!API & others/*.example
+!API & others/README.md
+
+# .env stays at repo root: load_dotenv() auto-discovers it from CWD upward,
+# and core/config_api.py + the .gemini data-engineer scripts rely on that.
 .env
 .env.*
 !.env.example
+
+# Belt-and-braces: these patterns still apply anywhere in the tree
 reddit_api.txt
 open_router_API.txt
 binance_api.txt
+signal_replay_api.txt
+signal_strive_API.txt
+*_api.txt
+*_API.txt
 *api_key*
 *secret*
 *credential*
 *_token.txt
 *.pem
 *.key
+*.ppk
+id_rsa*
+id_ed25519*
+myserver
 
 # Data & large folders
 data/
@@ -45,6 +63,18 @@ train_results/
 results/
 report/
 strategy_backtest/results/
+
+# Signal Replay run artifacts — large, regenerable (~525 MB)
+Signal_Replay/*.json
+!Signal_Replay/runs.json
+
+# DRL training artifacts — regenerable
+DRL_BTC/logs/*.json
+DRL_BTC/logs/*.jsonl
+DRL_BTC/data&feature/
+
+# Local scratch / throwaway experiments — never uploaded
+scratch/
 
 # Loose binary/media files
 *.zip
@@ -70,3 +100,8 @@ node_modules/
 
 # OS
 .DS_Store
+
+# Google Drive sync artifacts
+.tmp.drive*/
+.tmp.driveupload/
+.tmp.drivedownload/

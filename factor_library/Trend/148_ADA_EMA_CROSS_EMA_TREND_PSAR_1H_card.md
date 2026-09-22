@@ -1,17 +1,28 @@
 ---
-name: ADA 1H EMA Cross — EMA Trend Filtered, PSAR Trail (Forge #148)
 category: Trend
-coins: [ADA]
-timeframes: [1h]
+coins:
+- ADA
+max_drawdown: 3.13
+name: ADA 1H EMA Cross — EMA Trend Filtered, PSAR Trail (Forge
+sharpe: 3.62
 status: IMPLEMENTED
 strategy_id: 148
-sharpe: 3.62
-win_rate: 62.33
+tags:
+- forge
+- trend
+- ema_cross
+- psar_trail
+- ema_trend_long
+- ADA
+- 1h
+- high-frequency
+- 0-loss-months
+- implemented
+timeframes:
+- 1h
 total_return: 123.07
-max_drawdown: 3.13
-tags: [forge, trend, ema_cross, psar_trail, ema_trend_long, ADA, 1h, high-frequency, 0-loss-months]
+win_rate: 62.33
 ---
-
 ## Alpha Premise
 Fast EMA(15) / Slow EMA(21) crossover on ADA 1H, gated by a long-only trend filter (price above EMA-100). PSAR trailing stop manages exits dynamically. Designed for ~1 trade per 2-3 days — highly active while maintaining exceptional consistency.
 

@@ -105,8 +105,8 @@ class DonchianBreakoutStrategy(BaseStrategy):
         short_cond = (close < lower) & vol_ok & trending
 
         # Rising edge — fire only on the first bar of the breakout
-        long_edge = long_cond & ~long_cond.shift(1).fillna(False)
-        short_edge = short_cond & ~short_cond.shift(1).fillna(False)
+        long_edge = long_cond & ~long_cond.shift(1, fill_value=False)
+        short_edge = short_cond & ~short_cond.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values] = 1

@@ -98,7 +98,7 @@ class BBWVolatilityBreakoutStrategy(BaseStrategy):
         df['atr'] = calc_atr(df, self.atr_period)
 
         # 6. Regime guard (squeeze must have occurred on prior bar to avoid lookahead)
-        prev_squeeze = (df['BBW'] < df['BBW_SMA']).shift(1).fillna(False)
+        prev_squeeze = (df['BBW'] < df['BBW_SMA']).shift(1, fill_value=False)
 
         # Volume confirmation (logic switch)
         if self.use_volume_filter:

@@ -1,45 +1,44 @@
-## Strategy Name
-Cumulative Volume Delta (CVD) Absorption Divergence
-
-## Category
-Order Flow
-
-## Core Hypothesis — WHY should this strategy have an edge?
-Standard price charts only show the result of auctions, not the intent of the participants. HFTs look at the imbalance between aggressive (market) orders and passive (limit) orders. On a 1h timeframe, if price makes a lower low but the Cumulative Volume Delta (CVD) makes a higher low, it reveals a "selling climax" where aggressive sellers are being absorbed by passive institutional limit buyers. This exhaustion of aggressive supply often leads to a sharp upward reversal as the market becomes "thin" on the bid side and price snaps back to find liquidity.
-
-## Entry Signal — exact condition that triggers a buy
-1. **Price Condition:** Price makes a lower low compared to the previous 24-48 hours.
-2. **CVD Condition:** 1h CVD (Taker Buy Vol - Taker Sell Vol) makes a higher low over the same period.
-3. **Volume Trigger:** A 1h candle closes with a "hammer" or "doji" shape, confirmed by a spike in total volume.
-
-## Exit Signal — exact condition that triggers a sell or position close
-1. **Target:** 2:1 Reward-to-Risk ratio or a touch of the 20-period EMA on the 4h chart.
-2. **Invalidation:** Price closes significantly below the signal low.
-3. **Exhaustion:** Exit if CVD shows a bearish divergence (price higher high, CVD lower high) at local resistance.
-
-## Key Indicators / Data Required
-- **Taker Buy Base Volume** (Aggressor Buy)
-- **Taker Sell Base Volume** (Aggressor Sell)
-- **CVD = Cumulative(Taker Buy - Taker Sell)**
-- **1h OHLCV**
-
-## Timeframe Compatibility (scalp / swing / position)
-- **1h:** Primary timeframe for signal identification.
-- **4h:** Used for secondary trend confirmation.
-
-## Theoretical Risk — what market conditions break this strategy?
-This strategy fails in "Waterfall" sell-offs or massive liquidation events where the aggressive selling pressure is so high that limit orders are simply steamrolled. Passive absorption only works when the aggressive flow is exhausted.
-
-## Source — URL or reference
-- Derived from standard "ExoCharts" and "VeloData" order flow principles.
-- Quantitative research on "Kyle's Lambda" and market microstructure absorption.
-
-## Interest Rating — [High]
-High — Order flow data is a "leading" indicator compared to lagging indicators like RSI or MACD. For a DRL agent, having the raw delta values provides a direct view of market participant aggression.
-
 ---
-## Connections
+name: Strategy_252
+strategy_id: 252
+type: factor
+directional_bias: Symmetric
+optimal_regime: Trending, Low-Chop
+timeframes: 1h, 4h
+coins: BTC
+status: REJECTED
+sharpe: -10.0
+win_rate: 0.0
+total_return: 0.0
+max_drawdown: 0.0
+tags: [factor_card, Phase4_DeepTuned, Strategy_252, REJECTED]
+---
 
-**Category:** [[Mean_Reversion/_Index]]
+# Alpha Card: Strategy #252 - CVD Absorption Divergence
 
-**Indicators:** [[_Concepts/EMA]] · [[_Concepts/MACD]] · [[_Concepts/Order_Flow]] · [[_Concepts/RSI]]
+## Phase 4 Deep Fine-Tuned Performance (BTC/1H, 2021-2026)
+| Metric | Value |
+|--------|-------|
+| **Strategy ID** | **#252** |
+| **Status** | **REJECTED** |
+| **Sharpe Ratio** | **-10.0** |
+| **Total ROI** | **0.0%** |
+| **CAGR** | **0.0%** |
+| **Max Drawdown** | **0.0%** |
+| **Win Rate** | **0.0%** |
+| **Profit Factor** | **0.0** |
+| **Total Trades** | **4533** |
+
+## Optimal Hyperparameters (Optuna TPE 80 Trials)
+```json
+{
+  "p1": 19,
+  "p2": 45,
+  "threshold": 0.3,
+  "regime_gate": "ema50",
+  "use_adx": true,
+  "sl_atr": 3.5,
+  "tp_atr": 8.0,
+  "max_hold": 22
+}
+```

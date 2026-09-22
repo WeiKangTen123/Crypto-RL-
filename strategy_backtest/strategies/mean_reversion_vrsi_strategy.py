@@ -155,8 +155,8 @@ class MeanReversionVRSI(BaseStrategy):
             short_ok = short_ok.rolling(window=self.consecutive_signals).sum() >= self.consecutive_signals
 
         signals = np.zeros(len(df), dtype=int)
-        long_edge  = long_ok  & ~long_ok.shift(1).fillna(False)
-        short_edge = short_ok & ~short_ok.shift(1).fillna(False)
+        long_edge  = long_ok  & ~long_ok.shift(1, fill_value=False)
+        short_edge = short_ok & ~short_ok.shift(1, fill_value=False)
         signals[long_edge.values]  = 1
         signals[short_edge.values] = -1
 

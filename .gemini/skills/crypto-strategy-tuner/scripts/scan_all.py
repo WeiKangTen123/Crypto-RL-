@@ -101,8 +101,14 @@ def run_scan(date_from='2021-01-01', date_to='2026-12-31', new_only=False):
                         )
 
             df = load_data(cfg['data']['coins'], cfg['data']['timeframes'], strat_date_from, strat_date_to)
-            if df is None or df.empty or len(df) < 50:
-                raise ValueError('Insufficient data')
+            is_portfolio = isinstance(df, dict)
+            
+            if is_portfolio:
+                if not df or not any(len(d) >= 50 for d in df.values()):
+                    raise ValueError('Insufficient data in portfolio dict')
+            else:
+                if df is None or df.empty or len(df) < 50:
+                    raise ValueError('Insufficient data')
 
             strat_cls = getattr(strat_reg, cfg['class'], None)
             if strat_cls is None:
@@ -115,16 +121,26 @@ def run_scan(date_from='2021-01-01', date_to='2026-12-31', new_only=False):
                 slippage_pct=cfg['risk'].get('slippage_pct', 0.0005),
                 maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'],
             )
-            engine = BacktestEngine(
-                df, strat_cls(df, **cfg.get('params', {})), rm,
-                initial_balance=cfg['risk']['initial_balance']
-            )
+            
+            if is_portfolio:
+                from strategy_backtest.portfolio_engine import PortfolioBacktestEngine
+                engine = PortfolioBacktestEngine(
+                    df, strat_cls(df, **cfg.get('params', {})), rm,
+                    initial_balance=cfg['risk']['initial_balance']
+                )
+            else:
+                engine = BacktestEngine(
+                    df, strat_cls(df, **cfg.get('params', {})), rm,
+                    initial_balance=cfg['risk']['initial_balance']
+                )
+                
             equity = engine.run()
             if not equity or len(equity) < 2:
                 raise ValueError('Empty equity curve')
 
+            timestamps = engine._times if is_portfolio else engine.df.index
             m               = compute_metrics(equity, cfg['risk']['initial_balance'],
-                                             timestamps=engine.df.index, trades=engine.trades)
+                                             timestamps=timestamps, trades=engine.trades)
             numeric_metrics = _extract_numeric(m)
 
             sharpe = round(numeric_metrics.get('Sharpe Ratio', 0), 3)

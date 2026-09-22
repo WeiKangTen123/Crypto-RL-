@@ -1,12 +1,20 @@
 ---
-name: Zero-Lag Volatility Expansion (ZVE)
-category: Volatility_Breakout
-coins: [ETH, SOL, BTC, BNB, XRP]
-timeframes: [1h, 15m]
 author: alpha-researcher
+category: Volatility_Breakout
+coins:
+- ETH
+- SOL
+- BTC
+- BNB
+- XRP
+name: Zero-Lag Volatility Expansion (ZVE)
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 1h
+- 15m
 ---
-
 # Zero-Lag Volatility Expansion (ZVE)
 
 ## Strategy Premise

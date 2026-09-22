@@ -324,9 +324,18 @@ def api_strategy_backtest():
                 continue
             cfg = STRATEGY_LIBRARY[sid]
             try:
+                is_multi_coin = isinstance(cfg['data']['coins'], list) and len(cfg['data']['coins']) > 1
+
                 df = load_data(cfg['data']['coins'], cfg['data']['timeframes'], date_from, date_to)
-                if df.empty or len(df) < 50:
-                    continue
+
+                if isinstance(df, dict):
+                    if not df or all(d.empty for d in df.values()):
+                        continue
+                    if len(next(iter(df.values()))) < 50:
+                        continue
+                else:
+                    if df.empty or len(df) < 50:
+                        continue
 
                 strat_cls = getattr(strat_reg, cfg['class'], None)
                 if strat_cls is None:
@@ -338,36 +347,70 @@ def api_strategy_backtest():
                     trading_fee=cfg['risk']['trading_fee'],
                     maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'],
                 )
-                engine = BacktestEngine(
-                    df, strat_cls(df, **cfg.get('params', {})), rm,
-                    initial_balance=cfg['risk']['initial_balance']
-                )
+
+                if is_multi_coin:
+                    from strategy_backtest.portfolio_engine import PortfolioBacktestEngine
+                    strategy = strat_cls(df, **cfg.get('params', {}))
+                    engine = PortfolioBacktestEngine(df, strategy, rm,
+                                                    initial_balance=cfg['risk']['initial_balance'])
+                else:
+                    engine = BacktestEngine(
+                        df, strat_cls(df, **cfg.get('params', {})), rm,
+                        initial_balance=cfg['risk']['initial_balance']
+                    )
+
                 equity = engine.run()
                 if not equity or len(equity) < 2:
                     continue
 
+                # Timestamps and price series for display
+                if is_multi_coin:
+                    idx          = engine._times
+                    first_sym    = engine.symbols[0]
+                    close_series = engine.dfs[first_sym]['Close'].reindex(idx).ffill()
+                else:
+                    idx          = engine.df.index
+                    close_series = engine.df['Close']
+
                 metrics_raw = compute_metrics(
                     equity, cfg['risk']['initial_balance'],
-                    timestamps=engine.df.index, trades=engine.trades
+                    timestamps=idx, trades=engine.trades
                 )
                 metrics_num = _extract_numeric(metrics_raw)
 
                 init_bal   = float(cfg['risk']['initial_balance'])
                 cumret     = [round(v / init_bal - 1, 6) for v in equity]
                 n_pts      = len(cumret)
-                ts_raw     = [str(t) for t in engine.df.index[:n_pts]]
-                prices_raw = [round(float(v), 2) for v in engine.df['Close'].values[:n_pts]]
+                ts_raw     = [str(t) for t in idx[:n_pts]]
+                prices_raw = [round(float(v), 2) if pd.notna(v) else 0.0
+                              for v in close_series.values[:n_pts]]
 
                 # Downsample all series with the same indices
                 max_pts = 3000
                 if n_pts > max_pts:
                     step   = max(1, n_pts // max_pts)
                     ds_idx = list(range(0, n_pts, step))
-                    ts_ds       = [ts_raw[i]     for i in ds_idx]
-                    cr_ds       = [cumret[i]     for i in ds_idx]
-                    prices_ds   = [prices_raw[i] for i in ds_idx]
+                    ts_ds     = [ts_raw[i]     for i in ds_idx]
+                    cr_ds     = [cumret[i]     for i in ds_idx]
+                    prices_ds = [prices_raw[i] for i in ds_idx]
                 else:
+                    ds_idx    = None
                     ts_ds, cr_ds, prices_ds = ts_raw, cumret, prices_raw
+
+                # Per-coin price series for the Entry/Exit chart
+                single_coin = (cfg['data']['coins'] if isinstance(cfg['data']['coins'], str)
+                               else cfg['data']['coins'][0])
+                if is_multi_coin:
+                    prices_by_coin_ds = {}
+                    for sym_k in engine.symbols:
+                        cs_k = engine.dfs[sym_k]['Close'].reindex(idx).ffill()
+                        raw_k = [round(float(v), 2) if pd.notna(v) else 0.0
+                                 for v in cs_k.values[:n_pts]]
+                        prices_by_coin_ds[sym_k] = (
+                            [raw_k[i] for i in ds_idx] if ds_idx else raw_k
+                        )
+                else:
+                    prices_by_coin_ds = {single_coin: prices_ds}
 
                 # Periodic returns
                 periodic = {'monthly': {'labels': [], 'values': []},
@@ -387,28 +430,32 @@ def api_strategy_backtest():
                                    for v in ydata.values()]
                     }
 
-                # Round-trip trades — collect all layered entries before each exit
-                round_trips  = []
-                entry_stack  = []   # all BUY/BUY_ADD/SELL/SELL_ADD events for current trade
+                # Round-trip trades — per-symbol stacks to handle multi-coin correctly
+                round_trips   = []
+                entry_stacks  = {}  # symbol → [entry trade dicts]
                 for t in (engine.trades or []):
+                    sym = t.get('symbol', '')
                     if t['type'] in ('BUY', 'SELL', 'BUY_ADD', 'SELL_ADD'):
-                        entry_stack.append(t)
-                    elif t['type'] in ('EXIT_LONG', 'EXIT_SHORT') and entry_stack:
+                        entry_stacks.setdefault(sym, []).append(t)
+                    elif t['type'] in ('EXIT_LONG', 'EXIT_SHORT'):
+                        stack = entry_stacks.get(sym, [])
+                        if not stack:
+                            continue
                         is_long = t['type'] == 'EXIT_LONG'
 
                         # Weighted average entry price across all layers
-                        total_qty = sum(float(e.get('qty', 0)) for e in entry_stack)
+                        total_qty = sum(float(e.get('qty', 0)) for e in stack)
                         if total_qty > 0:
                             avg_ep = sum(float(e.get('qty', 0)) * float(e.get('price', 0))
-                                         for e in entry_stack) / total_qty
+                                         for e in stack) / total_qty
                         else:
-                            avg_ep = float(entry_stack[0].get('price', 0))
+                            avg_ep = float(stack[0].get('price', 0))
 
-                        total_entry_fee      = sum(float(e.get('fee', 0))          for e in entry_stack)
-                        total_entry_slippage = sum(float(e.get('slippage_usd', 0)) for e in entry_stack)
-                        total_margin         = sum(float(e.get('margin', 0))       for e in entry_stack)
-                        total_notional       = sum(float(e.get('notional', 0))     for e in entry_stack)
-                        first_entry          = entry_stack[0]
+                        total_entry_fee      = sum(float(e.get('fee', 0))          for e in stack)
+                        total_entry_slippage = sum(float(e.get('slippage_usd', 0)) for e in stack)
+                        total_margin         = sum(float(e.get('margin', 0))       for e in stack)
+                        total_notional       = sum(float(e.get('notional', 0))     for e in stack)
+                        first_entry          = stack[0]
 
                         exit_fee      = float(t.get('fee', 0))
                         exit_slippage = float(t.get('slippage_usd', 0))
@@ -428,6 +475,7 @@ def api_strategy_backtest():
                         except Exception:
                             dur = 0
                         round_trips.append({
+                            'coin':          sym if sym else single_coin,
                             'entry_time':    str(first_entry['time']),
                             'exit_time':     str(t['time']),
                             'side':          'LONG' if is_long else 'SHORT',
@@ -448,7 +496,7 @@ def api_strategy_backtest():
                             'roe_pct':       roe_pct,
                             'balance_after': round(float(t.get('balance_after', 0)), 2),
                         })
-                        entry_stack = []
+                        entry_stacks[sym] = []
 
                 # Formatted scalar metrics (exclude MONTHLY/YEARLY dicts)
                 fmt_metrics = {}
@@ -460,18 +508,23 @@ def api_strategy_backtest():
                     else:
                         fmt_metrics[k] = str(v)
 
+                coin_display = ('+'.join(cfg['data']['coins'])
+                               if isinstance(cfg['data']['coins'], list)
+                               else cfg['data']['coins'])
                 results.append({
                     'sid':              sid,
                     'id':               cfg['id'],
                     'class':            cfg['class'],
                     'desc':             cfg['desc'],
-                    'coin':             cfg['data']['coins'],
+                    'coin':             coin_display,
+                    'price_coin':       (first_sym if is_multi_coin else cfg['data']['coins']),
                     'timeframe':        cfg['data']['timeframes'],
                     'initial_balance':  init_bal,
                     'leverage':         cfg['risk'].get('leverage', 1),
-                    'equity_times':     ts_ds,
-                    'equity_cumret':    cr_ds,
-                    'equity_prices':    prices_ds,
+                    'equity_times':          ts_ds,
+                    'equity_cumret':         cr_ds,
+                    'equity_prices':         prices_ds,
+                    'equity_prices_by_coin': prices_by_coin_ds,
                     'metrics':          metrics_num,
                     'fmt_metrics':      fmt_metrics,
                     'periodic':         periodic,
@@ -1304,7 +1357,7 @@ def api_p11_results():
 
 
 def _load_openrouter_key():
-    key_file = os.path.join(ROOT_DIR, 'open_router_API.txt')
+    key_file = os.path.join(ROOT_DIR, 'API & others', 'open_router_API.txt')
     try:
         with open(key_file) as f:
             return f.read().strip()

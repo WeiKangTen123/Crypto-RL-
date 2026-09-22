@@ -59,8 +59,8 @@ class TakerBuyIntensityMomentumStrategy(BaseStrategy):
         short_ok = (df['taker_buy_ratio'] < (1.0 - self.taker_ratio_threshold)) & vol_spike & (df['Close'] < df['trend_ema'])
 
         signals = np.zeros(len(df), dtype=int)
-        long_edge = long_ok & ~long_ok.shift(1).fillna(False)
-        short_edge = short_ok & ~short_ok.shift(1).fillna(False)
+        long_edge = long_ok & ~long_ok.shift(1, fill_value=False)
+        short_edge = short_ok & ~short_ok.shift(1, fill_value=False)
         
         signals[long_edge.values] = 1
         signals[short_edge.values] = -1

@@ -1,11 +1,18 @@
 ---
-name: Choppiness-Gated Supertrend (CGS)
 category: Trend
-coins: [BTC, ETH, BNB, SOL, XRP]
-timeframes: [4h]
+coins:
+- BTC
+- ETH
+- BNB
+- SOL
+- XRP
+name: Choppiness-Gated Supertrend (CGS)
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 4h
 ---
-
 ## Alpha Premise
 Supertrend is an excellent trend-following indicator but suffers heavy drawdowns during ranging markets. By gating the entry using the Choppiness Index (CHOP < 38.2) we only enter Supertrend flips when a directional regime is mathematically confirmed.
 

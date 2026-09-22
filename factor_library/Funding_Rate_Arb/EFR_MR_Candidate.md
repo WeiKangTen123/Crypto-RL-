@@ -1,7 +1,16 @@
 ---
-coins: [BTC, ETH, BNB, SOL, XRP]
-timeframes: [4h, 1h]
+coins:
+- BTC
+- ETH
+- BNB
+- SOL
+- XRP
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 4h
+- 1h
 ---
 # Extreme Funding Rate Mean Reversion with Spot OBI (EFR-MR)
 

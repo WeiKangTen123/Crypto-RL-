@@ -1,12 +1,20 @@
 ---
-name: Taker-Driven VWAP Squeeze Breakout (TD-VSB)
-category: Volatility_Breakout
-coins: [BTC, ETH, SOL, BNB, XRP]
-timeframes: [1h, 15m]
 author: alpha-researcher
+category: Volatility_Breakout
+coins:
+- BTC
+- ETH
+- SOL
+- BNB
+- XRP
+name: Taker-Driven VWAP Squeeze Breakout (TD-VSB)
 status: IMPLEMENTED
+tags:
+- implemented
+timeframes:
+- 1h
+- 15m
 ---
-
 # Taker-Driven VWAP Squeeze Breakout (TD-VSB)
 
 ## Strategy Premise

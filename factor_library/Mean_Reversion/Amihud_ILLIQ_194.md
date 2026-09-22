@@ -1,22 +1,31 @@
 ---
-name: Amihud ILLIQ Mean-Reversion
-strategy_id: 194
-type: short-term
-factor_class: Mean-Reversion
+coins:
+- BTC
+- ETH
+- SOL
 directional_bias: Symmetric
-optimal_regime: Ranging
-timeframes: [1h, 4h, 1d]
-coins: [BTC, ETH, SOL]
-source: 6890659
+factor_class: Mean-Reversion
 interest: High
-status: QUEUED
-sharpe: 0.0
-win_rate: 0.0
-total_return: 0.0
 max_drawdown: 0.0
-tags: [alpha, factor, Mean-Reversion]
+name: Amihud ILLIQ Mean-Reversion
+optimal_regime: Ranging
+sharpe: 0.0
+source: 6890659
+status: QUEUED
+strategy_id: 194
+tags:
+- alpha
+- factor
+- Mean-Reversion
+- queued
+timeframes:
+- 1h
+- 4h
+- 1d
+total_return: 0.0
+type: short-term
+win_rate: 0.0
 ---
-
 # Amihud ILLIQ Mean-Reversion
 
 ## Concept

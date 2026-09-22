@@ -22,14 +22,14 @@ class TIPBreakoutStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        bb_period: int = 46,
-        bb_std: float = 1.1743,
-        intensity_period: int = 24,
-        intensity_std: float = 2.8712,
-        taker_threshold: float = 0.5541,
-        sl_atr_mult: float = 1.77,
-        tp_atr_mult: float = 3.7271,
-        max_hold_bars: int = 157,
+        bb_period: int = 15,
+        bb_std: float = 3.4193,
+        intensity_period: int = 28,
+        intensity_std: float = 2.8301,
+        taker_threshold: float = 0.5572,
+        sl_atr_mult: float = 1.2012,
+        tp_atr_mult: float = 7.7773,
+        max_hold_bars: int = 52,
         **kwargs
     ):
         super().__init__(df, **kwargs)

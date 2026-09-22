@@ -30,14 +30,14 @@ class ChoppinessGatedSupertrendStrategy(BaseStrategy):
     }
 
     def __init__(self, df: pd.DataFrame, 
-                 st_period: int = 14,
-                 st_multiplier: float = 3.798,
+                 st_period: int = 15,
+                 st_multiplier: float = 3.842,
                  chop_period: int = 14,
-                 chop_threshold: float = 41.5501,
+                 chop_threshold: float = 41.8809,
                  adx_period: int = 14,
-                 adx_threshold: float = 21.5049,
-                 atr_period: int = 29,
-                 sl_atr_mult: float = 1.4772,
+                 adx_threshold: float = 21.5031,
+                 atr_period: int = 27,
+                 sl_atr_mult: float = 2.3014,
                  **kwargs):
         super().__init__(df, **kwargs)
         self.st_period = st_period

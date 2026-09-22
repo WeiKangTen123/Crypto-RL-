@@ -30,7 +30,7 @@ Parameters
   kdj_period        : KDJ lookback window                       (default 9)
   kdj_oversold      : K threshold for long entry                (default 30)
   kdj_overbought    : K threshold for short entry               (default 70)
-  stop_loss_pct     : Price-based SL — % from entry price       (default 0.05 = 0.0957%)
+  stop_loss_pct     : Price-based SL — % from entry price       (default 0.05 = 0.0799%)
   take_profit_pct   : Optional TP from entry price              (default None)
   entry_window      : Bars to look back for both signals        (default 5)
   max_hold_bars     : Force-close after N bars (None = off)     (default 30)
@@ -59,18 +59,18 @@ class MACDKDJStrategy(BaseStrategy):
     def __init__(
         self,
         df: pd.DataFrame,
-        macd_fast: int = 18,
-        macd_slow: int = 28,
-        macd_signal: int = 16,
-        kdj_period: int = 28,
-        kdj_oversold: float = 38.0,
-        kdj_overbought: float = 89.0,
-        stop_loss_pct: float = 0.0957,
+        macd_fast: int = 4,
+        macd_slow: int = 49,
+        macd_signal: int = 14,
+        kdj_period: int = 23,
+        kdj_oversold: float = 18.0,
+        kdj_overbought: float = 71.0,
+        stop_loss_pct: float = 0.0799,
         take_profit_pct: Optional[float] = None,
-        entry_window: int = 20,
-        max_hold_bars: Optional[int] = 122,
+        entry_window: int = 14,
+        max_hold_bars: Optional[int] = 102,
         trend_filter: bool = True,
-        trend_ema_period: int = 134,
+        trend_ema_period: int = 81,
         **kwargs,
     ):
         super().__init__(
@@ -181,8 +181,8 @@ class MACDKDJStrategy(BaseStrategy):
         # Rising-edge: fire ONLY on the first bar where conditions become true.
         # Without this, the rolling window keeps firing for entry_window consecutive
         # bars, causing repeated entries after each quick exit.
-        long_edge  = long_ok  & ~long_ok.shift(1).fillna(False)
-        short_edge = short_ok & ~short_ok.shift(1).fillna(False)
+        long_edge  = long_ok  & ~long_ok.shift(1, fill_value=False)
+        short_edge = short_ok & ~short_ok.shift(1, fill_value=False)
 
         signals = np.zeros(len(df), dtype=int)
         signals[long_edge.values]  =  1

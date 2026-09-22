@@ -1,10 +1,18 @@
 ---
+coins:
+- BTC
+- ETH
+- BNB
+- SOL
+- XRP
 status: IN_PROGRESS
+tags:
+- in_progress
+timeframes:
+- 4h
+- 1d
 type: Cross_Sectional
-coins: [BTC, ETH, BNB, SOL, XRP]
-timeframes: [4h, 1d]
 ---
-
 # Cross-Sectional Relative Momentum Ranking
 
 **MULTI-COIN PORTFOLIO** strategy

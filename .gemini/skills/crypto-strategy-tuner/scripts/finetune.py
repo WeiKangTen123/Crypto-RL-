@@ -465,6 +465,7 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
 
     from strategy_backtest.settings     import STRATEGY_LIBRARY
     from strategy_backtest.engine       import BacktestEngine
+    from strategy_backtest.portfolio_engine import PortfolioBacktestEngine
     from strategy_backtest.risk         import RiskManager
     from strategy_backtest.metrics      import compute_metrics, _extract_numeric
     from strategy_backtest.run_backtest import load_data
@@ -513,13 +514,14 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
     print(f'Period: {date_from} → {date_to}  |  Trials: {n_trials}  |  Tunable params: {n_tunable}\n')
 
     df = load_data(cfg['data']['coins'], cfg['data']['timeframes'], date_from, date_to)
-    if df is None or df.empty or len(df) < 50:
+    if df is None or (isinstance(df, pd.DataFrame) and (df.empty or len(df) < 50)) or (isinstance(df, dict) and len(df) == 0):
         print('[ERROR] Insufficient data for this strategy')
         sys.exit(1)
 
     base_params = cfg.get('params', {})
 
-    n_days = (df.index[-1] - df.index[0]).days
+    idx = list(df.values())[0].index if isinstance(df, dict) else df.index
+    n_days = (idx[-1] - idx[0]).days
     # Default floor: 30 (CLT minimum for statistical validity).
     # Caller can pass min_trades to raise this for high-frequency strategies.
     min_trades_required = int(min_trades) if min_trades is not None else 30
@@ -547,14 +549,14 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
             slippage_pct=cfg['risk'].get('slippage_pct', 0.0005),
             maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'],
         )
-        _eng_base = BacktestEngine(
-            df, strat_cls(df, **base_params), _rm_base,
-            initial_balance=cfg['risk']['initial_balance']
-        )
+        if isinstance(df, dict):
+            _eng_base = PortfolioBacktestEngine(df, strat_cls(df, **base_params), _rm_base, initial_balance=cfg['risk']['initial_balance'])
+        else:
+            _eng_base = BacktestEngine(df, strat_cls(df, **base_params), _rm_base, initial_balance=cfg['risk']['initial_balance'])
         _eq_base = _eng_base.run()
         if _eq_base and len(_eq_base) >= 2:
             _m_base  = compute_metrics(_eq_base, cfg['risk']['initial_balance'],
-                                       timestamps=_eng_base.df.index, trades=_eng_base.trades)
+                                       timestamps=_eng_base._times if hasattr(_eng_base, '_times') else _eng_base.df.index, trades=_eng_base.trades)
             _nm_base = _extract_numeric(_m_base)
             _base_trades = int(_nm_base.get('Total Trades', 0))
             if _base_trades >= min_trades_required:
@@ -603,15 +605,15 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
                 slippage_pct=cfg['risk'].get('slippage_pct', 0.0005),
                 maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'],
             )
-            engine = BacktestEngine(
-                df, strat_cls(df, **trial_params), rm,
-                initial_balance=cfg['risk']['initial_balance']
-            )
+            if isinstance(df, dict):
+                engine = PortfolioBacktestEngine(df, strat_cls(df, **trial_params), rm, initial_balance=cfg['risk']['initial_balance'])
+            else:
+                engine = BacktestEngine(df, strat_cls(df, **trial_params), rm, initial_balance=cfg['risk']['initial_balance'])
             equity = engine.run()
             if not equity or len(equity) < 2:
                 return -999.0
             m = compute_metrics(equity, cfg['risk']['initial_balance'],
-                                timestamps=engine.df.index, trades=engine.trades)
+                                timestamps=engine._times if hasattr(engine, '_times') else engine.df.index, trades=engine.trades)
             nm = _extract_numeric(m)
             sharpe    = float(nm.get('Sharpe Ratio',  -999) or -999)
             total_ret = float(nm.get('Total Return',  -999) or -999)
@@ -648,7 +650,8 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
                     entry_df['time'] = pd.to_datetime(entry_df['time'])
                     trades_per_year = entry_df.set_index('time').resample('YE').size()
                     active_years    = (trades_per_year >= 3).sum()
-                    total_years     = len(pd.date_range(engine.df.index[0], engine.df.index[-1], freq='YE'))
+                    idx = engine._times if hasattr(engine, '_times') else engine.df.index
+                    total_years     = len(pd.date_range(idx[0], idx[-1], freq='YE'))
                     consistency_mult= min(1.0, active_years / (total_years * 0.6)) if total_years > 1 else 1.0
                 else:
                     consistency_mult = 0.0
@@ -735,9 +738,12 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
                 rm = RiskManager(risk_per_trade=cfg['risk']['risk_per_trade'], leverage=cfg['risk']['leverage'],
                                  trading_fee=cfg['risk']['trading_fee'], slippage_pct=cfg['risk'].get('slippage_pct', 0.0005),
                                  maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'])
-                engine = BacktestEngine(df, strat_cls(df, **trial_params), rm, initial_balance=cfg['risk']['initial_balance'])
+                if isinstance(df, dict):
+                    engine = PortfolioBacktestEngine(df, strat_cls(df, **trial_params), rm, initial_balance=cfg['risk']['initial_balance'])
+                else:
+                    engine = BacktestEngine(df, strat_cls(df, **trial_params), rm, initial_balance=cfg['risk']['initial_balance'])
                 equity = engine.run()
-                m  = compute_metrics(equity, cfg['risk']['initial_balance'], timestamps=engine.df.index, trades=engine.trades)
+                m  = compute_metrics(equity, cfg['risk']['initial_balance'], timestamps=engine._times if hasattr(engine, '_times') else engine.df.index, trades=engine.trades)
                 nm = _extract_numeric(m)
                 sharpe    = float(nm.get('Sharpe Ratio', -999))
                 total_ret = float(nm.get('Total Return', -999))
@@ -778,13 +784,13 @@ def run_finetune(strategy_id, n_trials=None, date_from='2023-01-01', date_to='20
         slippage_pct=cfg['risk'].get('slippage_pct', 0.0005),
         maintenance_margin_rate=cfg['risk']['maintenance_margin_rate'],
     )
-    engine = BacktestEngine(
-        df, strat_cls(df, **best_params), rm,
-        initial_balance=cfg['risk']['initial_balance']
-    )
+    if isinstance(df, dict):
+        engine = PortfolioBacktestEngine(df, strat_cls(df, **best_params), rm, initial_balance=cfg['risk']['initial_balance'])
+    else:
+        engine = BacktestEngine(df, strat_cls(df, **best_params), rm, initial_balance=cfg['risk']['initial_balance'])
     equity = engine.run()
     m  = compute_metrics(equity, cfg['risk']['initial_balance'],
-                         timestamps=engine.df.index, trades=engine.trades)
+                         timestamps=engine._times if hasattr(engine, '_times') else engine.df.index, trades=engine.trades)
     nm = _extract_numeric(m)
 
     original_sharpe = get_original_sharpe(sid)   # kept for logging/result record only
