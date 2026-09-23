@@ -1,0 +1,35 @@
+[
+  {
+    "strategy_id": "257",
+    "class": "VegasZScoreStrategy",
+    "desc": "Vegas Tunnel (EMA 144/169) + Z-Score Statistical Momentum with Volume Surge & ADX Filter (1H, SOL). Sharpe 1.01, ROI +241.0%, MDD 31.6%, PF 1.54.",
+    "coins": "SOL",
+    "timeframe": "1h",
+    "n_local_trades": 486,
+    "n_signal_events": 486,
+    "window": "2021-01-01 -> 2026-05-31",
+    "status": "DRY_RUN",
+    "payload_preview": {
+      "resolution": "1h",
+      "start": "2021-01-01",
+      "end": "2026-05-31",
+      "n_signals": 486,
+      "first_signal": {
+        "ts": 1611604800000000000,
+        "symbol": "SOLUSDT",
+        "target": 1.0,
+        "strength": 1.0,
+        "margin": 150000.0,
+        "leverage": 2
+      },
+      "last_signal": {
+        "ts": 1778677200000000000,
+        "symbol": "SOLUSDT",
+        "target": 0.0,
+        "strength": 1.0,
+        "margin": 150000.0,
+        "leverage": 2
+      }
+    }
+  }
+]

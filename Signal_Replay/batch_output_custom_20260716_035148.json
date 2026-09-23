@@ -1,0 +1,52 @@
+[
+  {
+    "strategy_id": "20",
+    "status": "ERROR",
+    "error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))"
+  },
+  {
+    "strategy_id": "196",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "1",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "242",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "184",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "11",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "135",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "87",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "150",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  },
+  {
+    "strategy_id": "203",
+    "status": "ERROR",
+    "error": "maximum recursion depth exceeded"
+  }
+]

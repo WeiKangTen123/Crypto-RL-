@@ -1,0 +1,6878 @@
+{
+  "response": {
+    "run_id": "sr_36f7b5f40e",
+    "provider": "u14-signal-key",
+    "symbol": "BTCUSDT",
+    "symbols": [
+      "BTCUSDT"
+    ],
+    "n_symbols": 1,
+    "uncovered_symbols": [],
+    "venue": "binance_usdm",
+    "resolution": "4h",
+    "n_signals": 36,
+    "n_parked": 0,
+    "used_exits": true,
+    "exit_breakdown": {
+      "signal": 18
+    },
+    "submission": [
+      {
+        "ts": 1736164800000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 100,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 950000,
+        "stop_loss_price": 99083.5115,
+        "take_profit_price": 108276.827
+      },
+      {
+        "ts": 1736179200000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1736755200000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 93576.75660000001,
+        "take_profit_price": 85400.1468
+      },
+      {
+        "ts": 1736769600000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1737950400000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 102019.4606,
+        "take_profit_price": 93105.1388
+      },
+      {
+        "ts": 1737964800000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1740931200000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 90716.34,
+        "take_profit_price": 99133.32
+      },
+      {
+        "ts": 1740945600000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1742414400000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 84240.5618,
+        "take_profit_price": 92056.6964
+      },
+      {
+        "ts": 1742428800000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1743163200000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 86572.69480000001,
+        "take_profit_price": 79008.0904
+      },
+      {
+        "ts": 1743177600000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1743955200000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 82002.78050000001,
+        "take_profit_price": 74837.489
+      },
+      {
+        "ts": 1743984000000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1745193600000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 84589.39319999999,
+        "take_profit_price": 92437.8936
+      },
+      {
+        "ts": 1745208000000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1749139200000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 104972.21310000001,
+        "take_profit_price": 95799.8838
+      },
+      {
+        "ts": 1749153600000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1750089600000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 105392.44,
+        "take_profit_price": 115171.12000000001
+      },
+      {
+        "ts": 1750104000000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1750593600000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 101873.39630000001,
+        "take_profit_price": 92971.8374
+      },
+      {
+        "ts": 1750608000000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1752076800000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 108397.5,
+        "take_profit_price": 118455
+      },
+      {
+        "ts": 1752091200000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1754870400000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 118077.1203,
+        "take_profit_price": 129032.72940000001
+      },
+      {
+        "ts": 1754884800000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1755864000000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 112879.6275,
+        "take_profit_price": 123352.99500000001
+      },
+      {
+        "ts": 1755878400000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1759089600000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 108799.0315,
+        "take_profit_price": 118893.787
+      },
+      {
+        "ts": 1759104000000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1764547200000000000,
+        "symbol": "BTCUSDT",
+        "target": -1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 88936.5139,
+        "take_profit_price": 81165.3622
+      },
+      {
+        "ts": 1764561600000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0.2,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1765296000000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 90986.8051,
+        "take_profit_price": 99428.87980000001
+      },
+      {
+        "ts": 1765310400000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      },
+      {
+        "ts": 1766966400000000000,
+        "symbol": "BTCUSDT",
+        "target": 1,
+        "strength": 0.4,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": 87419.8435,
+        "take_profit_price": 95530.963
+      },
+      {
+        "ts": 1766980800000000000,
+        "symbol": "BTCUSDT",
+        "target": 0,
+        "strength": 0,
+        "horizon": null,
+        "reason": null,
+        "margin": 5000,
+        "leverage": 1,
+        "notional": 5000,
+        "stop_loss_price": null,
+        "take_profit_price": null
+      }
+    ],
+    "submission_truncated": false,
+    "window_start_ns": 1735689600000000000,
+    "window_end_ns": 1767211200000000000,
+    "n_trials": 117,
+    "n_trials_declared": 1,
+    "n_trials_observed": 117,
+    "claimed": null,
+    "oos": {
+      "oos_cut_ts_ns": 1760909760000000000,
+      "is_sharpe": -0.8683339821858276,
+      "oos_sharpe": -3.659763440637348,
+      "oos_degradation_z": 1.9817700539225882,
+      "oos_degraded": 1,
+      "is_n_returns": 1751,
+      "oos_n_returns": 438
+    },
+    "regime": {
+      "reference": "BTCUSDT",
+      "resolution": "4h",
+      "trend_window_bars": 180,
+      "n_returns_classified": 1981,
+      "rows": [
+        {
+          "n_bars": 507,
+          "return": -0.008209447871323494,
+          "sharpe": -3.137149660366078,
+          "max_drawdown": 0.008209447871323494,
+          "kind": "trend",
+          "regime": "bull",
+          "time_share": 0.25593134780413934
+        },
+        {
+          "n_bars": 742,
+          "return": 0.015588749173012229,
+          "sharpe": 1.2743943249191274,
+          "max_drawdown": 0.012367817786945146,
+          "kind": "trend",
+          "regime": "bear",
+          "time_share": 0.3745583038869258
+        },
+        {
+          "n_bars": 732,
+          "return": -0.03678882503806935,
+          "sharpe": -2.916798832404468,
+          "max_drawdown": 0.041176520989522285,
+          "kind": "trend",
+          "regime": "chop",
+          "time_share": 0.36951034830893487
+        },
+        {
+          "n_bars": 724,
+          "return": -0.0026264817594784384,
+          "sharpe": -1.1933512504980053,
+          "max_drawdown": 0.004489989969023942,
+          "kind": "vol",
+          "regime": "low_vol",
+          "time_share": 0.3336405529953917
+        },
+        {
+          "n_bars": 723,
+          "return": -0.04118476150638939,
+          "sharpe": -3.2354315439279913,
+          "max_drawdown": 0.04118476150638939,
+          "kind": "vol",
+          "regime": "mid_vol",
+          "time_share": 0.3331797235023041
+        },
+        {
+          "n_bars": 723,
+          "return": -0.0027116079785635128,
+          "sharpe": -0.16253300976897328,
+          "max_drawdown": 0.016407624676018424,
+          "kind": "vol",
+          "regime": "high_vol",
+          "time_share": 0.3331797235023041
+        }
+      ],
+      "top_share": 1
+    },
+    "alpha": {
+      "alpha_annualized": -0.046864313594760516,
+      "beta": 0.0010582332385089674,
+      "beta_r_squared": 0.00018603383159881146,
+      "alpha_tstat": -1.3665686417024059,
+      "alpha_pvalue": 0.171901025039578,
+      "information_ratio": -0.10585940403450272,
+      "active_return_vs_benchmark": 0.01982257582900626
+    },
+    "family_pbo": {
+      "family_pbo": 0.9696969696969697,
+      "family_pbo_n": 34
+    },
+    "pos_sig": [
+      "BTCUSDT:L",
+      "BTCUSDT:S"
+    ],
+    "crowding": {
+      "max_overlap": 1,
+      "closest_provider": "u9-eliarray",
+      "closest_run_id": "sr_2088aa9ea9",
+      "n_compared": 10
+    },
+    "self_similarity": {
+      "max_overlap": 1,
+      "matches": [
+        {
+          "run_id": "sr_4d9e5e0767",
+          "overlap": 1,
+          "replayed_at_ns": 1784614263507821600,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_b24b75eafa",
+          "overlap": 1,
+          "replayed_at_ns": 1784614214885871900,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_5bbb0339e6",
+          "overlap": 1,
+          "replayed_at_ns": 1784614185882093800,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_ba5d971800",
+          "overlap": 1,
+          "replayed_at_ns": 1784614130194306300,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "C"
+        },
+        {
+          "run_id": "sr_715994f13f",
+          "overlap": 1,
+          "replayed_at_ns": 1784196683023563300,
+          "symbol": "BTCUSDT",
+          "resolution": "1h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_6db5baa93e",
+          "overlap": 1,
+          "replayed_at_ns": 1784196576372979700,
+          "symbol": "BTCUSDT",
+          "resolution": "1h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_38e927d4f9",
+          "overlap": 1,
+          "replayed_at_ns": 1784196455254937900,
+          "symbol": "BTCUSDT",
+          "resolution": "1h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_13434dac73",
+          "overlap": 1,
+          "replayed_at_ns": 1784196417133643800,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_0327694e76",
+          "overlap": 1,
+          "replayed_at_ns": 1784190913466228500,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_e75cb1bc1a",
+          "overlap": 1,
+          "replayed_at_ns": 1784190692874093000,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "C"
+        },
+        {
+          "run_id": "sr_7117859c5a",
+          "overlap": 1,
+          "replayed_at_ns": 1784190658345642500,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_1266eea3a2",
+          "overlap": 1,
+          "replayed_at_ns": 1784190647438716400,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_a16dea7bfb",
+          "overlap": 1,
+          "replayed_at_ns": 1784190587291153700,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_99205de1de",
+          "overlap": 1,
+          "replayed_at_ns": 1784190538395927300,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_b1b70768d5",
+          "overlap": 1,
+          "replayed_at_ns": 1784190445626201900,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "C"
+        },
+        {
+          "run_id": "sr_9e09ff1984",
+          "overlap": 1,
+          "replayed_at_ns": 1784190435869235000,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "C"
+        },
+        {
+          "run_id": "sr_c0e19cf7c2",
+          "overlap": 1,
+          "replayed_at_ns": 1784190274448823800,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "F"
+        },
+        {
+          "run_id": "sr_f4f68e774e",
+          "overlap": 1,
+          "replayed_at_ns": 1784190257939048400,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_dd235db890",
+          "overlap": 1,
+          "replayed_at_ns": 1784190129765554400,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "D"
+        },
+        {
+          "run_id": "sr_bdf856003a",
+          "overlap": 1,
+          "replayed_at_ns": 1784190028904469500,
+          "symbol": "BTCUSDT",
+          "resolution": "4h",
+          "grade": "C"
+        }
+      ],
+      "n_compared": 97
+    },
+    "total_return": -0.04629617462019053,
+    "sharpe": -1.3661672038885653,
+    "max_drawdown": 0.05110908604211934,
+    "final_equity_usd": 953703.8253798095,
+    "n_fills": 36,
+    "grade": "F",
+    "overall_score": 32.7,
+    "lens": "Intraday",
+    "provisional": true,
+    "disqualified": false,
+    "scorecard": {
+      "scorecard_version": "2.4",
+      "lens": "Intraday",
+      "lens_reason": "8.0h median between signals",
+      "overall_score": 32.7,
+      "overall_grade": "F",
+      "disqualified": false,
+      "provisional": true,
+      "confidence": 0.519,
+      "headline": "Grade F (33/100) \u00b7 strongest robustness (C), weakest edge (F) \u00b7 PROVISIONAL \u2014 short sample",
+      "grade_cap": null,
+      "gates": [
+        {
+          "name": "reproducible",
+          "passed": true,
+          "hard": true,
+          "status": "checked",
+          "detail": "deterministic seeded engine \u2014 a re-run reproduces this equity curve bit-for-bit"
+        },
+        {
+          "name": "no_lookahead",
+          "passed": true,
+          "hard": true,
+          "status": "checked",
+          "detail": "executed off as_of (knowable time), filled next-bar-open; no signal used before it was knowable"
+        },
+        {
+          "name": "costs_real",
+          "passed": true,
+          "hard": true,
+          "status": "checked",
+          "detail": "fees + slippage + funding + borrow modeled = $21,674.54 across 36 fills"
+        },
+        {
+          "name": "reconciled",
+          "passed": true,
+          "hard": false,
+          "status": "not_claimed",
+          "detail": "provider submitted no claimed track to reconcile against \u2014 grade stands on our replay; trust is capped until a claimed sample is provided"
+        },
+        {
+          "name": "oos_degradation",
+          "passed": false,
+          "hard": false,
+          "status": "degraded",
+          "detail": "out-of-sample tail Sharpe degraded 2.0 SD below in-sample (>1 SD, Bailey\u2013L\u00f3pez de Prado) \u2014 edge may not persist"
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "edge",
+          "label": "Edge",
+          "weight": 0.35,
+          "score": 1,
+          "grade": "F",
+          "factors": [
+            {
+              "label": "Sharpe",
+              "value": -1.37,
+              "detail": "0/100 on the Intraday curve"
+            },
+            {
+              "label": "Sortino",
+              "value": -0.22,
+              "detail": "downside-adjusted return (0/100)"
+            },
+            {
+              "label": "Profit factor",
+              "value": 0.51,
+              "detail": "gross win / gross loss (15/100)"
+            },
+            {
+              "label": "Deflated-Sharpe p",
+              "value": 1,
+              "detail": "overfit check \u2192 \u00d70.35 on edge"
+            }
+          ],
+          "notes": [
+            "net return -4.6% \u2264 0 \u2014 edge capped",
+            "deflated-Sharpe p=1.00 \u2014 edge may be luck, discounted",
+            "DSR deflated for 117 trials (declared variants \u2228 observed family submissions)"
+          ]
+        },
+        {
+          "key": "robustness",
+          "label": "Robustness",
+          "weight": 0.25,
+          "score": 59,
+          "grade": "C",
+          "factors": [
+            {
+              "label": "Max drawdown",
+              "value": "5.1%",
+              "detail": "vs 10% tolerable / 35% severe (74/100)"
+            },
+            {
+              "label": "Ulcer index",
+              "value": "2.3%",
+              "detail": "RMS drawdown depth (86/100)"
+            },
+            {
+              "label": "Recovery factor",
+              "value": -0.91,
+              "detail": "net profit / max drawdown (0/100)"
+            },
+            {
+              "label": "Worst year",
+              "value": "-4.6%",
+              "detail": "deepest calendar-year return (68/100)"
+            },
+            {
+              "label": "Bootstrap P5 MDD",
+              "value": "2.1%",
+              "detail": "5th-percentile stress drawdown (92/100)"
+            },
+            {
+              "label": "OOS decay",
+              "value": "+1.98 SD",
+              "detail": "IS\u2192OOS Sharpe degradation, 80/20 tail split (16/100)"
+            }
+          ],
+          "notes": [
+            "regime-concentrated: ~100% of net gain earned in a single market regime \u2014 see the Regime tab",
+            "family PBO 97% across 34 submissions \u2014 IS-best runs tend to fade out of sample (overfitting across resubmissions)",
+            "book 100% overlapped with another provider (symbol+direction) \u2014 crowded trade; a shared edge decays as more capital chases it"
+          ]
+        },
+        {
+          "key": "consistency",
+          "label": "Consistency",
+          "weight": 0.2,
+          "score": 29.9,
+          "grade": "F",
+          "factors": [
+            {
+              "label": "Gain-to-pain",
+              "value": 0.47,
+              "detail": "sum of gains / sum of losses (37/100)"
+            },
+            {
+              "label": "Hit rate",
+              "value": "39%",
+              "detail": "vs 50% lens anchor (37/100)"
+            },
+            {
+              "label": "Payoff ratio",
+              "value": 0.8,
+              "detail": "avg win / avg loss (38/100)"
+            },
+            {
+              "label": "Losing years",
+              "value": "1/1",
+              "detail": "0/100"
+            }
+          ],
+          "notes": []
+        },
+        {
+          "key": "cost",
+          "label": "Cost & capacity",
+          "weight": 0.2,
+          "score": 57.9,
+          "grade": "D",
+          "factors": [
+            {
+              "label": "Funding / PnL",
+              "value": "-0.2%",
+              "detail": "perp-funding dependence (100/100)"
+            }
+          ],
+          "notes": [
+            "no gross profit \u2014 cost drag not scoreable, treated as weak",
+            "capacity (market-impact/depth) modeling is a future gate; v2 scores realized cost drag"
+          ]
+        }
+      ],
+      "weights": {
+        "edge": 0.35,
+        "robustness": 0.25,
+        "consistency": 0.2,
+        "cost": 0.2
+      }
+    },
+    "sizing": {
+      "conviction_applied": true,
+      "scheme_provided": true,
+      "faithful": false,
+      "run_a": {
+        "label": "Standard sizing",
+        "total_return": -0.04629617462019053,
+        "sharpe": -1.3661672038885653,
+        "max_drawdown": 0.05110908604211934,
+        "final_equity_usd": 953703.8253798095,
+        "n_fills": 36,
+        "grade": "F",
+        "score": 32.7
+      },
+      "run_b": {
+        "label": "Provider scheme",
+        "total_return": -0.04629617462019053,
+        "sharpe": -1.3661672038885653,
+        "max_drawdown": 0.05110908604211934,
+        "final_equity_usd": 953703.8253798095,
+        "n_fills": 36,
+        "grade": "F",
+        "score": 34.1,
+        "scorecard": {
+          "scorecard_version": "2.4",
+          "lens": "Intraday",
+          "lens_reason": "8.0h median between signals",
+          "overall_score": 34.1,
+          "overall_grade": "F",
+          "disqualified": false,
+          "provisional": true,
+          "confidence": 0.519,
+          "headline": "Grade F (34/100) \u00b7 strongest robustness (C), weakest edge (F) \u00b7 PROVISIONAL \u2014 short sample",
+          "grade_cap": null,
+          "gates": [
+            {
+              "name": "reproducible",
+              "passed": true,
+              "hard": true,
+              "status": "checked",
+              "detail": "deterministic seeded engine \u2014 a re-run reproduces this equity curve bit-for-bit"
+            },
+            {
+              "name": "no_lookahead",
+              "passed": true,
+              "hard": true,
+              "status": "checked",
+              "detail": "executed off as_of (knowable time), filled next-bar-open; no signal used before it was knowable"
+            },
+            {
+              "name": "costs_real",
+              "passed": true,
+              "hard": true,
+              "status": "checked",
+              "detail": "fees + slippage + funding + borrow modeled = $21,674.54 across 36 fills"
+            },
+            {
+              "name": "reconciled",
+              "passed": true,
+              "hard": false,
+              "status": "not_claimed",
+              "detail": "provider submitted no claimed track to reconcile against \u2014 grade stands on our replay; trust is capped until a claimed sample is provided"
+            }
+          ],
+          "dimensions": [
+            {
+              "key": "edge",
+              "label": "Edge",
+              "weight": 0.35,
+              "score": 1,
+              "grade": "F",
+              "factors": [
+                {
+                  "label": "Sharpe",
+                  "value": -1.37,
+                  "detail": "0/100 on the Intraday curve"
+                },
+                {
+                  "label": "Sortino",
+                  "value": -0.22,
+                  "detail": "downside-adjusted return (0/100)"
+                },
+                {
+                  "label": "Profit factor",
+                  "value": 0.51,
+                  "detail": "gross win / gross loss (15/100)"
+                },
+                {
+                  "label": "Deflated-Sharpe p",
+                  "value": 1,
+                  "detail": "overfit check \u2192 \u00d70.35 on edge"
+                }
+              ],
+              "notes": [
+                "net return -4.6% \u2264 0 \u2014 edge capped",
+                "deflated-Sharpe p=1.00 \u2014 edge may be luck, discounted",
+                "DSR deflated for 117 trials (declared variants \u2228 observed family submissions)"
+              ]
+            },
+            {
+              "key": "robustness",
+              "label": "Robustness",
+              "weight": 0.25,
+              "score": 64.7,
+              "grade": "C",
+              "factors": [
+                {
+                  "label": "Max drawdown",
+                  "value": "5.1%",
+                  "detail": "vs 10% tolerable / 35% severe (74/100)"
+                },
+                {
+                  "label": "Ulcer index",
+                  "value": "2.3%",
+                  "detail": "RMS drawdown depth (86/100)"
+                },
+                {
+                  "label": "Recovery factor",
+                  "value": -0.91,
+                  "detail": "net profit / max drawdown (0/100)"
+                },
+                {
+                  "label": "Worst year",
+                  "value": "-4.6%",
+                  "detail": "deepest calendar-year return (68/100)"
+                },
+                {
+                  "label": "Bootstrap P5 MDD",
+                  "value": "2.1%",
+                  "detail": "5th-percentile stress drawdown (92/100)"
+                }
+              ],
+              "notes": [
+                "sample too short for OOS tail split"
+              ]
+            },
+            {
+              "key": "consistency",
+              "label": "Consistency",
+              "weight": 0.2,
+              "score": 29.9,
+              "grade": "F",
+              "factors": [
+                {
+                  "label": "Gain-to-pain",
+                  "value": 0.47,
+                  "detail": "sum of gains / sum of losses (37/100)"
+                },
+                {
+                  "label": "Hit rate",
+                  "value": "39%",
+                  "detail": "vs 50% lens anchor (37/100)"
+                },
+                {
+                  "label": "Payoff ratio",
+                  "value": 0.8,
+                  "detail": "avg win / avg loss (38/100)"
+                },
+                {
+                  "label": "Losing years",
+                  "value": "1/1",
+                  "detail": "0/100"
+                }
+              ],
+              "notes": []
+            },
+            {
+              "key": "cost",
+              "label": "Cost & capacity",
+              "weight": 0.2,
+              "score": 57.9,
+              "grade": "D",
+              "factors": [
+                {
+                  "label": "Funding / PnL",
+                  "value": "-0.2%",
+                  "detail": "perp-funding dependence (100/100)"
+                }
+              ],
+              "notes": [
+                "no gross profit \u2014 cost drag not scoreable, treated as weak",
+                "capacity (market-impact/depth) modeling is a future gate; v2 scores realized cost drag"
+              ]
+            }
+          ],
+          "weights": {
+            "edge": 0.35,
+            "robustness": 0.25,
+            "consistency": 0.2,
+            "cost": 0.2
+          }
+        }
+      },
+      "gap": {
+        "score_delta": 1.4,
+        "return_delta": 0,
+        "drawdown_delta": 0,
+        "verdict": "Provider sizing \u2248 neutral vs standard (+1 pts, F vs F) \u2014 return +0.0pp, drawdown \u2248 unchanged."
+      }
+    },
+    "report": {
+      "equity_curve": [
+        {
+          "t": 1735689600000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735790400000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735891200000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735992000000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1736092800000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1736193600000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736294400000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736395200000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736496000000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736596800000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736697600000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736798400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1736899200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737000000000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737100800000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737201600000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737302400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737403200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737504000000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737604800000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737705600000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737806400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737907200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1738008000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738108800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738209600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738310400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738411200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738512000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738612800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738713600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738814400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738915200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739016000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739116800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739217600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739318400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739419200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739520000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739620800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739721600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739822400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739923200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740024000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740124800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740225600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740326400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740427200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740528000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740628800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740729600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740830400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740931200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1741032000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741132800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741233600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741334400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741435200000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741536000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741636800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741737600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741838400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741939200000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742040000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742140800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742241600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742342400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742443200000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742544000000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742644800000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742745600000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742846400000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742947200000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743048000000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743148800000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743249600000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743350400000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743451200000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743552000000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743652800000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743753600000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743854400000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743955200000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1744056000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744156800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744257600000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744358400000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744459200000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744560000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744660800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744761600000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744862400000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744963200000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745064000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745164800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745265600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745366400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745467200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745568000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745668800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745769600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745870400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745971200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746072000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746172800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746273600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746374400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746475200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746576000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746676800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746777600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746878400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746979200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747080000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747180800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747281600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747382400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747483200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747584000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747684800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747785600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747886400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747987200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748088000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748188800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748289600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748390400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748491200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748592000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748692800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748793600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748894400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748995200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1749096000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1749196800000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749297600000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749398400000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749499200000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749600000000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749700800000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749801600000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749902400000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1750003200000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1750104000000000000,
+          "e": 987639.0309341592,
+          "lev": 0.9497621834277559
+        },
+        {
+          "t": 1750204800000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750305600000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750406400000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750507200000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750608000000000000,
+          "e": 986713.3545568611,
+          "lev": 0.9501345940683469
+        },
+        {
+          "t": 1750708800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1750809600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1750910400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751011200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751112000000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751212800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751313600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751414400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751515200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751616000000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751716800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751817600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751918400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1752019200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1752120000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752220800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752321600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752422400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752523200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752624000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752724800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752825600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752926400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753027200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753128000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753228800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753329600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753430400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753531200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753632000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753732800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753833600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753934400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754035200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754136000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754236800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754337600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754438400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754539200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754640000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754740800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754841600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754942400000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755043200000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755144000000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755244800000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755345600000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755446400000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755547200000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755648000000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755748800000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755849600000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755950400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756051200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756152000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756252800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756353600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756454400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756555200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756656000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756756800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756857600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756958400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757059200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757160000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757260800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757361600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757462400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757563200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757664000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757764800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757865600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757966400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758067200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758168000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758268800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758369600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758470400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758571200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758672000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758772800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758873600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758974400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1759075200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1759176000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759276800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759377600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759478400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759579200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759680000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759780800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759881600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759982400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760083200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760184000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760284800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760385600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760486400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760587200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760688000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760788800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760889600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760990400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761091200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761192000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761292800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761393600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761494400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761595200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761696000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761796800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761897600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761998400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762099200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762200000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762300800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762401600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762502400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762603200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762704000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762804800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762905600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763006400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763107200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763208000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763308800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763409600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763510400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763611200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763712000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763812800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763913600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764014400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764115200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764216000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764316800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764417600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764518400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764619200000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764720000000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764820800000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764921600000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765022400000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765123200000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765224000000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765324800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765425600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765526400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765627200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765728000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765828800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765929600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766030400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766131200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766232000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766332800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766433600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766534400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766635200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766736000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766836800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766937600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1767038400000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        },
+        {
+          "t": 1767139200000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        },
+        {
+          "t": 1767211200000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        }
+      ],
+      "positions": {
+        "items": [
+          {
+            "status": "closed",
+            "idx": 18,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 90105.87069739595,
+            "exit_price": 89572.28644190729,
+            "mark_price": null,
+            "quantity": 10.123668,
+            "entry_notional": 912201.919791365,
+            "entry_ts": "2025-12-29T04:00:00Z",
+            "exit_ts": "2025-12-29T08:00:00Z",
+            "pnl": -6311.330857459461,
+            "gross_pnl": -5401.829852594394,
+            "fee_usd": 909.5010048650679,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0029690551851221047,
+            "mae_pct": 0.028697028033609264,
+            "leverage": 1,
+            "margin_usd": 912201.919791365,
+            "api_calls": [
+              {
+                "ts": 1766980800000000000,
+                "as_of": 1766980800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 17,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 93776.2149233659,
+            "exit_price": 92620.16759796938,
+            "mark_price": null,
+            "quantity": 9.852335,
+            "entry_notional": 923914.6844570002,
+            "entry_ts": "2025-12-09T20:00:00Z",
+            "exit_ts": "2025-12-10T00:00:00Z",
+            "pnl": -12307.985327354667,
+            "gross_pnl": -11389.765525660498,
+            "fee_usd": 918.21980169417,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00045731294091099124,
+            "mae_pct": 0.020007364606250598,
+            "leverage": 1,
+            "margin_usd": 923914.6844570002,
+            "api_calls": [
+              {
+                "ts": 1765310400000000000,
+                "as_of": 1765310400000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 16,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 86306.41405855531,
+            "exit_price": 86503.42063515536,
+            "mark_price": null,
+            "quantity": 10.735134,
+            "entry_notional": 926510.9199780752,
+            "entry_ts": "2025-12-01T04:00:00Z",
+            "exit_ts": "2025-12-01T08:00:00Z",
+            "pnl": -3042.4603646601963,
+            "gross_pnl": -2114.8919986827796,
+            "fee_usd": 927.5683659774165,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00860554880720004,
+            "mae_pct": 0.006715444590844251,
+            "leverage": 1,
+            "margin_usd": 926510.9199780752,
+            "api_calls": [
+              {
+                "ts": 1764561600000000000,
+                "as_of": 1764561600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 15,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 112138.56949420505,
+            "exit_price": 111794.87544369421,
+            "mark_price": null,
+            "quantity": 8.296943,
+            "entry_notional": 930407.3191949582,
+            "entry_ts": "2025-09-29T00:00:00Z",
+            "exit_ts": "2025-09-29T04:00:00Z",
+            "pnl": -3780.5914607492214,
+            "gross_pnl": -2851.609946527527,
+            "fee_usd": 928.9815142216944,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0011657943059609998,
+            "mae_pct": 0.005685550449597935,
+            "leverage": 1,
+            "margin_usd": 930407.3191949582,
+            "api_calls": [
+              {
+                "ts": 1759104000000000000,
+                "as_of": 1759104000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 14,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 116333.3485666828,
+            "exit_price": 116601.29712743196,
+            "mark_price": null,
+            "quantity": 7.98788,
+            "entry_notional": 929256.8283488342,
+            "entry_ts": "2025-08-22T16:00:00Z",
+            "exit_ts": "2025-08-22T20:00:00Z",
+            "pnl": 1210.0139506133792,
+            "gross_pnl": 2140.340949436932,
+            "fee_usd": 930.3269988235527,
+            "exit_reason": "signal",
+            "mfe_pct": 0.009146572727658307,
+            "mae_pct": 0.0024657466686638235,
+            "leverage": 1,
+            "margin_usd": 929256.8283488342,
+            "api_calls": [
+              {
+                "ts": 1755878400000000000,
+                "as_of": 1755878400000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 13,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 121716.2529800354,
+            "exit_price": 121519.07046408448,
+            "mark_price": null,
+            "quantity": 7.654118,
+            "entry_notional": 931630.5628270427,
+            "entry_ts": "2025-08-11T04:00:00Z",
+            "exit_ts": "2025-08-11T08:00:00Z",
+            "pnl": -2440.134178329932,
+            "gross_pnl": -1509.2582446252022,
+            "fee_usd": 930.87593370473,
+            "exit_reason": "signal",
+            "mfe_pct": 0.006028340521499281,
+            "mae_pct": 0.011904350853398828,
+            "leverage": 1,
+            "margin_usd": 931630.5628270427,
+            "api_calls": [
+              {
+                "ts": 1754884800000000000,
+                "as_of": 1754884800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 12,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 111732.32552614211,
+            "exit_price": 111177.25993191196,
+            "mark_price": null,
+            "quantity": 8.385657,
+            "entry_notional": 936948.9576745724,
+            "entry_ts": "2025-07-09T20:00:00Z",
+            "exit_ts": "2025-07-10T00:00:00Z",
+            "pnl": -5589.211348546955,
+            "gross_pnl": -4654.58968571524,
+            "fee_usd": 934.6216628317147,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0017826038518394967,
+            "mae_pct": 0.010957666193528372,
+            "leverage": 1,
+            "margin_usd": 936948.9576745724,
+            "api_calls": [
+              {
+                "ts": 1752091200000000000,
+                "as_of": 1752091200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 11,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 98838.17463496808,
+            "exit_price": 98840.4391417793,
+            "mark_price": null,
+            "quantity": 9.486121,
+            "entry_notional": 937590.8840064381,
+            "entry_ts": "2025-06-22T16:00:00Z",
+            "exit_ts": "2025-06-22T20:00:00Z",
+            "pnl": -959.0830103157832,
+            "gross_pnl": -21.48138561653688,
+            "fee_usd": 937.6016246992464,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0073127072372335235,
+            "mae_pct": 0.02180660835746949,
+            "leverage": 1,
+            "margin_usd": 937590.8840064381,
+            "api_calls": [
+              {
+                "ts": 1750608000000000000,
+                "as_of": 1750608000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 10,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 108607.32268769386,
+            "exit_price": 106736.99049114494,
+            "mark_price": null,
+            "quantity": 8.787085,
+            "entry_notional": 954341.7760791943,
+            "entry_ts": "2025-06-16T20:00:00Z",
+            "exit_ts": "2025-06-17T00:00:00Z",
+            "pnl": -17380.892381396567,
+            "gross_pnl": -16434.76798931203,
+            "fee_usd": 946.1243920845384,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0026948211691743126,
+            "mae_pct": 0.023380768670597053,
+            "leverage": 1,
+            "margin_usd": 954341.7760791943,
+            "api_calls": [
+              {
+                "ts": 1750104000000000000,
+                "as_of": 1750104000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 9,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 101863.12838133,
+            "exit_price": 101474.58235134538,
+            "mark_price": null,
+            "quantity": 9.341614,
+            "entry_notional": 951566.0261708297,
+            "entry_ts": "2025-06-05T20:00:00Z",
+            "exit_ts": "2025-06-06T00:00:00Z",
+            "pnl": 2679.895830694556,
+            "gross_pnl": 3629.6470333487114,
+            "fee_usd": 949.7512026541553,
+            "exit_reason": "signal",
+            "mfe_pct": 0.01529531250500602,
+            "mae_pct": 0.005905685680671282,
+            "leverage": 1,
+            "margin_usd": 951566.0261708297,
+            "api_calls": [
+              {
+                "ts": 1749153600000000000,
+                "as_of": 1749153600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 8,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 87182.96600979727,
+            "exit_price": 87387.24584082508,
+            "mark_price": null,
+            "quantity": 10.904051,
+            "entry_notional": 950647.507702096,
+            "entry_ts": "2025-04-21T04:00:00Z",
+            "exit_ts": "2025-04-21T08:00:00Z",
+            "pnl": 1275.716449248691,
+            "gross_pnl": 2227.4776957986865,
+            "fee_usd": 951.7612465499953,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00681364740603088,
+            "mae_pct": 0.00657199492080688,
+            "leverage": 1,
+            "margin_usd": 950647.507702096,
+            "api_calls": [
+              {
+                "ts": 1745208000000000000,
+                "as_of": 1745208000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 7,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 79565.76228506323,
+            "exit_price": 77675.6159554677,
+            "mark_price": null,
+            "quantity": 11.691584,
+            "entry_notional": 930249.7932798488,
+            "entry_ts": "2025-04-06T20:00:00Z",
+            "exit_ts": "2025-04-07T04:00:00Z",
+            "pnl": 21179.60419377039,
+            "gross_pnl": 22098.804584757858,
+            "fee_usd": 919.2003909874697,
+            "exit_reason": "signal",
+            "mfe_pct": 0.06420804801391683,
+            "mae_pct": 0.0036817056297059753,
+            "leverage": 1,
+            "margin_usd": 930249.7932798488,
+            "api_calls": [
+              {
+                "ts": 1743955200000000000,
+                "as_of": 1743955200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": -1,
+                "strength": 0.4,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": 82002.78050000001,
+                "take_profit_price": 74837.489,
+                "reason": ""
+              },
+              {
+                "ts": 1743984000000000000,
+                "as_of": 1743984000000000000,
+                "role": "close",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 6,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 83998.69043177472,
+            "exit_price": 83778.12554616376,
+            "mark_price": null,
+            "quantity": 11.056378,
+            "entry_notional": 928721.2729186846,
+            "entry_ts": "2025-03-28T16:00:00Z",
+            "exit_ts": "2025-03-28T20:00:00Z",
+            "pnl": 1511.1468002972924,
+            "gross_pnl": 2438.6487488415564,
+            "fee_usd": 927.5019485442639,
+            "exit_reason": "signal",
+            "mfe_pct": 0.005559496575176085,
+            "mae_pct": 0.005962111619252467,
+            "leverage": 1,
+            "margin_usd": 928721.2729186846,
+            "api_calls": [
+              {
+                "ts": 1743177600000000000,
+                "as_of": 1743177600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 5,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 86820.43525267832,
+            "exit_price": 85832.32306585994,
+            "mark_price": null,
+            "quantity": 10.827334,
+            "entry_notional": 940033.8505061226,
+            "entry_ts": "2025-03-20T00:00:00Z",
+            "exit_ts": "2025-03-20T04:00:00Z",
+            "pnl": -11633.305216321083,
+            "gross_pnl": -10698.620676153037,
+            "fee_usd": 934.6845401680462,
+            "exit_reason": "signal",
+            "mfe_pct": 0.007827244189042666,
+            "mae_pct": 0.01655641610750823,
+            "leverage": 1,
+            "margin_usd": 940033.8505061226,
+            "api_calls": [
+              {
+                "ts": 1742428800000000000,
+                "as_of": 1742428800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 4,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 93477.97034601629,
+            "exit_price": 94209.68465618184,
+            "mark_price": null,
+            "quantity": 9.99121,
+            "entry_notional": 933958.0321008214,
+            "entry_ts": "2025-03-02T20:00:00Z",
+            "exit_ts": "2025-03-03T00:00:00Z",
+            "pnl": 6373.0979451019175,
+            "gross_pnl": 7310.711332869174,
+            "fee_usd": 937.613387767256,
+            "exit_reason": "signal",
+            "mfe_pct": 0.014142686764487019,
+            "mae_pct": 0.01174469601717307,
+            "leverage": 1,
+            "margin_usd": 933958.0321008214,
+            "api_calls": [
+              {
+                "ts": 1740945600000000000,
+                "as_of": 1740945600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 3,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 98983.418223805,
+            "exit_price": 98708.66366698987,
+            "mark_price": null,
+            "quantity": 9.417133,
+            "entry_notional": 932140.0142081954,
+            "entry_ts": "2025-01-27T08:00:00Z",
+            "exit_ts": "2025-01-27T12:00:00Z",
+            "pnl": 1656.5538897778388,
+            "gross_pnl": 2587.400203884092,
+            "fee_usd": 930.8463141062534,
+            "exit_reason": "signal",
+            "mfe_pct": 0.007914641036478067,
+            "mae_pct": 0.03318113109378484,
+            "leverage": 1,
+            "margin_usd": 932140.0142081954,
+            "api_calls": [
+              {
+                "ts": 1737964800000000000,
+                "as_of": 1737964800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 2,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 90820.93202278542,
+            "exit_price": 92103.86605938044,
+            "mark_price": null,
+            "quantity": 10.413432,
+            "entry_notional": 945757.5997958984,
+            "entry_ts": "2025-01-13T12:00:00Z",
+            "exit_ts": "2025-01-13T16:00:00Z",
+            "pnl": -14312.183823538928,
+            "gross_pnl": -13359.746350567744,
+            "fee_usd": 952.4374729711824,
+            "exit_reason": "signal",
+            "mfe_pct": 0.02105166705738879,
+            "mae_pct": 0.024598602188470074,
+            "leverage": 1,
+            "margin_usd": 945757.5997958984,
+            "api_calls": [
+              {
+                "ts": 1736769600000000000,
+                "as_of": 1736769600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 1,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 102117.21695284525,
+            "exit_price": 101752.01535356835,
+            "mark_price": null,
+            "quantity": 9.304193,
+            "entry_notional": 950118.295152144,
+            "entry_ts": "2025-01-06T16:00:00Z",
+            "exit_ts": "2025-01-06T20:00:00Z",
+            "pnl": -4346.325505651302,
+            "gross_pnl": -3397.906163580948,
+            "fee_usd": 948.4193420703535,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0032000778801644036,
+            "mae_pct": 0.008756769715514022,
+            "leverage": 1,
+            "margin_usd": 950118.295152144,
+            "api_calls": [
+              {
+                "ts": 1736179200000000000,
+                "as_of": 1736179200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          }
+        ],
+        "total": 18,
+        "open_count": 0,
+        "closed_count": 18
+      },
+      "trades": [
+        {
+          "ts": 1736179200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 102117.21695284525,
+          "qty": 9.304193,
+          "notional": 950118.295152144,
+          "fee": 475.059147576072,
+          "slippage_bps": 1.2454840722256992,
+          "slippage_usd": 118.33572033422311,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1736193600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 101752.01535356835,
+          "qty": 9.304193,
+          "notional": 946720.3889885631,
+          "fee": 473.36019449428153,
+          "slippage_bps": 1.9341964840569645,
+          "slippage_usd": 183.11432477667205,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1736769600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 90820.93202278542,
+          "qty": 10.413432,
+          "notional": 945757.5997958984,
+          "fee": 472.8787998979492,
+          "slippage_bps": 0.7231264996377068,
+          "slippage_usd": 68.39023826461671,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1736784000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 92103.86605938044,
+          "qty": 10.413432,
+          "notional": 959117.3461464662,
+          "fee": 479.55867307323314,
+          "slippage_bps": 1.1038821743973615,
+          "slippage_usd": 105.8752541566388,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1737964800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 98983.418223805,
+          "qty": 9.417133,
+          "notional": 932140.0142081954,
+          "fee": 466.0700071040977,
+          "slippage_bps": 1.3012381467795593,
+          "slippage_usd": 121.29361446273442,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1737979200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 98708.66366698987,
+          "qty": 9.417133,
+          "notional": 929552.6140043113,
+          "fee": 464.77630700215565,
+          "slippage_bps": 0.8676452191905233,
+          "slippage_usd": 80.65218815268945,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1740945600000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 93477.97034601629,
+          "qty": 9.99121,
+          "notional": 933958.0321008214,
+          "fee": 466.9790160504107,
+          "slippage_bps": 1.1523128986733102,
+          "slippage_usd": 107.6211887209318,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1740960000000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 94209.68465618184,
+          "qty": 9.99121,
+          "notional": 941268.7434336906,
+          "fee": 470.63437171684535,
+          "slippage_bps": 1.3070560822477333,
+          "slippage_usd": 123.02910361346866,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1742428800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 86820.43525267832,
+          "qty": 10.827334,
+          "notional": 940033.8505061226,
+          "fee": 470.0169252530613,
+          "slippage_bps": 1.2251212050144638,
+          "slippage_usd": 115.16554036864473,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1742443200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 85832.32306585994,
+          "qty": 10.827334,
+          "notional": 929335.2298299696,
+          "fee": 464.6676149149848,
+          "slippage_bps": 2.012465304447627,
+          "slippage_usd": 187.02549062336752,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1743177600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 83998.69043177472,
+          "qty": 11.056378,
+          "notional": 928721.2729186846,
+          "fee": 464.36063645934235,
+          "slippage_bps": 1.4652329129841641,
+          "slippage_usd": 136.07929760690052,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1743192000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 83778.12554616376,
+          "qty": 11.056378,
+          "notional": 926282.624169843,
+          "fee": 463.14131208492154,
+          "slippage_bps": 2.0803964345770583,
+          "slippage_usd": 192.70350687336227,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1743969600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 79565.76228506323,
+          "qty": 11.691584,
+          "notional": 930249.7932798488,
+          "fee": 465.1248966399244,
+          "slippage_bps": 0.859305205155702,
+          "slippage_usd": 79.93684894603898,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1743998400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 77675.6159554677,
+          "qty": 11.691584,
+          "notional": 908150.9886950909,
+          "fee": 454.07549434754543,
+          "slippage_bps": 0.7874333512766228,
+          "slippage_usd": 71.51083764933539,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1745208000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 87182.96600979727,
+          "qty": 10.904051,
+          "notional": 950647.507702096,
+          "fee": 475.323753851048,
+          "slippage_bps": 1.8775551412177165,
+          "slippage_usd": 178.4893115571879,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1745222400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 87387.24584082508,
+          "qty": 10.904051,
+          "notional": 952874.9853978946,
+          "fee": 476.4374926989473,
+          "slippage_bps": 1.539365150955477,
+          "slippage_usd": 146.6822545738728,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1749153600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 101863.12838133,
+          "qty": 9.341614,
+          "notional": 951566.0261708297,
+          "fee": 475.78301308541484,
+          "slippage_bps": 0.9690122672355743,
+          "slippage_usd": 92.20791524441415,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1749168000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 101474.58235134538,
+          "qty": 9.341614,
+          "notional": 947936.3791374809,
+          "fee": 473.96818956874046,
+          "slippage_bps": 1.5654006354680374,
+          "slippage_usd": 148.3900210285083,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1750104000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 108607.32268769386,
+          "qty": 8.787085,
+          "notional": 954341.7760791943,
+          "fee": 477.1708880395972,
+          "slippage_bps": 1.208415154203815,
+          "slippage_usd": 115.32410645038823,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1750118400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 106736.99049114494,
+          "qty": 8.787085,
+          "notional": 937907.0080898823,
+          "fee": 468.95350404494116,
+          "slippage_bps": 1.228055885199816,
+          "slippage_usd": 115.18022210549316,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1750608000000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 98838.17463496808,
+          "qty": 9.486121,
+          "notional": 937590.8840064381,
+          "fee": 468.795442003219,
+          "slippage_bps": 1.1659484077259767,
+          "slippage_usd": 109.31825983056974,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1750622400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 98840.4391417793,
+          "qty": 9.486121,
+          "notional": 937612.3653920547,
+          "fee": 468.80618269602735,
+          "slippage_bps": 1.0866310207667342,
+          "slippage_usd": 101.88386816894806,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1752091200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 111732.32552614211,
+          "qty": 8.385657,
+          "notional": 936948.9576745724,
+          "fee": 468.4744788372862,
+          "slippage_bps": 1.2106759240264897,
+          "slippage_usd": 113.43415450983193,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1752105600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 111177.25993191196,
+          "qty": 8.385657,
+          "notional": 932294.3679888571,
+          "fee": 466.14718399442853,
+          "slippage_bps": 2.026988185953646,
+          "slippage_usd": 188.97496697445345,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1754884800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 121716.2529800354,
+          "qty": 7.654118,
+          "notional": 931630.5628270427,
+          "fee": 465.81528141352135,
+          "slippage_bps": 1.327277466114996,
+          "slippage_usd": 123.65322527843647,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1754899200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 121519.07046408448,
+          "qty": 7.654118,
+          "notional": 930121.3045824174,
+          "fee": 465.06065229120867,
+          "slippage_bps": 1.302468337532895,
+          "slippage_usd": 121.14535492833885,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1755878400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 116333.3485666828,
+          "qty": 7.98788,
+          "notional": 929256.8283488342,
+          "fee": 464.6284141744171,
+          "slippage_bps": 1.1991608177840742,
+          "slippage_usd": 111.43283782142231,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1755892800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 116601.29712743196,
+          "qty": 7.98788,
+          "notional": 931397.1692982712,
+          "fee": 465.6985846491356,
+          "slippage_bps": 2.0666915241485366,
+          "slippage_usd": 192.49106354046768,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1759104000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 112138.56949420505,
+          "qty": 8.296943,
+          "notional": 930407.3191949582,
+          "fee": 465.2036595974791,
+          "slippage_bps": 1.6829775860123815,
+          "slippage_usd": 156.5854664066982,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1759118400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 111794.87544369421,
+          "qty": 8.296943,
+          "notional": 927555.7092484307,
+          "fee": 463.77785462421537,
+          "slippage_bps": 2.0591118511252464,
+          "slippage_usd": 190.9940953492327,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1764561600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 86306.41405855531,
+          "qty": 10.735134,
+          "notional": 926510.9199780752,
+          "fee": 463.2554599890376,
+          "slippage_bps": 1.4696563616510248,
+          "slippage_usd": 136.16526676849216,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1764576000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 86503.42063515536,
+          "qty": 10.735134,
+          "notional": 928625.811976758,
+          "fee": 464.312905988379,
+          "slippage_bps": 1.8639309072365833,
+          "slippage_usd": 173.08943522011472,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1765310400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 93776.2149233659,
+          "qty": 9.852335,
+          "notional": 923914.6844570002,
+          "fee": 461.9573422285001,
+          "slippage_bps": 1.526731365929501,
+          "slippage_usd": 141.056952820336,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1765324800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 92620.16759796938,
+          "qty": 9.852335,
+          "notional": 912524.9189313396,
+          "fee": 456.26245946566985,
+          "slippage_bps": 1.9573332013460896,
+          "slippage_usd": 178.61153208799598,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1766980800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 90105.87069739595,
+          "qty": 10.123668,
+          "notional": 912201.919791365,
+          "fee": 456.10095989568254,
+          "slippage_bps": 1.5951224472842154,
+          "slippage_usd": 145.50737587149618,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1766995200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 89572.28644190729,
+          "qty": 10.123668,
+          "notional": 906800.0899387706,
+          "fee": 453.4000449693853,
+          "slippage_bps": 1.1959365161594053,
+          "slippage_usd": 108.44753404144087,
+          "exit_reason": "",
+          "role": "close"
+        }
+      ],
+      "n_trades_total": 36,
+      "trades_truncated": false,
+      "monthly_table": [
+        {
+          "year": 2025,
+          "month": 1,
+          "return": -0.016998537014217465
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "return": -0.0037711043017696778
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "return": 0.022924752537488744
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "return": -0.01557469880044901
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "return": -0.005687859134791647
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "return": -0.0013494813339532499
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "return": -0.003871809494268786
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "return": -0.022262513996439574
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "return": 0
+        }
+      ],
+      "annual_table": [
+        {
+          "year": 2025,
+          "return_pct": -0.04629617462019053,
+          "n_months": 12,
+          "mdd": 0.05110908604211934
+        },
+        {
+          "year": 2026,
+          "return_pct": 0,
+          "n_months": 1,
+          "mdd": 0
+        }
+      ],
+      "tiles": {
+        "cagr": -0.046316826555053425,
+        "sortino": -0.2207027592953489,
+        "calmar": -0.9062346862724843,
+        "profit_factor": 0.5088997161308118,
+        "hit_rate": 0.3888888888888889,
+        "trade_count": 18,
+        "fill_count": 36,
+        "expectancy": -2099.6931273735536,
+        "total_fees_usd": 16816.037144721104,
+        "real_costs_usd": 21674.535725219943,
+        "cost_ratio": null,
+        "funding_usd": -78.70020537107328,
+        "slippage_usd": 4779.798375127764,
+        "ulcer_index": 0.02315122167933272,
+        "recovery_factor": -0.9058306106674952,
+        "gain_to_pain_ratio": 0.46539021015346244,
+        "payoff_ratio": 0.799699553919847,
+        "sqn": -1.0188355351417513,
+        "worst_calendar_year_return": -0.04629617462019053,
+        "best_trade_pct": 0.021644729090410313,
+        "worst_trade_pct": -0.01690372149335697,
+        "consecutive_losses_max": 4,
+        "leverage_used_max": 0.976674456597821,
+        "gross_exposure_peak_usd": 959010.4412352,
+        "margin_utilization_peak_pct": 97.6674456597821
+      },
+      "starting_capital_usd": 1000000,
+      "leverage_cap": 125
+    },
+    "report_b": {
+      "equity_curve": [
+        {
+          "t": 1735689600000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735790400000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735891200000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1735992000000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1736092800000000000,
+          "e": 1000000,
+          "lev": 0
+        },
+        {
+          "t": 1736193600000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736294400000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736395200000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736496000000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736596800000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736697600000000000,
+          "e": 995606.3293174118,
+          "lev": 0
+        },
+        {
+          "t": 1736798400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1736899200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737000000000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737100800000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737201600000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737302400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737403200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737504000000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737604800000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737705600000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737806400000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1737907200000000000,
+          "e": 981327.6581137417,
+          "lev": 0
+        },
+        {
+          "t": 1738008000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738108800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738209600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738310400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738411200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738512000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738612800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738713600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738814400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1738915200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739016000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739116800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739217600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739318400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739419200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739520000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739620800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739721600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739822400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1739923200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740024000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740124800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740225600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740326400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740427200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740528000000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740628800000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740729600000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740830400000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1740931200000000000,
+          "e": 983001.4629857825,
+          "lev": 0
+        },
+        {
+          "t": 1741032000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741132800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741233600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741334400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741435200000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741536000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741636800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741737600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741838400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1741939200000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742040000000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742140800000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742241600000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742342400000000000,
+          "e": 989388.0653107513,
+          "lev": 0
+        },
+        {
+          "t": 1742443200000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742544000000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742644800000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742745600000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742846400000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1742947200000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743048000000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743148800000000000,
+          "e": 977745.7251482669,
+          "lev": 0
+        },
+        {
+          "t": 1743249600000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743350400000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743451200000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743552000000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743652800000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743753600000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743854400000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1743955200000000000,
+          "e": 979294.461940071,
+          "lev": 0
+        },
+        {
+          "t": 1744056000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744156800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744257600000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744358400000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744459200000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744560000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744660800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744761600000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744862400000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1744963200000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745064000000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745164800000000000,
+          "e": 1000493.7597110231,
+          "lev": 0
+        },
+        {
+          "t": 1745265600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745366400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745467200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745568000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745668800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745769600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745870400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1745971200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746072000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746172800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746273600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746374400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746475200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746576000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746676800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746777600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746878400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1746979200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747080000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747180800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747281600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747382400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747483200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747584000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747684800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747785600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747886400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1747987200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748088000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748188800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748289600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748390400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748491200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748592000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748692800000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748793600000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748894400000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1748995200000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1749096000000000000,
+          "e": 1001744.5451413803,
+          "lev": 0
+        },
+        {
+          "t": 1749196800000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749297600000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749398400000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749499200000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749600000000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749700800000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749801600000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1749902400000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1750003200000000000,
+          "e": 1004448.8749229505,
+          "lev": 0
+        },
+        {
+          "t": 1750104000000000000,
+          "e": 987639.0309341592,
+          "lev": 0.9497621834277559
+        },
+        {
+          "t": 1750204800000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750305600000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750406400000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750507200000000000,
+          "e": 987054.8830614967,
+          "lev": 0
+        },
+        {
+          "t": 1750608000000000000,
+          "e": 986713.3545568611,
+          "lev": 0.9501345940683469
+        },
+        {
+          "t": 1750708800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1750809600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1750910400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751011200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751112000000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751212800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751313600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751414400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751515200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751616000000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751716800000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751817600000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1751918400000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1752019200000000000,
+          "e": 986142.6755758105,
+          "lev": 0
+        },
+        {
+          "t": 1752120000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752220800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752321600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752422400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752523200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752624000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752724800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752825600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1752926400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753027200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753128000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753228800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753329600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753430400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753531200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753632000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753732800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753833600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1753934400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754035200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754136000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754236800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754337600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754438400000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754539200000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754640000000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754740800000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754841600000000000,
+          "e": 980533.6349503287,
+          "lev": 0
+        },
+        {
+          "t": 1754942400000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755043200000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755144000000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755244800000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755345600000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755446400000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755547200000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755648000000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755748800000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755849600000000000,
+          "e": 978046.9886869835,
+          "lev": 0
+        },
+        {
+          "t": 1755950400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756051200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756152000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756252800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756353600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756454400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756555200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756656000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756756800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756857600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1756958400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757059200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757160000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757260800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757361600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757462400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757563200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757664000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757764800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757865600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1757966400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758067200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758168000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758268800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758369600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758470400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758571200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758672000000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758772800000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758873600000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1758974400000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1759075200000000000,
+          "e": 979210.4231126499,
+          "lev": 0
+        },
+        {
+          "t": 1759176000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759276800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759377600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759478400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759579200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759680000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759780800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759881600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1759982400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760083200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760184000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760284800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760385600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760486400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760587200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760688000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760788800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760889600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1760990400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761091200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761192000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761292800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761393600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761494400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761595200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761696000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761796800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761897600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1761998400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762099200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762200000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762300800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762401600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762502400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762603200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762704000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762804800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1762905600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763006400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763107200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763208000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763308800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763409600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763510400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763611200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763712000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763812800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1763913600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764014400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764115200000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764216000000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764316800000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764417600000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764518400000000000,
+          "e": 975419.1068995554,
+          "lev": 0
+        },
+        {
+          "t": 1764619200000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764720000000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764820800000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1764921600000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765022400000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765123200000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765224000000000000,
+          "e": 972393.3262464922,
+          "lev": 0
+        },
+        {
+          "t": 1765324800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765425600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765526400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765627200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765728000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765828800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1765929600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766030400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766131200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766232000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766332800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766433600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766534400000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766635200000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766736000000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766836800000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1766937600000000000,
+          "e": 960060.5016647911,
+          "lev": 0
+        },
+        {
+          "t": 1767038400000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        },
+        {
+          "t": 1767139200000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        },
+        {
+          "t": 1767211200000000000,
+          "e": 953703.8253798095,
+          "lev": 0
+        }
+      ],
+      "positions": {
+        "items": [
+          {
+            "status": "closed",
+            "idx": 18,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 90105.87069739595,
+            "exit_price": 89572.28644190729,
+            "mark_price": null,
+            "quantity": 10.123668,
+            "entry_notional": 912201.919791365,
+            "entry_ts": "2025-12-29T04:00:00Z",
+            "exit_ts": "2025-12-29T08:00:00Z",
+            "pnl": -6311.330857459461,
+            "gross_pnl": -5401.829852594394,
+            "fee_usd": 909.5010048650679,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0029690551851221047,
+            "mae_pct": 0.028697028033609264,
+            "leverage": 1,
+            "margin_usd": 912201.919791365,
+            "api_calls": [
+              {
+                "ts": 1766980800000000000,
+                "as_of": 1766980800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 17,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 93776.2149233659,
+            "exit_price": 92620.16759796938,
+            "mark_price": null,
+            "quantity": 9.852335,
+            "entry_notional": 923914.6844570002,
+            "entry_ts": "2025-12-09T20:00:00Z",
+            "exit_ts": "2025-12-10T00:00:00Z",
+            "pnl": -12307.985327354667,
+            "gross_pnl": -11389.765525660498,
+            "fee_usd": 918.21980169417,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00045731294091099124,
+            "mae_pct": 0.020007364606250598,
+            "leverage": 1,
+            "margin_usd": 923914.6844570002,
+            "api_calls": [
+              {
+                "ts": 1765310400000000000,
+                "as_of": 1765310400000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 16,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 86306.41405855531,
+            "exit_price": 86503.42063515536,
+            "mark_price": null,
+            "quantity": 10.735134,
+            "entry_notional": 926510.9199780752,
+            "entry_ts": "2025-12-01T04:00:00Z",
+            "exit_ts": "2025-12-01T08:00:00Z",
+            "pnl": -3042.4603646601963,
+            "gross_pnl": -2114.8919986827796,
+            "fee_usd": 927.5683659774165,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00860554880720004,
+            "mae_pct": 0.006715444590844251,
+            "leverage": 1,
+            "margin_usd": 926510.9199780752,
+            "api_calls": [
+              {
+                "ts": 1764561600000000000,
+                "as_of": 1764561600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 15,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 112138.56949420505,
+            "exit_price": 111794.87544369421,
+            "mark_price": null,
+            "quantity": 8.296943,
+            "entry_notional": 930407.3191949582,
+            "entry_ts": "2025-09-29T00:00:00Z",
+            "exit_ts": "2025-09-29T04:00:00Z",
+            "pnl": -3780.5914607492214,
+            "gross_pnl": -2851.609946527527,
+            "fee_usd": 928.9815142216944,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0011657943059609998,
+            "mae_pct": 0.005685550449597935,
+            "leverage": 1,
+            "margin_usd": 930407.3191949582,
+            "api_calls": [
+              {
+                "ts": 1759104000000000000,
+                "as_of": 1759104000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 14,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 116333.3485666828,
+            "exit_price": 116601.29712743196,
+            "mark_price": null,
+            "quantity": 7.98788,
+            "entry_notional": 929256.8283488342,
+            "entry_ts": "2025-08-22T16:00:00Z",
+            "exit_ts": "2025-08-22T20:00:00Z",
+            "pnl": 1210.0139506133792,
+            "gross_pnl": 2140.340949436932,
+            "fee_usd": 930.3269988235527,
+            "exit_reason": "signal",
+            "mfe_pct": 0.009146572727658307,
+            "mae_pct": 0.0024657466686638235,
+            "leverage": 1,
+            "margin_usd": 929256.8283488342,
+            "api_calls": [
+              {
+                "ts": 1755878400000000000,
+                "as_of": 1755878400000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 13,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 121716.2529800354,
+            "exit_price": 121519.07046408448,
+            "mark_price": null,
+            "quantity": 7.654118,
+            "entry_notional": 931630.5628270427,
+            "entry_ts": "2025-08-11T04:00:00Z",
+            "exit_ts": "2025-08-11T08:00:00Z",
+            "pnl": -2440.134178329932,
+            "gross_pnl": -1509.2582446252022,
+            "fee_usd": 930.87593370473,
+            "exit_reason": "signal",
+            "mfe_pct": 0.006028340521499281,
+            "mae_pct": 0.011904350853398828,
+            "leverage": 1,
+            "margin_usd": 931630.5628270427,
+            "api_calls": [
+              {
+                "ts": 1754884800000000000,
+                "as_of": 1754884800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 12,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 111732.32552614211,
+            "exit_price": 111177.25993191196,
+            "mark_price": null,
+            "quantity": 8.385657,
+            "entry_notional": 936948.9576745724,
+            "entry_ts": "2025-07-09T20:00:00Z",
+            "exit_ts": "2025-07-10T00:00:00Z",
+            "pnl": -5589.211348546955,
+            "gross_pnl": -4654.58968571524,
+            "fee_usd": 934.6216628317147,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0017826038518394967,
+            "mae_pct": 0.010957666193528372,
+            "leverage": 1,
+            "margin_usd": 936948.9576745724,
+            "api_calls": [
+              {
+                "ts": 1752091200000000000,
+                "as_of": 1752091200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 11,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 98838.17463496808,
+            "exit_price": 98840.4391417793,
+            "mark_price": null,
+            "quantity": 9.486121,
+            "entry_notional": 937590.8840064381,
+            "entry_ts": "2025-06-22T16:00:00Z",
+            "exit_ts": "2025-06-22T20:00:00Z",
+            "pnl": -959.0830103157832,
+            "gross_pnl": -21.48138561653688,
+            "fee_usd": 937.6016246992464,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0073127072372335235,
+            "mae_pct": 0.02180660835746949,
+            "leverage": 1,
+            "margin_usd": 937590.8840064381,
+            "api_calls": [
+              {
+                "ts": 1750608000000000000,
+                "as_of": 1750608000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 10,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 108607.32268769386,
+            "exit_price": 106736.99049114494,
+            "mark_price": null,
+            "quantity": 8.787085,
+            "entry_notional": 954341.7760791943,
+            "entry_ts": "2025-06-16T20:00:00Z",
+            "exit_ts": "2025-06-17T00:00:00Z",
+            "pnl": -17380.892381396567,
+            "gross_pnl": -16434.76798931203,
+            "fee_usd": 946.1243920845384,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0026948211691743126,
+            "mae_pct": 0.023380768670597053,
+            "leverage": 1,
+            "margin_usd": 954341.7760791943,
+            "api_calls": [
+              {
+                "ts": 1750104000000000000,
+                "as_of": 1750104000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 9,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 101863.12838133,
+            "exit_price": 101474.58235134538,
+            "mark_price": null,
+            "quantity": 9.341614,
+            "entry_notional": 951566.0261708297,
+            "entry_ts": "2025-06-05T20:00:00Z",
+            "exit_ts": "2025-06-06T00:00:00Z",
+            "pnl": 2679.895830694556,
+            "gross_pnl": 3629.6470333487114,
+            "fee_usd": 949.7512026541553,
+            "exit_reason": "signal",
+            "mfe_pct": 0.01529531250500602,
+            "mae_pct": 0.005905685680671282,
+            "leverage": 1,
+            "margin_usd": 951566.0261708297,
+            "api_calls": [
+              {
+                "ts": 1749153600000000000,
+                "as_of": 1749153600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 8,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 87182.96600979727,
+            "exit_price": 87387.24584082508,
+            "mark_price": null,
+            "quantity": 10.904051,
+            "entry_notional": 950647.507702096,
+            "entry_ts": "2025-04-21T04:00:00Z",
+            "exit_ts": "2025-04-21T08:00:00Z",
+            "pnl": 1275.716449248691,
+            "gross_pnl": 2227.4776957986865,
+            "fee_usd": 951.7612465499953,
+            "exit_reason": "signal",
+            "mfe_pct": 0.00681364740603088,
+            "mae_pct": 0.00657199492080688,
+            "leverage": 1,
+            "margin_usd": 950647.507702096,
+            "api_calls": [
+              {
+                "ts": 1745208000000000000,
+                "as_of": 1745208000000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 7,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 79565.76228506323,
+            "exit_price": 77675.6159554677,
+            "mark_price": null,
+            "quantity": 11.691584,
+            "entry_notional": 930249.7932798488,
+            "entry_ts": "2025-04-06T20:00:00Z",
+            "exit_ts": "2025-04-07T04:00:00Z",
+            "pnl": 21179.60419377039,
+            "gross_pnl": 22098.804584757858,
+            "fee_usd": 919.2003909874697,
+            "exit_reason": "signal",
+            "mfe_pct": 0.06420804801391683,
+            "mae_pct": 0.0036817056297059753,
+            "leverage": 1,
+            "margin_usd": 930249.7932798488,
+            "api_calls": [
+              {
+                "ts": 1743955200000000000,
+                "as_of": 1743955200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": -1,
+                "strength": 0.4,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": 82002.78050000001,
+                "take_profit_price": 74837.489,
+                "reason": ""
+              },
+              {
+                "ts": 1743984000000000000,
+                "as_of": 1743984000000000000,
+                "role": "close",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 6,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 83998.69043177472,
+            "exit_price": 83778.12554616376,
+            "mark_price": null,
+            "quantity": 11.056378,
+            "entry_notional": 928721.2729186846,
+            "entry_ts": "2025-03-28T16:00:00Z",
+            "exit_ts": "2025-03-28T20:00:00Z",
+            "pnl": 1511.1468002972924,
+            "gross_pnl": 2438.6487488415564,
+            "fee_usd": 927.5019485442639,
+            "exit_reason": "signal",
+            "mfe_pct": 0.005559496575176085,
+            "mae_pct": 0.005962111619252467,
+            "leverage": 1,
+            "margin_usd": 928721.2729186846,
+            "api_calls": [
+              {
+                "ts": 1743177600000000000,
+                "as_of": 1743177600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 5,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 86820.43525267832,
+            "exit_price": 85832.32306585994,
+            "mark_price": null,
+            "quantity": 10.827334,
+            "entry_notional": 940033.8505061226,
+            "entry_ts": "2025-03-20T00:00:00Z",
+            "exit_ts": "2025-03-20T04:00:00Z",
+            "pnl": -11633.305216321083,
+            "gross_pnl": -10698.620676153037,
+            "fee_usd": 934.6845401680462,
+            "exit_reason": "signal",
+            "mfe_pct": 0.007827244189042666,
+            "mae_pct": 0.01655641610750823,
+            "leverage": 1,
+            "margin_usd": 940033.8505061226,
+            "api_calls": [
+              {
+                "ts": 1742428800000000000,
+                "as_of": 1742428800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 4,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 93477.97034601629,
+            "exit_price": 94209.68465618184,
+            "mark_price": null,
+            "quantity": 9.99121,
+            "entry_notional": 933958.0321008214,
+            "entry_ts": "2025-03-02T20:00:00Z",
+            "exit_ts": "2025-03-03T00:00:00Z",
+            "pnl": 6373.0979451019175,
+            "gross_pnl": 7310.711332869174,
+            "fee_usd": 937.613387767256,
+            "exit_reason": "signal",
+            "mfe_pct": 0.014142686764487019,
+            "mae_pct": 0.01174469601717307,
+            "leverage": 1,
+            "margin_usd": 933958.0321008214,
+            "api_calls": [
+              {
+                "ts": 1740945600000000000,
+                "as_of": 1740945600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 3,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 98983.418223805,
+            "exit_price": 98708.66366698987,
+            "mark_price": null,
+            "quantity": 9.417133,
+            "entry_notional": 932140.0142081954,
+            "entry_ts": "2025-01-27T08:00:00Z",
+            "exit_ts": "2025-01-27T12:00:00Z",
+            "pnl": 1656.5538897778388,
+            "gross_pnl": 2587.400203884092,
+            "fee_usd": 930.8463141062534,
+            "exit_reason": "signal",
+            "mfe_pct": 0.007914641036478067,
+            "mae_pct": 0.03318113109378484,
+            "leverage": 1,
+            "margin_usd": 932140.0142081954,
+            "api_calls": [
+              {
+                "ts": 1737964800000000000,
+                "as_of": 1737964800000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 2,
+            "symbol": "BTCUSDT",
+            "direction": "short",
+            "entry_price": 90820.93202278542,
+            "exit_price": 92103.86605938044,
+            "mark_price": null,
+            "quantity": 10.413432,
+            "entry_notional": 945757.5997958984,
+            "entry_ts": "2025-01-13T12:00:00Z",
+            "exit_ts": "2025-01-13T16:00:00Z",
+            "pnl": -14312.183823538928,
+            "gross_pnl": -13359.746350567744,
+            "fee_usd": 952.4374729711824,
+            "exit_reason": "signal",
+            "mfe_pct": 0.02105166705738879,
+            "mae_pct": 0.024598602188470074,
+            "leverage": 1,
+            "margin_usd": 945757.5997958984,
+            "api_calls": [
+              {
+                "ts": 1736769600000000000,
+                "as_of": 1736769600000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0.2,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          },
+          {
+            "status": "closed",
+            "idx": 1,
+            "symbol": "BTCUSDT",
+            "direction": "long",
+            "entry_price": 102117.21695284525,
+            "exit_price": 101752.01535356835,
+            "mark_price": null,
+            "quantity": 9.304193,
+            "entry_notional": 950118.295152144,
+            "entry_ts": "2025-01-06T16:00:00Z",
+            "exit_ts": "2025-01-06T20:00:00Z",
+            "pnl": -4346.325505651302,
+            "gross_pnl": -3397.906163580948,
+            "fee_usd": 948.4193420703535,
+            "exit_reason": "signal",
+            "mfe_pct": 0.0032000778801644036,
+            "mae_pct": 0.008756769715514022,
+            "leverage": 1,
+            "margin_usd": 950118.295152144,
+            "api_calls": [
+              {
+                "ts": 1736179200000000000,
+                "as_of": 1736179200000000000,
+                "role": "open",
+                "symbol": "BTCUSDT",
+                "target": 0,
+                "strength": 0,
+                "horizon": 86400000000000,
+                "margin": 5000,
+                "leverage": 1,
+                "notional": 5000,
+                "stop_loss_price": null,
+                "take_profit_price": null,
+                "reason": ""
+              }
+            ]
+          }
+        ],
+        "total": 18,
+        "open_count": 0,
+        "closed_count": 18
+      },
+      "trades": [
+        {
+          "ts": 1736179200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 102117.21695284525,
+          "qty": 9.304193,
+          "notional": 950118.295152144,
+          "fee": 475.059147576072,
+          "slippage_bps": 1.2454840722256992,
+          "slippage_usd": 118.33572033422311,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1736193600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 101752.01535356835,
+          "qty": 9.304193,
+          "notional": 946720.3889885631,
+          "fee": 473.36019449428153,
+          "slippage_bps": 1.9341964840569645,
+          "slippage_usd": 183.11432477667205,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1736769600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 90820.93202278542,
+          "qty": 10.413432,
+          "notional": 945757.5997958984,
+          "fee": 472.8787998979492,
+          "slippage_bps": 0.7231264996377068,
+          "slippage_usd": 68.39023826461671,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1736784000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 92103.86605938044,
+          "qty": 10.413432,
+          "notional": 959117.3461464662,
+          "fee": 479.55867307323314,
+          "slippage_bps": 1.1038821743973615,
+          "slippage_usd": 105.8752541566388,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1737964800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 98983.418223805,
+          "qty": 9.417133,
+          "notional": 932140.0142081954,
+          "fee": 466.0700071040977,
+          "slippage_bps": 1.3012381467795593,
+          "slippage_usd": 121.29361446273442,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1737979200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 98708.66366698987,
+          "qty": 9.417133,
+          "notional": 929552.6140043113,
+          "fee": 464.77630700215565,
+          "slippage_bps": 0.8676452191905233,
+          "slippage_usd": 80.65218815268945,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1740945600000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 93477.97034601629,
+          "qty": 9.99121,
+          "notional": 933958.0321008214,
+          "fee": 466.9790160504107,
+          "slippage_bps": 1.1523128986733102,
+          "slippage_usd": 107.6211887209318,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1740960000000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 94209.68465618184,
+          "qty": 9.99121,
+          "notional": 941268.7434336906,
+          "fee": 470.63437171684535,
+          "slippage_bps": 1.3070560822477333,
+          "slippage_usd": 123.02910361346866,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1742428800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 86820.43525267832,
+          "qty": 10.827334,
+          "notional": 940033.8505061226,
+          "fee": 470.0169252530613,
+          "slippage_bps": 1.2251212050144638,
+          "slippage_usd": 115.16554036864473,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1742443200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 85832.32306585994,
+          "qty": 10.827334,
+          "notional": 929335.2298299696,
+          "fee": 464.6676149149848,
+          "slippage_bps": 2.012465304447627,
+          "slippage_usd": 187.02549062336752,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1743177600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 83998.69043177472,
+          "qty": 11.056378,
+          "notional": 928721.2729186846,
+          "fee": 464.36063645934235,
+          "slippage_bps": 1.4652329129841641,
+          "slippage_usd": 136.07929760690052,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1743192000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 83778.12554616376,
+          "qty": 11.056378,
+          "notional": 926282.624169843,
+          "fee": 463.14131208492154,
+          "slippage_bps": 2.0803964345770583,
+          "slippage_usd": 192.70350687336227,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1743969600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 79565.76228506323,
+          "qty": 11.691584,
+          "notional": 930249.7932798488,
+          "fee": 465.1248966399244,
+          "slippage_bps": 0.859305205155702,
+          "slippage_usd": 79.93684894603898,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1743998400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 77675.6159554677,
+          "qty": 11.691584,
+          "notional": 908150.9886950909,
+          "fee": 454.07549434754543,
+          "slippage_bps": 0.7874333512766228,
+          "slippage_usd": 71.51083764933539,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1745208000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 87182.96600979727,
+          "qty": 10.904051,
+          "notional": 950647.507702096,
+          "fee": 475.323753851048,
+          "slippage_bps": 1.8775551412177165,
+          "slippage_usd": 178.4893115571879,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1745222400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 87387.24584082508,
+          "qty": 10.904051,
+          "notional": 952874.9853978946,
+          "fee": 476.4374926989473,
+          "slippage_bps": 1.539365150955477,
+          "slippage_usd": 146.6822545738728,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1749153600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 101863.12838133,
+          "qty": 9.341614,
+          "notional": 951566.0261708297,
+          "fee": 475.78301308541484,
+          "slippage_bps": 0.9690122672355743,
+          "slippage_usd": 92.20791524441415,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1749168000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 101474.58235134538,
+          "qty": 9.341614,
+          "notional": 947936.3791374809,
+          "fee": 473.96818956874046,
+          "slippage_bps": 1.5654006354680374,
+          "slippage_usd": 148.3900210285083,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1750104000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 108607.32268769386,
+          "qty": 8.787085,
+          "notional": 954341.7760791943,
+          "fee": 477.1708880395972,
+          "slippage_bps": 1.208415154203815,
+          "slippage_usd": 115.32410645038823,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1750118400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 106736.99049114494,
+          "qty": 8.787085,
+          "notional": 937907.0080898823,
+          "fee": 468.95350404494116,
+          "slippage_bps": 1.228055885199816,
+          "slippage_usd": 115.18022210549316,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1750608000000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 98838.17463496808,
+          "qty": 9.486121,
+          "notional": 937590.8840064381,
+          "fee": 468.795442003219,
+          "slippage_bps": 1.1659484077259767,
+          "slippage_usd": 109.31825983056974,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1750622400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 98840.4391417793,
+          "qty": 9.486121,
+          "notional": 937612.3653920547,
+          "fee": 468.80618269602735,
+          "slippage_bps": 1.0866310207667342,
+          "slippage_usd": 101.88386816894806,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1752091200000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 111732.32552614211,
+          "qty": 8.385657,
+          "notional": 936948.9576745724,
+          "fee": 468.4744788372862,
+          "slippage_bps": 1.2106759240264897,
+          "slippage_usd": 113.43415450983193,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1752105600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 111177.25993191196,
+          "qty": 8.385657,
+          "notional": 932294.3679888571,
+          "fee": 466.14718399442853,
+          "slippage_bps": 2.026988185953646,
+          "slippage_usd": 188.97496697445345,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1754884800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 121716.2529800354,
+          "qty": 7.654118,
+          "notional": 931630.5628270427,
+          "fee": 465.81528141352135,
+          "slippage_bps": 1.327277466114996,
+          "slippage_usd": 123.65322527843647,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1754899200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 121519.07046408448,
+          "qty": 7.654118,
+          "notional": 930121.3045824174,
+          "fee": 465.06065229120867,
+          "slippage_bps": 1.302468337532895,
+          "slippage_usd": 121.14535492833885,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1755878400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 116333.3485666828,
+          "qty": 7.98788,
+          "notional": 929256.8283488342,
+          "fee": 464.6284141744171,
+          "slippage_bps": 1.1991608177840742,
+          "slippage_usd": 111.43283782142231,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1755892800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 116601.29712743196,
+          "qty": 7.98788,
+          "notional": 931397.1692982712,
+          "fee": 465.6985846491356,
+          "slippage_bps": 2.0666915241485366,
+          "slippage_usd": 192.49106354046768,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1759104000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 112138.56949420505,
+          "qty": 8.296943,
+          "notional": 930407.3191949582,
+          "fee": 465.2036595974791,
+          "slippage_bps": 1.6829775860123815,
+          "slippage_usd": 156.5854664066982,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1759118400000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 111794.87544369421,
+          "qty": 8.296943,
+          "notional": 927555.7092484307,
+          "fee": 463.77785462421537,
+          "slippage_bps": 2.0591118511252464,
+          "slippage_usd": 190.9940953492327,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1764561600000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 86306.41405855531,
+          "qty": 10.735134,
+          "notional": 926510.9199780752,
+          "fee": 463.2554599890376,
+          "slippage_bps": 1.4696563616510248,
+          "slippage_usd": 136.16526676849216,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1764576000000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 86503.42063515536,
+          "qty": 10.735134,
+          "notional": 928625.811976758,
+          "fee": 464.312905988379,
+          "slippage_bps": 1.8639309072365833,
+          "slippage_usd": 173.08943522011472,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1765310400000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 93776.2149233659,
+          "qty": 9.852335,
+          "notional": 923914.6844570002,
+          "fee": 461.9573422285001,
+          "slippage_bps": 1.526731365929501,
+          "slippage_usd": 141.056952820336,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1765324800000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 92620.16759796938,
+          "qty": 9.852335,
+          "notional": 912524.9189313396,
+          "fee": 456.26245946566985,
+          "slippage_bps": 1.9573332013460896,
+          "slippage_usd": 178.61153208799598,
+          "exit_reason": "",
+          "role": "close"
+        },
+        {
+          "ts": 1766980800000000000,
+          "symbol": "BTCUSDT",
+          "side": "buy",
+          "price": 90105.87069739595,
+          "qty": 10.123668,
+          "notional": 912201.919791365,
+          "fee": 456.10095989568254,
+          "slippage_bps": 1.5951224472842154,
+          "slippage_usd": 145.50737587149618,
+          "exit_reason": "",
+          "role": "open"
+        },
+        {
+          "ts": 1766995200000000000,
+          "symbol": "BTCUSDT",
+          "side": "sell",
+          "price": 89572.28644190729,
+          "qty": 10.123668,
+          "notional": 906800.0899387706,
+          "fee": 453.4000449693853,
+          "slippage_bps": 1.1959365161594053,
+          "slippage_usd": 108.44753404144087,
+          "exit_reason": "",
+          "role": "close"
+        }
+      ],
+      "n_trades_total": 36,
+      "trades_truncated": false,
+      "monthly_table": [
+        {
+          "year": 2025,
+          "month": 1,
+          "return": -0.016998537014217465
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "return": -0.0037711043017696778
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "return": 0.022924752537488744
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "return": -0.01557469880044901
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "return": -0.005687859134791647
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "return": -0.0013494813339532499
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "return": -0.003871809494268786
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "return": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "return": -0.022262513996439574
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "return": 0
+        }
+      ],
+      "annual_table": [
+        {
+          "year": 2025,
+          "return_pct": -0.04629617462019053,
+          "n_months": 12,
+          "mdd": 0.05110908604211934
+        },
+        {
+          "year": 2026,
+          "return_pct": 0,
+          "n_months": 1,
+          "mdd": 0
+        }
+      ],
+      "tiles": {
+        "cagr": -0.046316826555053425,
+        "sortino": -0.2207027592953489,
+        "calmar": -0.9062346862724843,
+        "profit_factor": 0.5088997161308118,
+        "hit_rate": 0.3888888888888889,
+        "trade_count": 18,
+        "fill_count": 36,
+        "expectancy": -2099.6931273735536,
+        "total_fees_usd": 16816.037144721104,
+        "real_costs_usd": 21674.535725219943,
+        "cost_ratio": null,
+        "funding_usd": -78.70020537107328,
+        "slippage_usd": 4779.798375127764,
+        "ulcer_index": 0.02315122167933272,
+        "recovery_factor": -0.9058306106674952,
+        "gain_to_pain_ratio": 0.46539021015346244,
+        "payoff_ratio": 0.799699553919847,
+        "sqn": -1.0188355351417513,
+        "worst_calendar_year_return": -0.04629617462019053,
+        "best_trade_pct": 0.021644729090410313,
+        "worst_trade_pct": -0.01690372149335697,
+        "consecutive_losses_max": 4,
+        "leverage_used_max": 0.976674456597821,
+        "gross_exposure_peak_usd": 959010.4412352,
+        "margin_utilization_peak_pct": 97.6674456597821
+      },
+      "starting_capital_usd": 1000000,
+      "leverage_cap": 125
+    },
+    "replayed_at_ns": 1784614281363564500,
+    "received_at_ns": 1784614267967751700,
+    "strategy": "Mixed_Elite_Mediocre_2025"
+  }
+}

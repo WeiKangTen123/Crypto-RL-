@@ -1,0 +1,8 @@
+[
+  {
+    "strategy_id": "106",
+    "status": "ERROR",
+    "error": "422 Client Error: Unprocessable Entity for url: https://btest.abcz-tr.com/api/v1/signals",
+    "body": "{\"error\":\"replay 422: window too long for 5m: ~5.4y requested, max ~1.0y at this resolution \u2014 shorten the window or use a coarser timeframe (coarser candles allow more history).\"}"
+  }
+]
