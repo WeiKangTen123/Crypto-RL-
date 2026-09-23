@@ -1,0 +1,3729 @@
+##################################  || sac || ##################################
+MODEL NAME: sac
+TRIAL NUMBER: 0
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-22 11:27:47.596441
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:47.746365
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0005183624452911317
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00951126217842102
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005439194850623608
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017906343564391136
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006457467097789049
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.01711767353117466
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010076353326439857
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004152393434196711
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011409638449549675
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.003789998358115554
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:49.491488
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00863786872359924
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00018277167109772424
+
+TIME END OUTER: 2026-05-22 11:27:49.491783
+
+MODEL NAME: sac
+TRIAL NUMBER: 1
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-22 11:27:50.082687
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:50.197150
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634969711304
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.009253427386283875
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:50.324958
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.005726512707769871
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.014181609760271385
+
+TIME END OUTER: 2026-05-22 11:27:50.325212
+
+MODEL NAME: sac
+TRIAL NUMBER: 2
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:50.410740
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:50.522779
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.003971331287175417
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00923705194145441
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634969711304
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.009253427386283875
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:50.649920
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.004405674384906888
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.012860771437408403
+
+TIME END OUTER: 2026-05-22 11:27:50.650154
+
+MODEL NAME: sac
+TRIAL NUMBER: 3
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 2048, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-22 11:27:50.766333
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:50.877005
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.009074018336832523
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:51.007513
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00577268055640161
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.002682416496099905
+
+TIME END OUTER: 2026-05-22 11:27:51.007791
+
+MODEL NAME: sac
+TRIAL NUMBER: 4
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:51.151937
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:51.274797
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:51.416162
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-22 11:27:51.416384
+
+MODEL NAME: sac
+TRIAL NUMBER: 5
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.0, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-22 11:27:51.764482
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:51.908420
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0005183624452911317
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00951126217842102
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005439194850623608
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017906343564391136
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006457467097789049
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.01711767353117466
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010076353326439857
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004152393434196711
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0108903544023633
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.0021885582245886326
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:52.038269
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005810013780137524
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.002645083272363991
+
+TIME END OUTER: 2026-05-22 11:27:52.038484
+
+MODEL NAME: sac
+TRIAL NUMBER: 6
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:52.235124
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:52.347950
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0040638926438987255
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         -0.0023055789060890675
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628554701805
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.005584777798503637
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         -0.00681613152846694
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.007189779542386532
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.006577943451702595
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628554701805
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011499668471515179
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.007189779542386532
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:52.498632
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.0016738873906433581
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.006781209661858157
+
+TIME END OUTER: 2026-05-22 11:27:52.498877
+
+MODEL NAME: sac
+TRIAL NUMBER: 7
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:52.725411
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:52.837156
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:52.987044
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-22 11:27:52.987252
+
+MODEL NAME: sac
+TRIAL NUMBER: 8
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-22 11:27:53.238620
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:53.351225
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.011720961891114712
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.01263505220413208
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:53.481902
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.007000655028969049
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.015455752081470564
+
+TIME END OUTER: 2026-05-22 11:27:53.482106
+
+MODEL NAME: sac
+TRIAL NUMBER: 9
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-22 11:27:53.770089
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:53.914706
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006581692490726709
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.009074018336832523
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:54.044025
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.006430849805474282
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.0020242472470272336
+
+TIME END OUTER: 2026-05-22 11:27:54.044233
+
+MODEL NAME: sac
+TRIAL NUMBER: 10
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:54.354349
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:54.465341
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.016900338232517242
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.004138126969337463
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010015512816607952
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.0028913007117807865
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011612670496106148
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-22 11:27:54.591248
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00822978479845915
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.00022531225404236535
+
+TIME END OUTER: 2026-05-22 11:27:54.591462
+
+MODEL NAME: sac
+TRIAL NUMBER: 11
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 11:27:54.929012
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 11:27:55.041021
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410068224826
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0065816924157159375
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0168998269142192
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872433938986
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417931819735
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486260876462769
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268695938139256
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-22 13:59:33.373065
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005950317657852071
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.0025047793303247046
+
+TIME END OUTER: 2026-05-22 13:59:33.698994
+
+MODEL NAME: sac
+TRIAL NUMBER: 12
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 13:59:34.793896
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 13:59:34.918764
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-22 16:28:48.948666
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-22 16:28:49.200594
+
+MODEL NAME: sac
+TRIAL NUMBER: 13
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 16:28:49.647856
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 16:28:50.393159
+
+MODEL NAME: sac
+TRIAL NUMBER: 14
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-22 18:16:00.649224
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-22 18:16:00.795795
+
+MODEL NAME: sac
+TRIAL NUMBER: 15
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 09:09:46.458251
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 09:09:46.586371
+
+MODEL NAME: sac
+TRIAL NUMBER: 0
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-25 10:13:47.086662
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:47.221227
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0005183624452911317
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00951126217842102
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005439194850623608
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017906343564391136
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006457467097789049
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.01711767353117466
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010076353326439857
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004152393434196711
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011409638449549675
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.003789998358115554
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:48.829372
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00863786872359924
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00018277167109772424
+
+TIME END OUTER: 2026-05-25 10:13:48.829750
+
+MODEL NAME: sac
+TRIAL NUMBER: 1
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-25 10:13:49.402451
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:49.504726
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634969711304
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.009253427386283875
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:49.648224
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.005726512707769871
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.014181609760271385
+
+TIME END OUTER: 2026-05-25 10:13:49.648497
+
+MODEL NAME: sac
+TRIAL NUMBER: 2
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:49.744097
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:49.846791
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.003971331287175417
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00923705194145441
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634969711304
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.009253427386283875
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:49.976718
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.004405674384906888
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.012860771437408403
+
+TIME END OUTER: 2026-05-25 10:13:49.977004
+
+MODEL NAME: sac
+TRIAL NUMBER: 3
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 2048, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-25 10:13:50.134744
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:50.236072
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.009074018336832523
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:50.365159
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00577268055640161
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.002682416496099905
+
+TIME END OUTER: 2026-05-25 10:13:50.365451
+
+MODEL NAME: sac
+TRIAL NUMBER: 4
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:50.521702
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:50.628015
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:50.753966
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-25 10:13:50.754221
+
+MODEL NAME: sac
+TRIAL NUMBER: 5
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.0, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-25 10:13:51.131267
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:51.257596
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0005183624452911317
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00951126217842102
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005439194850623608
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017906343564391136
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006457467097789049
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.01711767353117466
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010076353326439857
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004152393434196711
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0108903544023633
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.0021885582245886326
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:51.399412
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005810013780137524
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.002645083272363991
+
+TIME END OUTER: 2026-05-25 10:13:51.399794
+
+MODEL NAME: sac
+TRIAL NUMBER: 6
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:51.608662
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:51.708497
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0040638926438987255
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         -0.0023055789060890675
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628554701805
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.005584777798503637
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         -0.00681613152846694
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.007189779542386532
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.006577943451702595
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628554701805
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011499668471515179
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.007189779542386532
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:51.844253
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.0016738873906433581
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.006781209661858157
+
+TIME END OUTER: 2026-05-25 10:13:51.844553
+
+MODEL NAME: sac
+TRIAL NUMBER: 7
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:52.079205
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:52.180148
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:52.334627
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-25 10:13:52.334934
+
+MODEL NAME: sac
+TRIAL NUMBER: 8
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-25 10:13:52.639881
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:52.744317
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106849640607834
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.01754368655383587
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.011720961891114712
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.01263505220413208
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:52.874981
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.007000655028969049
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.015455752081470564
+
+TIME END OUTER: 2026-05-25 10:13:52.875282
+
+MODEL NAME: sac
+TRIAL NUMBER: 9
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-25 10:13:53.166997
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:53.289578
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006581692490726709
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.009074018336832523
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:53.418869
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.006430849805474282
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.0020242472470272336
+
+TIME END OUTER: 2026-05-25 10:13:53.419240
+
+MODEL NAME: sac
+TRIAL NUMBER: 10
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:53.739287
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:53.838459
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.016900338232517242
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.004138126969337463
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010015512816607952
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.0028913007117807865
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011612670496106148
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:53.968992
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00822978479845915
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.00022531225404236535
+
+TIME END OUTER: 2026-05-25 10:13:53.969258
+
+MODEL NAME: sac
+TRIAL NUMBER: 11
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:54.316091
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:54.415362
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006581692490726709
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268696065992117
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:54.545506
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00595031757839024
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.002504779474111275
+
+TIME END OUTER: 2026-05-25 10:13:54.545832
+
+MODEL NAME: sac
+TRIAL NUMBER: 12
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:54.919979
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:55.018049
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.0040578776970505714
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 10:13:55.142923
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679019511677
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00011958196701016173
+
+TIME END OUTER: 2026-05-25 10:13:55.143239
+
+MODEL NAME: sac
+TRIAL NUMBER: 13
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 10:13:55.544208
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 10:13:55.666950
+
+MODEL NAME: sac
+TRIAL NUMBER: 14
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 17:26:32.641498
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 17:26:32.775499
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         9.440756548428908e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009339578449726105
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017590593546628952
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010079766623675823
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-25 19:45:30.828464
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008572126309791064
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097041775
+DIFFERENCE                                 : 0.0001170292680160636
+
+TIME END OUTER: 2026-05-25 19:45:30.879098
+
+MODEL NAME: sac
+TRIAL NUMBER: 15
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 19:45:31.760766
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 19:45:31.865085
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-25 19:45:33.889673
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-25 19:45:33.907467
+
+MODEL NAME: sac
+TRIAL NUMBER: 16
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.0, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-25 19:45:34.356266
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 19:45:34.455412
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-25 21:30:03.869193
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-25 21:30:04.061489
+
+MODEL NAME: sac
+TRIAL NUMBER: 17
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-25 21:30:04.515237
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 21:30:04.612379
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-25 23:06:11.276594
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-25 23:06:11.512981
+
+MODEL NAME: sac
+TRIAL NUMBER: 18
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-25 23:06:11.967443
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-25 23:06:12.186613
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0005183624162227728
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009488253958298717
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005439194778667073
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017866677647974106
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006457466892580508
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.017117673954658488
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010076353385086419
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004152393387418654
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011409637996580591
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.0037899982571835984
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 01:51:28.344293
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008631601267467093
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.0001765042792903175
+
+TIME END OUTER: 2026-05-26 01:51:29.026485
+
+MODEL NAME: sac
+TRIAL NUMBER: 19
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 2048, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-26 01:51:29.628825
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 01:51:29.731967
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 03:36:43.731366
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 03:36:43.980972
+
+MODEL NAME: sac
+TRIAL NUMBER: 20
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-26 03:36:44.442752
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 03:36:44.541398
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410237967968
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016899826005101204
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872110009193
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417722374201
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486261151731014
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268696065992117
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-26 03:36:44.685965
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.00529214832931757
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : -0.0031629487231839455
+
+TIME END OUTER: 2026-05-26 03:36:44.686329
+
+MODEL NAME: sac
+TRIAL NUMBER: 21
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 03:36:45.170603
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 03:36:45.269460
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 06:10:00.180010
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 06:10:00.437981
+
+MODEL NAME: sac
+TRIAL NUMBER: 22
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-26 06:10:00.939850
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 06:10:01.044908
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 07:19:52.450220
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 07:19:52.698859
+
+MODEL NAME: sac
+TRIAL NUMBER: 23
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.1, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 07:19:53.231592
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 07:19:53.362150
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 09:57:25.952008
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 09:57:26.203849
+
+MODEL NAME: sac
+TRIAL NUMBER: 24
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 09:57:26.806125
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 09:57:26.908066
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 12:40:57.437234
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 12:40:57.665028
+
+MODEL NAME: sac
+TRIAL NUMBER: 25
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 12:40:58.258489
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 12:40:58.356997
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-26 12:40:58.502622
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-26 12:40:58.502912
+
+MODEL NAME: sac
+TRIAL NUMBER: 26
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 12:40:59.041693
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 12:40:59.140322
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-26 12:40:59.278141
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-26 12:40:59.278446
+
+MODEL NAME: sac
+TRIAL NUMBER: 27
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-26 12:40:59.817146
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 12:40:59.967154
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 14:23:12.458434
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 14:23:12.687340
+
+MODEL NAME: sac
+TRIAL NUMBER: 28
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 14:23:13.352521
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 14:23:13.450348
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106848858909586
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.0175436856559599
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634065626524
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.00925342780001874
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 16:43:00.278381
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.005726512572145088
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.014181609560321863
+
+TIME END OUTER: 2026-05-26 16:43:00.556572
+
+MODEL NAME: sac
+TRIAL NUMBER: 29
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 16:43:01.322272
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 16:43:01.428769
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         9.44075667778708e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009339578885702545
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017590593292933547
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010079766512855174
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 19:15:42.874470
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008572126387167697
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.0001170293989909213
+
+TIME END OUTER: 2026-05-26 19:15:43.422585
+
+MODEL NAME: sac
+TRIAL NUMBER: 30
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 19:15:44.090811
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 19:15:44.189449
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106848858909586
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.0175436856559599
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634065626524
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.00925342780001874
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 21:23:33.473545
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.005726512572145088
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.014181609560321863
+
+TIME END OUTER: 2026-05-26 21:23:33.763174
+
+MODEL NAME: sac
+TRIAL NUMBER: 31
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 21:23:34.537274
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 21:23:34.693665
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-26 22:59:51.608291
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-26 22:59:51.825438
+
+MODEL NAME: sac
+TRIAL NUMBER: 32
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 22:59:52.502562
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 22:59:52.601464
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-26 22:59:52.756179
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-26 22:59:52.756596
+
+MODEL NAME: sac
+TRIAL NUMBER: 33
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-26 22:59:53.395005
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-26 22:59:53.493241
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 01:36:43.951351
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-27 01:36:44.194842
+
+MODEL NAME: sac
+TRIAL NUMBER: 34
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 300000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.05, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-27 01:36:44.921044
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 01:36:45.027792
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 03:12:52.549793
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-27 03:12:52.792189
+
+MODEL NAME: sac
+TRIAL NUMBER: 35
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-27 03:12:53.529266
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 03:12:53.679273
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410068224826
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0065816924157159375
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0168998269142192
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872433938986
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417931819735
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486260876462769
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268695938139256
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 06:41:07.683142
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005950317657852071
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.0025047793303247046
+
+TIME END OUTER: 2026-05-27 06:41:07.991965
+
+MODEL NAME: sac
+TRIAL NUMBER: 36
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-27 06:41:08.711400
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 06:41:08.812986
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 09:16:27.295191
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-27 09:16:27.513742
+
+MODEL NAME: sac
+TRIAL NUMBER: 37
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-27 09:16:28.183352
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 09:16:28.282893
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         -0.008277798544956978
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         -0.00230557885520084
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628131644003
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.005584777650331363
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         -0.006816131440041994
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.007189779507621546
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.006577943637535536
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.008122628131644003
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.007189779507621545
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 14:34:15.296738
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.0007102484800377829
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.009165345468214557
+
+TIME END OUTER: 2026-05-27 14:34:15.992017
+
+MODEL NAME: sac
+TRIAL NUMBER: 38
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-27 14:34:16.752703
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 14:34:16.859761
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410068224826
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0168998269142192
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872433938986
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417931819735
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486260876462769
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268695938139256
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 17:54:32.694971
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005292148416280477
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.003162948571896298
+
+TIME END OUTER: 2026-05-27 17:54:32.987412
+
+MODEL NAME: sac
+TRIAL NUMBER: 39
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-27 17:54:33.768220
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 17:54:33.912891
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005839410068224826
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0065816924157159375
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0168998269142192
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010142872433938986
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004284417931819735
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011486260876462769
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004268695938139256
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-27 21:23:04.618997
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.005950317657852071
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.0025047793303247046
+
+TIME END OUTER: 2026-05-27 21:23:04.935216
+
+MODEL NAME: sac
+TRIAL NUMBER: 40
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.2, 'jitter_weight': 0.01, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-27 21:23:05.727489
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-27 21:23:05.825467
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-28 01:27:28.652203
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-28 01:27:28.863987
+
+MODEL NAME: sac
+TRIAL NUMBER: 41
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 2048, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 4, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-28 01:27:29.512643
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 01:27:29.610188
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845786520736e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.00936450628445328
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794610912744
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204819889217
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-28 05:31:27.715373
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008574679178652827
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.00011958219047605162
+
+TIME END OUTER: 2026-05-28 05:31:27.948429
+
+MODEL NAME: sac
+TRIAL NUMBER: 42
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-28 05:31:28.719105
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 05:31:28.826238
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         8.836845518089831e-05
+HODL:        0.000699604453984648
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009364506229758263
+HODL:        0.009628835134208202
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.005527492146939039
+HODL:        0.0048285797238349915
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017580794170498848
+HODL:        0.017179034650325775
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.006418675184249878
+HODL:        0.0056426203809678555
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926323994994164
+HODL:        0.01685960777103901
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010096204467117786
+HODL:        0.010100562125444412
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231837719679
+HODL:        0.0037917715962976217
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505316011607647
+HODL:        0.011758379638195038
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004833207931369543
+HODL:        0.004061975050717592
+PARALLEL SPLITS END: 2026-05-28 05:31:28.975484
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008652212042943575
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455097052501515
+DIFFERENCE                                 : 0.00019711499044205993
+
+TIME END OUTER: 2026-05-28 05:31:28.975729
+
+MODEL NAME: sac
+TRIAL NUMBER: 43
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 2048, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 16, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.05}
+
+TIME START OUTER: 2026-05-28 05:31:29.662172
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 05:31:29.797918
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         9.44075667778708e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009339578885702545
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017590593292933547
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010079766512855174
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-28 09:35:17.868072
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008572126387167697
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.0001170293989909213
+
+TIME END OUTER: 2026-05-28 09:35:18.392041
+
+MODEL NAME: sac
+TRIAL NUMBER: 44
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0001, 'batch_size': 2048, 'gamma': 0.85, 'net_dimension': 2048, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 200000.0}
+{'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.01}
+
+TIME START OUTER: 2026-05-28 09:35:19.223577
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 09:35:19.327840
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         9.44075667778708e-05
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.009339578885702545
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0055274921926257775
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.017590593292933547
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0064186751576870505
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.016926324814333878
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         0.010079766512855174
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         0.004181231737413921
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         0.011505315974462157
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         0.004057877736885054
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-28 12:26:46.339316
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  0.008572126387167697
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : 0.0001170293989909213
+
+TIME END OUTER: 2026-05-28 12:26:46.862457
+
+MODEL NAME: sac
+TRIAL NUMBER: 45
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 40, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.0, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-28 12:26:47.724992
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 12:26:47.828452
+
+SPLIT: 0     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.0006996044566157088
+
+SPLIT: 1     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.00962883489392876
+
+SPLIT: 2     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.004828579735578701
+
+SPLIT: 3     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.017179033809620114
+
+SPLIT: 4     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.005642620565194597
+
+SPLIT: 5     # Optimizing for Sharpe ratio!
+BOT:         0.0
+HODL:        0.016859608029775576
+
+SPLIT: 6     # Optimizing for Sharpe ratio!
+BOT:         -0.028106848858909586
+HODL:        0.010100562094561538
+
+SPLIT: 7     # Optimizing for Sharpe ratio!
+BOT:         -0.0175436856559599
+HODL:        0.0037917715543633245
+
+SPLIT: 8     # Optimizing for Sharpe ratio!
+BOT:         -0.0023611634065626524
+HODL:        0.011758379798676987
+
+SPLIT: 9     # Optimizing for Sharpe ratio!
+BOT:         -0.00925342780001874
+HODL:        0.004061974943452457
+PARALLEL SPLITS END: 2026-05-28 14:42:01.187542
+
+
+HYPERPARAMETER EVAL || SHARPE AVG BOT    :  -0.005726512572145088
+HYPERPARAMETER EVAL || SHARPE AVG HODL     : 0.008455096988176775
+DIFFERENCE                                 : -0.014181609560321863
+
+TIME END OUTER: 2026-05-28 14:42:01.452935
+
+MODEL NAME: sac
+TRIAL NUMBER: 46
+CWD: /Users/weikangten/Desktop/Crypto-RL/train_results/cwd_tests/model_CPCV_sac_4h_50H_15k
+{'learning_rate': 0.0002, 'batch_size': 1024, 'gamma': 0.85, 'net_dimension': 1024, 'target_step': 6859.8, 'eval_time_gap': 60, 'break_step': 500000.0}
+{'lookback': 50, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.05, 'jitter_weight': 0.05, 'holding_penalty': 0.0}
+
+TIME START OUTER: 2026-05-28 14:42:02.324029
+
+######### CPCV Settings #########
+Paths  : 4
+N      : 5
+splits : 10
+
+PARALLEL SPLITS START (2 workers): 2026-05-28 14:42:02.439022

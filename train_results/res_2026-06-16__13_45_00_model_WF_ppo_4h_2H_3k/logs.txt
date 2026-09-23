@@ -1,0 +1,36 @@
+##################################  || ppo || ##################################
+MODEL NAME: ppo
+TRIAL NUMBER: 0
+CWD: ./train_results/cwd_tests/model_WF_ppo_4h_2H_3k
+{'learning_rate': 0.03, 'batch_size': 512, 'gamma': 0.99, 'net_dimension': 1024, 'target_step': 4877, 'eval_time_gap': 60, 'break_step': 45000.0}
+{'lookback': 1, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 0.0009765625, 'norm_action': 10000}
+
+TIME START OUTER: 2026-06-16 13:45:00.471668
+BOT:         0.0
+HODL:        -0.00485811446054038
+TIME END INNER: 2026-06-16 13:46:05.826673
+
+
+HYPERPARAMETER EVAL || SHARPE BOT    :  0.0
+HYPERPARAMETER EVAL || SHARPE HODL     : -0.00485811446054038
+DIFFERENCE                                 : 0.00485811446054038
+
+TIME END OUTER: 2026-06-16 13:46:05.828595
+
+MODEL NAME: ppo
+TRIAL NUMBER: 1
+CWD: ./train_results/cwd_tests/model_WF_ppo_4h_2H_3k
+{'learning_rate': 0.015, 'batch_size': 3080, 'gamma': 0.99, 'net_dimension': 512, 'target_step': 4877, 'eval_time_gap': 60, 'break_step': 60000.0}
+{'lookback': 1, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 0.0009765625, 'norm_action': 10000}
+
+TIME START OUTER: 2026-06-16 13:46:05.879756
+BOT:         0.0
+HODL:        -0.00485811446054038
+TIME END INNER: 2026-06-16 13:47:24.820097
+
+
+HYPERPARAMETER EVAL || SHARPE BOT    :  0.0
+HYPERPARAMETER EVAL || SHARPE HODL     : -0.00485811446054038
+DIFFERENCE                                 : 0.00485811446054038
+
+TIME END OUTER: 2026-06-16 13:47:24.820368

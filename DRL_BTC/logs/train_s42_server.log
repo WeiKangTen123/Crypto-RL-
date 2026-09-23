@@ -1,0 +1,864 @@
+17:35:18  ═════════════════════════════════════════════════════════════════
+17:35:18    BTC DRL — SAC Training (Session 8)   seed=42   device=cuda
+17:35:18  ─────────────────────────────────────────────────────────────────
+17:35:18    Data
+17:35:18      Train  : 2021-01-01 → 2024-12-31   (35,035 bars)
+17:35:18      Val [2022-bear]: 2022-01-01 → 2022-12-31   (8,737 bars)
+17:35:18      Val [2023-bull]: 2023-07-01 → 2023-12-31   (4,393 bars)
+17:35:18      Val [2024-consol]: 2024-01-01 → 2024-06-30   (4,345 bars)
+17:35:18      OOS    : 2025-01-01 onward   (never touched)
+17:35:18    Regularisation: weight_decay=0.0001
+17:35:18    Model
+17:35:18      Obs    : 209 features × 48 bars
+17:35:18      Action : 4D  [pos_size, sl_atr_mult, tp_atr_mult, trail_on]  (exit_signal removed)
+17:35:18    Training
+17:35:18      Steps  : 600,000   Warmup: 500 trades   Val every: 10,000
+17:35:18      Replay : trade-level (1 entry per closed trade)   batch=512
+17:35:18      Update : every 1 trades × 10 grad step(s)
+17:35:18    Hyperparams
+17:35:18      LR actor=0.0003  critic=0.0003  alpha=0.0
+17:35:18      γ=0.99  τ=0.005  DD_kill=50%
+17:35:18  ═════════════════════════════════════════════════════════════════
+17:35:18  
+17:35:18  ─── STAGE 0: SUPERVISED PRETRAIN (SharedModel) ─────────────────
+17:35:18    Beta head  : regime classification (Bull/Bear/Range)
+17:35:18    Alpha head : trade quality multi-task (return, MFE, MAE, TP, hold)
+17:35:18    After pretrain: encoder weights → Actor
+17:35:18  
+17:35:18    Training window: 35,035 bars  (2020-12-31 → 2024-12-31)
+17:35:18    Generating Beta labels (24h forward regime + stability)…
+17:35:19    Generating Alpha labels (oracle trade simulation)…
+17:35:20    Beta  → 34,987 bars  BULL=11,319  BEAR=10,455  RANGE=13,213  stable=32.3%
+17:35:20            vol LOW=17,437  MED=15,781  HIGH=1,769  trans_rate=87.3%
+17:35:20    Alpha → 14,826 entry bars  TP=37.8%  SL=59.2%  win=40.0%  avg_hold=24b
+17:35:20            avg_var=0.00005  avg_tail=0.0226  avg_maxdd=0.0226
+17:35:20  
+17:35:20    ┌─ STAGE 1: BetaEngine  (30 epochs) ──────────────────────────
+17:35:32    │  epoch   1/30  loss=1.7107  regime_acc=49.3%  vol_class_acc=72.8%
+17:36:17    │  epoch   5/30  loss=0.7927  regime_acc=82.7%  vol_class_acc=89.4%
+17:37:13    │  epoch  10/30  loss=0.4857  regime_acc=88.7%  vol_class_acc=95.8%
+17:38:11    │  epoch  15/30  loss=0.3786  regime_acc=90.8%  vol_class_acc=96.7%
+17:39:08    │  epoch  20/30  loss=0.3095  regime_acc=92.1%  vol_class_acc=97.3%
+17:40:04    │  epoch  25/30  loss=0.2663  regime_acc=93.8%  vol_class_acc=97.9%
+17:41:01    │  epoch  30/30  loss=0.2281  regime_acc=95.6%  vol_class_acc=98.8%
+17:41:01    └──────────────────────────────────────────────────────────
+17:41:01  
+17:41:01    ┌─ STAGE 2: AlphaEngine  (30 epochs) ────────────────────────
+17:41:06    │  epoch   1/30  loss=95.1632  ret_corr=+0.094  p50_corr=+0.050  tp_acc=61.6%  sl_acc=58.1%  var_mse=0.034639  tail_mse=0.00036
+17:41:26    │  epoch   5/30  loss=31.1790  ret_corr=-0.082  p50_corr=+0.035  tp_acc=62.8%  sl_acc=61.9%  var_mse=0.009016  tail_mse=0.00198
+17:41:50    │  epoch  10/30  loss=18.2419  ret_corr=-0.069  p50_corr=-0.007  tp_acc=62.8%  sl_acc=62.6%  var_mse=0.003890  tail_mse=0.00151
+17:42:15    │  epoch  15/30  loss=13.3288  ret_corr=+0.013  p50_corr=+0.065  tp_acc=63.1%  sl_acc=62.8%  var_mse=0.004050  tail_mse=0.00230
+17:42:39    │  epoch  20/30  loss=10.3591  ret_corr=-0.041  p50_corr=+0.058  tp_acc=62.7%  sl_acc=63.0%  var_mse=0.003620  tail_mse=0.00232
+17:43:04    │  epoch  25/30  loss=8.2771  ret_corr=-0.035  p50_corr=+0.123  tp_acc=64.3%  sl_acc=64.8%  var_mse=0.000775  tail_mse=0.00102
+17:43:28    │  epoch  30/30  loss=6.5340  ret_corr=+0.079  p50_corr=+0.223  tp_acc=71.0%  sl_acc=70.9%  var_mse=0.000768  tail_mse=0.00110
+17:43:28    └──────────────────────────────────────────────────────────
+17:43:28  
+17:43:28    ┌─ STAGE 3: Joint fine-tune  (10 epochs) ───────────────────────
+17:43:44    │  epoch  1/10  beta=0.7607  alpha=1.0166
+17:44:00    │  epoch  2/10  beta=0.4013  alpha=0.7835
+17:44:17    │  epoch  3/10  beta=0.2844  alpha=0.6405
+17:44:33    │  epoch  4/10  beta=0.2306  alpha=0.5384
+17:44:49    │  epoch  5/10  beta=0.1963  alpha=0.4708
+17:45:05    │  epoch  6/10  beta=0.1735  alpha=0.4128
+17:45:21    │  epoch  7/10  beta=0.1586  alpha=0.3640
+17:45:37    │  epoch  8/10  beta=0.1469  alpha=0.3373
+17:45:53    │  epoch  9/10  beta=0.1368  alpha=0.3068
+17:46:08    │  epoch 10/10  beta=0.1291  alpha=0.2908
+17:46:08    └──────────────────────────────────────────────────────────
+17:46:08  
+17:46:09    Supervised pretrain complete (TIA v3):
+17:46:09      Beta  regime_acc      = 90.4%
+17:46:09      Beta  vol_class_acc   = 96.1%
+17:46:09      Alpha ret_corr        = +0.448
+17:46:09      Alpha tp_acc          = 96.7%
+17:46:09      Alpha sl_acc          = 96.8%
+17:46:09      Alpha exp_var MSE     = 0.000106
+17:46:09      Alpha tail_risk MSE   = 0.00081
+17:46:09      Alpha exp_max_dd MSE  = 0.00081
+17:46:09    Ready → shared_model.copy_encoder_to(actor)
+17:46:09  
+17:46:09  ─── STAGE 1: BC Risk Pretraining ─────────────────────────────────────────
+17:46:09    Generating oracle risk labels from composite-rule simulation…
+17:46:10    1,831 entry bars labeled  (long=51.2%  short=48.8%)
+17:46:10    Building observation tensors…
+17:46:10    30 epochs × 7 batches  (batch=256  lr=0.0003)
+17:46:11    epoch   1/30  loss=0.8733
+17:46:13    epoch   5/30  loss=0.3055
+17:46:16    epoch  10/30  loss=0.2054
+17:46:19    epoch  15/30  loss=0.1319
+17:46:21    epoch  20/30  loss=0.1211
+17:46:24    epoch  25/30  loss=0.1088
+17:46:27    epoch  30/30  loss=0.1013
+17:46:27    BC Risk Pretraining complete.
+17:46:27  
+17:46:27  ─── STAGE 2: WARMUP  (collecting 500 complete trades) ──────────
+17:46:27    Random policy fills trade-level replay buffer.
+17:46:27  
+17:46:28    warmup 50/500 trades  (1,356 env steps)
+17:46:28    warmup 50/500 trades  (1,357 env steps)
+17:46:28    warmup 50/500 trades  (1,358 env steps)
+17:46:28    warmup 50/500 trades  (1,359 env steps)
+17:46:28    warmup 50/500 trades  (1,360 env steps)
+17:46:28    warmup 50/500 trades  (1,361 env steps)
+17:46:28    warmup 50/500 trades  (1,362 env steps)
+17:46:28    warmup 50/500 trades  (1,363 env steps)
+17:46:28    warmup 50/500 trades  (1,364 env steps)
+17:46:28    warmup 50/500 trades  (1,365 env steps)
+17:46:28    warmup 50/500 trades  (1,366 env steps)
+17:46:28    warmup 50/500 trades  (1,367 env steps)
+17:46:28    warmup 50/500 trades  (1,368 env steps)
+17:46:28    warmup 50/500 trades  (1,369 env steps)
+17:46:28    warmup 50/500 trades  (1,370 env steps)
+17:46:28    warmup 50/500 trades  (1,371 env steps)
+17:46:28    warmup 50/500 trades  (1,372 env steps)
+17:46:28    warmup 50/500 trades  (1,373 env steps)
+17:46:28    warmup 50/500 trades  (1,374 env steps)
+17:46:28    warmup 50/500 trades  (1,375 env steps)
+17:46:29    warmup 100/500 trades  (2,731 env steps)
+17:46:29    warmup 100/500 trades  (2,732 env steps)
+17:46:29    warmup 100/500 trades  (2,733 env steps)
+17:46:29    warmup 100/500 trades  (2,734 env steps)
+17:46:29    warmup 100/500 trades  (2,735 env steps)
+17:46:29    warmup 100/500 trades  (2,736 env steps)
+17:46:29    warmup 100/500 trades  (2,737 env steps)
+17:46:29    warmup 100/500 trades  (2,738 env steps)
+17:46:29    warmup 100/500 trades  (2,739 env steps)
+17:46:29    warmup 100/500 trades  (2,740 env steps)
+17:46:29    warmup 100/500 trades  (2,741 env steps)
+17:46:29    warmup 100/500 trades  (2,742 env steps)
+17:46:29    warmup 100/500 trades  (2,743 env steps)
+17:46:29    warmup 100/500 trades  (2,744 env steps)
+17:46:29    warmup 100/500 trades  (2,745 env steps)
+17:46:29    warmup 100/500 trades  (2,746 env steps)
+17:46:29    warmup 100/500 trades  (2,747 env steps)
+17:46:29    warmup 100/500 trades  (2,748 env steps)
+17:46:29    warmup 100/500 trades  (2,749 env steps)
+17:46:29    warmup 100/500 trades  (2,750 env steps)
+17:46:29    warmup 100/500 trades  (2,751 env steps)
+17:46:29    warmup 100/500 trades  (2,752 env steps)
+17:46:29    warmup 100/500 trades  (2,753 env steps)
+17:46:29    warmup 100/500 trades  (2,754 env steps)
+17:46:29    warmup 100/500 trades  (2,755 env steps)
+17:46:29    warmup 100/500 trades  (2,756 env steps)
+17:46:29    warmup 100/500 trades  (2,757 env steps)
+17:46:29    warmup 100/500 trades  (2,758 env steps)
+17:46:29    warmup 100/500 trades  (2,759 env steps)
+17:46:29    warmup 100/500 trades  (2,760 env steps)
+17:46:29    warmup 100/500 trades  (2,761 env steps)
+17:46:29    warmup 100/500 trades  (2,762 env steps)
+17:46:29    warmup 100/500 trades  (2,763 env steps)
+17:46:29    warmup 100/500 trades  (2,764 env steps)
+17:46:29    warmup 100/500 trades  (2,765 env steps)
+17:46:29    warmup 100/500 trades  (2,766 env steps)
+17:46:29    warmup 100/500 trades  (2,767 env steps)
+17:46:29    warmup 100/500 trades  (2,768 env steps)
+17:46:29    warmup 100/500 trades  (2,769 env steps)
+17:46:29    warmup 100/500 trades  (2,770 env steps)
+17:46:29    warmup 100/500 trades  (2,771 env steps)
+17:46:29    warmup 100/500 trades  (2,772 env steps)
+17:46:29    warmup 100/500 trades  (2,773 env steps)
+17:46:29    warmup 100/500 trades  (2,774 env steps)
+17:46:29    warmup 100/500 trades  (2,775 env steps)
+17:46:29    warmup 100/500 trades  (2,776 env steps)
+17:46:29    warmup 100/500 trades  (2,777 env steps)
+17:46:29    warmup 150/500 trades  (3,886 env steps)
+17:46:29    warmup 150/500 trades  (3,887 env steps)
+17:46:29    warmup 150/500 trades  (3,888 env steps)
+17:46:29    warmup 150/500 trades  (3,889 env steps)
+17:46:29    warmup 150/500 trades  (3,890 env steps)
+17:46:29    warmup 150/500 trades  (3,891 env steps)
+17:46:29    warmup 150/500 trades  (3,892 env steps)
+17:46:29    warmup 150/500 trades  (3,893 env steps)
+17:46:29    warmup 150/500 trades  (3,894 env steps)
+17:46:29    warmup 150/500 trades  (3,895 env steps)
+17:46:29    warmup 150/500 trades  (3,896 env steps)
+17:46:29    warmup 150/500 trades  (3,897 env steps)
+17:46:29    warmup 150/500 trades  (3,898 env steps)
+17:46:29    warmup 150/500 trades  (3,899 env steps)
+17:46:29    warmup 150/500 trades  (3,900 env steps)
+17:46:29    warmup 150/500 trades  (3,901 env steps)
+17:46:29    warmup 150/500 trades  (3,902 env steps)
+17:46:29    warmup 150/500 trades  (3,903 env steps)
+17:46:29    warmup 150/500 trades  (3,904 env steps)
+17:46:29    warmup 150/500 trades  (3,905 env steps)
+17:46:29    warmup 150/500 trades  (3,906 env steps)
+17:46:29    warmup 150/500 trades  (3,907 env steps)
+17:46:29    warmup 150/500 trades  (3,908 env steps)
+17:46:29    warmup 150/500 trades  (3,909 env steps)
+17:46:29    warmup 150/500 trades  (3,910 env steps)
+17:46:29    warmup 150/500 trades  (3,911 env steps)
+17:46:29    warmup 150/500 trades  (3,912 env steps)
+17:46:29    warmup 150/500 trades  (3,913 env steps)
+17:46:29    warmup 150/500 trades  (3,914 env steps)
+17:46:29    warmup 150/500 trades  (3,915 env steps)
+17:46:29    warmup 150/500 trades  (3,916 env steps)
+17:46:29    warmup 150/500 trades  (3,917 env steps)
+17:46:29    warmup 150/500 trades  (3,918 env steps)
+17:46:29    warmup 150/500 trades  (3,919 env steps)
+17:46:29    warmup 150/500 trades  (3,920 env steps)
+17:46:29    warmup 150/500 trades  (3,921 env steps)
+17:46:29    warmup 150/500 trades  (3,922 env steps)
+17:46:29    warmup 150/500 trades  (3,923 env steps)
+17:46:29    warmup 150/500 trades  (3,924 env steps)
+17:46:29    warmup 150/500 trades  (3,925 env steps)
+17:46:29    warmup 150/500 trades  (3,926 env steps)
+17:46:29    warmup 150/500 trades  (3,927 env steps)
+17:46:29    warmup 150/500 trades  (3,928 env steps)
+17:46:30    warmup 200/500 trades  (5,250 env steps)
+17:46:30    warmup 200/500 trades  (5,251 env steps)
+17:46:30    warmup 200/500 trades  (5,252 env steps)
+17:46:30    warmup 200/500 trades  (5,253 env steps)
+17:46:30    warmup 200/500 trades  (5,254 env steps)
+17:46:30    warmup 200/500 trades  (5,255 env steps)
+17:46:30    warmup 200/500 trades  (5,256 env steps)
+17:46:30    warmup 200/500 trades  (5,257 env steps)
+17:46:30    warmup 200/500 trades  (5,258 env steps)
+17:46:30    warmup 200/500 trades  (5,259 env steps)
+17:46:30    warmup 200/500 trades  (5,260 env steps)
+17:46:30    warmup 200/500 trades  (5,261 env steps)
+17:46:30    warmup 200/500 trades  (5,262 env steps)
+17:46:30    warmup 200/500 trades  (5,263 env steps)
+17:46:30    warmup 200/500 trades  (5,264 env steps)
+17:46:30    warmup 200/500 trades  (5,265 env steps)
+17:46:30    warmup 200/500 trades  (5,266 env steps)
+17:46:31    warmup 250/500 trades  (6,711 env steps)
+17:46:31    warmup 250/500 trades  (6,712 env steps)
+17:46:31    warmup 250/500 trades  (6,713 env steps)
+17:46:31    warmup 250/500 trades  (6,714 env steps)
+17:46:32    warmup 300/500 trades  (8,033 env steps)
+17:46:32    warmup 300/500 trades  (8,034 env steps)
+17:46:32    warmup 300/500 trades  (8,035 env steps)
+17:46:32    warmup 300/500 trades  (8,036 env steps)
+17:46:32    warmup 300/500 trades  (8,037 env steps)
+17:46:32    warmup 300/500 trades  (8,038 env steps)
+17:46:32    warmup 300/500 trades  (8,039 env steps)
+17:46:32    warmup 300/500 trades  (8,040 env steps)
+17:46:32    warmup 300/500 trades  (8,041 env steps)
+17:46:32    warmup 300/500 trades  (8,042 env steps)
+17:46:32    warmup 300/500 trades  (8,043 env steps)
+17:46:32    warmup 300/500 trades  (8,044 env steps)
+17:46:32    warmup 300/500 trades  (8,045 env steps)
+17:46:32    warmup 300/500 trades  (8,046 env steps)
+17:46:32    warmup 300/500 trades  (8,047 env steps)
+17:46:32    warmup 300/500 trades  (8,048 env steps)
+17:46:32    warmup 300/500 trades  (8,049 env steps)
+17:46:32    warmup 300/500 trades  (8,050 env steps)
+17:46:32    warmup 300/500 trades  (8,051 env steps)
+17:46:32    warmup 350/500 trades  (9,371 env steps)
+17:46:32    warmup 350/500 trades  (9,372 env steps)
+17:46:32    warmup 350/500 trades  (9,373 env steps)
+17:46:32    warmup 350/500 trades  (9,374 env steps)
+17:46:32    warmup 350/500 trades  (9,375 env steps)
+17:46:32    warmup 350/500 trades  (9,376 env steps)
+17:46:32    warmup 350/500 trades  (9,377 env steps)
+17:46:32    warmup 350/500 trades  (9,378 env steps)
+17:46:32    warmup 350/500 trades  (9,379 env steps)
+17:46:32    warmup 350/500 trades  (9,380 env steps)
+17:46:32    warmup 350/500 trades  (9,381 env steps)
+17:46:32    warmup 350/500 trades  (9,382 env steps)
+17:46:32    warmup 350/500 trades  (9,383 env steps)
+17:46:32    warmup 350/500 trades  (9,384 env steps)
+17:46:32    warmup 350/500 trades  (9,385 env steps)
+17:46:32    warmup 350/500 trades  (9,386 env steps)
+17:46:32    warmup 350/500 trades  (9,387 env steps)
+17:46:32    warmup 350/500 trades  (9,388 env steps)
+17:46:32    warmup 350/500 trades  (9,389 env steps)
+17:46:32    warmup 350/500 trades  (9,390 env steps)
+17:46:32    warmup 350/500 trades  (9,391 env steps)
+17:46:32    warmup 350/500 trades  (9,392 env steps)
+17:46:32    warmup 350/500 trades  (9,393 env steps)
+17:46:32    warmup 350/500 trades  (9,394 env steps)
+17:46:32    warmup 350/500 trades  (9,395 env steps)
+17:46:32    warmup 350/500 trades  (9,396 env steps)
+17:46:32    warmup 350/500 trades  (9,397 env steps)
+17:46:32    warmup 350/500 trades  (9,398 env steps)
+17:46:32    warmup 350/500 trades  (9,399 env steps)
+17:46:32    warmup 350/500 trades  (9,400 env steps)
+17:46:32    warmup 350/500 trades  (9,401 env steps)
+17:46:32    warmup 350/500 trades  (9,402 env steps)
+17:46:32    warmup 350/500 trades  (9,403 env steps)
+17:46:32    warmup 350/500 trades  (9,404 env steps)
+17:46:32    warmup 350/500 trades  (9,405 env steps)
+17:46:32    warmup 350/500 trades  (9,406 env steps)
+17:46:33    warmup 400/500 trades  (10,763 env steps)
+17:46:33    warmup 400/500 trades  (10,764 env steps)
+17:46:33    warmup 400/500 trades  (10,765 env steps)
+17:46:33    warmup 400/500 trades  (10,766 env steps)
+17:46:33    warmup 400/500 trades  (10,767 env steps)
+17:46:33    warmup 400/500 trades  (10,768 env steps)
+17:46:33    warmup 400/500 trades  (10,769 env steps)
+17:46:33    warmup 400/500 trades  (10,770 env steps)
+17:46:33    warmup 400/500 trades  (10,771 env steps)
+17:46:33    warmup 400/500 trades  (10,772 env steps)
+17:46:33    warmup 400/500 trades  (10,773 env steps)
+17:46:33    warmup 400/500 trades  (10,774 env steps)
+17:46:33    warmup 400/500 trades  (10,775 env steps)
+17:46:33    warmup 400/500 trades  (10,776 env steps)
+17:46:33    warmup 400/500 trades  (10,777 env steps)
+17:46:33    warmup 400/500 trades  (10,778 env steps)
+17:46:33    warmup 400/500 trades  (10,779 env steps)
+17:46:33    warmup 400/500 trades  (10,780 env steps)
+17:46:33    warmup 400/500 trades  (10,781 env steps)
+17:46:33    warmup 400/500 trades  (10,782 env steps)
+17:46:33    warmup 400/500 trades  (10,783 env steps)
+17:46:33    warmup 400/500 trades  (10,784 env steps)
+17:46:33    warmup 400/500 trades  (10,785 env steps)
+17:46:33    warmup 400/500 trades  (10,786 env steps)
+17:46:33    warmup 400/500 trades  (10,787 env steps)
+17:46:33    warmup 400/500 trades  (10,788 env steps)
+17:46:33    warmup 400/500 trades  (10,789 env steps)
+17:46:33    warmup 400/500 trades  (10,790 env steps)
+17:46:33    warmup 400/500 trades  (10,791 env steps)
+17:46:33    warmup 400/500 trades  (10,792 env steps)
+17:46:33    warmup 400/500 trades  (10,793 env steps)
+17:46:33    warmup 400/500 trades  (10,794 env steps)
+17:46:33    warmup 400/500 trades  (10,795 env steps)
+17:46:33    warmup 400/500 trades  (10,796 env steps)
+17:46:33    warmup 400/500 trades  (10,797 env steps)
+17:46:33    warmup 400/500 trades  (10,798 env steps)
+17:46:33    warmup 400/500 trades  (10,799 env steps)
+17:46:33    warmup 400/500 trades  (10,800 env steps)
+17:46:34    warmup 450/500 trades  (12,397 env steps)
+17:46:34    warmup 450/500 trades  (12,398 env steps)
+17:46:34    warmup 450/500 trades  (12,399 env steps)
+17:46:34    warmup 450/500 trades  (12,400 env steps)
+17:46:34    warmup 450/500 trades  (12,401 env steps)
+17:46:34    warmup 450/500 trades  (12,402 env steps)
+17:46:34    warmup 450/500 trades  (12,403 env steps)
+17:46:34    warmup 450/500 trades  (12,404 env steps)
+17:46:34    warmup 450/500 trades  (12,405 env steps)
+17:46:34    warmup 450/500 trades  (12,406 env steps)
+17:46:34    warmup 450/500 trades  (12,407 env steps)
+17:46:34    warmup 450/500 trades  (12,408 env steps)
+17:46:35    warmup 500/500 trades  (13,657 env steps)
+17:46:35    Warmup done.  Buffer: 500 trades  (13,657 env steps).
+17:46:35    KnowledgeMemory: 500/5000 trades stored  win_rate=8.2%  avg_by_regime=[BULL=-0.539, BEAR=-0.179, RANGE=-0.226]
+17:46:35  
+17:46:35  ─── STAGE 3: LEARNING  (steps 0 → 600,000, 600,000 to go) ───
+17:46:35    Trade-level replay  │  Update every 1 trades × 10 grad step  │  Val every 10,000
+17:46:35  
+18:07:51    [EP    1]  bars=8,682  ret=  +4.0%  completed   L/S/F=28/19/53%  trades=350  │ logπ=-2.7  Qc=0.006  sps=7  ETA=24h09m
+18:07:51             ├ dist p10=-0.72%  p50=+0.00%  p90=+1.19%  win=51%  pf=2.2  TQS=1.10
+18:07:51             └ mfe_p50=0.27%  mae_p50=0.26%  tp_rate=1%  avg_hold=7b
+18:14:39  
+18:14:39    ┌─ VAL @ step 10,000 ────────────────────────────────────────
+18:14:39    │  minSharpe=+0.211   avgSharpe=+0.878   avg_ret=+1.93%   worstDD=3.8%
+18:14:39    │    [2022-bear]  Sharpe=+0.504
+18:14:39    │    [2023-bull]  Sharpe=+0.211
+18:14:39    │    [2024-consol]  Sharpe=+1.919
+18:14:39    │  buffer=907 trades  total_trades=407  ★ NEW BEST  prev_best=-inf   ETA=27h36m
+18:14:39    │  [val trades n=188]  p10=-2.00%  p50=-0.01%  p90=+1.77%  win=47%  pf=1.8  TQS=0.84
+18:14:39    │  mfe_p50=0.25%  mae_p50=0.23%  tp_rate=2%  avg_hold=7b
+18:14:39    │  L/S/F=14/25/61%  [last-20 eps]  avg_ret=+4.0%  liq=0%  bars=8682
+18:14:39    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=-0.031  ret_drift=+0.2029  n_ood=200  n_trades=200
+18:14:39    │  KnowledgeMemory: 907/5000 trades stored  win_rate=26.9%  avg_by_regime=[BULL=-0.539, BEAR=-0.094, RANGE=-0.130]
+18:14:39    └─────────────────────────────────────────────────────
+18:14:39  
+18:46:14  
+18:46:14    ┌─ VAL @ step 20,000 ────────────────────────────────────────
+18:46:14    │  minSharpe=-0.277   avgSharpe=+0.000   avg_ret=-0.04%   worstDD=1.5%
+18:46:14    │    [2022-bear]  Sharpe=-0.277
+18:46:14    │    [2023-bull]  Sharpe=+0.126
+18:46:14    │    [2024-consol]  Sharpe=+0.151
+18:46:14    │  buffer=1,312 trades  total_trades=812              prev_best=+0.211   ETA=28h50m
+18:46:14    │  [val trades n=79]  p10=-2.01%  p50=-0.02%  p90=+0.37%  win=39%  pf=1.4  TQS=0.54
+18:46:14    │  mfe_p50=0.18%  mae_p50=0.23%  tp_rate=4%  avg_hold=6b
+18:46:14    │  L/S/F=14/26/60%  [last-20 eps]  avg_ret=+4.0%  liq=0%  bars=8682
+18:46:14    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=-0.007  ret_drift=+0.2017  n_ood=200  n_trades=200
+18:46:14    │  KnowledgeMemory: 1312/5000 trades stored  win_rate=34.5%  avg_by_regime=[BULL=-0.539, BEAR=-0.071, RANGE=-0.068]
+18:46:14    └─────────────────────────────────────────────────────
+18:46:14  
+18:50:07    [EP    2]  bars=12,740  ret=  +7.3%  completed   L/S/F=28/18/54%  trades=516  │ logπ=-2.7  Qc=0.008  sps=6  ETA=28h35m
+18:50:07             ├ dist p10=-0.65%  p50=-0.00%  p90=+1.20%  win=49%  pf=2.4  TQS=1.20
+18:50:07             └ mfe_p50=0.25%  mae_p50=0.18%  tp_rate=2%  avg_hold=7b
+19:17:19  
+19:17:19    ┌─ VAL @ step 30,000 ────────────────────────────────────────
+19:17:19    │  minSharpe=+0.264   avgSharpe=+0.551   avg_ret=+1.43%   worstDD=3.7%
+19:17:19    │    [2022-bear]  Sharpe=+0.701
+19:17:19    │    [2023-bull]  Sharpe=+0.264
+19:17:19    │    [2024-consol]  Sharpe=+0.686
+19:17:19    │  buffer=1,722 trades  total_trades=1,222  ★ NEW BEST  prev_best=+0.211   ETA=28h44m
+19:17:19    │  [val trades n=292]  p10=-1.56%  p50=-0.01%  p90=+1.75%  win=48%  pf=2.3  TQS=1.10
+19:17:19    │  mfe_p50=0.27%  mae_p50=0.27%  tp_rate=1%  avg_hold=8b
+19:17:19    │  L/S/F=15/25/59%  [last-20 eps]  avg_ret=+5.6%  liq=0%  bars=10711
+19:17:19    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.033  ret_drift=+0.2034  n_ood=200  n_trades=200
+19:17:19    │  KnowledgeMemory: 1722/5000 trades stored  win_rate=37.0%  avg_by_regime=[BULL=-0.456, BEAR=-0.058, RANGE=-0.044]
+19:17:19    └─────────────────────────────────────────────────────
+19:17:19  
+19:47:09  
+19:47:09    ┌─ VAL @ step 40,000 ────────────────────────────────────────
+19:47:09    │  minSharpe=+0.352   avgSharpe=+0.947   avg_ret=+1.99%   worstDD=3.8%
+19:47:09    │    [2022-bear]  Sharpe=+0.352
+19:47:09    │    [2023-bull]  Sharpe=+0.617
+19:47:09    │    [2024-consol]  Sharpe=+1.872
+19:47:09    │  buffer=2,126 trades  total_trades=1,626  ★ NEW BEST  prev_best=+0.264   ETA=28h07m
+19:47:09    │  [val trades n=240]  p10=-1.93%  p50=-0.01%  p90=+1.65%  win=45%  pf=1.9  TQS=0.88
+19:47:09    │  mfe_p50=0.23%  mae_p50=0.26%  tp_rate=1%  avg_hold=7b
+19:47:09    │  L/S/F=12/27/60%  [last-20 eps]  avg_ret=+5.6%  liq=0%  bars=10711
+19:47:09    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.008  ret_drift=+0.2011  n_ood=200  n_trades=200
+19:47:09    │  KnowledgeMemory: 2126/5000 trades stored  win_rate=38.1%  avg_by_regime=[BULL=-0.456, BEAR=-0.049, RANGE=-0.044]
+19:47:09    └─────────────────────────────────────────────────────
+19:47:09  
+19:50:57    [EP    3]  bars=20,070  ret=  +2.3%  completed   L/S/F=26/19/55%  trades=818  │ logπ=-2.7  Qc=0.016  sps=6  ETA=27h54m
+19:50:57             ├ dist p10=-2.04%  p50=-0.01%  p90=+0.95%  win=44%  pf=0.4  TQS=0.17
+19:50:57             └ mfe_p50=0.21%  mae_p50=0.19%  tp_rate=2%  avg_hold=6b
+20:16:58  
+20:16:58    ┌─ VAL @ step 50,000 ────────────────────────────────────────
+20:16:58    │  minSharpe=-0.423   avgSharpe=-0.006   avg_ret=+0.09%   worstDD=3.7%
+20:16:58    │    [2022-bear]  Sharpe=-0.047
+20:16:58    │    [2023-bull]  Sharpe=+0.450
+20:16:58    │    [2024-consol]  Sharpe=-0.423
+20:16:58    │  buffer=2,542 trades  total_trades=2,042              prev_best=+0.352   ETA=27h34m
+20:16:58    │  [val trades n=169]  p10=-1.99%  p50=-0.01%  p90=+1.65%  win=45%  pf=1.6  TQS=0.71
+20:16:58    │  mfe_p50=0.25%  mae_p50=0.25%  tp_rate=2%  avg_hold=7b
+20:16:58    │  L/S/F=14/23/63%  [last-20 eps]  avg_ret=+4.5%  liq=0%  bars=13831
+20:16:58    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.043  ret_drift=+0.2032  n_ood=200  n_trades=200
+20:16:58    │  KnowledgeMemory: 2542/5000 trades stored  win_rate=39.2%  avg_by_regime=[BULL=-0.456, BEAR=-0.037, RANGE=-0.044]
+20:16:58    └─────────────────────────────────────────────────────
+20:16:58  
+20:44:56  
+20:44:56    ┌─ VAL @ step 60,000 ────────────────────────────────────────
+20:44:56    │  minSharpe=-0.925   avgSharpe=-0.271   avg_ret=-0.45%   worstDD=2.6%
+20:44:56    │    [2022-bear]  Sharpe=-0.925
+20:44:56    │    [2023-bull]  Sharpe=+0.599
+20:44:56    │    [2024-consol]  Sharpe=-0.487
+20:44:56    │  buffer=2,943 trades  total_trades=2,443              prev_best=+0.352   ETA=26h45m
+20:44:56    │  [val trades n=99]  p10=-1.99%  p50=-0.02%  p90=+0.36%  win=41%  pf=1.3  TQS=0.55
+20:44:56    │  mfe_p50=0.23%  mae_p50=0.23%  tp_rate=3%  avg_hold=7b
+20:44:56    │  L/S/F=12/25/63%  [last-20 eps]  avg_ret=+4.5%  liq=0%  bars=13831
+20:44:56    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.148  ret_drift=+0.1405  n_ood=200  n_trades=200
+20:44:56    │  KnowledgeMemory: 2943/5000 trades stored  win_rate=39.8%  avg_by_regime=[BULL=-0.456, BEAR=-0.035, RANGE=-0.044]
+20:44:56    └─────────────────────────────────────────────────────
+20:44:56  
+20:49:36    [EP    4]  bars=20,270  ret=  -0.9%  completed   L/S/F=26/19/55%  trades=830  │ logπ=-2.7  Qc=0.030  sps=6  ETA=26h35m
+20:49:36             ├ dist p10=-3.09%  p50=-0.01%  p90=+0.79%  win=42%  pf=0.3  TQS=0.13
+20:49:36             └ mfe_p50=0.22%  mae_p50=0.20%  tp_rate=1%  avg_hold=7b
+21:05:15    [EP    5]  bars=5,805  ret=  -1.2%  completed   L/S/F=29/19/52%  trades=237  │ logπ=-2.7  Qc=0.039  sps=6  ETA=26h05m
+21:05:15             ├ dist p10=-0.98%  p50=-0.00%  p90=+0.97%  win=46%  pf=2.1  TQS=0.97
+21:05:15             └ mfe_p50=0.20%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+21:15:04  
+21:15:04    ┌─ VAL @ step 70,000 ────────────────────────────────────────
+21:15:04    │  minSharpe=-0.078   avgSharpe=+0.846   avg_ret=+2.36%   worstDD=3.6%
+21:15:04    │    [2022-bear]  Sharpe=+0.686
+21:15:04    │    [2023-bull]  Sharpe=-0.078
+21:15:04    │    [2024-consol]  Sharpe=+1.931
+21:15:04    │  buffer=3,335 trades  total_trades=2,835              prev_best=+0.352   ETA=26h18m
+21:15:04    │  [val trades n=291]  p10=-1.74%  p50=-0.01%  p90=+1.75%  win=47%  pf=2.3  TQS=1.08
+21:15:04    │  mfe_p50=0.27%  mae_p50=0.26%  tp_rate=1%  avg_hold=7b
+21:15:04    │  L/S/F=15/25/59%  [last-20 eps]  avg_ret=+2.3%  liq=0%  bars=13513
+21:15:04    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.113  ret_drift=+0.1798  n_ood=200  n_trades=200
+21:15:04    │  KnowledgeMemory: 3335/5000 trades stored  win_rate=39.6%  avg_by_regime=[BULL=-0.456, BEAR=-0.033, RANGE=-0.044]
+21:15:04    └─────────────────────────────────────────────────────
+21:15:04  
+21:41:17  
+21:41:17    ┌─ VAL @ step 80,000 ────────────────────────────────────────
+21:41:17    │  minSharpe=-0.572   avgSharpe=-0.038   avg_ret=-0.27%   worstDD=3.2%
+21:41:17    │    [2022-bear]  Sharpe=-0.572
+21:41:17    │    [2023-bull]  Sharpe=-0.071
+21:41:17    │    [2024-consol]  Sharpe=+0.529
+21:41:17    │  buffer=3,700 trades  total_trades=3,200              prev_best=+0.352   ETA=25h25m
+21:41:17    │  [val trades n=144]  p10=-1.97%  p50=-0.01%  p90=+1.30%  win=44%  pf=1.7  TQS=0.74
+21:41:17    │  mfe_p50=0.22%  mae_p50=0.22%  tp_rate=2%  avg_hold=7b
+21:41:17    │  L/S/F=15/22/63%  [last-20 eps]  avg_ret=+2.3%  liq=0%  bars=13513
+21:41:17    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=-0.002  ret_drift=+0.2034  n_ood=200  n_trades=200
+21:41:17    │  KnowledgeMemory: 3700/5000 trades stored  win_rate=39.9%  avg_by_regime=[BULL=-0.456, BEAR=-0.031, RANGE=-0.044]
+21:41:17    └─────────────────────────────────────────────────────
+21:41:17  
+22:12:35  
+22:12:35    ┌─ VAL @ step 90,000 ────────────────────────────────────────
+22:12:35    │  minSharpe=+0.250   avgSharpe=+0.561   avg_ret=+1.67%   worstDD=3.8%
+22:12:35    │    [2022-bear]  Sharpe=+0.796
+22:12:35    │    [2023-bull]  Sharpe=+0.637
+22:12:35    │    [2024-consol]  Sharpe=+0.250
+22:12:35    │  buffer=4,121 trades  total_trades=3,621              prev_best=+0.352   ETA=25h07m
+22:12:35    │  [val trades n=304]  p10=-1.67%  p50=-0.01%  p90=+1.68%  win=48%  pf=2.1  TQS=0.99
+22:12:35    │  mfe_p50=0.25%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+22:12:35    │  L/S/F=15/26/59%  [last-20 eps]  avg_ret=+2.3%  liq=0%  bars=13513
+22:12:35    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.143  ret_drift=+0.1698  n_ood=200  n_trades=200
+22:12:35    │  KnowledgeMemory: 4121/5000 trades stored  win_rate=39.2%  avg_by_regime=[BULL=-0.456, BEAR=-0.032, RANGE=-0.044]
+22:12:35    └─────────────────────────────────────────────────────
+22:12:35  
+22:37:53    [EP    6]  bars=32,065  ret= +14.9%  completed   L/S/F=23/21/57%  trades=1253  │ logπ=-2.7  Qc=0.061  sps=6  ETA=24h22m
+22:37:53             ├ dist p10=-5.99%  p50=-0.02%  p90=+1.11%  win=41%  pf=0.3  TQS=0.11
+22:37:53             └ mfe_p50=0.24%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+22:42:07  
+22:42:07    ┌─ VAL @ step 100,000 ────────────────────────────────────────
+22:42:07    │  minSharpe=-0.430   avgSharpe=+0.693   avg_ret=+1.85%   worstDD=3.6%
+22:42:07    │    [2022-bear]  Sharpe=+0.798
+22:42:07    │    [2023-bull]  Sharpe=+1.710
+22:42:07    │    [2024-consol]  Sharpe=-0.430
+22:42:07    │  buffer=4,522 trades  total_trades=4,022              prev_best=+0.352   ETA=24h37m
+22:42:07    │  [val trades n=295]  p10=-1.67%  p50=-0.01%  p90=+1.73%  win=48%  pf=2.2  TQS=1.07
+22:42:07    │  mfe_p50=0.29%  mae_p50=0.27%  tp_rate=1%  avg_hold=8b
+22:42:07    │  L/S/F=15/26/59%  [last-20 eps]  avg_ret=+4.4%  liq=0%  bars=16605
+22:42:07    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.013  ret_drift=+0.2020  n_ood=200  n_trades=200
+22:42:07    │  KnowledgeMemory: 4522/5000 trades stored  win_rate=40.2%  avg_by_regime=[BULL=-0.456, BEAR=-0.028, RANGE=-0.044]
+22:42:07    └─────────────────────────────────────────────────────
+22:42:07  
+23:10:05  
+23:10:05    ┌─ VAL @ step 110,000 ────────────────────────────────────────
+23:10:05    │  minSharpe=-1.337   avgSharpe=-0.519   avg_ret=-0.25%   worstDD=2.1%
+23:10:05    │    [2022-bear]  Sharpe=-0.497
+23:10:05    │    [2023-bull]  Sharpe=+0.276
+23:10:05    │    [2024-consol]  Sharpe=-1.337
+23:10:05    │  buffer=4,916 trades  total_trades=4,416              prev_best=+0.352   ETA=24h01m
+23:10:05    │  [val trades n=94]  p10=-1.85%  p50=-0.02%  p90=+0.33%  win=41%  pf=1.2  TQS=0.52
+23:10:05    │  mfe_p50=0.23%  mae_p50=0.20%  tp_rate=3%  avg_hold=6b
+23:10:05    │  L/S/F=13/24/63%  [last-20 eps]  avg_ret=+4.4%  liq=0%  bars=16605
+23:10:05    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.013  ret_drift=+0.2023  n_ood=200  n_trades=200
+23:10:05    │  KnowledgeMemory: 4916/5000 trades stored  win_rate=41.1%  avg_by_regime=[BULL=-0.456, BEAR=-0.025, RANGE=-0.044]
+23:10:05    └─────────────────────────────────────────────────────
+23:10:05  
+23:12:27    [EP    7]  bars=11,285  ret=  +6.1%  completed   L/S/F=30/17/53%  trades=448  │ logπ=-2.7  Qc=0.076  sps=6  ETA=23h56m
+23:12:27             ├ dist p10=-1.09%  p50=+0.00%  p90=+1.24%  win=51%  pf=2.2  TQS=1.14
+23:12:27             └ mfe_p50=0.26%  mae_p50=0.22%  tp_rate=1%  avg_hold=7b
+23:36:36  
+23:36:36    ┌─ VAL @ step 120,000 ────────────────────────────────────────
+23:36:36    │  minSharpe=-0.063   avgSharpe=+0.165   avg_ret=+0.52%   worstDD=3.7%
+23:36:36    │    [2022-bear]  Sharpe=+0.473
+23:36:36    │    [2023-bull]  Sharpe=+0.084
+23:36:36    │    [2024-consol]  Sharpe=-0.063
+23:36:36    │  buffer=5,278 trades  total_trades=4,778              prev_best=+0.352   ETA=23h20m
+23:36:36    │  [val trades n=190]  p10=-1.99%  p50=-0.01%  p90=+1.77%  win=47%  pf=1.8  TQS=0.83
+23:36:36    │  mfe_p50=0.26%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+23:36:36    │  L/S/F=13/24/63%  [last-20 eps]  avg_ret=+4.6%  liq=0%  bars=15845
+23:36:36    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=-0.002  ret_drift=+0.2025  n_ood=200  n_trades=200
+23:36:37    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=43.2%  avg_by_regime=[BULL=-0.277, BEAR=-0.017, RANGE=-0.021]
+23:36:37    └─────────────────────────────────────────────────────
+23:36:37  
+00:05:58  
+00:05:58    ┌─ VAL @ step 130,000 ────────────────────────────────────────
+00:05:58    │  minSharpe=-0.662   avgSharpe=+0.137   avg_ret=+0.69%   worstDD=3.8%
+00:05:58    │    [2022-bear]  Sharpe=+0.465
+00:05:58    │    [2023-bull]  Sharpe=+0.609
+00:05:58    │    [2024-consol]  Sharpe=-0.662
+00:05:58    │  buffer=5,687 trades  total_trades=5,187              prev_best=+0.352   ETA=22h51m
+00:05:58    │  [val trades n=250]  p10=-1.76%  p50=-0.01%  p90=+1.70%  win=46%  pf=2.3  TQS=1.06
+00:05:58    │  mfe_p50=0.25%  mae_p50=0.27%  tp_rate=1%  avg_hold=7b
+00:05:58    │  L/S/F=14/26/59%  [last-20 eps]  avg_ret=+4.6%  liq=0%  bars=15845
+00:05:58    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.123  ret_drift=+0.1787  n_ood=200  n_trades=200
+00:05:58    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=44.5%  avg_by_regime=[BULL=-0.001, BEAR=-0.010, RANGE=+0.003]
+00:05:58    └─────────────────────────────────────────────────────
+00:05:58  
+00:30:13    [EP    8]  bars=28,139  ret=  +2.2%  completed   L/S/F=23/20/57%  trades=1103  │ logπ=-2.7  Qc=0.110  sps=6  ETA=22h17m
+00:30:13             ├ dist p10=-1.99%  p50=-0.00%  p90=+1.23%  win=46%  pf=0.9  TQS=0.40
+00:30:13             └ mfe_p50=0.23%  mae_p50=0.21%  tp_rate=2%  avg_hold=7b
+00:35:33  
+00:35:33    ┌─ VAL @ step 140,000 ────────────────────────────────────────
+00:35:33    │  minSharpe=+0.453   avgSharpe=+1.489   avg_ret=+2.69%   worstDD=3.8%
+00:35:33    │    [2022-bear]  Sharpe=+0.453
+00:35:33    │    [2023-bull]  Sharpe=+1.985
+00:35:33    │    [2024-consol]  Sharpe=+2.029
+00:35:33    │  buffer=6,085 trades  total_trades=5,585  ★ NEW BEST  prev_best=+0.352   ETA=22h23m
+00:35:33    │  [val trades n=249]  p10=-1.77%  p50=-0.01%  p90=+1.70%  win=46%  pf=2.4  TQS=1.08
+00:35:33    │  mfe_p50=0.25%  mae_p50=0.28%  tp_rate=1%  avg_hold=7b
+00:35:33    │  L/S/F=14/26/59%  [last-20 eps]  avg_ret=+4.3%  liq=0%  bars=17382
+00:35:33    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.039  ret_drift=+0.1952  n_ood=200  n_trades=200
+00:35:33    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=44.4%  avg_by_regime=[BULL=-0.001, BEAR=-0.011, RANGE=+0.002]
+00:35:33    └─────────────────────────────────────────────────────
+00:35:33  
+01:03:14  
+01:03:14    ┌─ VAL @ step 150,000 ────────────────────────────────────────
+01:03:14    │  minSharpe=+0.409   avgSharpe=+0.602   avg_ret=+1.03%   worstDD=3.7%
+01:03:14    │    [2022-bear]  Sharpe=+0.474
+01:03:14    │    [2023-bull]  Sharpe=+0.923
+01:03:14    │    [2024-consol]  Sharpe=+0.409
+01:03:14    │  buffer=6,462 trades  total_trades=5,962              prev_best=+0.453   ETA=21h49m
+01:03:14    │  [val trades n=189]  p10=-1.99%  p50=-0.01%  p90=+1.77%  win=47%  pf=1.8  TQS=0.84
+01:03:14    │  mfe_p50=0.25%  mae_p50=0.25%  tp_rate=2%  avg_hold=7b
+01:03:14    │  L/S/F=14/24/62%  [last-20 eps]  avg_ret=+4.3%  liq=0%  bars=17382
+01:03:14    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.479  ret_drift=+0.0001  n_ood=200  n_trades=200
+01:03:14    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=41.5%  avg_by_regime=[BULL=-0.001, BEAR=-0.023, RANGE=+0.007]
+01:03:14    └─────────────────────────────────────────────────────
+01:03:14  
+01:33:36  
+01:33:36    ┌─ VAL @ step 160,000 ────────────────────────────────────────
+01:33:36    │  minSharpe=-0.328   avgSharpe=+0.408   avg_ret=+1.59%   worstDD=3.7%
+01:33:36    │    [2022-bear]  Sharpe=+0.800
+01:33:36    │    [2023-bull]  Sharpe=+0.751
+01:33:36    │    [2024-consol]  Sharpe=-0.328
+01:33:36    │  buffer=6,873 trades  total_trades=6,373              prev_best=+0.453   ETA=21h24m
+01:33:36    │  [val trades n=301]  p10=-1.57%  p50=-0.01%  p90=+1.76%  win=49%  pf=2.2  TQS=1.08
+01:33:36    │  mfe_p50=0.29%  mae_p50=0.25%  tp_rate=1%  avg_hold=8b
+01:33:36    │  L/S/F=15/26/59%  [last-20 eps]  avg_ret=+4.3%  liq=0%  bars=17382
+01:33:36    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.253  ret_drift=+0.1349  n_ood=200  n_trades=200
+01:33:36    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=39.9%  avg_by_regime=[BULL=+0.000, BEAR=-0.029, RANGE=+0.000]
+01:33:36    └─────────────────────────────────────────────────────
+01:33:36  
+02:01:28  
+02:01:28    ┌─ VAL @ step 170,000 ────────────────────────────────────────
+02:01:28    │  minSharpe=-0.542   avgSharpe=+0.719   avg_ret=+0.39%   worstDD=3.2%
+02:01:28    │    [2022-bear]  Sharpe=-0.542
+02:01:28    │    [2023-bull]  Sharpe=+2.173
+02:01:28    │    [2024-consol]  Sharpe=+0.527
+02:01:28    │  buffer=7,266 trades  total_trades=6,766              prev_best=+0.453   ETA=20h51m
+02:01:28    │  [val trades n=135]  p10=-1.99%  p50=-0.01%  p90=+1.51%  win=43%  pf=1.7  TQS=0.73
+02:01:28    │  mfe_p50=0.23%  mae_p50=0.25%  tp_rate=2%  avg_hold=7b
+02:01:28    │  L/S/F=15/23/62%  [last-20 eps]  avg_ret=+4.3%  liq=0%  bars=17382
+02:01:28    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.018  ret_drift=+0.2022  n_ood=200  n_trades=200
+02:01:28    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=39.6%  avg_by_regime=[BULL=+0.000, BEAR=-0.031, RANGE=+0.000]
+02:01:28    └─────────────────────────────────────────────────────
+02:01:28  
+02:03:38    [EP    9]  bars=31,786  ret=  +2.5%  completed   L/S/F=23/20/57%  trades=1244  │ logπ=-2.7  Qc=0.110  sps=6  ETA=20h48m
+02:03:38             ├ dist p10=-23.98%  p50=-1.95%  p90=+0.32%  win=25%  pf=0.1  TQS=0.02
+02:03:38             └ mfe_p50=0.26%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+02:30:59  
+02:30:59    ┌─ VAL @ step 180,000 ────────────────────────────────────────
+02:30:59    │  minSharpe=-0.491   avgSharpe=+0.583   avg_ret=+0.20%   worstDD=3.2%
+02:30:59    │    [2022-bear]  Sharpe=-0.491
+02:30:59    │    [2023-bull]  Sharpe=+2.048
+02:30:59    │    [2024-consol]  Sharpe=+0.191
+02:30:59    │  buffer=7,683 trades  total_trades=7,183              prev_best=+0.453   ETA=20h23m
+02:30:59    │  [val trades n=162]  p10=-2.01%  p50=-0.01%  p90=+1.52%  win=45%  pf=1.4  TQS=0.63
+02:30:59    │  mfe_p50=0.22%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+02:30:59    │  L/S/F=15/22/63%  [last-20 eps]  avg_ret=+4.1%  liq=0%  bars=18982
+02:30:59    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.174  ret_drift=+0.1511  n_ood=200  n_trades=200
+02:30:59    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=39.1%  avg_by_regime=[BULL=+0.000, BEAR=-0.033, RANGE=+0.000]
+02:30:59    └─────────────────────────────────────────────────────
+02:30:59  
+02:52:13    [EP   10]  bars=17,093  ret=  +4.3%  completed   L/S/F=27/18/55%  trades=706  │ logπ=-2.7  Qc=0.119  sps=6  ETA=19h56m
+02:52:13             ├ dist p10=-2.19%  p50=-0.01%  p90=+1.03%  win=45%  pf=0.4  TQS=0.16
+02:52:13             └ mfe_p50=0.22%  mae_p50=0.18%  tp_rate=1%  avg_hold=7b
+02:57:06    [EP   11]  bars=1,828  ret=  +0.8%  completed   L/S/F=38/11/52%  trades=74  │ logπ=-2.7  Qc=0.117  sps=6  ETA=19h50m
+02:57:06             ├ dist p10=-0.39%  p50=-0.00%  p90=+1.05%  win=43%  pf=2.3  TQS=0.98
+02:57:06             └ mfe_p50=0.27%  mae_p50=0.27%  tp_rate=3%  avg_hold=7b
+03:00:02  
+03:00:02    ┌─ VAL @ step 190,000 ────────────────────────────────────────
+03:00:02    │  minSharpe=+0.240   avgSharpe=+0.860   avg_ret=+1.08%   worstDD=3.7%
+03:00:02    │    [2022-bear]  Sharpe=+0.422
+03:00:02    │    [2023-bull]  Sharpe=+1.917
+03:00:02    │    [2024-consol]  Sharpe=+0.240
+03:00:02    │  buffer=8,087 trades  total_trades=7,587              prev_best=+0.453   ETA=19h54m
+03:00:02    │  [val trades n=185]  p10=-2.00%  p50=-0.01%  p90=+1.79%  win=47%  pf=1.8  TQS=0.84
+03:00:02    │  mfe_p50=0.23%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+03:00:02    │  L/S/F=14/25/61%  [last-20 eps]  avg_ret=+3.8%  liq=0%  bars=17251
+03:00:02    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.044  ret_drift=+0.2017  n_ood=200  n_trades=200
+03:00:02    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=40.0%  avg_by_regime=[BULL=+0.000, BEAR=-0.030, RANGE=+0.000]
+03:00:02    └─────────────────────────────────────────────────────
+03:00:02  
+03:25:43    [EP   12]  bars=9,980  ret=  +4.9%  completed   L/S/F=29/18/53%  trades=397  │ logπ=-2.7  Qc=0.113  sps=6  ETA=19h20m
+03:25:43             ├ dist p10=-0.57%  p50=-0.00%  p90=+1.32%  win=49%  pf=2.4  TQS=1.21
+03:25:43             └ mfe_p50=0.26%  mae_p50=0.21%  tp_rate=1%  avg_hold=7b
+03:28:53  
+03:28:53    ┌─ VAL @ step 200,000 ────────────────────────────────────────
+03:28:53    │  minSharpe=+0.210   avgSharpe=+0.509   avg_ret=+0.97%   worstDD=3.7%
+03:28:53    │    [2022-bear]  Sharpe=+0.688
+03:28:53    │    [2023-bull]  Sharpe=+0.210
+03:28:53    │    [2024-consol]  Sharpe=+0.631
+03:28:53    │  buffer=8,489 trades  total_trades=7,989              prev_best=+0.453   ETA=19h24m
+03:28:53    │  [val trades n=209]  p10=-1.96%  p50=-0.01%  p90=+1.70%  win=47%  pf=1.9  TQS=0.91
+03:28:53    │  mfe_p50=0.24%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+03:28:53    │  L/S/F=13/26/61%  [last-20 eps]  avg_ret=+3.9%  liq=0%  bars=16645
+03:28:53    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.039  ret_drift=+0.2024  n_ood=200  n_trades=200
+03:28:53    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=40.9%  avg_by_regime=[BULL=+0.000, BEAR=-0.028, RANGE=+0.000]
+03:28:53    └─────────────────────────────────────────────────────
+03:28:53  
+03:52:29    [EP   13]  bars=9,118  ret=  +6.6%  completed   L/S/F=28/19/53%  trades=371  │ logπ=-2.7  Qc=0.094  sps=6  ETA=18h54m
+03:52:29             ├ dist p10=-0.74%  p50=-0.00%  p90=+1.24%  win=50%  pf=2.2  TQS=1.07
+03:52:29             └ mfe_p50=0.26%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+03:58:04  
+03:58:04    ┌─ VAL @ step 210,000 ────────────────────────────────────────
+03:58:04    │  minSharpe=-0.542   avgSharpe=+0.387   avg_ret=+1.55%   worstDD=3.8%
+03:58:04    │    [2022-bear]  Sharpe=+0.752
+03:58:04    │    [2023-bull]  Sharpe=+0.950
+03:58:04    │    [2024-consol]  Sharpe=-0.542
+03:58:04    │  buffer=8,882 trades  total_trades=8,382              prev_best=+0.453   ETA=18h55m
+03:58:04    │  [val trades n=311]  p10=-1.80%  p50=-0.01%  p90=+1.64%  win=48%  pf=2.0  TQS=0.98
+03:58:04    │  mfe_p50=0.25%  mae_p50=0.24%  tp_rate=1%  avg_hold=7b
+03:58:04    │  L/S/F=15/26/60%  [last-20 eps]  avg_ret=+4.1%  liq=0%  bars=16066
+03:58:04    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.004  ret_drift=+0.2029  n_ood=200  n_trades=200
+03:58:04    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=41.7%  avg_by_regime=[BULL=+0.000, BEAR=-0.026, RANGE=+0.000]
+03:58:04    └─────────────────────────────────────────────────────
+03:58:04  
+04:22:59    [EP   14]  bars=10,602  ret=  +9.9%  completed   L/S/F=31/17/53%  trades=413  │ logπ=-2.7  Qc=0.092  sps=6  ETA=18h23m
+04:22:59             ├ dist p10=-1.10%  p50=+0.00%  p90=+1.39%  win=51%  pf=2.4  TQS=1.23
+04:22:59             └ mfe_p50=0.26%  mae_p50=0.21%  tp_rate=0%  avg_hold=7b
+04:25:55  
+04:25:55    ┌─ VAL @ step 220,000 ────────────────────────────────────────
+04:25:55    │  minSharpe=-0.401   avgSharpe=-0.006   avg_ret=-0.11%   worstDD=2.7%
+04:25:55    │    [2022-bear]  Sharpe=+0.542
+04:25:55    │    [2023-bull]  Sharpe=-0.160
+04:25:55    │    [2024-consol]  Sharpe=-0.401
+04:25:55    │  buffer=9,273 trades  total_trades=8,773              prev_best=+0.453   ETA=18h24m
+04:25:55    │  [val trades n=49]  p10=-1.99%  p50=-0.03%  p90=+0.16%  win=33%  pf=2.1  TQS=0.70
+04:25:55    │  mfe_p50=0.20%  mae_p50=0.24%  tp_rate=4%  avg_hold=7b
+04:25:55    │  L/S/F=10/29/61%  [last-20 eps]  avg_ret=+4.6%  liq=0%  bars=15676
+04:25:55    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.018  ret_drift=+0.2024  n_ood=200  n_trades=200
+04:25:55    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=42.3%  avg_by_regime=[BULL=+0.000, BEAR=-0.024, RANGE=+0.000]
+04:25:55    └─────────────────────────────────────────────────────
+04:25:55  
+04:47:02    [EP   15]  bars=8,271  ret=  +5.0%  completed   L/S/F=29/19/52%  trades=335  │ logπ=-2.7  Qc=0.084  sps=6  ETA=17h59m
+04:47:02             ├ dist p10=-0.52%  p50=+0.00%  p90=+1.18%  win=51%  pf=2.1  TQS=1.07
+04:47:02             └ mfe_p50=0.27%  mae_p50=0.25%  tp_rate=1%  avg_hold=7b
+04:55:19  
+04:55:19    ┌─ VAL @ step 230,000 ────────────────────────────────────────
+04:55:19    │  minSharpe=-1.345   avgSharpe=+0.026   avg_ret=+0.68%   worstDD=3.7%
+04:55:19    │    [2022-bear]  Sharpe=+0.410
+04:55:19    │    [2023-bull]  Sharpe=+1.012
+04:55:19    │    [2024-consol]  Sharpe=-1.345
+04:55:19    │  buffer=9,684 trades  total_trades=9,184              prev_best=+0.453   ETA=17h55m
+04:55:19    │  [val trades n=184]  p10=-2.00%  p50=-0.01%  p90=+1.80%  win=47%  pf=1.8  TQS=0.85
+04:55:19    │  mfe_p50=0.24%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+04:55:19    │  L/S/F=14/25/61%  [last-20 eps]  avg_ret=+4.6%  liq=0%  bars=15182
+04:55:19    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.044  ret_drift=+0.2029  n_ood=200  n_trades=200
+04:55:19    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=42.3%  avg_by_regime=[BULL=+0.000, BEAR=-0.024, RANGE=+0.000]
+04:55:19    └─────────────────────────────────────────────────────
+04:55:19  
+05:24:32  
+05:24:32    ┌─ VAL @ step 240,000 ────────────────────────────────────────
+05:24:32    │  minSharpe=-0.375   avgSharpe=+0.046   avg_ret=-0.13%   worstDD=2.6%
+05:24:32    │    [2022-bear]  Sharpe=-0.375
+05:24:32    │    [2023-bull]  Sharpe=+0.564
+05:24:32    │    [2024-consol]  Sharpe=-0.051
+05:24:32    │  buffer=10,108 trades  total_trades=9,608              prev_best=+0.453   ETA=17h26m
+05:24:32    │  [val trades n=109]  p10=-1.99%  p50=-0.01%  p90=+0.73%  win=45%  pf=1.6  TQS=0.70
+05:24:32    │  mfe_p50=0.23%  mae_p50=0.21%  tp_rate=3%  avg_hold=7b
+05:24:32    │  L/S/F=13/26/61%  [last-20 eps]  avg_ret=+4.6%  liq=0%  bars=15182
+05:24:32    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.179  ret_drift=+0.0905  n_ood=200  n_trades=200
+05:24:32    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=40.6%  avg_by_regime=[BULL=+0.000, BEAR=-0.031, RANGE=+0.000]
+05:24:32    └─────────────────────────────────────────────────────
+05:24:32  
+05:38:26    [EP   16]  bars=17,543  ret=  +3.5%  completed   L/S/F=28/18/54%  trades=724  │ logπ=-2.7  Qc=0.095  sps=6  ETA=17h09m
+05:38:26             ├ dist p10=-10.82%  p50=-0.03%  p90=+0.64%  win=37%  pf=0.1  TQS=0.05
+05:38:26             └ mfe_p50=0.21%  mae_p50=0.19%  tp_rate=2%  avg_hold=7b
+05:53:36  
+05:53:36    ┌─ VAL @ step 250,000 ────────────────────────────────────────
+05:53:36    │  minSharpe=+0.343   avgSharpe=+0.744   avg_ret=+1.41%   worstDD=3.8%
+05:53:36    │    [2022-bear]  Sharpe=+0.411
+05:53:36    │    [2023-bull]  Sharpe=+0.343
+05:53:36    │    [2024-consol]  Sharpe=+1.479
+05:53:36    │  buffer=10,499 trades  total_trades=9,999              prev_best=+0.453   ETA=16h57m
+05:53:36    │  [val trades n=231]  p10=-1.87%  p50=-0.01%  p90=+1.64%  win=46%  pf=2.0  TQS=0.92
+05:53:36    │  mfe_p50=0.23%  mae_p50=0.26%  tp_rate=1%  avg_hold=6b
+05:53:36    │  L/S/F=12/27/60%  [last-20 eps]  avg_ret=+4.5%  liq=0%  bars=15330
+05:53:36    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.069  ret_drift=+0.1984  n_ood=200  n_trades=200
+05:53:36    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=40.6%  avg_by_regime=[BULL=+0.000, BEAR=-0.031, RANGE=+0.000]
+05:53:36    └─────────────────────────────────────────────────────
+05:53:36  
+06:21:20  
+06:21:20    ┌─ VAL @ step 260,000 ────────────────────────────────────────
+06:21:20    │  minSharpe=+0.626   avgSharpe=+1.798   avg_ret=+2.95%   worstDD=3.7%
+06:21:20    │    [2022-bear]  Sharpe=+0.626
+06:21:20    │    [2023-bull]  Sharpe=+2.707
+06:21:20    │    [2024-consol]  Sharpe=+2.060
+06:21:20    │  buffer=10,866 trades  total_trades=10,366  ★ NEW BEST  prev_best=+0.453   ETA=16h26m
+06:21:20    │  [val trades n=282]  p10=-1.86%  p50=-0.01%  p90=+1.69%  win=48%  pf=2.0  TQS=0.97
+06:21:20    │  mfe_p50=0.25%  mae_p50=0.24%  tp_rate=1%  avg_hold=6b
+06:21:20    │  L/S/F=15/26/59%  [last-20 eps]  avg_ret=+4.5%  liq=0%  bars=15330
+06:21:20    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.074  ret_drift=+0.2015  n_ood=200  n_trades=200
+06:21:20    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=40.7%  avg_by_regime=[BULL=+0.000, BEAR=-0.030, RANGE=+0.000]
+06:21:20    └─────────────────────────────────────────────────────
+06:21:20  
+06:51:15  
+06:51:15    ┌─ VAL @ step 270,000 ────────────────────────────────────────
+06:51:15    │  minSharpe=+0.102   avgSharpe=+0.903   avg_ret=+1.95%   worstDD=3.7%
+06:51:15    │    [2022-bear]  Sharpe=+0.524
+06:51:15    │    [2023-bull]  Sharpe=+0.102
+06:51:15    │    [2024-consol]  Sharpe=+2.084
+06:51:15    │  buffer=11,276 trades  total_trades=10,776              prev_best=+0.626   ETA=15h59m
+06:51:15    │  [val trades n=242]  p10=-1.86%  p50=-0.01%  p90=+1.69%  win=46%  pf=2.1  TQS=0.99
+06:51:15    │  mfe_p50=0.24%  mae_p50=0.24%  tp_rate=1%  avg_hold=6b
+06:51:15    │  L/S/F=14/27/59%  [last-20 eps]  avg_ret=+4.5%  liq=0%  bars=15330
+06:51:15    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.009  ret_drift=+0.1883  n_ood=200  n_trades=200
+06:51:15    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=42.0%  avg_by_regime=[BULL=+0.000, BEAR=-0.025, RANGE=+0.000]
+06:51:15    └─────────────────────────────────────────────────────
+06:51:15  
+07:07:16    [EP   17]  bars=30,632  ret= +19.9%  completed   L/S/F=23/20/57%  trades=1201  │ logπ=-2.7  Qc=0.056  sps=6  ETA=15h40m
+07:07:16             ├ dist p10=-1.92%  p50=-0.00%  p90=+1.22%  win=46%  pf=1.1  TQS=0.53
+07:07:16             └ mfe_p50=0.24%  mae_p50=0.23%  tp_rate=1%  avg_hold=7b
+07:20:18  
+07:20:18    ┌─ VAL @ step 280,000 ────────────────────────────────────────
+07:20:18    │  minSharpe=-0.166   avgSharpe=+1.119   avg_ret=+0.90%   worstDD=1.6%
+07:20:18    │    [2022-bear]  Sharpe=-0.166
+07:20:18    │    [2023-bull]  Sharpe=+2.827
+07:20:18    │    [2024-consol]  Sharpe=+0.696
+07:20:18    │  buffer=11,697 trades  total_trades=11,197              prev_best=+0.626   ETA=15h29m
+07:20:18    │  [val trades n=84]  p10=-2.00%  p50=-0.02%  p90=+0.35%  win=40%  pf=1.2  TQS=0.49
+07:20:18    │  mfe_p50=0.23%  mae_p50=0.20%  tp_rate=4%  avg_hold=7b
+07:20:18    │  L/S/F=14/24/62%  [last-20 eps]  avg_ret=+5.4%  liq=0%  bars=16230
+07:20:18    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.009  ret_drift=+0.2007  n_ood=200  n_trades=200
+07:20:18    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=45.1%  avg_by_regime=[BULL=+0.000, BEAR=-0.012, RANGE=+0.000]
+07:20:18    └─────────────────────────────────────────────────────
+07:20:18  
+07:26:17    [EP   18]  bars=6,446  ret=  -0.4%  completed   L/S/F=27/21/52%  trades=268  │ logπ=-2.7  Qc=0.055  sps=6  ETA=15h22m
+07:26:17             ├ dist p10=-1.04%  p50=-0.00%  p90=+1.16%  win=48%  pf=1.8  TQS=0.85
+07:26:17             └ mfe_p50=0.19%  mae_p50=0.25%  tp_rate=2%  avg_hold=6b
+07:51:06  
+07:51:06    ┌─ VAL @ step 290,000 ────────────────────────────────────────
+07:51:06    │  minSharpe=-0.176   avgSharpe=+0.239   avg_ret=+1.13%   worstDD=3.7%
+07:51:06    │    [2022-bear]  Sharpe=+0.660
+07:51:06    │    [2023-bull]  Sharpe=+0.232
+07:51:06    │    [2024-consol]  Sharpe=-0.176
+07:51:06    │  buffer=12,113 trades  total_trades=11,613              prev_best=+0.626   ETA=15h02m
+07:51:06    │  [val trades n=285]  p10=-1.82%  p50=-0.01%  p90=+1.79%  win=48%  pf=2.2  TQS=1.06
+07:51:06    │  mfe_p50=0.28%  mae_p50=0.26%  tp_rate=1%  avg_hold=8b
+07:51:06    │  L/S/F=16/26/59%  [last-20 eps]  avg_ret=+5.1%  liq=0%  bars=15686
+07:51:06    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.024  ret_drift=+0.2025  n_ood=200  n_trades=200
+07:51:06    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=46.0%  avg_by_regime=[BULL=+0.000, BEAR=-0.006, RANGE=+0.000]
+07:51:06    └─────────────────────────────────────────────────────
+07:51:06  
+08:19:39  
+08:19:39    ┌─ VAL @ step 300,000 ────────────────────────────────────────
+08:19:39    │  minSharpe=-0.795   avgSharpe=-0.106   avg_ret=-0.32%   worstDD=2.6%
+08:19:39    │    [2022-bear]  Sharpe=-0.795
+08:19:39    │    [2023-bull]  Sharpe=+0.590
+08:19:39    │    [2024-consol]  Sharpe=-0.113
+08:19:39    │  buffer=12,513 trades  total_trades=12,013              prev_best=+0.626   ETA=14h33m
+08:19:39    │  [val trades n=127]  p10=-2.00%  p50=-0.02%  p90=+0.92%  win=43%  pf=1.6  TQS=0.67
+08:19:39    │  mfe_p50=0.20%  mae_p50=0.23%  tp_rate=2%  avg_hold=6b
+08:19:39    │  L/S/F=14/25/62%  [last-20 eps]  avg_ret=+5.1%  liq=0%  bars=15686
+08:19:39    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=-0.021  ret_drift=+0.2014  n_ood=200  n_trades=200
+08:19:39    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=46.3%  avg_by_regime=[BULL=+0.000, BEAR=-0.007, RANGE=+0.000]
+08:19:39    └─────────────────────────────────────────────────────
+08:19:39  
+08:25:02    [EP   19]  bars=19,679  ret= +10.5%  completed   L/S/F=26/19/55%  trades=807  │ logπ=-2.7  Qc=0.070  sps=6  ETA=14h26m
+08:25:02             ├ dist p10=-1.93%  p50=-0.00%  p90=+1.01%  win=47%  pf=0.7  TQS=0.33
+08:25:02             └ mfe_p50=0.21%  mae_p50=0.18%  tp_rate=1%  avg_hold=7b
+08:50:29  
+08:50:29    ┌─ VAL @ step 310,000 ────────────────────────────────────────
+08:50:29    │  minSharpe=+0.600   avgSharpe=+1.118   avg_ret=+2.53%   worstDD=3.7%
+08:50:29    │    [2022-bear]  Sharpe=+0.692
+08:50:29    │    [2023-bull]  Sharpe=+0.600
+08:50:29    │    [2024-consol]  Sharpe=+2.063
+08:50:29    │  buffer=12,933 trades  total_trades=12,433              prev_best=+0.626   ETA=14h05m
+08:50:29    │  [val trades n=286]  p10=-1.81%  p50=-0.01%  p90=+1.78%  win=48%  pf=2.3  TQS=1.08
+08:50:29    │  mfe_p50=0.27%  mae_p50=0.27%  tp_rate=1%  avg_hold=8b
+08:50:29    │  L/S/F=16/26/59%  [last-20 eps]  avg_ret=+5.4%  liq=0%  bars=15897
+08:50:29    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.004  ret_drift=+0.2031  n_ood=200  n_trades=200
+08:50:29    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=46.3%  avg_by_regime=[BULL=+0.000, BEAR=-0.005, RANGE=+0.000]
+08:50:29    └─────────────────────────────────────────────────────
+08:50:29  
+09:19:25  
+09:19:25    ┌─ VAL @ step 320,000 ────────────────────────────────────────
+09:19:25    │  minSharpe=-0.285   avgSharpe=+0.757   avg_ret=+1.66%   worstDD=3.7%
+09:19:25    │    [2022-bear]  Sharpe=+0.465
+09:19:25    │    [2023-bull]  Sharpe=-0.285
+09:19:25    │    [2024-consol]  Sharpe=+2.092
+09:19:25    │  buffer=13,331 trades  total_trades=12,831              prev_best=+0.626   ETA=13h36m
+09:19:25    │  [val trades n=194]  p10=-1.99%  p50=-0.01%  p90=+1.73%  win=47%  pf=1.8  TQS=0.84
+09:19:25    │  mfe_p50=0.25%  mae_p50=0.24%  tp_rate=2%  avg_hold=7b
+09:19:25    │  L/S/F=13/24/63%  [last-20 eps]  avg_ret=+5.4%  liq=0%  bars=15897
+09:19:25    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.009  ret_drift=+0.2019  n_ood=200  n_trades=200
+09:19:25    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=46.5%  avg_by_regime=[BULL=+0.000, BEAR=-0.005, RANGE=+0.000]
+09:19:25    └─────────────────────────────────────────────────────
+09:19:25  
+09:19:29    [EP   20]  bars=17,981  ret= +11.2%  completed   L/S/F=27/18/55%  trades=737  │ logπ=-2.7  Qc=0.098  sps=6  ETA=13h36m
+09:19:29             ├ dist p10=-0.43%  p50=-0.00%  p90=+1.18%  win=49%  pf=2.8  TQS=1.35
+09:19:29             └ mfe_p50=0.21%  mae_p50=0.20%  tp_rate=2%  avg_hold=7b
+09:48:36  
+09:48:36    ┌─ VAL @ step 330,000 ────────────────────────────────────────
+09:48:36    │  minSharpe=-0.198   avgSharpe=+0.214   avg_ret=+0.91%   worstDD=3.7%
+09:48:36    │    [2022-bear]  Sharpe=+0.568
+09:48:36    │    [2023-bull]  Sharpe=+0.272
+09:48:36    │    [2024-consol]  Sharpe=-0.198
+09:48:36    │  buffer=13,721 trades  total_trades=13,221              prev_best=+0.626   ETA=13h07m
+09:48:36    │  [val trades n=265]  p10=-1.68%  p50=-0.01%  p90=+1.73%  win=47%  pf=2.3  TQS=1.08
+09:48:36    │  mfe_p50=0.25%  mae_p50=0.28%  tp_rate=1%  avg_hold=8b
+09:48:36    │  L/S/F=15/25/60%  [last-20 eps]  avg_ret=+5.7%  liq=0%  bars=16001
+09:48:36    │  DriftManager [BLOCK]  ood_ema=1.000  calib_drift=+0.059  ret_drift=+0.1923  n_ood=200  n_trades=200
+09:48:36    │  KnowledgeMemory: 5000/5000 trades stored  win_rate=46.1%  avg_by_regime=[BULL=+0.000, BEAR=-0.006, RANGE=+0.000]
+09:48:36    └─────────────────────────────────────────────────────
+09:48:36  
+.006, RANGE=+0.000]
+09:48:36    └─────────────────────────────────────────────────────
+09:48:36  

@@ -1,0 +1,149 @@
+2026-07-12 20:41:46,005 INFO Device: mps
+2026-07-12 20:41:46,005 INFO Loading precomputed features…
+2026-07-12 20:41:46,079 INFO Feature matrix: (47810, 183)  →  obs shape: (48, 191)
+2026-07-12 20:41:46,669 INFO Warmup: 5000 random steps…
+2026-07-12 20:41:46,747 INFO step=    1000 ep=    0 equity=     77646  dd=0.241  alpha=0.0000  sps=12783
+2026-07-12 20:41:46,822 INFO step=    2000 ep=    1 equity=     92990  dd=0.086  alpha=0.0000  sps=13050
+2026-07-12 20:41:46,897 INFO step=    3000 ep=    1 equity=     62300  dd=0.387  alpha=0.0000  sps=13165
+2026-07-12 20:41:46,972 INFO step=    4000 ep=    2 equity=     86377  dd=0.150  alpha=0.0000  sps=13176
+2026-07-12 20:41:48,111 INFO step=    5000 ep=    3 equity=     89051  dd=0.115  alpha=0.1999  sps=3467
+2026-07-12 20:42:44,874 INFO step=    6000 ep=    3 equity=     76130  dd=0.243  alpha=0.1911  sps=103
+2026-07-12 20:43:40,336 INFO step=    7000 ep=    4 equity=     86709  dd=0.136  alpha=0.1773  sps=62
+2026-07-12 20:44:35,406 INFO step=    8000 ep=    4 equity=     63817  dd=0.364  alpha=0.1645  sps=47
+2026-07-12 20:45:31,714 INFO step=    9000 ep=    5 equity=     76690  dd=0.266  alpha=0.1526  sps=40
+2026-07-12 20:46:29,397 INFO step=   10000 ep=    6 equity=     77299  dd=0.239  alpha=0.1416  sps=35
+2026-07-12 20:46:49,931 INFO [VAL] step=10000  return=0.0000  equity=100000  dd=0.000
+2026-07-12 20:46:49,980 INFO [VAL] New best val return: 0.0000 → saved checkpoint
+2026-07-12 20:47:45,833 INFO step=   11000 ep=    6 equity=     54719  dd=0.462  alpha=0.1314  sps=31
+2026-07-12 20:48:42,062 INFO step=   12000 ep=    7 equity=     97933  dd=0.077  alpha=0.1219  sps=29
+2026-07-12 20:49:37,751 INFO step=   13000 ep=    7 equity=     68642  dd=0.353  alpha=0.1131  sps=28
+2026-07-12 20:50:35,017 INFO step=   14000 ep=    7 equity=     59119  dd=0.443  alpha=0.1050  sps=26
+2026-07-12 20:51:33,429 INFO step=   15000 ep=    8 equity=     67226  dd=0.328  alpha=0.0974  sps=26
+2026-07-12 20:52:30,366 INFO step=   16000 ep=    8 equity=     53545  dd=0.465  alpha=0.0904  sps=25
+2026-07-12 20:53:27,356 INFO step=   17000 ep=    9 equity=     69328  dd=0.408  alpha=0.0839  sps=24
+2026-07-12 20:54:24,637 INFO step=   18000 ep=   10 equity=    105632  dd=0.051  alpha=0.0779  sps=24
+2026-07-12 20:55:22,672 INFO step=   19000 ep=   10 equity=     76882  dd=0.309  alpha=0.0723  sps=23
+2026-07-12 20:56:21,697 INFO step=   20000 ep=   10 equity=     59015  dd=0.470  alpha=0.0671  sps=23
+2026-07-12 20:56:42,299 INFO [VAL] step=20000  return=-0.6128  equity=100231  dd=0.004
+2026-07-12 20:57:41,801 INFO step=   21000 ep=   11 equity=     57476  dd=0.426  alpha=0.0623  sps=22
+2026-07-12 20:58:39,756 INFO step=   22000 ep=   11 equity=     54172  dd=0.459  alpha=0.0578  sps=22
+2026-07-12 20:59:39,065 INFO step=   23000 ep=   12 equity=     87866  dd=0.122  alpha=0.0537  sps=21
+2026-07-12 21:00:39,608 INFO step=   24000 ep=   12 equity=     66310  dd=0.338  alpha=0.0498  sps=21
+2026-07-12 21:01:39,509 INFO step=   25000 ep=   12 equity=     58648  dd=0.414  alpha=0.0463  sps=21
+2026-07-12 21:02:38,138 INFO step=   26000 ep=   13 equity=     83743  dd=0.175  alpha=0.0430  sps=21
+2026-07-12 21:03:37,063 INFO step=   27000 ep=   13 equity=     66696  dd=0.343  alpha=0.0400  sps=21
+2026-07-12 21:04:37,437 INFO step=   28000 ep=   14 equity=     78871  dd=0.213  alpha=0.0371  sps=20
+2026-07-12 21:05:38,851 INFO step=   29000 ep=   14 equity=     74767  dd=0.254  alpha=0.0345  sps=20
+2026-07-12 21:06:38,691 INFO step=   30000 ep=   14 equity=     64874  dd=0.353  alpha=0.0320  sps=20
+2026-07-12 21:06:59,437 INFO [VAL] step=30000  return=-66.3523  equity=103580  dd=0.000
+2026-07-12 21:08:00,640 INFO step=   31000 ep=   14 equity=     53819  dd=0.463  alpha=0.0298  sps=20
+2026-07-12 21:09:00,129 INFO step=   32000 ep=   15 equity=    103555  dd=0.009  alpha=0.0277  sps=20
+2026-07-12 21:10:00,775 INFO step=   33000 ep=   15 equity=     86050  dd=0.177  alpha=0.0257  sps=19
+2026-07-12 21:11:00,969 INFO step=   34000 ep=   15 equity=     81533  dd=0.220  alpha=0.0239  sps=19
+2026-07-12 21:12:00,677 INFO step=   35000 ep=   15 equity=     67553  dd=0.354  alpha=0.0222  sps=19
+2026-07-12 21:12:58,570 INFO step=   36000 ep=   15 equity=     59731  dd=0.429  alpha=0.0207  sps=19
+2026-07-12 21:13:56,793 INFO step=   37000 ep=   16 equity=     99587  dd=0.004  alpha=0.0192  sps=19
+2026-07-12 21:14:54,665 INFO step=   38000 ep=   16 equity=     86164  dd=0.143  alpha=0.0179  sps=19
+2026-07-12 21:15:52,659 INFO step=   39000 ep=   16 equity=     73204  dd=0.272  alpha=0.0166  sps=19
+2026-07-12 21:16:51,092 INFO step=   40000 ep=   16 equity=     64885  dd=0.354  alpha=0.0155  sps=19
+2026-07-12 21:17:11,460 INFO [VAL] step=40000  return=-264.4236  equity=84108  dd=0.212
+2026-07-12 21:18:09,502 INFO step=   41000 ep=   16 equity=     65283  dd=0.350  alpha=0.0144  sps=19
+2026-07-12 21:19:06,810 INFO step=   42000 ep=   16 equity=     66085  dd=0.342  alpha=0.0134  sps=19
+2026-07-12 21:20:04,362 INFO step=   43000 ep=   16 equity=     62892  dd=0.374  alpha=0.0124  sps=19
+2026-07-12 21:21:02,708 INFO step=   44000 ep=   16 equity=     53695  dd=0.466  alpha=0.0116  sps=19
+2026-07-12 21:22:01,476 INFO step=   45000 ep=   17 equity=     79079  dd=0.224  alpha=0.0108  sps=19
+2026-07-12 21:23:00,002 INFO step=   46000 ep=   17 equity=     78192  dd=0.232  alpha=0.0100  sps=19
+2026-07-12 21:23:59,995 INFO step=   47000 ep=   17 equity=     68209  dd=0.330  alpha=0.0093  sps=19
+2026-07-12 21:24:59,332 INFO step=   48000 ep=   17 equity=     57441  dd=0.436  alpha=0.0087  sps=19
+2026-07-12 21:26:15,371 INFO step=   49000 ep=   17 equity=     53880  dd=0.471  alpha=0.0081  sps=18
+2026-07-12 21:27:39,218 INFO step=   50000 ep=   18 equity=    106532  dd=0.013  alpha=0.0075  sps=18
+2026-07-12 21:28:00,851 INFO [VAL] step=50000  return=-295.0956  equity=80655  dd=0.199
+2026-07-12 21:28:56,597 INFO step=   51000 ep=   18 equity=    109735  dd=0.030  alpha=0.0070  sps=18
+2026-07-12 21:29:51,682 INFO step=   52000 ep=   18 equity=    112503  dd=0.078  alpha=0.0065  sps=18
+2026-07-12 21:30:47,197 INFO step=   53000 ep=   18 equity=    105809  dd=0.133  alpha=0.0061  sps=18
+2026-07-12 21:31:43,813 INFO step=   54000 ep=   18 equity=     89201  dd=0.269  alpha=0.0057  sps=18
+2026-07-12 21:32:42,247 INFO step=   55000 ep=   18 equity=     79770  dd=0.346  alpha=0.0053  sps=18
+2026-07-12 21:33:40,317 INFO step=   56000 ep=   19 equity=     99869  dd=0.012  alpha=0.0050  sps=18
+2026-07-12 21:34:38,063 INFO step=   57000 ep=   19 equity=     72399  dd=0.284  alpha=0.0046  sps=18
+2026-07-12 21:35:40,405 INFO step=   58000 ep=   19 equity=     62144  dd=0.385  alpha=0.0043  sps=18
+2026-07-12 21:36:48,474 INFO step=   59000 ep=   19 equity=     56952  dd=0.437  alpha=0.0041  sps=18
+2026-07-12 21:37:51,413 INFO step=   60000 ep=   19 equity=     53539  dd=0.471  alpha=0.0038  sps=18
+2026-07-12 21:38:12,154 INFO [VAL] step=60000  return=-435.1946  equity=67779  dd=0.323
+2026-07-12 21:39:12,165 INFO step=   61000 ep=   20 equity=     92550  dd=0.119  alpha=0.0035  sps=18
+2026-07-12 21:40:11,976 INFO step=   62000 ep=   20 equity=     88864  dd=0.154  alpha=0.0033  sps=18
+2026-07-12 21:41:09,883 INFO step=   63000 ep=   20 equity=    107610  dd=0.021  alpha=0.0031  sps=18
+2026-07-12 21:42:08,147 INFO step=   64000 ep=   20 equity=     87370  dd=0.205  alpha=0.0029  sps=18
+2026-07-12 21:43:06,491 INFO step=   65000 ep=   20 equity=    101577  dd=0.076  alpha=0.0027  sps=18
+2026-07-12 21:44:04,661 INFO step=   66000 ep=   20 equity=    104334  dd=0.051  alpha=0.0025  sps=18
+2026-07-12 21:45:02,850 INFO step=   67000 ep=   20 equity=    112376  dd=0.002  alpha=0.0024  sps=18
+2026-07-12 21:53:17,158 INFO Seed: 42
+2026-07-12 21:53:17,158 INFO Device: mps
+2026-07-12 21:53:17,158 INFO Loading precomputed features…
+2026-07-12 21:53:17,205 INFO Feature matrix: (47810, 197)  →  obs shape: (48, 205)
+2026-07-12 21:53:17,891 INFO Warmup: 20000 random steps…
+2026-07-12 21:53:17,969 INFO [WARMUP] step=    1000 ep=    0 eq=    74112  dd=0.452  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=12807
+2026-07-12 21:53:18,044 INFO [WARMUP] step=    2000 ep=    1 eq=    70237  dd=0.298  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13010
+2026-07-12 21:53:18,120 INFO [WARMUP] step=    3000 ep=    2 eq=    81604  dd=0.185  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13093
+2026-07-12 21:53:18,196 INFO [WARMUP] step=    4000 ep=    2 eq=    66886  dd=0.332  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13100
+2026-07-12 21:53:18,271 INFO [WARMUP] step=    5000 ep=    2 eq=    50551  dd=0.495  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13146
+2026-07-12 21:53:18,347 INFO [WARMUP] step=    6000 ep=    3 eq=    52514  dd=0.479  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13149
+2026-07-12 21:53:18,423 INFO [WARMUP] step=    7000 ep=    4 eq=    70584  dd=0.324  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13158
+2026-07-12 21:53:18,498 INFO [WARMUP] step=    8000 ep=    4 eq=    56446  dd=0.460  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13170
+2026-07-12 21:53:18,573 INFO [WARMUP] step=    9000 ep=    5 eq=    82727  dd=0.213  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13187
+2026-07-12 21:53:18,651 INFO [WARMUP] step=   10000 ep=    5 eq=    59000  dd=0.439  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13150
+2026-07-12 21:53:18,731 INFO [WARMUP] step=   11000 ep=    6 eq=    87799  dd=0.154  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13096
+2026-07-12 21:53:18,808 INFO [WARMUP] step=   12000 ep=    7 eq=    70763  dd=0.302  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13076
+2026-07-12 21:53:18,885 INFO [WARMUP] step=   13000 ep=    7 eq=    61373  dd=0.394  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13077
+2026-07-12 21:53:18,961 INFO [WARMUP] step=   14000 ep=    8 eq=    82331  dd=0.230  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13083
+2026-07-12 21:53:19,036 INFO [WARMUP] step=   15000 ep=    9 eq=    88513  dd=0.132  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13095
+2026-07-12 21:53:19,114 INFO [WARMUP] step=   16000 ep=    9 eq=    65727  dd=0.355  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13076
+2026-07-12 21:53:19,192 INFO [WARMUP] step=   17000 ep=   10 eq=    70902  dd=0.293  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=13061
+2026-07-12 21:53:19,281 INFO [WARMUP] step=   18000 ep=   11 eq=    88036  dd=0.132  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=12951
+2026-07-12 21:53:19,359 INFO [WARMUP] step=   19000 ep=   11 eq=    80190  dd=0.210  α=0.0000  logπ=+0.00  Qc=0.0000  Qa=+0.0000  sps=12936
+2026-07-12 21:53:21,386 INFO [LEARN ] step=   20000 ep=   12 eq=    74608  dd=0.256  α=0.4999  logπ=-3.20  Qc=3.8313  Qa=-1.7401  sps=5721
+2026-07-12 21:53:24,864 INFO [VAL ] step=   20000  eq=   100000  ret=+0.00%  dd=0.000  best_so_far=-inf%
+2026-07-12 21:53:24,909 INFO [VAL ] ★ New best val equity: +0.00% → saved best_s42
+2026-07-12 21:54:21,409 INFO [LEARN ] step=   21000 ep=   12 eq=    58154  dd=0.420  α=0.4925  logπ=-3.42  Qc=0.1148  Qa=-4.4658  sps=331
+2026-07-12 21:55:17,331 INFO [LEARN ] step=   22000 ep=   13 eq=    82692  dd=0.182  α=0.4803  logπ=-3.42  Qc=0.1446  Qa=-6.0686  sps=184
+2026-07-12 21:56:13,584 INFO [LEARN ] step=   23000 ep=   13 eq=    60857  dd=0.398  α=0.4685  logπ=-3.42  Qc=0.1305  Qa=-7.6342  sps=131
+2026-07-12 21:57:11,335 INFO [LEARN ] step=   24000 ep=   14 eq=    84616  dd=0.156  α=0.4569  logπ=-3.41  Qc=0.1632  Qa=-9.1681  sps=103
+2026-07-12 21:58:08,617 INFO [LEARN ] step=   25000 ep=   15 eq=    94899  dd=0.051  α=0.4456  logπ=-3.42  Qc=0.1748  Qa=-10.6708  sps=86
+2026-07-12 21:59:05,800 INFO [LEARN ] step=   26000 ep=   15 eq=    76483  dd=0.235  α=0.4346  logπ=-3.42  Qc=0.1556  Qa=-12.1594  sps=75
+2026-07-12 22:00:07,129 INFO [LEARN ] step=   27000 ep=   15 eq=    54164  dd=0.458  α=0.4239  logπ=-3.42  Qc=0.2043  Qa=-13.5626  sps=66
+2026-07-12 22:01:05,500 INFO [LEARN ] step=   28000 ep=   16 eq=    85477  dd=0.145  α=0.4134  logπ=-3.42  Qc=0.2197  Qa=-14.9310  sps=60
+2026-07-12 22:02:03,401 INFO [LEARN ] step=   29000 ep=   17 eq=   101333  dd=0.002  α=0.4032  logπ=-3.42  Qc=0.2762  Qa=-16.2579  sps=55
+2026-07-12 22:03:01,761 INFO [LEARN ] step=   30000 ep=   17 eq=    78504  dd=0.243  α=0.3932  logπ=-3.41  Qc=0.2725  Qa=-17.5022  sps=51
+2026-07-12 22:03:05,280 INFO [VAL ] step=   30000  eq=   100000  ret=+0.00%  dd=0.000  best_so_far=+0.00%
+2026-07-12 22:04:01,894 INFO [LEARN ] step=   31000 ep=   17 eq=    55053  dd=0.469  α=0.3835  logπ=-3.42  Qc=0.3850  Qa=-18.7327  sps=48
+2026-07-12 22:05:00,129 INFO [LEARN ] step=   32000 ep=   18 eq=    67155  dd=0.346  α=0.3741  logπ=-3.41  Qc=0.3157  Qa=-19.8929  sps=46
+2026-07-12 22:05:58,467 INFO [LEARN ] step=   33000 ep=   19 eq=    72767  dd=0.272  α=0.3648  logπ=-3.42  Qc=0.4872  Qa=-20.9372  sps=43
+2026-07-12 22:06:56,127 INFO [LEARN ] step=   34000 ep=   20 eq=    99642  dd=0.011  α=0.3558  logπ=-3.42  Qc=0.4468  Qa=-22.0306  sps=42
+2026-07-12 22:07:54,186 INFO [LEARN ] step=   35000 ep=   20 eq=    76166  dd=0.244  α=0.3470  logπ=-3.41  Qc=0.4674  Qa=-23.0211  sps=40
+2026-07-12 22:08:52,697 INFO [LEARN ] step=   36000 ep=   21 eq=    92096  dd=0.258  α=0.3385  logπ=-3.41  Qc=0.5108  Qa=-23.9831  sps=39
+2026-07-12 22:09:51,990 INFO [LEARN ] step=   37000 ep=   21 eq=    70370  dd=0.433  α=0.3301  logπ=-3.41  Qc=0.6714  Qa=-24.9450  sps=37
+2026-07-12 22:10:50,310 INFO [LEARN ] step=   38000 ep=   22 eq=    87146  dd=0.157  α=0.3220  logπ=-3.42  Qc=0.5996  Qa=-25.8309  sps=36
+2026-07-12 22:11:49,018 INFO [LEARN ] step=   39000 ep=   22 eq=    76181  dd=0.263  α=0.3140  logπ=-3.41  Qc=0.5293  Qa=-26.6953  sps=35
+2026-07-12 22:12:49,237 INFO [LEARN ] step=   40000 ep=   23 eq=    89712  dd=0.103  α=0.3063  logπ=-3.41  Qc=0.7205  Qa=-27.4316  sps=34
+2026-07-12 22:12:52,773 INFO [VAL ] step=   40000  eq=   100000  ret=+0.00%  dd=0.000  best_so_far=+0.00%
+2026-07-12 22:13:51,359 INFO [LEARN ] step=   41000 ep=   23 eq=    65570  dd=0.344  α=0.2987  logπ=-3.41  Qc=0.8162  Qa=-28.2272  sps=33
+2026-07-12 22:14:50,274 INFO [LEARN ] step=   42000 ep=   24 eq=   100000  dd=0.000  α=0.2913  logπ=-3.41  Qc=0.9149  Qa=-28.9551  sps=32
+2026-07-12 22:15:49,258 INFO [LEARN ] step=   43000 ep=   24 eq=    79693  dd=0.210  α=0.2841  logπ=-3.41  Qc=0.9538  Qa=-29.6003  sps=32
+2026-07-12 22:16:48,365 INFO [LEARN ] step=   44000 ep=   24 eq=    56116  dd=0.444  α=0.2771  logπ=-3.41  Qc=0.9934  Qa=-30.2687  sps=31
+2026-07-12 22:17:48,348 INFO [LEARN ] step=   45000 ep=   25 eq=    68545  dd=0.315  α=0.2703  logπ=-3.41  Qc=0.8488  Qa=-30.9364  sps=31
+2026-07-12 22:18:46,627 INFO [LEARN ] step=   46000 ep=   26 eq=    74972  dd=0.250  α=0.2636  logπ=-3.41  Qc=1.2116  Qa=-31.5384  sps=30
+2026-07-12 22:19:44,893 INFO [LEARN ] step=   47000 ep=   26 eq=    55240  dd=0.448  α=0.2571  logπ=-3.41  Qc=1.1947  Qa=-32.1379  sps=30
+2026-07-12 22:20:42,878 INFO [LEARN ] step=   48000 ep=   27 eq=    86619  dd=0.236  α=0.2508  logπ=-3.41  Qc=1.1970  Qa=-32.6020  sps=29
+2026-07-12 22:21:42,087 INFO [LEARN ] step=   49000 ep=   27 eq=    61821  dd=0.455  α=0.2446  logπ=-3.41  Qc=1.1498  Qa=-33.0434  sps=29
+2026-07-12 22:22:45,064 INFO [LEARN ] step=   50000 ep=   28 eq=    60602  dd=0.421  α=0.2385  logπ=-3.41  Qc=1.2043  Qa=-33.4485  sps=28
+2026-07-12 22:22:48,546 INFO [VAL ] step=   50000  eq=   100000  ret=+0.00%  dd=0.000  best_so_far=+0.00%
+2026-07-12 22:23:45,946 INFO [LEARN ] step=   51000 ep=   29 eq=   101447  dd=0.032  α=0.2327  logπ=-3.40  Qc=1.7683  Qa=-33.7823  sps=28
+2026-07-12 22:24:44,149 INFO [LEARN ] step=   52000 ep=   29 eq=    70077  dd=0.331  α=0.2269  logπ=-3.41  Qc=1.5594  Qa=-34.2819  sps=28
+2026-07-12 22:25:45,485 INFO [LEARN ] step=   53000 ep=   29 eq=    54650  dd=0.478  α=0.2213  logπ=-3.41  Qc=1.4169  Qa=-34.5991  sps=27
+2026-07-12 22:26:51,455 INFO [LEARN ] step=   54000 ep=   30 eq=    63451  dd=0.372  α=0.2158  logπ=-3.41  Qc=1.6410  Qa=-34.8278  sps=27
+2026-07-12 22:27:58,469 INFO [LEARN ] step=   55000 ep=   30 eq=    56359  dd=0.442  α=0.2105  logπ=-3.41  Qc=1.7500  Qa=-35.1012  sps=26
+2026-07-12 22:28:57,840 INFO [LEARN ] step=   56000 ep=   31 eq=   100938  dd=0.027  α=0.2053  logπ=-3.41  Qc=2.2048  Qa=-35.2080  sps=26
+2026-07-12 22:29:56,120 INFO [LEARN ] step=   57000 ep=   31 eq=    78068  dd=0.247  α=0.2002  logπ=-3.41  Qc=1.8966  Qa=-35.4219  sps=26
+2026-07-12 22:30:56,046 INFO [LEARN ] step=   58000 ep=   31 eq=    54293  dd=0.476  α=0.1953  logπ=-3.41  Qc=1.9128  Qa=-35.5904  sps=26
+2026-07-12 22:31:55,444 INFO [LEARN ] step=   59000 ep=   33 eq=   101019  dd=0.011  α=0.1905  logπ=-3.40  Qc=2.4273  Qa=-35.6881  sps=25
+2026-07-12 22:32:57,074 INFO [LEARN ] step=   60000 ep=   33 eq=    63081  dd=0.382  α=0.1858  logπ=-3.40  Qc=1.8800  Qa=-35.7563  sps=25
+2026-07-12 22:33:00,567 INFO [VAL ] step=   60000  eq=   100000  ret=+0.00%  dd=0.000  best_so_far=+0.00%

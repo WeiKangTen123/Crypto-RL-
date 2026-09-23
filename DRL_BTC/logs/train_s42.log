@@ -1,0 +1,181 @@
+09:36:27  ═════════════════════════════════════════════════════════════════
+09:36:27    BTC DRL — SAC Training   seed=42   device=mps
+09:36:27  ─────────────────────────────────────────────────────────────────
+09:36:27    Data
+09:36:27      Train  : 2021-01-01 → 2024-12-31   (35,035 bars)
+09:36:27      Val    : 2024-10-01 → 2024-12-31   (2,185 bars, early-stop only)
+09:36:27      OOS    : 2025-01-01 onward              (never touched here)
+09:36:27    Model
+09:36:27      Obs    : 205 features × 48 bars  →  (48, 205)
+09:36:27      Action : 5D  [direction, confidence, size, leverage, hold/exit]
+09:36:27    Training
+09:36:27      Steps  : 500,000   Warmup: 20,000   Val every: 10,000
+09:36:27      Checkpoint: every 50,000 steps  +  best val  +  final
+09:36:27    Hyperparams
+09:36:27      LR actor=0.0003  critic=0.0003  alpha=0.0001
+09:36:27      γ=0.99  τ=0.005  lev=1.0×–5.0×  DD_kill=50%
+09:36:27  ═════════════════════════════════════════════════════════════════
+09:36:27  
+09:36:27  ─── PHASE 1: WARMUP  (20,000 random steps) ──────────────────
+09:36:27    Random actions fill the replay buffer — no learning yet.
+09:36:27  
+09:36:27    [WU   1]  bars=1,887  ret= -42.8%  LIQUIDATED  L/S/F=48/47/5%  maxDD=50.3%
+09:36:27    [WU   2]  bars=1,537  ret= -50.3%  LIQUIDATED  L/S/F=46/48/6%  maxDD=50.5%
+09:36:27    [WU   3]  bars=2,076  ret= -46.6%  LIQUIDATED  L/S/F=47/47/5%  maxDD=50.1%
+09:36:27    [WU   4]  bars=1,013  ret= -49.7%  LIQUIDATED  L/S/F=45/48/7%  maxDD=50.1%
+09:36:27    [WU   5]  bars=1,375  ret= -51.7%  LIQUIDATED  L/S/F=48/47/5%  maxDD=51.9%
+09:36:27    [WU   6]  bars=2,016  ret= -50.5%  LIQUIDATED  L/S/F=46/49/5%  maxDD=50.0%
+09:36:27    [WU   7]  bars=  455  ret= -36.4%  LIQUIDATED  L/S/F=43/51/5%  maxDD=51.0%
+09:36:28    [WU   8]  bars=1,267  ret= -49.1%  LIQUIDATED  L/S/F=49/45/6%  maxDD=50.3%
+09:36:28    [WU   9]  bars=1,392  ret= -49.0%  LIQUIDATED  L/S/F=48/47/5%  maxDD=50.3%
+09:36:28    [WU  10]  bars=  128  ret= -52.1%  LIQUIDATED  L/S/F=45/53/2%  maxDD=52.7%
+09:36:28    [WU  11]  bars=1,145  ret= -56.7%  LIQUIDATED  L/S/F=47/48/5%  maxDD=50.0%
+09:36:28    [WU  12]  bars=1,828  ret= -43.2%  completed   L/S/F=48/47/5%  maxDD=47.4%
+09:36:28    [WU  13]  bars=2,376  ret= -49.4%  LIQUIDATED  L/S/F=47/47/5%  maxDD=50.0%
+09:36:28  
+09:36:28    Warmup done in 2s  │  13 episodes  │  92% liquidated  │  avg ep return -48.3%
+09:36:28  
+09:36:28  ─── LEARNING PHASE  (steps 20,000 → 500,000, 480,000 to go) ─────
+09:36:28    SAC update every 4 steps │ Val every 10,000 │ Checkpoint every 50,000
+09:36:28  
+09:38:30    [EP   14]  bars=2,099  ret= -50.1%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.479  logπ=-3.4  Qc=0.138  sps=17  ETA=7h43m
+09:39:37    [EP   15]  bars=1,169  ret= -48.0%  LIQUIDATED  L/S/F=45/49/5%  │ α=0.465  logπ=-3.4  Qc=0.153  sps=17  ETA=7h38m
+09:40:49    [EP   16]  bars=1,235  ret= -51.3%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.451  logπ=-3.4  Qc=0.174  sps=17  ETA=7h38m
+09:42:06    [EP   17]  bars=1,308  ret= -52.1%  LIQUIDATED  L/S/F=48/48/5%  │ α=0.437  logπ=-3.4  Qc=0.206  sps=17  ETA=7h39m
+09:43:14    [EP   18]  bars=1,160  ret= -50.2%  LIQUIDATED  L/S/F=50/46/4%  │ α=0.424  logπ=-3.4  Qc=0.227  sps=17  ETA=7h39m
+09:44:47    [EP   19]  bars=1,592  ret= -50.0%  LIQUIDATED  L/S/F=48/48/4%  │ α=0.408  logπ=-3.4  Qc=0.296  sps=17  ETA=7h38m
+09:46:03    [EP   20]  bars=1,250  ret= -48.1%  LIQUIDATED  L/S/F=50/47/4%  │ α=0.395  logπ=-3.4  Qc=0.353  sps=17  ETA=7h38m
+09:46:19  
+09:46:19    ┌─ VAL @ step 30,000 ────────────────────────────────────────
+09:46:19    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.41
+09:46:19    │  ★ NEW BEST  prev_best=-inf%   ETA=7h42m
+09:46:19    │  [last-20 eps]  avg_ret=-48.9%   liq_rate=95%   avg_bars=1415
+09:46:19    └─────────────────────────────────────────────────────
+09:46:19  
+09:46:58    [EP   21]  bars=  778  ret= -46.1%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.388  logπ=-3.4  Qc=0.330  sps=17  ETA=7h45m
+09:49:23    [EP   22]  bars=2,314  ret= -44.2%  LIQUIDATED  L/S/F=47/48/5%  │ α=0.366  logπ=-3.4  Qc=0.367  sps=17  ETA=7h47m
+09:51:12    [EP   23]  bars=1,595  ret= -45.6%  LIQUIDATED  L/S/F=49/46/5%  │ α=0.351  logπ=-3.4  Qc=0.712  sps=16  ETA=7h52m
+09:52:42    [EP   24]  bars=1,401  ret= -50.5%  LIQUIDATED  L/S/F=50/45/5%  │ α=0.339  logπ=-3.4  Qc=0.560  sps=16  ETA=7h53m
+09:54:57    [EP   25]  bars=2,316  ret= -52.8%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.320  logπ=-3.4  Qc=0.849  sps=16  ETA=7h48m
+09:56:49  
+09:56:49    ┌─ VAL @ step 40,000 ────────────────────────────────────────
+09:56:49    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.37
+09:56:49    │              prev_best=+0.00%   ETA=7h48m
+09:56:49    │  [last-20 eps]  avg_ret=-48.8%   liq_rate=95%   avg_bars=1441
+09:56:49    └─────────────────────────────────────────────────────
+09:56:49  
+09:58:27    [EP   26]  bars=3,347  ret= -42.4%  LIQUIDATED  L/S/F=47/48/4%  │ α=0.295  logπ=-3.4  Qc=0.964  sps=16  ETA=7h47m
+10:00:12    [EP   27]  bars=1,555  ret= -49.0%  LIQUIDATED  L/S/F=47/49/4%  │ α=0.283  logπ=-3.4  Qc=0.962  sps=16  ETA=7h49m
+10:02:45    [EP   28]  bars=2,270  ret= -45.9%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.268  logπ=-3.4  Qc=1.289  sps=16  ETA=7h50m
+10:04:30    [EP   29]  bars=1,526  ret= -49.8%  LIQUIDATED  L/S/F=47/48/5%  │ α=0.258  logπ=-3.4  Qc=1.286  sps=16  ETA=7h51m
+10:06:46    [EP   30]  bars=2,127  ret= -50.5%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.244  logπ=-3.4  Qc=1.295  sps=16  ETA=7h50m
+10:07:37    [EP   31]  bars=  823  ret= -49.3%  LIQUIDATED  L/S/F=49/45/6%  │ α=0.239  logπ=-3.4  Qc=1.598  sps=16  ETA=7h49m
+10:07:51  
+10:07:51    ┌─ VAL @ step 50,000 ────────────────────────────────────────
+10:07:51    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.34
+10:07:51    │              prev_best=+0.00%   ETA=7h50m
+10:07:51    │  [last-20 eps]  avg_ret=-48.4%   liq_rate=95%   avg_bars=1703
+10:07:51    └─────────────────────────────────────────────────────
+10:07:51  
+10:09:44    [EP   32]  bars=1,911  ret= -47.6%  LIQUIDATED  L/S/F=48/48/4%  │ α=0.228  logπ=-3.4  Qc=1.927  sps=16  ETA=7h49m
+10:12:29    [EP   33]  bars=2,575  ret= -48.5%  LIQUIDATED  L/S/F=49/47/4%  │ α=0.214  logπ=-3.4  Qc=2.617  sps=16  ETA=7h47m
+10:15:40    [EP   34]  bars=2,690  ret= -49.7%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.200  logπ=-3.4  Qc=3.810  sps=16  ETA=7h48m
+10:17:05    [EP   35]  bars=1,207  ret= -55.1%  LIQUIDATED  L/S/F=50/45/4%  │ α=0.194  logπ=-3.4  Qc=2.619  sps=16  ETA=7h49m
+10:19:13  
+10:19:13    ┌─ VAL @ step 60,000 ────────────────────────────────────────
+10:19:13    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.32
+10:19:13    │              prev_best=+0.00%   ETA=7h50m
+10:19:13    │  [last-20 eps]  avg_ret=-48.9%   liq_rate=100%   avg_bars=1749
+10:19:13    └─────────────────────────────────────────────────────
+10:19:13  
+10:19:47    [EP   36]  bars=2,212  ret= -47.3%  LIQUIDATED  L/S/F=49/47/5%  │ α=0.184  logπ=-3.4  Qc=3.024  sps=16  ETA=7h50m
+10:21:33  ═════════════════════════════════════════════════════════════════
+10:21:33    BTC DRL — SAC Training   seed=42   device=mps
+10:21:33  ─────────────────────────────────────────────────────────────────
+10:21:33    Data
+10:21:33      Train  : 2021-01-01 → 2024-12-31   (35,035 bars)
+10:21:33      Val    : 2024-10-01 → 2024-12-31   (2,185 bars, early-stop only)
+10:21:33      OOS    : 2025-01-01 onward              (never touched here)
+10:21:33    Model
+10:21:33      Obs    : 209 features × 48 bars  →  (48, 209)  [9 groups incl. composite signals]
+10:21:33      Action : 5D  [direction, confidence, size, leverage, hold/exit]
+10:21:33    Training
+10:21:33      Steps  : 500,000   Warmup: 20,000   Val every: 10,000
+10:21:33      Checkpoint: every 50,000 steps  +  best val  +  final
+10:21:33    Hyperparams
+10:21:33      LR actor=0.0003  critic=0.0003  alpha=0.0001
+10:21:33      γ=0.99  τ=0.005  lev=1.0×–5.0×  DD_kill=50%
+10:21:33  ═════════════════════════════════════════════════════════════════
+10:21:33  
+10:21:33  ─── PHASE 0: BEHAVIOURAL CLONING  (20,000 steps) ───────────────
+10:21:33    Teaches direction from composite signals before SAC begins.
+10:21:33    Only clear directional bars are supervised (skips flat targets).
+10:21:33  
+10:22:16    [BC  5,000/20,000]  dir_loss=1.7374  L/S/skip=14%/13%/73%
+10:22:52    [BC 10,000/20,000]  dir_loss=0.1746  L/S/skip=12%/13%/75%
+10:23:30    [BC 15,000/20,000]  dir_loss=1.2001  L/S/skip=15%/11%/74%
+10:24:09    [BC 20,000/20,000]  dir_loss=0.0000  L/S/skip=17%/9%/74%
+10:24:09    BC done.  Final dir_loss=0.0000   Buffer: 20,000 transitions.
+10:24:09  
+10:24:09  ─── LEARNING PHASE  (steps 0 → 500,000, 500,000 to go) ─────
+10:24:09    SAC update every 4 steps │ Val every 10,000 │ Checkpoint every 50,000
+10:24:09  
+10:27:25    [EP    1]  bars=1,578  ret= -49.6%  LIQUIDATED  L/S/F=49/47/5%  │ α=0.486  logπ=-3.4  Qc=0.143  sps=8  ETA=17h11m
+10:29:52    [EP    2]  bars=1,210  ret= -51.1%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.471  logπ=-3.4  Qc=0.163  sps=8  ETA=16h58m
+10:32:21    [EP    3]  bars=1,292  ret= -46.5%  LIQUIDATED  L/S/F=47/48/5%  │ α=0.456  logπ=-3.4  Qc=0.209  sps=8  ETA=16h36m
+10:35:51    [EP    4]  bars=1,744  ret= -50.0%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.437  logπ=-3.4  Qc=0.227  sps=8  ETA=16h33m
+10:37:42    [EP    5]  bars=  948  ret= -47.7%  LIQUIDATED  L/S/F=44/50/5%  │ α=0.427  logπ=-3.4  Qc=0.299  sps=8  ETA=16h27m
+10:39:53    [EP    6]  bars=1,057  ret= -45.6%  LIQUIDATED  L/S/F=48/48/4%  │ α=0.416  logπ=-3.4  Qc=0.299  sps=8  ETA=16h29m
+10:43:38    [EP    7]  bars=1,889  ret= -50.1%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.396  logπ=-3.4  Qc=0.350  sps=8  ETA=16h23m
+10:44:21  
+10:44:21    ┌─ VAL @ step 10,000 ────────────────────────────────────────
+10:44:21    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.44
+10:44:21    │  ★ NEW BEST  prev_best=-inf%   ETA=?
+10:44:21    │  [last-20 eps]  avg_ret=-48.7%   liq_rate=100%   avg_bars=1388
+10:44:21    └─────────────────────────────────────────────────────
+10:44:21  
+10:47:48    [EP    8]  bars=2,053  ret= -50.0%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.377  logπ=-3.4  Qc=0.388  sps=8  ETA=16h21m
+10:52:34    [EP    9]  bars=2,380  ret= -28.8%  LIQUIDATED  L/S/F=49/46/5%  │ α=0.355  logπ=-3.4  Qc=0.360  sps=8  ETA=16h15m
+10:57:55    [EP   10]  bars=2,763  ret= -50.6%  LIQUIDATED  L/S/F=48/49/4%  │ α=0.331  logπ=-3.4  Qc=0.429  sps=8  ETA=16h04m
+11:00:11    [EP   11]  bars=1,181  ret= -50.8%  LIQUIDATED  L/S/F=52/43/4%  │ α=0.322  logπ=-3.4  Qc=0.588  sps=8  ETA=15h59m
+11:02:18    [EP   12]  bars=1,038  ret= -50.2%  LIQUIDATED  L/S/F=48/47/5%  │ α=0.313  logπ=-3.4  Qc=0.503  sps=8  ETA=15h58m
+11:04:11  
+11:04:11    ┌─ VAL @ step 20,000 ────────────────────────────────────────
+11:04:11    │  ret=+0.00%   Sharpe=+0.00   maxDD=0.0%   L/S/F=0/0/100%   conf=0.42
+11:04:11    │              prev_best=+0.00%   ETA=?
+11:04:11    │  [last-20 eps]  avg_ret=-47.6%   liq_rate=100%   avg_bars=1594
+11:04:11    └─────────────────────────────────────────────────────
+11:04:11  
+11:06:50    [EP   13]  bars=2,233  ret= -50.3%  LIQUIDATED  L/S/F=48/47/4%  │ α=0.296  logπ=-3.4  Qc=0.556  sps=8  ETA=15h56m
+11:09:51    [EP   14]  bars=1,489  ret= -52.0%  LIQUIDATED  L/S/F=49/46/4%  │ α=0.285  logπ=-3.4  Qc=0.578  sps=8  ETA=15h54m
+12:37:32  ═════════════════════════════════════════════════════════════════
+12:37:32    BTC DRL — SAC Training   seed=42   device=mps
+12:37:32  ─────────────────────────────────────────────────────────────────
+12:37:32    Data
+12:37:32      Train  : 2021-01-01 → 2024-12-31   (35,035 bars)
+12:37:32      Val    : 2024-10-01 → 2024-12-31   (2,185 bars, early-stop only)
+12:37:32      OOS    : 2025-01-01 onward              (never touched here)
+12:37:32    Model
+12:37:32      Obs    : 209 features × 48 bars  →  (48, 209)  [9 groups incl. composite signals]
+12:37:32      Action : 5D  [direction, confidence, size, leverage, hold/exit]
+12:37:32    Training
+12:37:32      Steps  : 500,000   Warmup: 20,000   Val every: 10,000
+12:37:32      Checkpoint: every 50,000 steps  +  best val  +  final
+12:37:32    Hyperparams
+12:37:32      LR actor=0.0003  critic=0.0003  alpha=0.0001
+12:37:32      γ=0.99  τ=0.005  lev=1.0×–5.0×  DD_kill=50%
+12:37:32  ═════════════════════════════════════════════════════════════════
+12:37:32  
+12:37:32  ─── PHASE 0: BEHAVIOURAL CLONING  (20,000 steps) ───────────────
+12:37:32    Teaches direction from composite signals before SAC begins.
+12:37:32    Only clear directional bars are supervised (skips flat targets).
+12:37:32  
+12:38:14    [BC  5,000/20,000]  dir_loss=1.7374  L/S/skip=14%/13%/73%
+12:38:51    [BC 10,000/20,000]  dir_loss=0.1746  L/S/skip=12%/13%/75%
+12:39:31    [BC 15,000/20,000]  dir_loss=1.2001  L/S/skip=15%/11%/74%
+12:40:11    [BC 20,000/20,000]  dir_loss=0.0000  L/S/skip=17%/9%/74%
+12:40:11    BC done.  Final dir_loss=0.0000   Buffer: 20,000 transitions.
+12:40:11  
+12:40:11  ─── LEARNING PHASE  (steps 0 → 500,000, 500,000 to go) ─────
+12:40:11    SAC update every 8 steps × 2 grad steps (UTD=0.2) │ Val every 10,000 │ Ckpt every 50,000
+12:40:11  
