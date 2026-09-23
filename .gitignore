@@ -7,8 +7,6 @@
 # Regenerable caches / environments
 venv/
 .venv/
-env/
-ENV/
 __pycache__/
 .pycache_tmp/
 *.pyc
