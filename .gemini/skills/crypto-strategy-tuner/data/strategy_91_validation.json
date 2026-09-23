@@ -1,0 +1,78 @@
+{
+  "strategy_id": "91",
+  "primary_results": {
+    "sharpe": -0.69,
+    "return": -80.24,
+    "mdd": 83.79,
+    "trades": 1015,
+    "win_rate": 31.43,
+    "profit_factor": 0.83
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.52,
+      "return": -83.88,
+      "mdd": 88.89,
+      "trades": 1046
+    },
+    "BTC": {
+      "sharpe": -0.69,
+      "return": -80.24,
+      "mdd": 83.79,
+      "trades": 1015
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "chop_period",
+      "value": 13,
+      "sharpe": -0.64
+    },
+    {
+      "param": "chop_period",
+      "value": 15,
+      "sharpe": -0.53
+    },
+    {
+      "param": "kc_period",
+      "value": 18,
+      "sharpe": -0.94
+    },
+    {
+      "param": "kc_period",
+      "value": 22,
+      "sharpe": -0.81
+    },
+    {
+      "param": "kc_mult",
+      "value": 1.8,
+      "sharpe": -0.86
+    },
+    {
+      "param": "kc_mult",
+      "value": 2.2,
+      "sharpe": -0.55
+    },
+    {
+      "param": "chop_threshold",
+      "value": 45.0,
+      "sharpe": -0.66
+    },
+    {
+      "param": "chop_threshold",
+      "value": 55.00000000000001,
+      "sharpe": -0.76
+    },
+    {
+      "param": "sl_atr_multiplier",
+      "value": 2.39274,
+      "sharpe": -0.69
+    },
+    {
+      "param": "sl_atr_multiplier",
+      "value": 2.9244600000000003,
+      "sharpe": -0.68
+    }
+  ]
+}

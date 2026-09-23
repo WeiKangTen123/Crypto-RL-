@@ -1,0 +1,387 @@
+{
+  "run_at": "2026-06-18T15:57:17.480113",
+  "coin": "ETH",
+  "tf": "4h",
+  "date_from": "2022-01-01",
+  "date_to": "2026-01-01",
+  "n_tested": 600,
+  "score_mode": "sharpe",
+  "n_valid": 454,
+  "top_results": [
+    {
+      "rank": 1,
+      "score": 1.41,
+      "entry": "fvg",
+      "filters": [
+        "taker_confirm",
+        "wr_not_extreme"
+      ],
+      "exit_method": "atr_tp_sl_hold",
+      "params": {
+        "atr_period": 24,
+        "intensity_period": 13,
+        "period": 43,
+        "tp_atr_mult": 4.6029,
+        "sl_atr_mult": 1.9697,
+        "max_hold_bars": 140
+      },
+      "metrics": {
+        "total_return": 190.04,
+        "sharpe": 1.41,
+        "max_drawdown": 20.91,
+        "win_rate": 37.74,
+        "total_trades": 265,
+        "profit_factor": 1.39
+      }
+    },
+    {
+      "rank": 2,
+      "score": 1.38,
+      "entry": "ema_price_cross",
+      "filters": [
+        "wr_not_extreme",
+        "ema_trend_short"
+      ],
+      "exit_method": "tight_atr",
+      "params": {
+        "atr_period": 16,
+        "ema_period": 142,
+        "period": 42,
+        "tp_atr_mult": 6.5362,
+        "ema_trend": 170,
+        "sl_atr_mult": 2.2999
+      },
+      "metrics": {
+        "total_return": 112.64,
+        "sharpe": 1.38,
+        "max_drawdown": 13.37,
+        "win_rate": 40.58,
+        "total_trades": 69,
+        "profit_factor": 1.9
+      }
+    },
+    {
+      "rank": 3,
+      "score": 1.19,
+      "entry": "ema_price_cross",
+      "filters": [
+        "taker_confirm"
+      ],
+      "exit_method": "tight_atr",
+      "params": {
+        "atr_period": 16,
+        "intensity_period": 29,
+        "ema_period": 149,
+        "tp_atr_mult": 4.3463,
+        "sl_atr_mult": 1.6618
+      },
+      "metrics": {
+        "total_return": 67.06,
+        "sharpe": 1.19,
+        "max_drawdown": 13.78,
+        "win_rate": 40.0,
+        "total_trades": 80,
+        "profit_factor": 1.72
+      }
+    },
+    {
+      "rank": 4,
+      "score": 1.05,
+      "entry": "aroon_cross",
+      "filters": [
+        "vol_expansion",
+        "ema_trend_long"
+      ],
+      "exit_method": "atr_tp_sl",
+      "params": {
+        "atr_period": 14,
+        "aroon_threshold": 76,
+        "tp_atr_mult": 7.9121,
+        "aroon_period": 10,
+        "ema_trend": 212,
+        "sl_atr_mult": 2.5526,
+        "vol_ma_period": 9,
+        "vol_multiplier": 1.9081
+      },
+      "metrics": {
+        "total_return": 112.84,
+        "sharpe": 1.05,
+        "max_drawdown": 17.71,
+        "win_rate": 32.08,
+        "total_trades": 106,
+        "profit_factor": 1.39
+      }
+    },
+    {
+      "rank": 5,
+      "score": 1.04,
+      "entry": "aroon_cross",
+      "filters": [
+        "vortex_trend",
+        "ema_trend_long"
+      ],
+      "exit_method": "tight_atr",
+      "params": {
+        "vortex_period": 19,
+        "atr_period": 22,
+        "aroon_threshold": 67,
+        "tp_atr_mult": 5.6814,
+        "aroon_period": 12,
+        "ema_trend": 214,
+        "sl_atr_mult": 0.966
+      },
+      "metrics": {
+        "total_return": 104.65,
+        "sharpe": 1.04,
+        "max_drawdown": 16.8,
+        "win_rate": 18.44,
+        "total_trades": 320,
+        "profit_factor": 1.38
+      }
+    },
+    {
+      "rank": 6,
+      "score": 1.0,
+      "entry": "rsi_trend",
+      "filters": [
+        "ema_trend_long"
+      ],
+      "exit_method": "tight_atr",
+      "params": {
+        "atr_period": 6,
+        "rsi_threshold": 62,
+        "tp_atr_mult": 7.4066,
+        "ema_trend": 80,
+        "sl_atr_mult": 1.5864,
+        "rsi_period": 25
+      },
+      "metrics": {
+        "total_return": 130.75,
+        "sharpe": 1.0,
+        "max_drawdown": 26.66,
+        "win_rate": 23.61,
+        "total_trades": 288,
+        "profit_factor": 1.27
+      }
+    },
+    {
+      "rank": 7,
+      "score": 0.94,
+      "entry": "fvg",
+      "filters": [
+        "wr_not_extreme",
+        "ema_trend_long"
+      ],
+      "exit_method": "atr_tp_sl_hold",
+      "params": {
+        "atr_period": 24,
+        "period": 24,
+        "tp_atr_mult": 5.2411,
+        "ema_trend": 67,
+        "sl_atr_mult": 2.6257,
+        "max_hold_bars": 184
+      },
+      "metrics": {
+        "total_return": 81.84,
+        "sharpe": 0.94,
+        "max_drawdown": 18.15,
+        "win_rate": 38.1,
+        "total_trades": 231,
+        "profit_factor": 1.19
+      }
+    },
+    {
+      "rank": 8,
+      "score": 0.93,
+      "entry": "cvd_cross",
+      "filters": [
+        "taker_confirm"
+      ],
+      "exit_method": "tight_atr",
+      "params": {
+        "atr_period": 26,
+        "intensity_period": 21,
+        "cvd_window": 31,
+        "tp_atr_mult": 4.8976,
+        "sl_atr_mult": 2.9464
+      },
+      "metrics": {
+        "total_return": 81.19,
+        "sharpe": 0.93,
+        "max_drawdown": 22.81,
+        "win_rate": 44.27,
+        "total_trades": 131,
+        "profit_factor": 1.31
+      }
+    },
+    {
+      "rank": 9,
+      "score": 0.91,
+      "entry": "macd_cross",
+      "filters": [],
+      "exit_method": "tight_atr",
+      "params": {
+        "atr_period": 7,
+        "tp_atr_mult": 5.1598,
+        "macd_slow": 38,
+        "sl_atr_mult": 2.8649,
+        "macd_fast": 21,
+        "macd_signal": 17
+      },
+      "metrics": {
+        "total_return": 118.16,
+        "sharpe": 0.91,
+        "max_drawdown": 25.04,
+        "win_rate": 39.23,
+        "total_trades": 260,
+        "profit_factor": 1.2
+      }
+    },
+    {
+      "rank": 10,
+      "score": 0.89,
+      "entry": "zlema_cross",
+      "filters": [],
+      "exit_method": "chandelier_tp",
+      "params": {
+        "atr_period": 18,
+        "tp_atr_mult": 5.4822,
+        "atr_multiplier": 4.5247,
+        "ema_slow": 120,
+        "ema_fast": 6
+      },
+      "metrics": {
+        "total_return": 65.59,
+        "sharpe": 0.89,
+        "max_drawdown": 17.62,
+        "win_rate": 49.57,
+        "total_trades": 117,
+        "profit_factor": 1.24
+      }
+    },
+    {
+      "rank": 11,
+      "score": 0.84,
+      "entry": "macd_cross",
+      "filters": [
+        "vol_expansion",
+        "psar_trend"
+      ],
+      "exit_method": "chandelier_tp",
+      "params": {
+        "atr_period": 7,
+        "psar_maximum": 0.2927,
+        "atr_multiplier": 4.1798,
+        "tp_atr_mult": 5.2426,
+        "macd_slow": 45,
+        "vol_ma_period": 13,
+        "macd_fast": 21,
+        "macd_signal": 10,
+        "psar_acceleration": 0.0165,
+        "vol_multiplier": 1.3496
+      },
+      "metrics": {
+        "total_return": 59.32,
+        "sharpe": 0.84,
+        "max_drawdown": 21.83,
+        "win_rate": 49.21,
+        "total_trades": 63,
+        "profit_factor": 1.37
+      }
+    },
+    {
+      "rank": 12,
+      "score": 0.77,
+      "entry": "cvd_cross",
+      "filters": [
+        "vol_expansion"
+      ],
+      "exit_method": "max_hold",
+      "params": {
+        "vol_multiplier": 2.3534,
+        "max_hold_bars": 69,
+        "vol_ma_period": 22,
+        "cvd_window": 26
+      },
+      "metrics": {
+        "total_return": 67.96,
+        "sharpe": 0.77,
+        "max_drawdown": 25.97,
+        "win_rate": 65.12,
+        "total_trades": 43,
+        "profit_factor": 1.64
+      }
+    },
+    {
+      "rank": 13,
+      "score": 0.77,
+      "entry": "cvd_cross",
+      "filters": [],
+      "exit_method": "tight_atr",
+      "params": {
+        "sl_atr_mult": 2.1869,
+        "atr_period": 8,
+        "tp_atr_mult": 5.1476,
+        "cvd_window": 29
+      },
+      "metrics": {
+        "total_return": 74.19,
+        "sharpe": 0.77,
+        "max_drawdown": 22.44,
+        "win_rate": 32.93,
+        "total_trades": 246,
+        "profit_factor": 1.16
+      }
+    },
+    {
+      "rank": 14,
+      "score": 0.75,
+      "entry": "hma_cross",
+      "filters": [],
+      "exit_method": "atr_tp_sl",
+      "params": {
+        "atr_period": 27,
+        "tp_atr_mult": 1.4123,
+        "sl_atr_mult": 2.6403,
+        "ema_slow": 144,
+        "ema_fast": 19
+      },
+      "metrics": {
+        "total_return": 45.56,
+        "sharpe": 0.75,
+        "max_drawdown": 18.02,
+        "win_rate": 69.57,
+        "total_trades": 276,
+        "profit_factor": 1.23
+      }
+    },
+    {
+      "rank": 15,
+      "score": 0.75,
+      "entry": "bb_breakout",
+      "filters": [
+        "atr_expansion",
+        "hma_slope"
+      ],
+      "exit_method": "atr_tp_sl_hold",
+      "params": {
+        "atr_period": 20,
+        "hma_period": 46,
+        "tp_atr_mult": 5.4166,
+        "bb_period": 29,
+        "sl_atr_mult": 2.0339,
+        "vol_ma_period": 27,
+        "bb_std": 2.6931,
+        "max_hold_bars": 114
+      },
+      "metrics": {
+        "total_return": 34.96,
+        "sharpe": 0.75,
+        "max_drawdown": 9.97,
+        "win_rate": 36.96,
+        "total_trades": 46,
+        "profit_factor": 1.65
+      }
+    }
+  ]
+}

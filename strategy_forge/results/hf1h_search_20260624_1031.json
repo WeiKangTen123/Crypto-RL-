@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-06-24T10:31:24.976742",
+  "tf": "1h",
+  "coins": [
+    "BTC",
+    "ETH"
+  ],
+  "date_from": "2024-01-01",
+  "date_to": "2026-05-31",
+  "risk": {
+    "risk_per_trade": 0.05,
+    "leverage": 5.0
+  },
+  "n_hits": 0,
+  "results": []
+}

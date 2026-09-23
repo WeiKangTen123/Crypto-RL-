@@ -1,0 +1,31 @@
+Matplotlib is building the font cache; this may take a moment.
+/Users/weikangten/Desktop/Crypto-RL/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+10
+TRAIN_START_DATE:  2017-08-17 04:00:00
+VAL_END_DATE:  2024-07-31 16:00:00
+TRADE_START_DATE              2024-07-31 20:00:00
+TRADE_END_DATE                2026-04-28 00:00:00 
+
+
+Loading result: res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k
+
+BEST TRIAL:  4
+
+MODEL_NAME:  sac
+{'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0, 'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+4h
+
+LOADING DATA FOLDER: /Users/weikangten/Desktop/Crypto-RL/data/trade_data/4h_24-07-31_26-04-28
+
+Traceback (most recent call last):
+  File "/Users/weikangten/Desktop/Crypto-RL/phase_4/backtest.py", line 179, in <module>
+    data_from_processor, price_array, tech_array, time_array, indicator_array, indicator_array_growth = load_and_process_data(TIMEFRAME, trade_start_date, trade_end_date)
+  File "/Users/weikangten/Desktop/Crypto-RL/phase_4/backtest.py", line 120, in load_and_process_data
+    data_from_processor = pickle.load(handle)
+  File "pandas/_libs/arrays.pyx", line 85, in pandas._libs.arrays.NDArrayBacked.__setstate__
+  File "pandas/_libs/arrays.pyx", line 103, in pandas._libs.arrays.NDArrayBacked.__setstate__
+NotImplementedError: (dtype('<M8[us]'), array(['2024-07-31T20:00:00.000000', '2024-08-01T00:00:00.000000',
+       '2024-08-01T04:00:00.000000', ..., '2026-04-27T12:00:00.000000',
+       '2026-04-27T16:00:00.000000', '2026-04-27T20:00:00.000000'],
+      dtype='datetime64[us]'))

@@ -1,0 +1,128 @@
+{
+  "strategy_id": "127",
+  "primary_results": {
+    "sharpe": -1.46,
+    "return": -4.76,
+    "mdd": 5.45,
+    "trades": 337,
+    "win_rate": 26.41,
+    "profit_factor": 0.83
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -3.15,
+      "return": -15.39,
+      "mdd": 16.03,
+      "trades": 411
+    },
+    "BTC": {
+      "sharpe": -1.46,
+      "return": -4.76,
+      "mdd": 5.45,
+      "trades": 337
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "ema_fast",
+      "value": 10,
+      "sharpe": -2.78
+    },
+    {
+      "param": "ema_fast",
+      "value": 12,
+      "sharpe": -2.37
+    },
+    {
+      "param": "ema_slow",
+      "value": 156,
+      "sharpe": -3.04
+    },
+    {
+      "param": "ema_slow",
+      "value": 190,
+      "sharpe": -3.0
+    },
+    {
+      "param": "htf_bars",
+      "value": 43,
+      "sharpe": -1.59
+    },
+    {
+      "param": "htf_bars",
+      "value": 53,
+      "sharpe": -2.0
+    },
+    {
+      "param": "htf_st_period",
+      "value": 9,
+      "sharpe": -1.46
+    },
+    {
+      "param": "htf_st_period",
+      "value": 11,
+      "sharpe": -1.46
+    },
+    {
+      "param": "htf_st_mult",
+      "value": 2.7,
+      "sharpe": -1.46
+    },
+    {
+      "param": "htf_st_mult",
+      "value": 3.3000000000000003,
+      "sharpe": -1.46
+    },
+    {
+      "param": "period",
+      "value": 22,
+      "sharpe": -1.68
+    },
+    {
+      "param": "period",
+      "value": 28,
+      "sharpe": -1.72
+    },
+    {
+      "param": "atr_period",
+      "value": 4,
+      "sharpe": -1.92
+    },
+    {
+      "param": "atr_period",
+      "value": 6,
+      "sharpe": -2.01
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 6.26625,
+      "sharpe": -1.74
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 7.658750000000001,
+      "sharpe": -1.66
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 2.38302,
+      "sharpe": -2.36
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 2.9125800000000006,
+      "sharpe": -1.56
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 102,
+      "sharpe": -1.48
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 124,
+      "sharpe": -1.57
+    }
+  ]
+}

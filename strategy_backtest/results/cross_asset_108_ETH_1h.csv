@@ -1,0 +1,2 @@
+Sharpe Ratio,Sortino Ratio,Calmar Ratio,Total Return,Annual Return,Max Drawdown %,Profit Factor,Win Rate,Total Trades,Recovery Factor,Expectancy,strategy_id,class,timeframe,coin
+-2.88,-3.93,-0.71,-97.09,-69.2,97.38,0.81,23.19,1259,-0.99,-0.77,RSI_MEAN_REVERSION_BTC_1H,RsiMeanReversionStrategy,1h,ETH

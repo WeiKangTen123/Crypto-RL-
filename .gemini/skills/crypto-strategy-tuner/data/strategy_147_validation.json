@@ -1,0 +1,78 @@
+{
+  "strategy_id": "147",
+  "primary_results": {
+    "sharpe": 0.03,
+    "return": -2.37,
+    "mdd": 33.72,
+    "trades": 54,
+    "win_rate": 51.85,
+    "profit_factor": 0.97
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.37,
+      "return": -15.09,
+      "mdd": 26.81,
+      "trades": 53
+    },
+    "BTC": {
+      "sharpe": -0.13,
+      "return": -5.82,
+      "mdd": 15.61,
+      "trades": 59
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "dc_period",
+      "value": 12,
+      "sharpe": -0.28
+    },
+    {
+      "param": "dc_period",
+      "value": 14,
+      "sharpe": -0.1
+    },
+    {
+      "param": "vrsi_period",
+      "value": 9,
+      "sharpe": -0.65
+    },
+    {
+      "param": "vrsi_period",
+      "value": 11,
+      "sharpe": -0.18
+    },
+    {
+      "param": "vrsi_thresh",
+      "value": 27.58464,
+      "sharpe": -0.07
+    },
+    {
+      "param": "vrsi_thresh",
+      "value": 33.71456,
+      "sharpe": -0.08
+    },
+    {
+      "param": "vol_z_thresh",
+      "value": 1.77309,
+      "sharpe": 0.03
+    },
+    {
+      "param": "vol_z_thresh",
+      "value": 2.16711,
+      "sharpe": 0.03
+    },
+    {
+      "param": "vol_z_period",
+      "value": 20,
+      "sharpe": 0.03
+    },
+    {
+      "param": "vol_z_period",
+      "value": 24,
+      "sharpe": 0.03
+    }
+  ]
+}

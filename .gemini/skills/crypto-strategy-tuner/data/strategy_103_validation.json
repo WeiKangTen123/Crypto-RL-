@@ -1,0 +1,118 @@
+{
+  "strategy_id": "103",
+  "primary_results": {
+    "sharpe": 0.19,
+    "return": 3.79,
+    "mdd": 8.37,
+    "trades": 35,
+    "win_rate": 42.86,
+    "profit_factor": 1.21
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.5,
+      "return": -12.05,
+      "mdd": 12.5,
+      "trades": 29
+    },
+    "BTC": {
+      "sharpe": 0.19,
+      "return": 3.79,
+      "mdd": 8.37,
+      "trades": 35
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "atr_period",
+      "value": 9,
+      "sharpe": -0.05
+    },
+    {
+      "param": "atr_period",
+      "value": 11,
+      "sharpe": 0.14
+    },
+    {
+      "param": "atr_multiplier",
+      "value": 2.9165400000000004,
+      "sharpe": -0.08
+    },
+    {
+      "param": "atr_multiplier",
+      "value": 3.5646600000000004,
+      "sharpe": -0.43
+    },
+    {
+      "param": "rsi_period",
+      "value": 20,
+      "sharpe": 0.13
+    },
+    {
+      "param": "rsi_period",
+      "value": 24,
+      "sharpe": 0.17
+    },
+    {
+      "param": "rsi_oversold",
+      "value": 30.783870000000004,
+      "sharpe": 0.09
+    },
+    {
+      "param": "rsi_oversold",
+      "value": 37.62473000000001,
+      "sharpe": 0.19
+    },
+    {
+      "param": "rsi_overbought",
+      "value": 71.04663000000001,
+      "sharpe": -0.1
+    },
+    {
+      "param": "rsi_overbought",
+      "value": 86.83477000000002,
+      "sharpe": 0.31
+    },
+    {
+      "param": "vol_ma_period",
+      "value": 22,
+      "sharpe": 0.24
+    },
+    {
+      "param": "vol_ma_period",
+      "value": 28,
+      "sharpe": 0.07
+    },
+    {
+      "param": "vol_multiplier",
+      "value": 2.67291,
+      "sharpe": 0.05
+    },
+    {
+      "param": "vol_multiplier",
+      "value": 3.26689,
+      "sharpe": 0.35
+    },
+    {
+      "param": "atr_multiplier_sl",
+      "value": 0.71802,
+      "sharpe": 0.14
+    },
+    {
+      "param": "atr_multiplier_sl",
+      "value": 0.87758,
+      "sharpe": 0.15
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 19,
+      "sharpe": 0.19
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 23,
+      "sharpe": 0.19
+    }
+  ]
+}

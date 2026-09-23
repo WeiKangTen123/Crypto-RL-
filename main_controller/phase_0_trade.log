@@ -1,0 +1,17 @@
+10
+TRAIN_START_DATE:  2017-08-17 04:00:00
+VAL_END_DATE:  2024-07-31 16:00:00
+
+
+TIMEFRAME                   4h
+TRADE_START_DATE            2024-07-31 20:00:00
+TRADE_END_DATA              2026-04-28 00:00:00
+TICKER LIST                 ['BTCUSDT'] 
+
+Reading data from local parquet files...
+Loaded 22866 rows. Computing TA-Lib indicators...
+Correlation analysis suggests dropping: ['high', 'low', 'atr', 'cross_volume_ratio_vix', 'cross_price_ratio_jpy', 'cross_volume_ratio_jpy']
+Dropping for model consistency: ['high', 'low', 'open', 'macd', 'cci', 'roc', 'willr']
+Technical indicators (30): ['close', 'volume', 'quote_vol', 'num_trades', 'taker_buy_ratio', 'rsi', 'dx', 'ultosc', 'obv', 'ht_dcphase', 'atr', 'bband_width', 'ema_ratio', 'log_return', 'cross_price_ratio_eth', 'cross_volume_ratio_eth', 'cross_corr_20_eth', 'cross_price_ratio_dxy', 'cross_volume_ratio_dxy', 'cross_corr_20_dxy', 'cross_price_ratio_spy', 'cross_volume_ratio_spy', 'cross_corr_20_spy', 'cross_price_ratio_vix', 'cross_volume_ratio_vix', 'cross_corr_20_vix', 'cross_price_ratio_jpy', 'cross_volume_ratio_jpy', 'cross_corr_20_jpy', 'vix_log_return']
+Trade tickers: ['BTCUSDT'] | Feature tickers: ['ETHUSDT', 'DXYUSDT', 'SPYUSDT', 'VIXUSDT', 'JPYUSDT']
+Metadata saved to /Users/weikangten/Desktop/Crypto-RL/data/trade_data/4h_24-07-31_26-04-28/metadata.json

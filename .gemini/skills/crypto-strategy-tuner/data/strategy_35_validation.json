@@ -1,0 +1,78 @@
+{
+  "strategy_id": "35",
+  "primary_results": {
+    "sharpe": 1.27,
+    "return": 193.64,
+    "mdd": 17.13,
+    "trades": 40,
+    "win_rate": 32.5,
+    "profit_factor": 11.03
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": 0.13,
+      "return": 2.89,
+      "mdd": 33.47,
+      "trades": 39
+    },
+    "BTC": {
+      "sharpe": 0.17,
+      "return": 8.24,
+      "mdd": 33.05,
+      "trades": 37
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "multiplier",
+      "value": 4.71708,
+      "sharpe": 1.17
+    },
+    {
+      "param": "multiplier",
+      "value": 5.765320000000001,
+      "sharpe": 1.27
+    },
+    {
+      "param": "sl_multiplier",
+      "value": 5.9571,
+      "sharpe": -0.12
+    },
+    {
+      "param": "sl_multiplier",
+      "value": 7.2809,
+      "sharpe": 1.26
+    },
+    {
+      "param": "atr_period",
+      "value": 58,
+      "sharpe": 1.11
+    },
+    {
+      "param": "atr_period",
+      "value": 70,
+      "sharpe": -0.38
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 236,
+      "sharpe": 1.27
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 288,
+      "sharpe": 1.27
+    },
+    {
+      "param": "ema_slope_thresh",
+      "value": 0.21267000000000003,
+      "sharpe": 1.27
+    },
+    {
+      "param": "ema_slope_thresh",
+      "value": 0.25993000000000005,
+      "sharpe": 1.27
+    }
+  ]
+}

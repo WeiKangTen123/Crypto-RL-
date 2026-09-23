@@ -1,0 +1,901 @@
+{
+  "run_at": "2026-06-24T16:34:27.627601",
+  "tf": "1h",
+  "coins": [
+    "BTC",
+    "ETH",
+    "BNB",
+    "SOL",
+    "XRP",
+    "AVAX",
+    "LINK",
+    "ADA",
+    "DOT"
+  ],
+  "date_from": "2024-01-01",
+  "date_to": "2026-05-31",
+  "risk": {
+    "risk_per_trade": 0.05,
+    "leverage": 5.0
+  },
+  "n_hits": 62,
+  "results": [
+    {
+      "coin": "LINK",
+      "entry": "hma_cross",
+      "filters": [
+        "hma_slope"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 86,
+        "psar_maximum": 0.2046,
+        "ema_fast": 24,
+        "hma_period": 77,
+        "psar_acceleration": 0.0239,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.01,
+      "monthly": 2.527341020420648,
+      "mdd": 5.21,
+      "trades_pm": 15.571428571428571,
+      "exits_2026": 75,
+      "annual": 34.92,
+      "total_return": 105.94,
+      "win_rate": 59.4,
+      "tf": "1h",
+      "rank": 1
+    },
+    {
+      "coin": "XRP",
+      "entry": "zlema_cross",
+      "filters": [],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 27,
+        "psar_acceleration": 0.012,
+        "ema_fast": 25,
+        "psar_maximum": 0.2579,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.5,
+      "monthly": 2.5330386194422294,
+      "mdd": 9.01,
+      "trades_pm": 18.785714285714285,
+      "exits_2026": 88,
+      "annual": 35.01,
+      "total_return": 106.27,
+      "win_rate": 55.7,
+      "tf": "1h",
+      "rank": 2
+    },
+    {
+      "coin": "LINK",
+      "entry": "macd_cross",
+      "filters": [
+        "atr_expansion",
+        "ema_trend_long"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "atr_period": 24,
+        "vol_ma_period": 17,
+        "macd_fast": 4,
+        "psar_maximum": 0.1391,
+        "macd_slow": 91,
+        "ema_trend": 268,
+        "psar_acceleration": 0.0479,
+        "macd_signal": 11,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.9,
+      "monthly": 2.5494788144455827,
+      "mdd": 6.22,
+      "trades_pm": 16.178571428571427,
+      "exits_2026": 57,
+      "annual": 35.27,
+      "total_return": 107.22,
+      "win_rate": 59.16,
+      "tf": "1h",
+      "rank": 3
+    },
+    {
+      "coin": "ETH",
+      "entry": "zlema_cross",
+      "filters": [],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 27,
+        "psar_acceleration": 0.012,
+        "ema_fast": 25,
+        "psar_maximum": 0.2579,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.91,
+      "monthly": 2.5570568292608398,
+      "mdd": 6.52,
+      "trades_pm": 17.607142857142858,
+      "exits_2026": 83,
+      "annual": 35.39,
+      "total_return": 107.66,
+      "win_rate": 52.54,
+      "tf": "1h",
+      "rank": 4
+    },
+    {
+      "coin": "ETH",
+      "entry": "elder_ray",
+      "filters": [
+        "ema_trend_short"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 33,
+        "adx_threshold": 17,
+        "adx_period": 24,
+        "psar_maximum": 0.2979,
+        "ema_trend": 176,
+        "psar_acceleration": 0.0374,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.78,
+      "monthly": 2.5841609174310554,
+      "mdd": 3.38,
+      "trades_pm": 17.035714285714285,
+      "exits_2026": 86,
+      "annual": 35.82,
+      "total_return": 109.29,
+      "win_rate": 64.57,
+      "tf": "1h",
+      "rank": 5
+    },
+    {
+      "coin": "SOL",
+      "entry": "macd_cross",
+      "filters": [
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 16,
+        "psar_maximum": 0.2571,
+        "macd_slow": 55,
+        "psar_acceleration": 0.0401,
+        "macd_signal": 7,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.02,
+      "monthly": 2.5381002298286104,
+      "mdd": 4.94,
+      "trades_pm": 14.642857142857142,
+      "exits_2026": 46,
+      "annual": 35.09,
+      "total_return": 106.58,
+      "win_rate": 58.29,
+      "tf": "1h",
+      "rank": 6
+    },
+    {
+      "coin": "AVAX",
+      "entry": "elder_ray",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0447,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.22,
+      "monthly": 2.3991782606826106,
+      "mdd": 5.43,
+      "trades_pm": 14.607142857142858,
+      "exits_2026": 61,
+      "annual": 32.91,
+      "total_return": 98.63,
+      "win_rate": 59.17,
+      "tf": "1h",
+      "rank": 7
+    },
+    {
+      "coin": "ADA",
+      "entry": "zlema_cross",
+      "filters": [
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 16,
+        "psar_maximum": 0.2046,
+        "macd_slow": 50,
+        "psar_acceleration": 0.0401,
+        "macd_signal": 10,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.18,
+      "monthly": 2.66874694278858,
+      "mdd": 8.92,
+      "trades_pm": 19.392857142857142,
+      "exits_2026": 90,
+      "annual": 37.17,
+      "total_return": 114.34,
+      "win_rate": 57.46,
+      "tf": "1h",
+      "rank": 8
+    },
+    {
+      "coin": "LINK",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 18,
+        "psar_maximum": 0.1907,
+        "macd_slow": 99,
+        "psar_acceleration": 0.05,
+        "macd_signal": 13,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.54,
+      "monthly": 2.727194381172282,
+      "mdd": 3.35,
+      "trades_pm": 16.0,
+      "exits_2026": 73,
+      "annual": 38.11,
+      "total_return": 117.89,
+      "win_rate": 59.15,
+      "tf": "1h",
+      "rank": 9
+    },
+    {
+      "coin": "BNB",
+      "entry": "vortex_cross",
+      "filters": [
+        "htf_ema_trend",
+        "funding_rate_bias"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0263,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 4.54,
+      "monthly": 2.7593705328664564,
+      "mdd": 2.4,
+      "trades_pm": 23.214285714285715,
+      "exits_2026": 79,
+      "annual": 38.63,
+      "total_return": 119.85,
+      "win_rate": 67.23,
+      "tf": "1h",
+      "rank": 10
+    },
+    {
+      "coin": "XRP",
+      "entry": "elder_ray",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0447,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.88,
+      "monthly": 2.2169947021196235,
+      "mdd": 5.62,
+      "trades_pm": 15.785714285714286,
+      "exits_2026": 67,
+      "annual": 30.1,
+      "total_return": 88.65,
+      "win_rate": 61.31,
+      "tf": "1h",
+      "rank": 11
+    },
+    {
+      "coin": "AVAX",
+      "entry": "macd_cross",
+      "filters": [
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 28,
+        "psar_maximum": 0.1947,
+        "macd_slow": 51,
+        "psar_acceleration": 0.0393,
+        "macd_signal": 9,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.39,
+      "monthly": 2.7895892829637337,
+      "mdd": 5.7,
+      "trades_pm": 19.428571428571427,
+      "exits_2026": 147,
+      "annual": 39.12,
+      "total_return": 121.73,
+      "win_rate": 57.9,
+      "tf": "1h",
+      "rank": 12
+    },
+    {
+      "coin": "SOL",
+      "entry": "zlema_cross",
+      "filters": [],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 27,
+        "psar_acceleration": 0.012,
+        "ema_fast": 25,
+        "psar_maximum": 0.2579,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.59,
+      "monthly": 2.8037399623919157,
+      "mdd": 5.78,
+      "trades_pm": 17.357142857142858,
+      "exits_2026": 86,
+      "annual": 39.35,
+      "total_return": 122.62,
+      "win_rate": 54.12,
+      "tf": "1h",
+      "rank": 13
+    },
+    {
+      "coin": "ADA",
+      "entry": "macd_cross",
+      "filters": [
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 28,
+        "psar_maximum": 0.1947,
+        "macd_slow": 51,
+        "psar_acceleration": 0.0393,
+        "macd_signal": 9,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.7,
+      "monthly": 2.19536333702679,
+      "mdd": 4.78,
+      "trades_pm": 16.571428571428573,
+      "exits_2026": 71,
+      "annual": 29.77,
+      "total_return": 87.49,
+      "win_rate": 57.97,
+      "tf": "1h",
+      "rank": 14
+    },
+    {
+      "coin": "ETH",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 18,
+        "psar_maximum": 0.1907,
+        "macd_slow": 99,
+        "psar_acceleration": 0.05,
+        "macd_signal": 13,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.59,
+      "monthly": 2.18814167579211,
+      "mdd": 2.58,
+      "trades_pm": 15.928571428571429,
+      "exits_2026": 72,
+      "annual": 29.66,
+      "total_return": 87.09,
+      "win_rate": 57.85,
+      "tf": "1h",
+      "rank": 15
+    },
+    {
+      "coin": "XRP",
+      "entry": "elder_ray",
+      "filters": [
+        "ema_trend_short"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 33,
+        "adx_threshold": 17,
+        "adx_period": 24,
+        "psar_maximum": 0.2979,
+        "ema_trend": 176,
+        "psar_acceleration": 0.0374,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 4.06,
+      "monthly": 2.8393294396597657,
+      "mdd": 3.64,
+      "trades_pm": 19.642857142857142,
+      "exits_2026": 84,
+      "annual": 39.93,
+      "total_return": 124.87,
+      "win_rate": 65.09,
+      "tf": "1h",
+      "rank": 16
+    },
+    {
+      "coin": "XRP",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 18,
+        "psar_maximum": 0.1907,
+        "macd_slow": 99,
+        "psar_acceleration": 0.05,
+        "macd_signal": 13,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.1,
+      "monthly": 2.15128955448991,
+      "mdd": 3.23,
+      "trades_pm": 16.892857142857142,
+      "exits_2026": 87,
+      "annual": 29.1,
+      "total_return": 85.16,
+      "win_rate": 60.25,
+      "tf": "1h",
+      "rank": 17
+    },
+    {
+      "coin": "DOT",
+      "entry": "hma_cross",
+      "filters": [
+        "hma_slope"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 86,
+        "psar_maximum": 0.2046,
+        "ema_fast": 24,
+        "hma_period": 77,
+        "psar_acceleration": 0.0239,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.9,
+      "monthly": 2.215685142838586,
+      "mdd": 5.17,
+      "trades_pm": 14.5,
+      "exits_2026": 59,
+      "annual": 30.08,
+      "total_return": 88.59,
+      "win_rate": 60.84,
+      "tf": "1h",
+      "rank": 18
+    },
+    {
+      "coin": "BNB",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 16,
+        "psar_maximum": 0.2571,
+        "macd_slow": 99,
+        "psar_acceleration": 0.0413,
+        "macd_signal": 7,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.46,
+      "monthly": 2.1400733080984224,
+      "mdd": 3.22,
+      "trades_pm": 23.642857142857142,
+      "exits_2026": 98,
+      "annual": 28.93,
+      "total_return": 84.59,
+      "win_rate": 56.95,
+      "tf": "1h",
+      "rank": 19
+    },
+    {
+      "coin": "SOL",
+      "entry": "hma_cross",
+      "filters": [
+        "hma_slope"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 86,
+        "psar_maximum": 0.2046,
+        "ema_fast": 24,
+        "hma_period": 77,
+        "psar_acceleration": 0.0239,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.32,
+      "monthly": 2.873563615832153,
+      "mdd": 4.65,
+      "trades_pm": 16.142857142857142,
+      "exits_2026": 76,
+      "annual": 40.49,
+      "total_return": 127.04,
+      "win_rate": 59.73,
+      "tf": "1h",
+      "rank": 20
+    },
+    {
+      "coin": "DOT",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 18,
+        "psar_maximum": 0.1907,
+        "macd_slow": 99,
+        "psar_acceleration": 0.05,
+        "macd_signal": 13,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.97,
+      "monthly": 2.1255380245827737,
+      "mdd": 4.22,
+      "trades_pm": 16.214285714285715,
+      "exits_2026": 84,
+      "annual": 28.71,
+      "total_return": 83.82,
+      "win_rate": 57.49,
+      "tf": "1h",
+      "rank": 21
+    },
+    {
+      "coin": "ADA",
+      "entry": "macd_cross",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 18,
+        "psar_maximum": 0.1907,
+        "macd_slow": 99,
+        "psar_acceleration": 0.05,
+        "macd_signal": 13,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.61,
+      "monthly": 2.9052406729952684,
+      "mdd": 3.69,
+      "trades_pm": 16.892857142857142,
+      "exits_2026": 82,
+      "annual": 41.01,
+      "total_return": 129.08,
+      "win_rate": 59.83,
+      "tf": "1h",
+      "rank": 22
+    },
+    {
+      "coin": "ETH",
+      "entry": "macd_cross",
+      "filters": [
+        "atr_expansion",
+        "ema_trend_long"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "atr_period": 24,
+        "vol_ma_period": 17,
+        "macd_fast": 4,
+        "psar_maximum": 0.1391,
+        "macd_slow": 91,
+        "ema_trend": 268,
+        "psar_acceleration": 0.0479,
+        "macd_signal": 11,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.58,
+      "monthly": 2.173681489304924,
+      "mdd": 3.89,
+      "trades_pm": 14.357142857142858,
+      "exits_2026": 66,
+      "annual": 29.44,
+      "total_return": 86.33,
+      "win_rate": 57.71,
+      "tf": "1h",
+      "rank": 23
+    },
+    {
+      "coin": "LINK",
+      "entry": "elder_ray",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0447,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.59,
+      "monthly": 2.6568885085559657,
+      "mdd": 4.36,
+      "trades_pm": 13.071428571428571,
+      "exits_2026": 55,
+      "annual": 36.98,
+      "total_return": 113.61,
+      "win_rate": 66.39,
+      "tf": "1h",
+      "rank": 24
+    },
+    {
+      "coin": "ETH",
+      "entry": "elder_ray",
+      "filters": [
+        "psar_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0447,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.43,
+      "monthly": 2.0678335779026558,
+      "mdd": 3.54,
+      "trades_pm": 15.107142857142858,
+      "exits_2026": 69,
+      "annual": 27.84,
+      "total_return": 80.84,
+      "win_rate": 62.41,
+      "tf": "1h",
+      "rank": 25
+    },
+    {
+      "coin": "LINK",
+      "entry": "macd_cross",
+      "filters": [
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_fast": 28,
+        "psar_maximum": 0.1947,
+        "macd_slow": 51,
+        "psar_acceleration": 0.0393,
+        "macd_signal": 9,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.47,
+      "monthly": 2.9501354376026523,
+      "mdd": 5.22,
+      "trades_pm": 19.0,
+      "exits_2026": 115,
+      "annual": 41.75,
+      "total_return": 132.02,
+      "win_rate": 60.15,
+      "tf": "1h",
+      "rank": 26
+    },
+    {
+      "coin": "ADA",
+      "entry": "vortex_cross",
+      "filters": [
+        "htf_ema_trend",
+        "funding_rate_bias"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "period": 41,
+        "psar_acceleration": 0.0263,
+        "psar_maximum": 0.3433,
+        "htf_ema_period": 105,
+        "htf_bars": 4,
+        "fr_long_threshold": 0.0003,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 3.49,
+      "monthly": 2.5665206943891405,
+      "mdd": 4.37,
+      "trades_pm": 12.107142857142858,
+      "exits_2026": 48,
+      "annual": 35.54,
+      "total_return": 108.22,
+      "win_rate": 65.78,
+      "tf": "1h",
+      "rank": 27
+    },
+    {
+      "coin": "XRP",
+      "entry": "hma_cross",
+      "filters": [
+        "hma_slope"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 86,
+        "psar_maximum": 0.2046,
+        "ema_fast": 24,
+        "hma_period": 77,
+        "psar_acceleration": 0.0239,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.74,
+      "monthly": 2.0837879137047377,
+      "mdd": 4.68,
+      "trades_pm": 14.678571428571429,
+      "exits_2026": 68,
+      "annual": 28.08,
+      "total_return": 81.66,
+      "win_rate": 57.91,
+      "tf": "1h",
+      "rank": 28
+    },
+    {
+      "coin": "ADA",
+      "entry": "macd_cross",
+      "filters": [
+        "atr_expansion",
+        "ema_trend_long"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "atr_period": 24,
+        "vol_ma_period": 17,
+        "macd_fast": 4,
+        "psar_maximum": 0.1391,
+        "macd_slow": 91,
+        "ema_trend": 268,
+        "psar_acceleration": 0.0479,
+        "macd_signal": 11,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.89,
+      "monthly": 2.753809509292071,
+      "mdd": 4.87,
+      "trades_pm": 13.214285714285714,
+      "exits_2026": 55,
+      "annual": 38.54,
+      "total_return": 119.53,
+      "win_rate": 56.76,
+      "tf": "1h",
+      "rank": 29
+    },
+    {
+      "coin": "ADA",
+      "entry": "hma_cross",
+      "filters": [
+        "hma_slope"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "ema_slow": 86,
+        "psar_maximum": 0.2046,
+        "ema_fast": 24,
+        "hma_period": 77,
+        "psar_acceleration": 0.0239,
+        "htf_bars": 4,
+        "htf1_bars": 4,
+        "htf2_bars": 24,
+        "macro_bars": 168
+      },
+      "sharpe": 2.41,
+      "monthly": 2.9682748391568703,
+      "mdd": 8.45,
+      "trades_pm": 14.607142857142858,
+      "exits_2026": 66,
+      "annual": 42.05,
+      "total_return": 133.2,
+      "win_rate": 58.44,
+      "tf": "1h",
+      "rank": 30
+    }
+  ]
+}

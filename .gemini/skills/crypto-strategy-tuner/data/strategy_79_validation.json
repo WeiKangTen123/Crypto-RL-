@@ -1,0 +1,98 @@
+{
+  "strategy_id": "79",
+  "primary_results": {
+    "sharpe": 0.58,
+    "return": 89.54,
+    "mdd": 35.72,
+    "trades": 188,
+    "win_rate": 34.04,
+    "profit_factor": 1.25
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": 0.0,
+      "return": -23.21,
+      "mdd": 58.42,
+      "trades": 186
+    },
+    "BTC": {
+      "sharpe": 0.58,
+      "return": 89.54,
+      "mdd": 35.72,
+      "trades": 188
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "swing_window",
+      "value": 22,
+      "sharpe": 0.57
+    },
+    {
+      "param": "swing_window",
+      "value": 26,
+      "sharpe": 0.37
+    },
+    {
+      "param": "fib_retrace",
+      "value": 0.6579,
+      "sharpe": 0.39
+    },
+    {
+      "param": "fib_retrace",
+      "value": 0.8041,
+      "sharpe": 0.63
+    },
+    {
+      "param": "fib_ext",
+      "value": 1.95183,
+      "sharpe": 0.61
+    },
+    {
+      "param": "fib_ext",
+      "value": 2.38557,
+      "sharpe": 0.74
+    },
+    {
+      "param": "sl_fib",
+      "value": 1.14516,
+      "sharpe": 0.6
+    },
+    {
+      "param": "sl_fib",
+      "value": 1.39964,
+      "sharpe": 0.58
+    },
+    {
+      "param": "rsi_period",
+      "value": 11,
+      "sharpe": 0.49
+    },
+    {
+      "param": "rsi_period",
+      "value": 13,
+      "sharpe": 0.54
+    },
+    {
+      "param": "rsi_long",
+      "value": 39,
+      "sharpe": 0.39
+    },
+    {
+      "param": "rsi_long",
+      "value": 47,
+      "sharpe": 0.41
+    },
+    {
+      "param": "rsi_short",
+      "value": 56,
+      "sharpe": 0.45
+    },
+    {
+      "param": "rsi_short",
+      "value": 68,
+      "sharpe": 0.47
+    }
+  ]
+}

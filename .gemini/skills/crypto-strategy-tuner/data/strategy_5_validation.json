@@ -1,0 +1,68 @@
+{
+  "strategy_id": "5",
+  "primary_results": {
+    "sharpe": 0.31,
+    "return": 30.36,
+    "mdd": 41.83,
+    "trades": 30,
+    "win_rate": 43.33,
+    "profit_factor": 1.16
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.42,
+      "return": -89.91,
+      "mdd": 89.91,
+      "trades": 47
+    },
+    "BTC": {
+      "sharpe": 0.31,
+      "return": 30.36,
+      "mdd": 41.83,
+      "trades": 30
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "min_gap_pct",
+      "value": 0.02169,
+      "sharpe": 0.17
+    },
+    {
+      "param": "min_gap_pct",
+      "value": 0.026510000000000002,
+      "sharpe": 0.4
+    },
+    {
+      "param": "retrace_depth",
+      "value": 0.6110099999999999,
+      "sharpe": 0.13
+    },
+    {
+      "param": "retrace_depth",
+      "value": 0.74679,
+      "sharpe": 0.21
+    },
+    {
+      "param": "tp_multiplier",
+      "value": 3.75462,
+      "sharpe": 0.31
+    },
+    {
+      "param": "tp_multiplier",
+      "value": 4.58898,
+      "sharpe": 0.31
+    },
+    {
+      "param": "ema_period",
+      "value": 154,
+      "sharpe": 0.35
+    },
+    {
+      "param": "ema_period",
+      "value": 188,
+      "sharpe": 0.08
+    }
+  ]
+}

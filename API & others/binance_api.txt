@@ -1,0 +1,5 @@
+BInance API Key:
+41diWLujhalhGQ70icyuLwMVMcv5DObmvScO8y5SSazCL6uaRKEHBA00objiks9h
+
+Secret Key:
+elrq9EXkGZtEwUXDAQoJ4GZELCuSJWysE8H6ioLiru0U0zLp46pw7qNpoYSjZMIt

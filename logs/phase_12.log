@@ -1,0 +1,30 @@
+[2026-07-09 15:15:56,624] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 15:27:23,061] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 15:35:30,180] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 15:38:49,643] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 15:38:52,707] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 15:38:56,721] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 15:38:57,472] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 15:39:04,638] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 15:39:04,812] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 16:02:52,793] phase_12.unified_api - ERROR - Error starting training: No module named 'freqai_wrapper'
+[2026-07-09 16:04:20,907] phase_12.unified_api - ERROR - Error saving config: No module named 'custom'
+[2026-07-09 16:04:20,932] phase_12.unified_api - ERROR - Error starting training: No module named 'custom'
+[2026-07-09 16:08:05,875] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 16:08:19,241] phase_12.unified_api - ERROR - Error saving config: No module named 'custom'
+[2026-07-09 16:08:19,286] phase_12.unified_api - ERROR - Error getting results: No module named 'custom'
+[2026-07-09 16:08:19,309] phase_12.unified_api - ERROR - Error getting feature importance: No module named 'custom'
+[2026-07-09 16:08:19,331] phase_12.unified_api - ERROR - Error exporting signals: No module named 'custom'
+[2026-07-09 16:08:19,352] phase_12.unified_api - ERROR - Error running backtest: No module named 'custom'
+[2026-07-09 16:08:49,228] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 16:08:51,823] phase_12.unified_api - INFO - Configuration saved for custom framework
+[2026-07-09 16:08:51,867] phase_12.unified_api - INFO - Signals exported from custom framework
+[2026-07-09 16:09:07,155] phase_12.unified_api - INFO - Training started for custom framework (PID: 70750)
+[2026-07-09 16:09:44,375] phase_12.unified_api - INFO - Training started for custom framework (PID: 70874)
+[2026-07-09 16:11:07,444] phase_12.unified_api - INFO - Training started for custom framework (PID: 71130)
+[2026-07-09 16:11:51,857] phase_12.unified_api - INFO - Training started for custom framework (PID: 71291)
+[2026-07-09 16:12:51,863] phase_12.unified_api - INFO - Training started for custom framework (PID: 71483)
+[2026-07-09 16:14:40,499] phase_12 - INFO - Phase 12 ML Signal Generation initialized
+[2026-07-09 16:14:52,566] phase_12.unified_api - INFO - Training started for custom framework (PID: 71832)
+[2026-07-09 16:16:21,673] phase_12.unified_api - INFO - Training started for custom framework (PID: 72145)
+[2026-07-09 16:43:18,963] phase_12 - INFO - Phase 12 ML Signal Generation initialized

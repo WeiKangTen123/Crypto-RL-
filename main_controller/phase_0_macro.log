@@ -1,0 +1,13 @@
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+Target Timeline: 2017-08-17 04:00:00 to 2026-04-27 20:00:00
+Downloading DXY (DX-Y.NYB)...
+Saved DXY data to dataset/DXY/4h/spot_ohlcv.parquet (19055 rows)
+Downloading SPY (SPY)...
+Saved SPY data to dataset/SPY/4h/spot_ohlcv.parquet (19055 rows)
+Downloading VIX (^VIX)...
+Saved VIX data to dataset/VIX/4h/spot_ohlcv.parquet (19055 rows)
+Downloading JPY (JPY=X)...
+Saved JPY data to dataset/JPY/4h/spot_ohlcv.parquet (19055 rows)

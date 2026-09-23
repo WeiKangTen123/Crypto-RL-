@@ -1,0 +1,108 @@
+{
+  "strategy_id": "94",
+  "primary_results": {
+    "sharpe": -0.38,
+    "return": -28.16,
+    "mdd": 40.74,
+    "trades": 203,
+    "win_rate": 29.56,
+    "profit_factor": 0.87
+  },
+  "cross_asset_results": {
+    "BTC": {
+      "sharpe": 0.34,
+      "return": 15.95,
+      "mdd": 22.13,
+      "trades": 202
+    },
+    "SOL": {
+      "sharpe": -0.0,
+      "return": -10.76,
+      "mdd": 42.25,
+      "trades": 161
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "bb_period",
+      "value": 19,
+      "sharpe": -0.66
+    },
+    {
+      "param": "bb_period",
+      "value": 23,
+      "sharpe": -0.92
+    },
+    {
+      "param": "bb_std",
+      "value": 2.0799,
+      "sharpe": -0.97
+    },
+    {
+      "param": "bb_std",
+      "value": 2.5421,
+      "sharpe": -1.04
+    },
+    {
+      "param": "intensity_period",
+      "value": 5,
+      "sharpe": -0.38
+    },
+    {
+      "param": "intensity_period",
+      "value": 7,
+      "sharpe": -0.38
+    },
+    {
+      "param": "intensity_std",
+      "value": 2.58489,
+      "sharpe": -0.38
+    },
+    {
+      "param": "intensity_std",
+      "value": 3.1593100000000005,
+      "sharpe": -0.38
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.6194700000000001,
+      "sharpe": -0.38
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.7571300000000001,
+      "sharpe": -0.38
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 1.2224700000000002,
+      "sharpe": -0.38
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 1.4941300000000002,
+      "sharpe": -0.38
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 1.53729,
+      "sharpe": -0.38
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 1.87891,
+      "sharpe": -0.38
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 72,
+      "sharpe": -0.38
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 88,
+      "sharpe": -0.38
+    }
+  ]
+}

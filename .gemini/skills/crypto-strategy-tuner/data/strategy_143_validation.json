@@ -1,0 +1,98 @@
+{
+  "strategy_id": "143",
+  "primary_results": {
+    "sharpe": 0.31,
+    "return": 17.01,
+    "mdd": 27.21,
+    "trades": 39,
+    "win_rate": 28.21,
+    "profit_factor": 1.49
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.73,
+      "return": -25.15,
+      "mdd": 32.31,
+      "trades": 40
+    },
+    "BTC": {
+      "sharpe": -1.22,
+      "return": -32.89,
+      "mdd": 33.56,
+      "trades": 40
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    [
+      "vrsi_period",
+      22,
+      0.24
+    ],
+    [
+      "vrsi_period",
+      26,
+      -0.11
+    ],
+    [
+      "vrsi_oversold",
+      13.87503,
+      -0.06
+    ],
+    [
+      "vrsi_oversold",
+      16.958370000000002,
+      0.21
+    ],
+    [
+      "vrsi_overbought",
+      85.02372,
+      -0.0
+    ],
+    [
+      "vrsi_overbought",
+      103.91788000000001,
+      0.52
+    ],
+    [
+      "vwap_period",
+      120,
+      -0.01
+    ],
+    [
+      "vwap_period",
+      146,
+      0.15
+    ],
+    [
+      "vwap_std_mult",
+      3.8080800000000004,
+      0.04
+    ],
+    [
+      "vwap_std_mult",
+      4.654320000000001,
+      0.08
+    ],
+    [
+      "sl_pct",
+      0.05922,
+      0.35
+    ],
+    [
+      "sl_pct",
+      0.07238,
+      0.27
+    ],
+    [
+      "ema_period",
+      68,
+      0.31
+    ],
+    [
+      "ema_period",
+      82,
+      0.31
+    ]
+  ]
+}

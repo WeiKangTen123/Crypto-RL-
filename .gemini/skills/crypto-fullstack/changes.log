@@ -1,0 +1,4 @@
+[2026-05-27 10:30] FIXED | main_controller/main.py | Added robust date parsing for /api/strategy_backtest | Fixed 'invalid-date' crash
+[2026-05-27 05:45] FIXED | .gemini/skills/crypto-qa-tester/scripts/system_test.py | Fixed AttributeError (.values() on list) and key mismatch | QA reported crash
+[2026-05-27 06:25] FIXED | main_controller/agent_status.json | Updated status after startup check | System healthy
+[2026-05-27 15:10] FIXED | strategy_backtest/run_backtest.py | Added robust date parsing for CLI | Prevented crash on 'invalid-date'

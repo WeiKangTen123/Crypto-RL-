@@ -1,0 +1,829 @@
+TOTAL_WINDOWS:165
+Starting Pattern Mining — Strategy 75 | 165 windows
+PROGRESS:1/165:0.6:MICRO:1M:2023-01-01
+  Mining MICRO 1M  2023-01-01 → 2023-01-31  [15 trials]
+  Loaded 721 bars  (2023-01-01 → 2023-01-31)
+  Loaded 721 bars  (2023-01-01 → 2023-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:2/165:1.2:MICRO:1M:2023-02-01
+  Mining MICRO 1M  2023-02-01 → 2023-02-28  [15 trials]
+  Loaded 649 bars  (2023-02-01 → 2023-02-28)
+  Loaded 649 bars  (2023-02-01 → 2023-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:3/165:1.8:MICRO:1M:2023-03-01
+  Mining MICRO 1M  2023-03-01 → 2023-03-31  [15 trials]
+  Loaded 720 bars  (2023-03-01 → 2023-03-31)
+  Loaded 720 bars  (2023-03-01 → 2023-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:4/165:2.4:MICRO:1M:2023-04-01
+  Mining MICRO 1M  2023-04-01 → 2023-04-30  [15 trials]
+  Loaded 697 bars  (2023-04-01 → 2023-04-30)
+  Loaded 697 bars  (2023-04-01 → 2023-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:5/165:3.0:MICRO:1M:2023-05-01
+  Mining MICRO 1M  2023-05-01 → 2023-05-31  [15 trials]
+  Loaded 721 bars  (2023-05-01 → 2023-05-31)
+  Loaded 721 bars  (2023-05-01 → 2023-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:6/165:3.6:MICRO:1M:2023-06-01
+  Mining MICRO 1M  2023-06-01 → 2023-06-30  [15 trials]
+  Loaded 697 bars  (2023-06-01 → 2023-06-30)
+  Loaded 697 bars  (2023-06-01 → 2023-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:7/165:4.2:MICRO:1M:2023-07-01
+  Mining MICRO 1M  2023-07-01 → 2023-07-31  [15 trials]
+  Loaded 721 bars  (2023-07-01 → 2023-07-31)
+  Loaded 721 bars  (2023-07-01 → 2023-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:8/165:4.8:MICRO:1M:2023-08-01
+  Mining MICRO 1M  2023-08-01 → 2023-08-31  [15 trials]
+  Loaded 721 bars  (2023-08-01 → 2023-08-31)
+  Loaded 721 bars  (2023-08-01 → 2023-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:9/165:5.5:MICRO:1M:2023-09-01
+  Mining MICRO 1M  2023-09-01 → 2023-09-30  [15 trials]
+  Loaded 697 bars  (2023-09-01 → 2023-09-30)
+  Loaded 697 bars  (2023-09-01 → 2023-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:10/165:6.1:MICRO:1M:2023-10-01
+  Mining MICRO 1M  2023-10-01 → 2023-10-31  [15 trials]
+  Loaded 721 bars  (2023-10-01 → 2023-10-31)
+  Loaded 721 bars  (2023-10-01 → 2023-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:11/165:6.7:MICRO:1M:2023-11-01
+  Mining MICRO 1M  2023-11-01 → 2023-11-30  [15 trials]
+  Loaded 697 bars  (2023-11-01 → 2023-11-30)
+  Loaded 697 bars  (2023-11-01 → 2023-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:12/165:7.3:MICRO:1M:2023-12-01
+  Mining MICRO 1M  2023-12-01 → 2023-12-31  [15 trials]
+  Loaded 721 bars  (2023-12-01 → 2023-12-31)
+  Loaded 721 bars  (2023-12-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:13/165:7.9:MICRO:1M:2024-01-01
+  Mining MICRO 1M  2024-01-01 → 2024-01-31  [15 trials]
+  Loaded 721 bars  (2024-01-01 → 2024-01-31)
+  Loaded 721 bars  (2024-01-01 → 2024-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:14/165:8.5:MICRO:1M:2024-02-01
+  Mining MICRO 1M  2024-02-01 → 2024-02-29  [15 trials]
+  Loaded 673 bars  (2024-02-01 → 2024-02-29)
+  Loaded 673 bars  (2024-02-01 → 2024-02-29)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:15/165:9.1:MICRO:1M:2024-03-01
+  Mining MICRO 1M  2024-03-01 → 2024-03-31  [15 trials]
+  Loaded 721 bars  (2024-03-01 → 2024-03-31)
+  Loaded 721 bars  (2024-03-01 → 2024-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:16/165:9.7:MICRO:1M:2024-04-01
+  Mining MICRO 1M  2024-04-01 → 2024-04-30  [15 trials]
+  Loaded 697 bars  (2024-04-01 → 2024-04-30)
+  Loaded 697 bars  (2024-04-01 → 2024-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:17/165:10.3:MICRO:1M:2024-05-01
+  Mining MICRO 1M  2024-05-01 → 2024-05-31  [15 trials]
+  Loaded 721 bars  (2024-05-01 → 2024-05-31)
+  Loaded 721 bars  (2024-05-01 → 2024-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:18/165:10.9:MICRO:1M:2024-06-01
+  Mining MICRO 1M  2024-06-01 → 2024-06-30  [15 trials]
+  Loaded 697 bars  (2024-06-01 → 2024-06-30)
+  Loaded 697 bars  (2024-06-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:19/165:11.5:MICRO:1M:2024-07-01
+  Mining MICRO 1M  2024-07-01 → 2024-07-31  [15 trials]
+  Loaded 721 bars  (2024-07-01 → 2024-07-31)
+  Loaded 721 bars  (2024-07-01 → 2024-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:20/165:12.1:MICRO:1M:2024-08-01
+  Mining MICRO 1M  2024-08-01 → 2024-08-31  [15 trials]
+  Loaded 721 bars  (2024-08-01 → 2024-08-31)
+  Loaded 721 bars  (2024-08-01 → 2024-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:21/165:12.7:MICRO:1M:2024-09-01
+  Mining MICRO 1M  2024-09-01 → 2024-09-30  [15 trials]
+  Loaded 697 bars  (2024-09-01 → 2024-09-30)
+  Loaded 697 bars  (2024-09-01 → 2024-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:22/165:13.3:MICRO:1M:2024-10-01
+  Mining MICRO 1M  2024-10-01 → 2024-10-31  [15 trials]
+  Loaded 721 bars  (2024-10-01 → 2024-10-31)
+  Loaded 721 bars  (2024-10-01 → 2024-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:23/165:13.9:MICRO:1M:2024-11-01
+  Mining MICRO 1M  2024-11-01 → 2024-11-30  [15 trials]
+  Loaded 697 bars  (2024-11-01 → 2024-11-30)
+  Loaded 697 bars  (2024-11-01 → 2024-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:24/165:14.5:MICRO:1M:2024-12-01
+  Mining MICRO 1M  2024-12-01 → 2024-12-31  [15 trials]
+  Loaded 721 bars  (2024-12-01 → 2024-12-31)
+  Loaded 721 bars  (2024-12-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:25/165:15.2:MICRO:1M:2025-01-01
+  Mining MICRO 1M  2025-01-01 → 2025-01-31  [15 trials]
+  Loaded 721 bars  (2025-01-01 → 2025-01-31)
+  Loaded 721 bars  (2025-01-01 → 2025-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:26/165:15.8:MICRO:1M:2025-02-01
+  Mining MICRO 1M  2025-02-01 → 2025-02-28  [15 trials]
+  Loaded 649 bars  (2025-02-01 → 2025-02-28)
+  Loaded 649 bars  (2025-02-01 → 2025-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:27/165:16.4:MICRO:1M:2025-03-01
+  Mining MICRO 1M  2025-03-01 → 2025-03-31  [15 trials]
+  Loaded 721 bars  (2025-03-01 → 2025-03-31)
+  Loaded 721 bars  (2025-03-01 → 2025-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:28/165:17.0:MICRO:1M:2025-04-01
+  Mining MICRO 1M  2025-04-01 → 2025-04-30  [15 trials]
+  Loaded 697 bars  (2025-04-01 → 2025-04-30)
+  Loaded 697 bars  (2025-04-01 → 2025-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:29/165:17.6:MICRO:1M:2025-05-01
+  Mining MICRO 1M  2025-05-01 → 2025-05-31  [15 trials]
+  Loaded 721 bars  (2025-05-01 → 2025-05-31)
+  Loaded 721 bars  (2025-05-01 → 2025-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:30/165:18.2:MICRO:1M:2025-06-01
+  Mining MICRO 1M  2025-06-01 → 2025-06-30  [15 trials]
+  Loaded 697 bars  (2025-06-01 → 2025-06-30)
+  Loaded 697 bars  (2025-06-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:31/165:18.8:MICRO:1M:2025-07-01
+  Mining MICRO 1M  2025-07-01 → 2025-07-31  [15 trials]
+  Loaded 721 bars  (2025-07-01 → 2025-07-31)
+  Loaded 721 bars  (2025-07-01 → 2025-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:32/165:19.4:MICRO:1M:2025-08-01
+  Mining MICRO 1M  2025-08-01 → 2025-08-31  [15 trials]
+  Loaded 721 bars  (2025-08-01 → 2025-08-31)
+  Loaded 721 bars  (2025-08-01 → 2025-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:33/165:20.0:MICRO:1M:2025-09-01
+  Mining MICRO 1M  2025-09-01 → 2025-09-30  [15 trials]
+  Loaded 697 bars  (2025-09-01 → 2025-09-30)
+  Loaded 697 bars  (2025-09-01 → 2025-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:34/165:20.6:MICRO:1M:2025-10-01
+  Mining MICRO 1M  2025-10-01 → 2025-10-31  [15 trials]
+  Loaded 721 bars  (2025-10-01 → 2025-10-31)
+  Loaded 721 bars  (2025-10-01 → 2025-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:35/165:21.2:MICRO:1M:2025-11-01
+  Mining MICRO 1M  2025-11-01 → 2025-11-30  [15 trials]
+  Loaded 697 bars  (2025-11-01 → 2025-11-30)
+  Loaded 697 bars  (2025-11-01 → 2025-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:36/165:21.8:MICRO:1M:2025-12-01
+  Mining MICRO 1M  2025-12-01 → 2025-12-31  [15 trials]
+  Loaded 721 bars  (2025-12-01 → 2025-12-31)
+  Loaded 721 bars  (2025-12-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:37/165:22.4:MICRO:1M:2026-01-01
+  Mining MICRO 1M  2026-01-01 → 2026-01-31  [15 trials]
+  Loaded 721 bars  (2026-01-01 → 2026-01-31)
+  Loaded 721 bars  (2026-01-01 → 2026-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:38/165:23.0:MICRO:1M:2026-02-01
+  Mining MICRO 1M  2026-02-01 → 2026-02-28  [15 trials]
+  Loaded 649 bars  (2026-02-01 → 2026-02-28)
+  Loaded 649 bars  (2026-02-01 → 2026-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:39/165:23.6:MICRO:1M:2026-03-01
+  Mining MICRO 1M  2026-03-01 → 2026-03-31  [15 trials]
+  Loaded 721 bars  (2026-03-01 → 2026-03-31)
+  Loaded 721 bars  (2026-03-01 → 2026-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:40/165:24.2:MICRO:1M:2026-04-01
+  Mining MICRO 1M  2026-04-01 → 2026-04-30  [15 trials]
+  Loaded 697 bars  (2026-04-01 → 2026-04-30)
+  Loaded 697 bars  (2026-04-01 → 2026-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:41/165:24.8:MICRO:1M:2026-05-01
+  Mining MICRO 1M  2026-05-01 → 2026-05-31  [15 trials]
+  Loaded 721 bars  (2026-05-01 → 2026-05-31)
+  Loaded 721 bars  (2026-05-01 → 2026-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:42/165:25.5:MICRO:2M:2023-01-01
+  Mining MICRO 2M  2023-01-01 → 2023-02-28  [15 trials]
+  Loaded 1,393 bars  (2023-01-01 → 2023-02-28)
+  Loaded 1,393 bars  (2023-01-01 → 2023-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:43/165:26.1:MICRO:2M:2023-02-01
+  Mining MICRO 2M  2023-02-01 → 2023-03-31  [15 trials]
+  Loaded 1,392 bars  (2023-02-01 → 2023-03-31)
+  Loaded 1,392 bars  (2023-02-01 → 2023-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:44/165:26.7:MICRO:2M:2023-03-01
+  Mining MICRO 2M  2023-03-01 → 2023-04-30  [15 trials]
+  Loaded 1,440 bars  (2023-03-01 → 2023-04-30)
+  Loaded 1,440 bars  (2023-03-01 → 2023-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:45/165:27.3:MICRO:2M:2023-04-01
+  Mining MICRO 2M  2023-04-01 → 2023-05-31  [15 trials]
+  Loaded 1,441 bars  (2023-04-01 → 2023-05-31)
+  Loaded 1,441 bars  (2023-04-01 → 2023-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:46/165:27.9:MICRO:2M:2023-05-01
+  Mining MICRO 2M  2023-05-01 → 2023-06-30  [15 trials]
+  Loaded 1,441 bars  (2023-05-01 → 2023-06-30)
+  Loaded 1,441 bars  (2023-05-01 → 2023-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:47/165:28.5:MICRO:2M:2023-06-01
+  Mining MICRO 2M  2023-06-01 → 2023-07-31  [15 trials]
+  Loaded 1,441 bars  (2023-06-01 → 2023-07-31)
+  Loaded 1,441 bars  (2023-06-01 → 2023-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:48/165:29.1:MICRO:2M:2023-07-01
+  Mining MICRO 2M  2023-07-01 → 2023-08-31  [15 trials]
+  Loaded 1,465 bars  (2023-07-01 → 2023-08-31)
+  Loaded 1,465 bars  (2023-07-01 → 2023-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:49/165:29.7:MICRO:2M:2023-08-01
+  Mining MICRO 2M  2023-08-01 → 2023-09-30  [15 trials]
+  Loaded 1,441 bars  (2023-08-01 → 2023-09-30)
+  Loaded 1,441 bars  (2023-08-01 → 2023-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:50/165:30.3:MICRO:2M:2023-09-01
+  Mining MICRO 2M  2023-09-01 → 2023-10-31  [15 trials]
+  Loaded 1,441 bars  (2023-09-01 → 2023-10-31)
+  Loaded 1,441 bars  (2023-09-01 → 2023-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:51/165:30.9:MICRO:2M:2023-10-01
+  Mining MICRO 2M  2023-10-01 → 2023-11-30  [15 trials]
+  Loaded 1,441 bars  (2023-10-01 → 2023-11-30)
+  Loaded 1,441 bars  (2023-10-01 → 2023-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:52/165:31.5:MICRO:2M:2023-11-01
+  Mining MICRO 2M  2023-11-01 → 2023-12-31  [15 trials]
+  Loaded 1,441 bars  (2023-11-01 → 2023-12-31)
+  Loaded 1,441 bars  (2023-11-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:53/165:32.1:MICRO:2M:2023-12-01
+  Mining MICRO 2M  2023-12-01 → 2024-01-31  [15 trials]
+  Loaded 1,465 bars  (2023-12-01 → 2024-01-31)
+  Loaded 1,465 bars  (2023-12-01 → 2024-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:54/165:32.7:MICRO:2M:2024-01-01
+  Mining MICRO 2M  2024-01-01 → 2024-02-29  [15 trials]
+  Loaded 1,417 bars  (2024-01-01 → 2024-02-29)
+  Loaded 1,417 bars  (2024-01-01 → 2024-02-29)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:55/165:33.3:MICRO:2M:2024-02-01
+  Mining MICRO 2M  2024-02-01 → 2024-03-31  [15 trials]
+  Loaded 1,417 bars  (2024-02-01 → 2024-03-31)
+  Loaded 1,417 bars  (2024-02-01 → 2024-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:56/165:33.9:MICRO:2M:2024-03-01
+  Mining MICRO 2M  2024-03-01 → 2024-04-30  [15 trials]
+  Loaded 1,441 bars  (2024-03-01 → 2024-04-30)
+  Loaded 1,441 bars  (2024-03-01 → 2024-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:57/165:34.5:MICRO:2M:2024-04-01
+  Mining MICRO 2M  2024-04-01 → 2024-05-31  [15 trials]
+  Loaded 1,441 bars  (2024-04-01 → 2024-05-31)
+  Loaded 1,441 bars  (2024-04-01 → 2024-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:58/165:35.2:MICRO:2M:2024-05-01
+  Mining MICRO 2M  2024-05-01 → 2024-06-30  [15 trials]
+  Loaded 1,441 bars  (2024-05-01 → 2024-06-30)
+  Loaded 1,441 bars  (2024-05-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:59/165:35.8:MICRO:2M:2024-06-01
+  Mining MICRO 2M  2024-06-01 → 2024-07-31  [15 trials]
+  Loaded 1,441 bars  (2024-06-01 → 2024-07-31)
+  Loaded 1,441 bars  (2024-06-01 → 2024-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:60/165:36.4:MICRO:2M:2024-07-01
+  Mining MICRO 2M  2024-07-01 → 2024-08-31  [15 trials]
+  Loaded 1,465 bars  (2024-07-01 → 2024-08-31)
+  Loaded 1,465 bars  (2024-07-01 → 2024-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:61/165:37.0:MICRO:2M:2024-08-01
+  Mining MICRO 2M  2024-08-01 → 2024-09-30  [15 trials]
+  Loaded 1,441 bars  (2024-08-01 → 2024-09-30)
+  Loaded 1,441 bars  (2024-08-01 → 2024-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:62/165:37.6:MICRO:2M:2024-09-01
+  Mining MICRO 2M  2024-09-01 → 2024-10-31  [15 trials]
+  Loaded 1,441 bars  (2024-09-01 → 2024-10-31)
+  Loaded 1,441 bars  (2024-09-01 → 2024-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:63/165:38.2:MICRO:2M:2024-10-01
+  Mining MICRO 2M  2024-10-01 → 2024-11-30  [15 trials]
+  Loaded 1,441 bars  (2024-10-01 → 2024-11-30)
+  Loaded 1,441 bars  (2024-10-01 → 2024-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:64/165:38.8:MICRO:2M:2024-11-01
+  Mining MICRO 2M  2024-11-01 → 2024-12-31  [15 trials]
+  Loaded 1,441 bars  (2024-11-01 → 2024-12-31)
+  Loaded 1,441 bars  (2024-11-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:65/165:39.4:MICRO:2M:2024-12-01
+  Mining MICRO 2M  2024-12-01 → 2025-01-31  [15 trials]
+  Loaded 1,465 bars  (2024-12-01 → 2025-01-31)
+  Loaded 1,465 bars  (2024-12-01 → 2025-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:66/165:40.0:MICRO:2M:2025-01-01
+  Mining MICRO 2M  2025-01-01 → 2025-02-28  [15 trials]
+  Loaded 1,393 bars  (2025-01-01 → 2025-02-28)
+  Loaded 1,393 bars  (2025-01-01 → 2025-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:67/165:40.6:MICRO:2M:2025-02-01
+  Mining MICRO 2M  2025-02-01 → 2025-03-31  [15 trials]
+  Loaded 1,393 bars  (2025-02-01 → 2025-03-31)
+  Loaded 1,393 bars  (2025-02-01 → 2025-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:68/165:41.2:MICRO:2M:2025-03-01
+  Mining MICRO 2M  2025-03-01 → 2025-04-30  [15 trials]
+  Loaded 1,441 bars  (2025-03-01 → 2025-04-30)
+  Loaded 1,441 bars  (2025-03-01 → 2025-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:69/165:41.8:MICRO:2M:2025-04-01
+  Mining MICRO 2M  2025-04-01 → 2025-05-31  [15 trials]
+  Loaded 1,441 bars  (2025-04-01 → 2025-05-31)
+  Loaded 1,441 bars  (2025-04-01 → 2025-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:70/165:42.4:MICRO:2M:2025-05-01
+  Mining MICRO 2M  2025-05-01 → 2025-06-30  [15 trials]
+  Loaded 1,441 bars  (2025-05-01 → 2025-06-30)
+  Loaded 1,441 bars  (2025-05-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:71/165:43.0:MICRO:2M:2025-06-01
+  Mining MICRO 2M  2025-06-01 → 2025-07-31  [15 trials]
+  Loaded 1,441 bars  (2025-06-01 → 2025-07-31)
+  Loaded 1,441 bars  (2025-06-01 → 2025-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:72/165:43.6:MICRO:2M:2025-07-01
+  Mining MICRO 2M  2025-07-01 → 2025-08-31  [15 trials]
+  Loaded 1,465 bars  (2025-07-01 → 2025-08-31)
+  Loaded 1,465 bars  (2025-07-01 → 2025-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:73/165:44.2:MICRO:2M:2025-08-01
+  Mining MICRO 2M  2025-08-01 → 2025-09-30  [15 trials]
+  Loaded 1,441 bars  (2025-08-01 → 2025-09-30)
+  Loaded 1,441 bars  (2025-08-01 → 2025-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:74/165:44.8:MICRO:2M:2025-09-01
+  Mining MICRO 2M  2025-09-01 → 2025-10-31  [15 trials]
+  Loaded 1,441 bars  (2025-09-01 → 2025-10-31)
+  Loaded 1,441 bars  (2025-09-01 → 2025-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:75/165:45.5:MICRO:2M:2025-10-01
+  Mining MICRO 2M  2025-10-01 → 2025-11-30  [15 trials]
+  Loaded 1,441 bars  (2025-10-01 → 2025-11-30)
+  Loaded 1,441 bars  (2025-10-01 → 2025-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:76/165:46.1:MICRO:2M:2025-11-01
+  Mining MICRO 2M  2025-11-01 → 2025-12-31  [15 trials]
+  Loaded 1,441 bars  (2025-11-01 → 2025-12-31)
+  Loaded 1,441 bars  (2025-11-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:77/165:46.7:MICRO:2M:2025-12-01
+  Mining MICRO 2M  2025-12-01 → 2026-01-31  [15 trials]
+  Loaded 1,465 bars  (2025-12-01 → 2026-01-31)
+  Loaded 1,465 bars  (2025-12-01 → 2026-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:78/165:47.3:MICRO:2M:2026-01-01
+  Mining MICRO 2M  2026-01-01 → 2026-02-28  [15 trials]
+  Loaded 1,393 bars  (2026-01-01 → 2026-02-28)
+  Loaded 1,393 bars  (2026-01-01 → 2026-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:79/165:47.9:MICRO:2M:2026-02-01
+  Mining MICRO 2M  2026-02-01 → 2026-03-31  [15 trials]
+  Loaded 1,393 bars  (2026-02-01 → 2026-03-31)
+  Loaded 1,393 bars  (2026-02-01 → 2026-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:80/165:48.5:MICRO:2M:2026-03-01
+  Mining MICRO 2M  2026-03-01 → 2026-04-30  [15 trials]
+  Loaded 1,441 bars  (2026-03-01 → 2026-04-30)
+  Loaded 1,441 bars  (2026-03-01 → 2026-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:81/165:49.1:MICRO:2M:2026-04-01
+  Mining MICRO 2M  2026-04-01 → 2026-05-31  [15 trials]
+  Loaded 1,441 bars  (2026-04-01 → 2026-05-31)
+  Loaded 1,441 bars  (2026-04-01 → 2026-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/15]
+PROGRESS:82/165:49.7:MESO:3M:2023-01-01
+  Mining MESO 3M  2023-01-01 → 2023-03-31  [25 trials]
+  Loaded 2,136 bars  (2023-01-01 → 2023-03-31)
+  Loaded 2,136 bars  (2023-01-01 → 2023-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:83/165:50.3:MESO:3M:2023-02-01
+  Mining MESO 3M  2023-02-01 → 2023-04-30  [25 trials]
+  Loaded 2,112 bars  (2023-02-01 → 2023-04-30)
+  Loaded 2,112 bars  (2023-02-01 → 2023-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:84/165:50.9:MESO:3M:2023-03-01
+  Mining MESO 3M  2023-03-01 → 2023-05-31  [25 trials]
+  Loaded 2,184 bars  (2023-03-01 → 2023-05-31)
+  Loaded 2,184 bars  (2023-03-01 → 2023-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:85/165:51.5:MESO:3M:2023-04-01
+  Mining MESO 3M  2023-04-01 → 2023-06-30  [25 trials]
+  Loaded 2,161 bars  (2023-04-01 → 2023-06-30)
+  Loaded 2,161 bars  (2023-04-01 → 2023-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:86/165:52.1:MESO:3M:2023-05-01
+  Mining MESO 3M  2023-05-01 → 2023-07-31  [25 trials]
+  Loaded 2,185 bars  (2023-05-01 → 2023-07-31)
+  Loaded 2,185 bars  (2023-05-01 → 2023-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:87/165:52.7:MESO:3M:2023-06-01
+  Mining MESO 3M  2023-06-01 → 2023-08-31  [25 trials]
+  Loaded 2,185 bars  (2023-06-01 → 2023-08-31)
+  Loaded 2,185 bars  (2023-06-01 → 2023-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:88/165:53.3:MESO:3M:2023-07-01
+  Mining MESO 3M  2023-07-01 → 2023-09-30  [25 trials]
+  Loaded 2,185 bars  (2023-07-01 → 2023-09-30)
+  Loaded 2,185 bars  (2023-07-01 → 2023-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:89/165:53.9:MESO:3M:2023-08-01
+  Mining MESO 3M  2023-08-01 → 2023-10-31  [25 trials]
+  Loaded 2,185 bars  (2023-08-01 → 2023-10-31)
+  Loaded 2,185 bars  (2023-08-01 → 2023-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:90/165:54.5:MESO:3M:2023-09-01
+  Mining MESO 3M  2023-09-01 → 2023-11-30  [25 trials]
+  Loaded 2,161 bars  (2023-09-01 → 2023-11-30)
+  Loaded 2,161 bars  (2023-09-01 → 2023-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:91/165:55.2:MESO:3M:2023-10-01
+  Mining MESO 3M  2023-10-01 → 2023-12-31  [25 trials]
+  Loaded 2,185 bars  (2023-10-01 → 2023-12-31)
+  Loaded 2,185 bars  (2023-10-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:92/165:55.8:MESO:3M:2023-11-01
+  Mining MESO 3M  2023-11-01 → 2024-01-31  [25 trials]
+  Loaded 2,185 bars  (2023-11-01 → 2024-01-31)
+  Loaded 2,185 bars  (2023-11-01 → 2024-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:93/165:56.4:MESO:3M:2023-12-01
+  Mining MESO 3M  2023-12-01 → 2024-02-29  [25 trials]
+  Loaded 2,161 bars  (2023-12-01 → 2024-02-29)
+  Loaded 2,161 bars  (2023-12-01 → 2024-02-29)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:94/165:57.0:MESO:3M:2024-01-01
+  Mining MESO 3M  2024-01-01 → 2024-03-31  [25 trials]
+  Loaded 2,161 bars  (2024-01-01 → 2024-03-31)
+  Loaded 2,161 bars  (2024-01-01 → 2024-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:95/165:57.6:MESO:3M:2024-02-01
+  Mining MESO 3M  2024-02-01 → 2024-04-30  [25 trials]
+  Loaded 2,137 bars  (2024-02-01 → 2024-04-30)
+  Loaded 2,137 bars  (2024-02-01 → 2024-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:96/165:58.2:MESO:3M:2024-03-01
+  Mining MESO 3M  2024-03-01 → 2024-05-31  [25 trials]
+  Loaded 2,185 bars  (2024-03-01 → 2024-05-31)
+  Loaded 2,185 bars  (2024-03-01 → 2024-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:97/165:58.8:MESO:3M:2024-04-01
+  Mining MESO 3M  2024-04-01 → 2024-06-30  [25 trials]
+  Loaded 2,161 bars  (2024-04-01 → 2024-06-30)
+  Loaded 2,161 bars  (2024-04-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:98/165:59.4:MESO:3M:2024-05-01
+  Mining MESO 3M  2024-05-01 → 2024-07-31  [25 trials]
+  Loaded 2,185 bars  (2024-05-01 → 2024-07-31)
+  Loaded 2,185 bars  (2024-05-01 → 2024-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:99/165:60.0:MESO:3M:2024-06-01
+  Mining MESO 3M  2024-06-01 → 2024-08-31  [25 trials]
+  Loaded 2,185 bars  (2024-06-01 → 2024-08-31)
+  Loaded 2,185 bars  (2024-06-01 → 2024-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:100/165:60.6:MESO:3M:2024-07-01
+  Mining MESO 3M  2024-07-01 → 2024-09-30  [25 trials]
+  Loaded 2,185 bars  (2024-07-01 → 2024-09-30)
+  Loaded 2,185 bars  (2024-07-01 → 2024-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:101/165:61.2:MESO:3M:2024-08-01
+  Mining MESO 3M  2024-08-01 → 2024-10-31  [25 trials]
+  Loaded 2,185 bars  (2024-08-01 → 2024-10-31)
+  Loaded 2,185 bars  (2024-08-01 → 2024-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:102/165:61.8:MESO:3M:2024-09-01
+  Mining MESO 3M  2024-09-01 → 2024-11-30  [25 trials]
+  Loaded 2,161 bars  (2024-09-01 → 2024-11-30)
+  Loaded 2,161 bars  (2024-09-01 → 2024-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:103/165:62.4:MESO:3M:2024-10-01
+  Mining MESO 3M  2024-10-01 → 2024-12-31  [25 trials]
+  Loaded 2,185 bars  (2024-10-01 → 2024-12-31)
+  Loaded 2,185 bars  (2024-10-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:104/165:63.0:MESO:3M:2024-11-01
+  Mining MESO 3M  2024-11-01 → 2025-01-31  [25 trials]
+  Loaded 2,185 bars  (2024-11-01 → 2025-01-31)
+  Loaded 2,185 bars  (2024-11-01 → 2025-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:105/165:63.6:MESO:3M:2024-12-01
+  Mining MESO 3M  2024-12-01 → 2025-02-28  [25 trials]
+  Loaded 2,137 bars  (2024-12-01 → 2025-02-28)
+  Loaded 2,137 bars  (2024-12-01 → 2025-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:106/165:64.2:MESO:3M:2025-01-01
+  Mining MESO 3M  2025-01-01 → 2025-03-31  [25 trials]
+  Loaded 2,137 bars  (2025-01-01 → 2025-03-31)
+  Loaded 2,137 bars  (2025-01-01 → 2025-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:107/165:64.8:MESO:3M:2025-02-01
+  Mining MESO 3M  2025-02-01 → 2025-04-30  [25 trials]
+  Loaded 2,113 bars  (2025-02-01 → 2025-04-30)
+  Loaded 2,113 bars  (2025-02-01 → 2025-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:108/165:65.5:MESO:3M:2025-03-01
+  Mining MESO 3M  2025-03-01 → 2025-05-31  [25 trials]
+  Loaded 2,185 bars  (2025-03-01 → 2025-05-31)
+  Loaded 2,185 bars  (2025-03-01 → 2025-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:109/165:66.1:MESO:3M:2025-04-01
+  Mining MESO 3M  2025-04-01 → 2025-06-30  [25 trials]
+  Loaded 2,161 bars  (2025-04-01 → 2025-06-30)
+  Loaded 2,161 bars  (2025-04-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:110/165:66.7:MESO:3M:2025-05-01
+  Mining MESO 3M  2025-05-01 → 2025-07-31  [25 trials]
+  Loaded 2,185 bars  (2025-05-01 → 2025-07-31)
+  Loaded 2,185 bars  (2025-05-01 → 2025-07-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:111/165:67.3:MESO:3M:2025-06-01
+  Mining MESO 3M  2025-06-01 → 2025-08-31  [25 trials]
+  Loaded 2,185 bars  (2025-06-01 → 2025-08-31)
+  Loaded 2,185 bars  (2025-06-01 → 2025-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:112/165:67.9:MESO:3M:2025-07-01
+  Mining MESO 3M  2025-07-01 → 2025-09-30  [25 trials]
+  Loaded 2,185 bars  (2025-07-01 → 2025-09-30)
+  Loaded 2,185 bars  (2025-07-01 → 2025-09-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:113/165:68.5:MESO:3M:2025-08-01
+  Mining MESO 3M  2025-08-01 → 2025-10-31  [25 trials]
+  Loaded 2,185 bars  (2025-08-01 → 2025-10-31)
+  Loaded 2,185 bars  (2025-08-01 → 2025-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:114/165:69.1:MESO:3M:2025-09-01
+  Mining MESO 3M  2025-09-01 → 2025-11-30  [25 trials]
+  Loaded 2,161 bars  (2025-09-01 → 2025-11-30)
+  Loaded 2,161 bars  (2025-09-01 → 2025-11-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:115/165:69.7:MESO:3M:2025-10-01
+  Mining MESO 3M  2025-10-01 → 2025-12-31  [25 trials]
+  Loaded 2,185 bars  (2025-10-01 → 2025-12-31)
+  Loaded 2,185 bars  (2025-10-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:116/165:70.3:MESO:3M:2025-11-01
+  Mining MESO 3M  2025-11-01 → 2026-01-31  [25 trials]
+  Loaded 2,185 bars  (2025-11-01 → 2026-01-31)
+  Loaded 2,185 bars  (2025-11-01 → 2026-01-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:117/165:70.9:MESO:3M:2025-12-01
+  Mining MESO 3M  2025-12-01 → 2026-02-28  [25 trials]
+  Loaded 2,137 bars  (2025-12-01 → 2026-02-28)
+  Loaded 2,137 bars  (2025-12-01 → 2026-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:118/165:71.5:MESO:3M:2026-01-01
+  Mining MESO 3M  2026-01-01 → 2026-03-31  [25 trials]
+  Loaded 2,137 bars  (2026-01-01 → 2026-03-31)
+  Loaded 2,137 bars  (2026-01-01 → 2026-03-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:119/165:72.1:MESO:3M:2026-02-01
+  Mining MESO 3M  2026-02-01 → 2026-04-30  [25 trials]
+  Loaded 2,113 bars  (2026-02-01 → 2026-04-30)
+  Loaded 2,113 bars  (2026-02-01 → 2026-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:120/165:72.7:MESO:3M:2026-03-01
+  Mining MESO 3M  2026-03-01 → 2026-05-31  [25 trials]
+  Loaded 2,185 bars  (2026-03-01 → 2026-05-31)
+  Loaded 2,185 bars  (2026-03-01 → 2026-05-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:121/165:73.3:MESO:4M:2023-01-01
+  Mining MESO 4M  2023-01-01 → 2023-04-30  [25 trials]
+  Loaded 2,856 bars  (2023-01-01 → 2023-04-30)
+  Loaded 2,856 bars  (2023-01-01 → 2023-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:122/165:73.9:MESO:4M:2023-03-01
+  Mining MESO 4M  2023-03-01 → 2023-06-30  [25 trials]
+  Loaded 2,904 bars  (2023-03-01 → 2023-06-30)
+  Loaded 2,904 bars  (2023-03-01 → 2023-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:123/165:74.5:MESO:4M:2023-05-01
+  Mining MESO 4M  2023-05-01 → 2023-08-31  [25 trials]
+  Loaded 2,929 bars  (2023-05-01 → 2023-08-31)
+  Loaded 2,929 bars  (2023-05-01 → 2023-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:124/165:75.2:MESO:4M:2023-07-01
+  Mining MESO 4M  2023-07-01 → 2023-10-31  [25 trials]
+  Loaded 2,929 bars  (2023-07-01 → 2023-10-31)
+  Loaded 2,929 bars  (2023-07-01 → 2023-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:125/165:75.8:MESO:4M:2023-09-01
+  Mining MESO 4M  2023-09-01 → 2023-12-31  [25 trials]
+  Loaded 2,905 bars  (2023-09-01 → 2023-12-31)
+  Loaded 2,905 bars  (2023-09-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:126/165:76.4:MESO:4M:2023-11-01
+  Mining MESO 4M  2023-11-01 → 2024-02-29  [25 trials]
+  Loaded 2,881 bars  (2023-11-01 → 2024-02-29)
+  Loaded 2,881 bars  (2023-11-01 → 2024-02-29)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:127/165:77.0:MESO:4M:2024-01-01
+  Mining MESO 4M  2024-01-01 → 2024-04-30  [25 trials]
+  Loaded 2,881 bars  (2024-01-01 → 2024-04-30)
+  Loaded 2,881 bars  (2024-01-01 → 2024-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:128/165:77.6:MESO:4M:2024-03-01
+  Mining MESO 4M  2024-03-01 → 2024-06-30  [25 trials]
+  Loaded 2,905 bars  (2024-03-01 → 2024-06-30)
+  Loaded 2,905 bars  (2024-03-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:129/165:78.2:MESO:4M:2024-05-01
+  Mining MESO 4M  2024-05-01 → 2024-08-31  [25 trials]
+  Loaded 2,929 bars  (2024-05-01 → 2024-08-31)
+  Loaded 2,929 bars  (2024-05-01 → 2024-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:130/165:78.8:MESO:4M:2024-07-01
+  Mining MESO 4M  2024-07-01 → 2024-10-31  [25 trials]
+  Loaded 2,929 bars  (2024-07-01 → 2024-10-31)
+  Loaded 2,929 bars  (2024-07-01 → 2024-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:131/165:79.4:MESO:4M:2024-09-01
+  Mining MESO 4M  2024-09-01 → 2024-12-31  [25 trials]
+  Loaded 2,905 bars  (2024-09-01 → 2024-12-31)
+  Loaded 2,905 bars  (2024-09-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:132/165:80.0:MESO:4M:2024-11-01
+  Mining MESO 4M  2024-11-01 → 2025-02-28  [25 trials]
+  Loaded 2,857 bars  (2024-11-01 → 2025-02-28)
+  Loaded 2,857 bars  (2024-11-01 → 2025-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:133/165:80.6:MESO:4M:2025-01-01
+  Mining MESO 4M  2025-01-01 → 2025-04-30  [25 trials]
+  Loaded 2,857 bars  (2025-01-01 → 2025-04-30)
+  Loaded 2,857 bars  (2025-01-01 → 2025-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:134/165:81.2:MESO:4M:2025-03-01
+  Mining MESO 4M  2025-03-01 → 2025-06-30  [25 trials]
+  Loaded 2,905 bars  (2025-03-01 → 2025-06-30)
+  Loaded 2,905 bars  (2025-03-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:135/165:81.8:MESO:4M:2025-05-01
+  Mining MESO 4M  2025-05-01 → 2025-08-31  [25 trials]
+  Loaded 2,929 bars  (2025-05-01 → 2025-08-31)
+  Loaded 2,929 bars  (2025-05-01 → 2025-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:136/165:82.4:MESO:4M:2025-07-01
+  Mining MESO 4M  2025-07-01 → 2025-10-31  [25 trials]
+  Loaded 2,929 bars  (2025-07-01 → 2025-10-31)
+  Loaded 2,929 bars  (2025-07-01 → 2025-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:137/165:83.0:MESO:4M:2025-09-01
+  Mining MESO 4M  2025-09-01 → 2025-12-31  [25 trials]
+  Loaded 2,905 bars  (2025-09-01 → 2025-12-31)
+  Loaded 2,905 bars  (2025-09-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:138/165:83.6:MESO:4M:2025-11-01
+  Mining MESO 4M  2025-11-01 → 2026-02-28  [25 trials]
+  Loaded 2,857 bars  (2025-11-01 → 2026-02-28)
+  Loaded 2,857 bars  (2025-11-01 → 2026-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:139/165:84.2:MESO:4M:2026-01-01
+  Mining MESO 4M  2026-01-01 → 2026-04-30  [25 trials]
+  Loaded 2,857 bars  (2026-01-01 → 2026-04-30)
+  Loaded 2,857 bars  (2026-01-01 → 2026-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:140/165:84.8:MESO:6M:2023-01-01
+  Mining MESO 6M  2023-01-01 → 2023-06-30  [25 trials]
+  Loaded 4,320 bars  (2023-01-01 → 2023-06-30)
+  Loaded 4,320 bars  (2023-01-01 → 2023-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:141/165:85.5:MESO:6M:2023-03-01
+  Mining MESO 6M  2023-03-01 → 2023-08-31  [25 trials]
+  Loaded 4,392 bars  (2023-03-01 → 2023-08-31)
+  Loaded 4,392 bars  (2023-03-01 → 2023-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:142/165:86.1:MESO:6M:2023-05-01
+  Mining MESO 6M  2023-05-01 → 2023-10-31  [25 trials]
+  Loaded 4,393 bars  (2023-05-01 → 2023-10-31)
+  Loaded 4,393 bars  (2023-05-01 → 2023-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:143/165:86.7:MESO:6M:2023-07-01
+  Mining MESO 6M  2023-07-01 → 2023-12-31  [25 trials]
+  Loaded 4,393 bars  (2023-07-01 → 2023-12-31)
+  Loaded 4,393 bars  (2023-07-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:144/165:87.3:MESO:6M:2023-09-01
+  Mining MESO 6M  2023-09-01 → 2024-02-29  [25 trials]
+  Loaded 4,345 bars  (2023-09-01 → 2024-02-29)
+  Loaded 4,345 bars  (2023-09-01 → 2024-02-29)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:145/165:87.9:MESO:6M:2023-11-01
+  Mining MESO 6M  2023-11-01 → 2024-04-30  [25 trials]
+  Loaded 4,345 bars  (2023-11-01 → 2024-04-30)
+  Loaded 4,345 bars  (2023-11-01 → 2024-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:146/165:88.5:MESO:6M:2024-01-01
+  Mining MESO 6M  2024-01-01 → 2024-06-30  [25 trials]
+  Loaded 4,345 bars  (2024-01-01 → 2024-06-30)
+  Loaded 4,345 bars  (2024-01-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:147/165:89.1:MESO:6M:2024-03-01
+  Mining MESO 6M  2024-03-01 → 2024-08-31  [25 trials]
+  Loaded 4,393 bars  (2024-03-01 → 2024-08-31)
+  Loaded 4,393 bars  (2024-03-01 → 2024-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:148/165:89.7:MESO:6M:2024-05-01
+  Mining MESO 6M  2024-05-01 → 2024-10-31  [25 trials]
+  Loaded 4,393 bars  (2024-05-01 → 2024-10-31)
+  Loaded 4,393 bars  (2024-05-01 → 2024-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:149/165:90.3:MESO:6M:2024-07-01
+  Mining MESO 6M  2024-07-01 → 2024-12-31  [25 trials]
+  Loaded 4,393 bars  (2024-07-01 → 2024-12-31)
+  Loaded 4,393 bars  (2024-07-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:150/165:90.9:MESO:6M:2024-09-01
+  Mining MESO 6M  2024-09-01 → 2025-02-28  [25 trials]
+  Loaded 4,321 bars  (2024-09-01 → 2025-02-28)
+  Loaded 4,321 bars  (2024-09-01 → 2025-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:151/165:91.5:MESO:6M:2024-11-01
+  Mining MESO 6M  2024-11-01 → 2025-04-30  [25 trials]
+  Loaded 4,321 bars  (2024-11-01 → 2025-04-30)
+  Loaded 4,321 bars  (2024-11-01 → 2025-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:152/165:92.1:MESO:6M:2025-01-01
+  Mining MESO 6M  2025-01-01 → 2025-06-30  [25 trials]
+  Loaded 4,321 bars  (2025-01-01 → 2025-06-30)
+  Loaded 4,321 bars  (2025-01-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:153/165:92.7:MESO:6M:2025-03-01
+  Mining MESO 6M  2025-03-01 → 2025-08-31  [25 trials]
+  Loaded 4,393 bars  (2025-03-01 → 2025-08-31)
+  Loaded 4,393 bars  (2025-03-01 → 2025-08-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:154/165:93.3:MESO:6M:2025-05-01
+  Mining MESO 6M  2025-05-01 → 2025-10-31  [25 trials]
+  Loaded 4,393 bars  (2025-05-01 → 2025-10-31)
+  Loaded 4,393 bars  (2025-05-01 → 2025-10-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:155/165:93.9:MESO:6M:2025-07-01
+  Mining MESO 6M  2025-07-01 → 2025-12-31  [25 trials]
+  Loaded 4,393 bars  (2025-07-01 → 2025-12-31)
+  Loaded 4,393 bars  (2025-07-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:156/165:94.5:MESO:6M:2025-09-01
+  Mining MESO 6M  2025-09-01 → 2026-02-28  [25 trials]
+  Loaded 4,321 bars  (2025-09-01 → 2026-02-28)
+  Loaded 4,321 bars  (2025-09-01 → 2026-02-28)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:157/165:95.2:MESO:6M:2025-11-01
+  Mining MESO 6M  2025-11-01 → 2026-04-30  [25 trials]
+  Loaded 4,321 bars  (2025-11-01 → 2026-04-30)
+  Loaded 4,321 bars  (2025-11-01 → 2026-04-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/25]
+PROGRESS:158/165:95.8:MACRO:1Y:2023-01-01
+  Mining MACRO 1Y  2023-01-01 → 2023-12-31  [40 trials]
+  Loaded 8,736 bars  (2023-01-01 → 2023-12-31)
+  Loaded 8,736 bars  (2023-01-01 → 2023-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:159/165:96.4:MACRO:1Y:2023-07-01
+  Mining MACRO 1Y  2023-07-01 → 2024-06-30  [40 trials]
+  Loaded 8,761 bars  (2023-07-01 → 2024-06-30)
+  Loaded 8,761 bars  (2023-07-01 → 2024-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:160/165:97.0:MACRO:1Y:2024-01-01
+  Mining MACRO 1Y  2024-01-01 → 2024-12-31  [40 trials]
+  Loaded 8,761 bars  (2024-01-01 → 2024-12-31)
+  Loaded 8,761 bars  (2024-01-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:161/165:97.6:MACRO:1Y:2024-07-01
+  Mining MACRO 1Y  2024-07-01 → 2025-06-30  [40 trials]
+  Loaded 8,737 bars  (2024-07-01 → 2025-06-30)
+  Loaded 8,737 bars  (2024-07-01 → 2025-06-30)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:162/165:98.2:MACRO:1Y:2025-01-01
+  Mining MACRO 1Y  2025-01-01 → 2025-12-31  [40 trials]
+  Loaded 8,737 bars  (2025-01-01 → 2025-12-31)
+  Loaded 8,737 bars  (2025-01-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:163/165:98.8:MACRO:2Y:2023-01-01
+  Mining MACRO 2Y  2023-01-01 → 2024-12-31  [40 trials]
+  Loaded 17,520 bars  (2023-01-01 → 2024-12-31)
+  Loaded 17,520 bars  (2023-01-01 → 2024-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:164/165:99.4:MACRO:2Y:2024-01-01
+  Mining MACRO 2Y  2024-01-01 → 2025-12-31  [40 trials]
+  Loaded 17,521 bars  (2024-01-01 → 2025-12-31)
+  Loaded 17,521 bars  (2024-01-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+PROGRESS:165/165:100.0:MACRO:3Y:2023-01-01
+  Mining MACRO 3Y  2023-01-01 → 2025-12-31  [40 trials]
+  Loaded 26,280 bars  (2023-01-01 → 2025-12-31)
+  Loaded 26,280 bars  (2023-01-01 → 2025-12-31)
+  Optimizer: best Sharpe 0.000  [converged @trial 0/40]
+DONE:165:750
+Mining complete. 165 windows. Wisdom Matrix: 750 total rows.

@@ -1,0 +1,58 @@
+{
+  "strategy_id": "80",
+  "primary_results": {
+    "sharpe": -0.47,
+    "return": -36.45,
+    "mdd": 47.21,
+    "trades": 52,
+    "win_rate": 30.77,
+    "profit_factor": 0.6
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.76,
+      "return": -61.13,
+      "mdd": 71.21,
+      "trades": 51
+    },
+    "BTC": {
+      "sharpe": -0.47,
+      "return": -36.45,
+      "mdd": 47.21,
+      "trades": 52
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "rsi_period",
+      "value": 13,
+      "sharpe": -0.47
+    },
+    {
+      "param": "rsi_period",
+      "value": 15,
+      "sharpe": -0.47
+    },
+    {
+      "param": "rsi_low",
+      "value": 27,
+      "sharpe": -0.47
+    },
+    {
+      "param": "rsi_low",
+      "value": 33,
+      "sharpe": -0.47
+    },
+    {
+      "param": "rsi_high",
+      "value": 63,
+      "sharpe": -0.47
+    },
+    {
+      "param": "rsi_high",
+      "value": 77,
+      "sharpe": -0.47
+    }
+  ]
+}

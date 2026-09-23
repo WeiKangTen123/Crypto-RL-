@@ -1,0 +1,202 @@
+{
+  "strategy_id": "141",
+  "strategy_name": "AVS_BTC_4H",
+  "score": 36.3,
+  "max_score": 104.0,
+  "pct": 34.9,
+  "verdict": "T1 FATAL FAIL",
+  "passed_checks": 10,
+  "total_checks": 26,
+  "checks": [
+    {
+      "code": "T0-01",
+      "passed": true,
+      "score": 0,
+      "max_score": 0,
+      "details": "Data integrity: 6,577 bars | OK"
+    },
+    {
+      "code": "T1-01",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Sharpe Ratio = -0.820  (\u2265 0.5)"
+    },
+    {
+      "code": "T1-02",
+      "passed": "False",
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Total Return = -36.58%  (> 0)"
+    },
+    {
+      "code": "T1-03",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Max Drawdown = 37.69%  (< 50.0%)"
+    },
+    {
+      "code": "T1-04",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Win Rate = 22.84%  (\u2265 30.0%)"
+    },
+    {
+      "code": "T1-05",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Profit Factor = 0.78  (\u2265 1.0)"
+    },
+    {
+      "code": "T1-05b",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Total Trades = 162  (\u2265 max(30, 5\u00d714params) = 70)"
+    },
+    {
+      "code": "T1-06",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Worst Daily Loss = -4.75%  (\u2265 -20.0%)"
+    },
+    {
+      "code": "T1-07",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Cost Ratio = 3551.00%  (< 50%)"
+    },
+    {
+      "code": "T1-08",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "WF Efficiency = 0.000  (\u2265 0.5)"
+    },
+    {
+      "code": "T1-09",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Sharpe orig=-0.821  shifted=-0.821  \u0394=-0.0%  (expect < 15% gain)"
+    },
+    {
+      "code": "T1-10",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "bear_2022=N/A (< 50 bars), range_2023=Sharpe=-2.814, bull_2024=Sharpe=-0.245  \u2192  0/2 positive"
+    },
+    {
+      "code": "T2-01",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 5.0,
+      "details": "WF Efficiency = 0.000  (\u2265 0.5)"
+    },
+    {
+      "code": "T2-02",
+      "passed": true,
+      "score": 5.0,
+      "max_score": 5.0,
+      "details": "IS\u2192OOS Decay = -0.500  (\u2264 0.5)"
+    },
+    {
+      "code": "T2-03",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 5.0,
+      "details": "PBO=0.400  OOS_loss_prob=0.800  configs=9  chunks=8"
+    },
+    {
+      "code": "T2-04",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 5.0,
+      "details": "DSR p-value = 1.0000  (< 0.05)"
+    },
+    {
+      "code": "T2-05",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 5.0,
+      "details": "Real Sharpe=-0.821  Rand p95=-0.335  Rank=0.00%  (\u2265 95%)"
+    },
+    {
+      "code": "T2-06",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 5.0,
+      "details": "Monthly GTP=-0.53(\u22651.0:False)  PF=0.78(\u22651.5:False)  \u2192 OR=False"
+    },
+    {
+      "code": "T3-01",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "Real=-0.821  90%CI=[-0.741, 0.047]  Pos=7.8%  (\u2265 60%)"
+    },
+    {
+      "code": "T3-02",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Orig=-0.821  Min=-1.092  Max=-0.322  Worst_drop=33.1%  (< 50%)"
+    },
+    {
+      "code": "T3-03",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "range_2023=-19.4%  bull_2024=-21.3%"
+    },
+    {
+      "code": "T3-04",
+      "passed": true,
+      "score": 4.0,
+      "max_score": 4.0,
+      "details": "Weekday Sharpe=-0.811  Weekend Sharpe=-0.378  Ratio=0.47  (\u2265 0.30)"
+    },
+    {
+      "code": "T3-05",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 4.0,
+      "details": "50%:Sh=-0.29,Ret=-9.6%(FAIL)  75%:Sh=-0.73,Ret=-27.8%(FAIL)"
+    },
+    {
+      "code": "CR-01",
+      "passed": "False",
+      "score": 0.0,
+      "max_score": 3.3333333333333335,
+      "details": "Est. funding cost / net profit \u2248 589.26%  (avg_rate=0.00008)  (< 25%)"
+    },
+    {
+      "code": "CR-02",
+      "passed": true,
+      "score": 3.3333333333333335,
+      "max_score": 3.3333333333333335,
+      "details": "Worst daily loss per event: ETF_Jan2024:-0.4%  (threshold > -5%/day)"
+    },
+    {
+      "code": "CR-03",
+      "passed": false,
+      "score": 0.0,
+      "max_score": 3.3333333333333335,
+      "details": "Low-vol Sharpe=-1.883  High-vol Sharpe=-0.083  (both > -0.5)"
+    }
+  ],
+  "wfo_summary": {
+    "wf_efficiency": 0.0,
+    "oos_is_mdd_ratio": 0.532,
+    "oos_is_decay": -0.5,
+    "positive_oos": 3,
+    "total_folds": 6,
+    "wf_pass": false
+  }
+}

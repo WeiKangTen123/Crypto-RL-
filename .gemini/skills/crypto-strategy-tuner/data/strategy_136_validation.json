@@ -1,0 +1,108 @@
+{
+  "strategy_id": "136",
+  "primary_results": {
+    "sharpe": 0.16,
+    "return": 3.97,
+    "mdd": 23.82,
+    "trades": 104,
+    "win_rate": 27.88,
+    "profit_factor": 1.06
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -1.41,
+      "return": -54.84,
+      "mdd": 57.14,
+      "trades": 113
+    },
+    "BTC": {
+      "sharpe": 0.16,
+      "return": 3.97,
+      "mdd": 23.82,
+      "trades": 104
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "bb_period",
+      "value": 39,
+      "sharpe": -0.46
+    },
+    {
+      "param": "bb_period",
+      "value": 47,
+      "sharpe": -0.75
+    },
+    {
+      "param": "bb_std",
+      "value": 1.27926,
+      "sharpe": 0.13
+    },
+    {
+      "param": "bb_std",
+      "value": 1.5635400000000002,
+      "sharpe": -0.68
+    },
+    {
+      "param": "intensity_period",
+      "value": 7,
+      "sharpe": 0.16
+    },
+    {
+      "param": "intensity_period",
+      "value": 9,
+      "sharpe": 0.16
+    },
+    {
+      "param": "intensity_std",
+      "value": 0.96138,
+      "sharpe": 0.16
+    },
+    {
+      "param": "intensity_std",
+      "value": 1.1750200000000002,
+      "sharpe": 0.16
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.61164,
+      "sharpe": 0.16
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.74756,
+      "sharpe": 0.16
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.80199,
+      "sharpe": 0.16
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.9802100000000001,
+      "sharpe": 0.16
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 4.54527,
+      "sharpe": 0.16
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 5.5553300000000005,
+      "sharpe": 0.16
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 163,
+      "sharpe": 0.16
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 199,
+      "sharpe": 0.16
+    }
+  ]
+}

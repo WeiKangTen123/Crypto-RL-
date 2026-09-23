@@ -1,0 +1,219 @@
+{
+  "run_at": "2026-06-24T10:06:25.683805",
+  "coins": [
+    "BTC",
+    "ETH",
+    "BNB",
+    "SOL",
+    "XRP",
+    "AVAX",
+    "LINK",
+    "ADA",
+    "MATIC",
+    "DOT"
+  ],
+  "tfs": [
+    "4h"
+  ],
+  "n": 400,
+  "target": {
+    "sharpe_min": 1.0,
+    "sharpe_max": 2.5,
+    "mdd_max": 25.0,
+    "monthly_min": 1.8,
+    "monthly_max": 4.0,
+    "min_trades": 30
+  },
+  "results": [
+    {
+      "rank": 1,
+      "tf": "4h",
+      "entry": "ema_price_cross",
+      "filters": [
+        "dual_htf_trend",
+        "ema_trend_long"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "psar_acceleration": 0.0161,
+        "adx_period": 27,
+        "htf1_bars": 6,
+        "aroon_period": 22,
+        "htf2_bars": 42,
+        "ema_trend": 163,
+        "aroon_threshold": 79,
+        "zscore_threshold": 0.5885,
+        "st_multiplier": 1.3926,
+        "htf_bars": 6,
+        "macro_bars": 168,
+        "st_period": 25,
+        "psar_maximum": 0.1736,
+        "htf_ema_period": 193,
+        "adx_threshold": 31,
+        "zscore_period": 53
+      },
+      "sharpe": 2.419,
+      "monthly_roi": 1.82,
+      "mdd": 4.47,
+      "win_rate": 76.74,
+      "trades": 788,
+      "blend_score": 1.8777
+    },
+    {
+      "rank": 2,
+      "tf": "4h",
+      "entry": "fvg",
+      "filters": [
+        "htf_supertrend",
+        "ob_buy_pressure"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "psar_acceleration": 0.0137,
+        "htf1_bars": 6,
+        "htf2_bars": 42,
+        "ema_trend": 76,
+        "zscore_period": 190,
+        "zscore_threshold": 1.2967,
+        "htf_bars": 6,
+        "macro_bars": 168,
+        "st_period": 20,
+        "psar_maximum": 0.2437,
+        "st_multiplier": 4.0422
+      },
+      "sharpe": 2.037,
+      "monthly_roi": 1.86,
+      "mdd": 5.98,
+      "win_rate": 67.07,
+      "trades": 806,
+      "blend_score": 1.6994
+    },
+    {
+      "rank": 3,
+      "tf": "4h",
+      "entry": "macd_cross",
+      "filters": [
+        "htf_supertrend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_slow": 28,
+        "macd_signal": 15,
+        "macd_fast": 13,
+        "htf_bars": 6,
+        "psar_acceleration": 0.0249,
+        "st_period": 11,
+        "psar_maximum": 0.2256,
+        "st_multiplier": 3.7945,
+        "htf1_bars": 6,
+        "htf2_bars": 42,
+        "macro_bars": 168
+      },
+      "sharpe": 2.12,
+      "monthly_roi": 1.86,
+      "mdd": 5.62,
+      "win_rate": 62.7,
+      "trades": 1218,
+      "blend_score": 1.6993
+    },
+    {
+      "rank": 4,
+      "tf": "4h",
+      "entry": "macd_cross",
+      "filters": [
+        "htf_ema_trend",
+        "atr_expansion"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macd_slow": 51,
+        "macd_signal": 6,
+        "atr_period": 9,
+        "macd_fast": 4,
+        "htf_bars": 6,
+        "psar_acceleration": 0.0243,
+        "vol_ma_period": 40,
+        "psar_maximum": 0.3756,
+        "htf_ema_period": 171,
+        "htf1_bars": 6,
+        "htf2_bars": 42,
+        "macro_bars": 168
+      },
+      "sharpe": 2.029,
+      "monthly_roi": 1.85,
+      "mdd": 5.02,
+      "win_rate": 67.85,
+      "trades": 1131,
+      "blend_score": 1.6883
+    },
+    {
+      "rank": 5,
+      "tf": "4h",
+      "entry": "macd_cross",
+      "filters": [
+        "htf_ema_trend",
+        "dual_htf_trend"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macro_bars": 168,
+        "adx_period": 25,
+        "htf1_bars": 6,
+        "aroon_period": 40,
+        "htf2_bars": 42,
+        "ema_trend": 163,
+        "aroon_threshold": 57,
+        "zscore_period": 20,
+        "zscore_threshold": 0.5885,
+        "htf_bars": 6,
+        "psar_acceleration": 0.0237,
+        "st_period": 25,
+        "psar_maximum": 0.1486,
+        "htf_ema_period": 195,
+        "adx_threshold": 23,
+        "st_multiplier": 4.0667
+      },
+      "sharpe": 1.897,
+      "monthly_roi": 1.88,
+      "mdd": 6.11,
+      "win_rate": 61.71,
+      "trades": 1443,
+      "blend_score": 1.6331
+    },
+    {
+      "rank": 6,
+      "tf": "4h",
+      "entry": "bb_breakout",
+      "filters": [
+        "wr_not_extreme",
+        "rsi_not_extreme"
+      ],
+      "exit": "psar_trail",
+      "params": {
+        "macro_bars": 168,
+        "adx_period": 26,
+        "htf1_bars": 6,
+        "aroon_period": 44,
+        "htf2_bars": 42,
+        "ema_trend": 113,
+        "period": 5,
+        "aroon_threshold": 56,
+        "zscore_period": 26,
+        "zscore_threshold": 0.5885,
+        "htf_bars": 6,
+        "psar_acceleration": 0.0198,
+        "st_period": 25,
+        "psar_maximum": 0.3941,
+        "htf_ema_period": 142,
+        "adx_threshold": 21,
+        "st_multiplier": 4.1114
+      },
+      "sharpe": 1.821,
+      "monthly_roi": 1.8,
+      "mdd": 7.36,
+      "win_rate": 58.65,
+      "trades": 1005,
+      "blend_score": 1.555
+    }
+  ]
+}

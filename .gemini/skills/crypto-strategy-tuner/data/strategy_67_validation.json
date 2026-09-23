@@ -1,0 +1,128 @@
+{
+  "strategy_id": "67",
+  "primary_results": {
+    "sharpe": -0.3,
+    "return": -88.89,
+    "mdd": 96.34,
+    "trades": 510,
+    "win_rate": 25.1,
+    "profit_factor": 0.68
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.54,
+      "return": -99.25,
+      "mdd": 99.49,
+      "trades": 519
+    },
+    "BTC": {
+      "sharpe": -0.3,
+      "return": -88.89,
+      "mdd": 96.34,
+      "trades": 510
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "t3_length",
+      "value": 29,
+      "sharpe": -0.17
+    },
+    {
+      "param": "t3_length",
+      "value": 35,
+      "sharpe": -0.14
+    },
+    {
+      "param": "t3_vf",
+      "value": 0.8433,
+      "sharpe": -0.58
+    },
+    {
+      "param": "t3_vf",
+      "value": 1.0307000000000002,
+      "sharpe": 0.06
+    },
+    {
+      "param": "wae_sensitivity",
+      "value": 225,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_sensitivity",
+      "value": 275,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_fast_len",
+      "value": 9,
+      "sharpe": -0.35
+    },
+    {
+      "param": "wae_fast_len",
+      "value": 11,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_slow_len",
+      "value": 54,
+      "sharpe": -0.36
+    },
+    {
+      "param": "wae_slow_len",
+      "value": 66,
+      "sharpe": -0.33
+    },
+    {
+      "param": "wae_bb_len",
+      "value": 14,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_bb_len",
+      "value": 18,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_bb_mult",
+      "value": 0.99108,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_bb_mult",
+      "value": 1.21132,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_deadzone",
+      "value": 13,
+      "sharpe": -0.3
+    },
+    {
+      "param": "wae_deadzone",
+      "value": 15,
+      "sharpe": -0.3
+    },
+    {
+      "param": "stiff_len",
+      "value": 33,
+      "sharpe": -0.53
+    },
+    {
+      "param": "stiff_len",
+      "value": 41,
+      "sharpe": -0.79
+    },
+    {
+      "param": "stiff_threshold",
+      "value": 0.83367,
+      "sharpe": -0.82
+    },
+    {
+      "param": "stiff_threshold",
+      "value": 1.0189300000000001,
+      "sharpe": 0.0
+    }
+  ]
+}

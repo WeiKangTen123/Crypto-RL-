@@ -1,0 +1,108 @@
+{
+  "strategy_id": "18",
+  "primary_results": {
+    "sharpe": 0.77,
+    "return": 127.23,
+    "mdd": 23.64,
+    "trades": 195,
+    "win_rate": 43.59,
+    "profit_factor": 1.34
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": 0.11,
+      "return": -0.75,
+      "mdd": 38.05,
+      "trades": 185
+    },
+    "BTC": {
+      "sharpe": 0.02,
+      "return": -10.34,
+      "mdd": 32.92,
+      "trades": 186
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "macd_fast",
+      "value": 16,
+      "sharpe": 0.8
+    },
+    {
+      "param": "macd_fast",
+      "value": 20,
+      "sharpe": 0.69
+    },
+    {
+      "param": "macd_slow",
+      "value": 25,
+      "sharpe": 0.7
+    },
+    {
+      "param": "macd_slow",
+      "value": 31,
+      "sharpe": 0.57
+    },
+    {
+      "param": "macd_signal",
+      "value": 14,
+      "sharpe": 0.79
+    },
+    {
+      "param": "macd_signal",
+      "value": 18,
+      "sharpe": 0.53
+    },
+    {
+      "param": "kdj_period",
+      "value": 25,
+      "sharpe": 0.27
+    },
+    {
+      "param": "kdj_period",
+      "value": 31,
+      "sharpe": -0.05
+    },
+    {
+      "param": "kdj_oversold",
+      "value": 34,
+      "sharpe": 0.59
+    },
+    {
+      "param": "kdj_oversold",
+      "value": 42,
+      "sharpe": 0.6
+    },
+    {
+      "param": "kdj_overbought",
+      "value": 80,
+      "sharpe": 0.6
+    },
+    {
+      "param": "kdj_overbought",
+      "value": 98,
+      "sharpe": 0.56
+    },
+    {
+      "param": "stop_loss_pct",
+      "value": 0.08613,
+      "sharpe": 0.77
+    },
+    {
+      "param": "stop_loss_pct",
+      "value": 0.10527,
+      "sharpe": 0.79
+    },
+    {
+      "param": "take_profit_pct",
+      "value": 0.07398,
+      "sharpe": 0.67
+    },
+    {
+      "param": "take_profit_pct",
+      "value": 0.09042,
+      "sharpe": 0.76
+    }
+  ]
+}

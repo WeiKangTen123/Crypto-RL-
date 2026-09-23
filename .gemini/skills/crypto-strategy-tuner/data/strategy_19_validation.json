@@ -1,0 +1,108 @@
+{
+  "strategy_id": "19",
+  "primary_results": {
+    "sharpe": 0.05,
+    "return": -3.11,
+    "mdd": 47.71,
+    "trades": 19,
+    "win_rate": 26.32,
+    "profit_factor": 0.97
+  },
+  "cross_asset_results": {
+    "BTC": {
+      "sharpe": -0.07,
+      "return": -9.4,
+      "mdd": 25.99,
+      "trades": 19
+    },
+    "SOL": {
+      "sharpe": -0.09,
+      "return": -30.58,
+      "mdd": 52.67,
+      "trades": 10
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "bb_period",
+      "value": 19,
+      "sharpe": 0.7
+    },
+    {
+      "param": "bb_period",
+      "value": 23,
+      "sharpe": 0.19
+    },
+    {
+      "param": "bb_std",
+      "value": 2.63349,
+      "sharpe": 0.14
+    },
+    {
+      "param": "bb_std",
+      "value": 3.21871,
+      "sharpe": -0.39
+    },
+    {
+      "param": "intensity_period",
+      "value": 22,
+      "sharpe": 0.05
+    },
+    {
+      "param": "intensity_period",
+      "value": 26,
+      "sharpe": 0.05
+    },
+    {
+      "param": "intensity_std",
+      "value": 1.9775699999999998,
+      "sharpe": 0.05
+    },
+    {
+      "param": "intensity_std",
+      "value": 2.41703,
+      "sharpe": 0.05
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.47808,
+      "sharpe": 0.05
+    },
+    {
+      "param": "taker_threshold",
+      "value": 0.5843200000000001,
+      "sharpe": 0.05
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.801,
+      "sharpe": 0.05
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.9790000000000001,
+      "sharpe": 0.05
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 1.26594,
+      "sharpe": 0.05
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 1.5472600000000003,
+      "sharpe": 0.05
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 158,
+      "sharpe": 0.05
+    },
+    {
+      "param": "max_hold_bars",
+      "value": 193,
+      "sharpe": 0.05
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "tickers": [
+    "BTCUSDT"
+  ],
+  "timeframe": "4h",
+  "start_date": "2024-07-31 20:00:00",
+  "end_date": "2026-04-28 00:00:00",
+  "candles": 3812,
+  "features": [
+    "close",
+    "volume",
+    "quote_vol",
+    "num_trades",
+    "ignore",
+    "taker_buy_ratio",
+    "rsi",
+    "dx",
+    "ultosc",
+    "obv",
+    "ht_dcphase",
+    "atr",
+    "bband_width",
+    "ema_ratio",
+    "log_return",
+    "cross_price_ratio_eth",
+    "cross_volume_ratio_eth",
+    "cross_corr_20_eth",
+    "cross_price_ratio_dxy",
+    "cross_volume_ratio_dxy",
+    "cross_corr_20_dxy",
+    "cross_price_ratio_spy",
+    "cross_volume_ratio_spy",
+    "cross_corr_20_spy",
+    "cross_price_ratio_vix",
+    "cross_volume_ratio_vix",
+    "cross_corr_20_vix",
+    "cross_price_ratio_jpy",
+    "cross_volume_ratio_jpy",
+    "cross_corr_20_jpy",
+    "vix_log_return"
+  ],
+  "generated": "2026-06-14 21:20:56"
+}

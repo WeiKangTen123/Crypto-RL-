@@ -1,0 +1,45 @@
+10
+TRAIN_START_DATE:  2017-08-17 04:00:00
+VAL_END_DATE:  2024-07-31 16:00:00
+
+Using results for PBO: ['res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k']
+Result No.:  0
+res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k
+
+--- BEST TRIAL FOR res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k ---
+Trial Number:  4
+Value (Sharpe):  0.00019711499044205993
+Params:  {'learning_rate': 0.0003, 'batch_size': 1024, 'gamma': 0.999, 'net_dimension': 1024, 'target_step': 9146.4, 'eval_time_gap': 60, 'break_step': 500000.0, 'lookback': 30, 'norm_cash': 0.000244140625, 'norm_stocks': 0.00390625, 'norm_tech': 3.0517578125e-05, 'norm_reward': 1, 'norm_action': 10000, 'drawdown_weight': 0.0, 'jitter_weight': 0.01, 'holding_penalty': 0.0}
+Found 13 valid trials.
+Running Robustness Analysis...
+M shape: (10, 13)
+Using S=10 for PBO
+/Users/weikangten/Desktop/Crypto-RL/phase_5/../core/function_finance_metrics.py:595: RuntimeWarning: invalid value encountered in divide
+  sharpe = np.where(vol == 0, 0.0, np.sqrt(factor) * excess_mean / vol)
+/Users/weikangten/Desktop/Crypto-RL/phase_5/../core/function_finance_metrics.py:595: RuntimeWarning: invalid value encountered in divide
+  sharpe = np.where(vol == 0, 0.0, np.sqrt(factor) * excess_mean / vol)
+/Users/weikangten/Desktop/Crypto-RL/phase_5/../core/function_finance_metrics.py:595: RuntimeWarning: invalid value encountered in divide
+  sharpe = np.where(vol == 0, 0.0, np.sqrt(factor) * excess_mean / vol)
+/Users/weikangten/Desktop/Crypto-RL/phase_5/../core/function_finance_metrics.py:595: RuntimeWarning: invalid value encountered in divide
+  sharpe = np.where(vol == 0, 0.0, np.sqrt(factor) * excess_mean / vol)
+/Users/weikangten/Desktop/Crypto-RL/phase_5/pbo.py:315: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `kdeplot` (an axes-level function for kernel density plots).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  ax = sns.distplot(
+EWQ Sharpe to Beat:  0.008455097052501515
+Min. logit:   0.0
+Max. logit:   2.564949357461537
+Mean logits:  2.43391978266568
+PBO:  0.3968253968253968 %
+
+Lower/Upper bound axis 0.0 2.7148617023610857
+
+Dashboard data exported to /Users/weikangten/Desktop/Crypto-RL/phase_5/dashboard/pbo_data.js
+Open /Users/weikangten/Desktop/Crypto-RL/phase_5/dashboard/index.html to view the dashboard.

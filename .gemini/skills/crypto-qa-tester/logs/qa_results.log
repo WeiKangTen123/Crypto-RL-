@@ -1,0 +1,1681 @@
+[2026-05-27 04:18:14] ============================================================
+[2026-05-27 04:18:14] QA TEST SUITE START
+[2026-05-27 04:18:14] ============================================================
+[2026-05-27 04:18:14] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-05-27 04:18:14]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-05-27 04:18:14]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-05-27 04:18:14]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-05-27 04:18:14] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-05-27 04:18:14]   [PASS] ✓ settings.py: 41 strategies registered
+[2026-05-27 04:18:15]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-05-27 04:18:15]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-05-27 04:18:15]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-05-27 04:18:15]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-05-27 04:18:15]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-05-27 04:18:15]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-05-27 04:18:15]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-05-27 04:18:15]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-05-27 04:18:15]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-05-27 04:18:15]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-05-27 04:18:15]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-05-27 04:18:15]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-05-27 04:18:15]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-05-27 04:18:15]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-05-27 04:18:15]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-05-27 04:18:15]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-05-27 04:18:15]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-05-27 04:18:15]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-05-27 04:18:15]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-05-27 04:18:15]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-05-27 04:18:15]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-05-27 04:18:15] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-05-27 04:18:15]   [PASS] ✓ Parquet SOL/1h: exists
+[2026-05-27 04:18:15] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-05-27 05:41:18] ============================================================
+[2026-05-27 05:41:18] QA TEST SUITE START
+[2026-05-27 05:41:18] ============================================================
+[2026-05-27 05:41:18] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-05-27 05:41:18]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-05-27 05:41:18]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-05-27 05:41:18]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-05-27 05:41:18] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-05-27 05:41:18]   [PASS] ✓ settings.py: 41 strategies registered
+[2026-05-27 05:41:19]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-05-27 05:41:19]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-05-27 05:41:19]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-05-27 05:41:19]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-05-27 05:41:19]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-05-27 05:41:19]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-05-27 05:41:19]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-05-27 05:41:19]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-05-27 05:41:19]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-05-27 05:41:19]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-05-27 05:41:19]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-05-27 05:41:19]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-05-27 05:41:19]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-05-27 05:41:19]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-05-27 05:41:19]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-05-27 05:41:19]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-05-27 05:41:19]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-05-27 05:41:19]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-05-27 05:41:19]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-05-27 05:41:19]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-05-27 05:41:19]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-05-27 05:41:19] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-05-27 05:41:19]   [PASS] ✓ Parquet SOL/1h: exists
+[2026-05-27 05:41:19] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-05-27 05:41:19]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-05-27 05:41:19] ============================================================
+[2026-05-27 05:41:19] QA SUMMARY: 38 PASS · 0 FAIL · 0 WARN  (1s)
+[2026-05-27 05:41:19] ============================================================
+[2026-05-27 06:21:11] ============================================================
+[2026-05-27 06:21:11] QA TEST SUITE START
+[2026-05-27 06:21:11] ============================================================
+[2026-05-27 06:21:11] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-05-27 06:21:11]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-05-27 06:21:11]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-05-27 06:21:11]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-05-27 06:21:11] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-05-27 06:21:11]   [PASS] ✓ settings.py: 44 strategies registered
+[2026-05-27 06:21:12]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-05-27 06:21:12]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-05-27 06:21:12]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-05-27 06:21:12]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-05-27 06:21:12]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-05-27 06:21:12]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-05-27 06:21:12]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-05-27 06:21:12]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-05-27 06:21:12]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-05-27 06:21:12]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-05-27 06:21:12]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-05-27 06:21:12]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-05-27 06:21:12]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-05-27 06:21:12]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-05-27 06:21:12]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-05-27 06:21:12]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-05-27 06:21:12]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-05-27 06:21:12]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-05-27 06:21:12]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-05-27 06:21:12]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-05-27 06:21:12]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-05-27 06:21:12]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-05-27 06:21:12]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-05-27 06:21:12]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-05-27 06:21:12] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-05-27 06:21:12]   [PASS] ✓ Parquet SOL/1h: exists
+[2026-05-27 06:21:12] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-05-27 06:21:13]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-05-27 06:21:13] ============================================================
+[2026-05-27 06:21:13] QA SUMMARY: 41 PASS · 0 FAIL · 0 WARN  (1s)
+[2026-05-27 06:21:13] ============================================================
+[2026-05-27 14:50:53] ============================================================
+[2026-05-27 14:50:53] QA TEST SUITE START
+[2026-05-27 14:50:53] ============================================================
+[2026-05-27 14:50:53] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-05-27 14:50:53]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-05-27 14:50:53]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-05-27 14:50:53]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-05-27 14:50:53] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-05-27 14:50:53]   [PASS] ✓ settings.py: 44 strategies registered
+[2026-05-27 14:50:54]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-05-27 14:50:54]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-05-27 14:50:54]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-05-27 14:50:54]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-05-27 14:50:54]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-05-27 14:50:54]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-05-27 14:50:54]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-05-27 14:50:54]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-05-27 14:50:54]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-05-27 14:50:54]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-05-27 14:50:54]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-05-27 14:50:54]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-05-27 14:50:54]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-05-27 14:50:54]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-05-27 14:50:54]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-05-27 14:50:54]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-05-27 14:50:54]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-05-27 14:50:54]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-05-27 14:50:54]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-05-27 14:50:54]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-05-27 14:50:54]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-05-27 14:50:54]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-05-27 14:50:54]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-05-27 14:50:54]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-05-27 14:50:54] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-05-27 14:50:54]   [PASS] ✓ Parquet SOL/1h: exists
+[2026-05-27 14:50:54] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-05-27 14:50:54]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-05-27 14:50:54] ============================================================
+[2026-05-27 14:50:54] QA SUMMARY: 41 PASS · 0 FAIL · 0 WARN  (1s)
+[2026-05-27 14:50:54] ============================================================
+[2026-05-29 16:40:53] ============================================================
+[2026-05-29 16:40:53] QA TEST SUITE START
+[2026-05-29 16:40:53] ============================================================
+[2026-05-29 16:40:53] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-05-29 16:40:53]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-05-29 16:40:54]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-05-29 16:40:54]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-05-29 16:40:54] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-05-29 16:40:54]   [PASS] ✓ settings.py: 69 strategies registered
+[2026-05-29 16:40:54]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-05-29 16:40:54]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-05-29 16:40:54]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-05-29 16:40:54]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-05-29 16:40:54]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-05-29 16:40:54]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-05-29 16:40:54]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-05-29 16:40:54]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-05-29 16:40:54]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-05-29 16:40:54]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-05-29 16:40:54]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-05-29 16:40:54]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-05-29 16:40:54]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-05-29 16:40:54]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-05-29 16:40:54]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-05-29 16:40:54]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-05-29 16:40:54]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-05-29 16:40:54]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-05-29 16:40:54]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-05-29 16:40:54]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-05-29 16:40:54]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-05-29 16:40:54]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-05-29 16:40:54]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-05-29 16:40:54]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-05-29 16:40:54]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-05-29 16:40:54]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-05-29 16:40:54]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-05-29 16:40:54]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-05-29 16:40:54]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-05-29 16:40:54]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-05-29 16:40:54]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-05-29 16:40:54]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-05-29 16:40:54]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-05-29 16:40:54]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-05-29 16:40:54]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-05-29 16:40:54]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-05-29 16:40:54]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-05-29 16:40:54]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-05-29 16:40:54]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-05-29 16:40:54]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-05-29 16:40:54] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-05-29 16:40:54]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-05-29 16:40:54] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-05-29 16:40:55]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-05-29 16:40:55] ============================================================
+[2026-05-29 16:40:55] QA SUMMARY: 58 PASS · 0 FAIL · 0 WARN  (1s)
+[2026-05-29 16:40:55] ============================================================
+[2026-06-03 00:07:01] ============================================================
+[2026-06-03 00:07:01] QA TEST SUITE START
+[2026-06-03 00:07:01] ============================================================
+[2026-06-03 00:07:01] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 00:07:01]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 00:07:01]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 00:07:01]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 00:07:01] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 00:07:01]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 00:07:02]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 00:07:02]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 00:07:02]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 00:07:02]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 00:07:02]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 00:07:02]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 00:07:02]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 00:07:02]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 00:07:02]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 00:07:02]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 00:07:02]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 00:07:02]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 00:07:02]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 00:07:02]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 00:07:02]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 00:07:02]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 00:07:02]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 00:07:02]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 00:07:02]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 00:07:02]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 00:07:02]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 00:07:02]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 00:07:02]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 00:07:02]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 00:07:02]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 00:07:02]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 00:07:02]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 00:07:02]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 00:07:02]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 00:07:02]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 00:07:02]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 00:07:02]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 00:07:02]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 00:07:02]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 00:07:02]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 00:07:02]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 00:07:02]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 00:07:02]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 00:07:02]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 00:07:02]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 00:07:02]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 00:07:02]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 00:07:02] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 00:07:02]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 00:07:02] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 00:07:02]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 00:07:02] ============================================================
+[2026-06-03 00:07:02] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 00:07:02] ============================================================
+[2026-06-03 00:16:33] ============================================================
+[2026-06-03 00:16:33] QA TEST SUITE START
+[2026-06-03 00:16:33] ============================================================
+[2026-06-03 00:16:33] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 00:16:33]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 00:16:33]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 00:16:33]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 00:16:33] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 00:16:33]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 00:16:34]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 00:16:34]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 00:16:34]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 00:16:34]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 00:16:34]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 00:16:34]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 00:16:34]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 00:16:34]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 00:16:34]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 00:16:34]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 00:16:34]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 00:16:34]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 00:16:34]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 00:16:34]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 00:16:34]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 00:16:34]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 00:16:34]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 00:16:34]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 00:16:34]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 00:16:34]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 00:16:34]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 00:16:34]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 00:16:34]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 00:16:34]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 00:16:34]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 00:16:34]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 00:16:34]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 00:16:34]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 00:16:34]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 00:16:34]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 00:16:34]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 00:16:34]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 00:16:34]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 00:16:34]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 00:16:34]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 00:16:34]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 00:16:34]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 00:16:34]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 00:16:34]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 00:16:34]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 00:16:34]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 00:16:34]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 00:16:34] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 00:16:34]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 00:16:34] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 00:16:34]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 00:16:34] ============================================================
+[2026-06-03 00:16:34] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 00:16:34] ============================================================
+[2026-06-03 00:18:28] ============================================================
+[2026-06-03 00:18:28] QA TEST SUITE START
+[2026-06-03 00:18:28] ============================================================
+[2026-06-03 00:18:28] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 00:18:28]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 00:18:28]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 00:18:28]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 00:18:28] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 00:18:28]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 00:18:28]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 00:18:28]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 00:18:28]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 00:18:28]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 00:18:28]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 00:18:28]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 00:18:28]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 00:18:28]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 00:18:28]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 00:18:28]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 00:18:28]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 00:18:28]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 00:18:28]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 00:18:28]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 00:18:28]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 00:18:28]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 00:18:28]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 00:18:28]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 00:18:28]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 00:18:28]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 00:18:28]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 00:18:28]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 00:18:28]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 00:18:28]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 00:18:28]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 00:18:28]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 00:18:28]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 00:18:28]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 00:18:28]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 00:18:28]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 00:18:28]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 00:18:28]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 00:18:28]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 00:18:28]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 00:18:28]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 00:18:28]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 00:18:28]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 00:18:28]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 00:18:28]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 00:18:28]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 00:18:28]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 00:18:28]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 00:18:28] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 00:18:28]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 00:18:28] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 00:18:28]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 00:18:28] ============================================================
+[2026-06-03 00:18:28] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 00:18:28] ============================================================
+[2026-06-03 00:53:05] ============================================================
+[2026-06-03 00:53:05] QA TEST SUITE START
+[2026-06-03 00:53:05] ============================================================
+[2026-06-03 00:53:05] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 00:53:05]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 00:53:05]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 00:53:05]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 00:53:05] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 00:53:05]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 00:53:06]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 00:53:06]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 00:53:06]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 00:53:06]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 00:53:06]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 00:53:06]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 00:53:06]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 00:53:06]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 00:53:06]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 00:53:06]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 00:53:06]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 00:53:06]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 00:53:06]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 00:53:06]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 00:53:06]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 00:53:06]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 00:53:06]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 00:53:06]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 00:53:06]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 00:53:06]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 00:53:06]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 00:53:06]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 00:53:06]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 00:53:06]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 00:53:06]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 00:53:06]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 00:53:06]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 00:53:06]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 00:53:06]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 00:53:06]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 00:53:06]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 00:53:06]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 00:53:06]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 00:53:06]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 00:53:06]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 00:53:06]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 00:53:06]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 00:53:06]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 00:53:06]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 00:53:06]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 00:53:06]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 00:53:06]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 00:53:06] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 00:53:06]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 00:53:06] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 00:53:06]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 00:53:06] ============================================================
+[2026-06-03 00:53:06] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 00:53:06] ============================================================
+[2026-06-03 14:19:16] ============================================================
+[2026-06-03 14:19:16] QA TEST SUITE START
+[2026-06-03 14:19:16] ============================================================
+[2026-06-03 14:19:16] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 14:19:17]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 14:19:17]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 14:19:17]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 14:19:17] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 14:19:17]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 14:19:17]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 14:19:17]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 14:19:17]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 14:19:17]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 14:19:17]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 14:19:17]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 14:19:17]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 14:19:17]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 14:19:17]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 14:19:17]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 14:19:17]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 14:19:17]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 14:19:17]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 14:19:17]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 14:19:17]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 14:19:17]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 14:19:17]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 14:19:17]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 14:19:17]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 14:19:17]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 14:19:17]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 14:19:17]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 14:19:17]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 14:19:17]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 14:19:17]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 14:19:17]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 14:19:17]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 14:19:17]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 14:19:17]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 14:19:17]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 14:19:17]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 14:19:17]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 14:19:17]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 14:19:17]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 14:19:17]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 14:19:17]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 14:19:17]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 14:19:17]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 14:19:17]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 14:19:17]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 14:19:17]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 14:19:17]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 14:19:17] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 14:19:17]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 14:19:17] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 14:19:17]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 14:19:17] ============================================================
+[2026-06-03 14:19:17] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 14:19:17] ============================================================
+[2026-06-03 14:35:22] ============================================================
+[2026-06-03 14:35:22] QA TEST SUITE START
+[2026-06-03 14:35:22] ============================================================
+[2026-06-03 14:35:22] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 14:35:22]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 14:35:22]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 14:35:22]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 14:35:22] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 14:35:22]   [PASS] ✓ settings.py: 75 strategies registered
+[2026-06-03 14:35:23]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 14:35:23]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 14:35:23]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 14:35:23]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 14:35:23]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 14:35:23]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 14:35:23]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 14:35:23]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 14:35:23]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 14:35:23]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 14:35:23]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 14:35:23]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 14:35:23]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 14:35:23]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 14:35:23]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 14:35:23]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 14:35:23]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 14:35:23]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 14:35:23]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 14:35:23]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 14:35:23]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 14:35:23]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 14:35:23]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 14:35:23]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 14:35:23]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 14:35:23]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 14:35:23]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 14:35:23]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 14:35:23]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 14:35:23]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 14:35:23]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 14:35:23]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 14:35:23]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 14:35:23]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 14:35:23]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 14:35:23]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 14:35:23]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 14:35:23]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 14:35:23]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 14:35:23]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 14:35:23]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 14:35:23]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 14:35:23] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 14:35:23]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 14:35:23] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 14:35:23]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 14:35:23] ============================================================
+[2026-06-03 14:35:23] QA SUMMARY: 60 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 14:35:23] ============================================================
+[2026-06-03 20:11:38] ============================================================
+[2026-06-03 20:11:38] QA TEST SUITE START
+[2026-06-03 20:11:38] ============================================================
+[2026-06-03 20:11:38] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:11:38]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:11:38]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:11:38]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:11:38] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:11:38]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:11:38]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:11:38]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:11:38]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:11:38]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:11:38]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:11:38]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:11:38]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:11:38]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:11:38]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:11:38]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:11:38]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:11:38]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:11:38]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:11:38]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:11:38]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:11:38]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:11:38]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:11:38]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:11:38]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:11:38]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:11:38]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:11:38]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:11:38]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:11:38]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:11:38]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:11:38]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:11:38]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:11:38]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:11:38]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:11:38]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:11:38]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:11:38]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:11:38]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:11:38]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:11:38]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:11:38]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:11:38]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:11:38]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:11:38]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:11:38]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:11:38]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:11:38]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:11:38]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:11:38]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:11:38]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:11:38]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:11:38] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:11:38]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:11:38] ═══ TEST GROUP 4: Backtest Smoke Test ═══
+[2026-06-03 20:11:38]   [PASS] ✓ Backtest smoke (sid=1): 2 trades, HTTP 200
+[2026-06-03 20:11:38] ============================================================
+[2026-06-03 20:11:38] QA SUMMARY: 64 PASS · 0 FAIL · 0 WARN  (0s)
+[2026-06-03 20:11:38] ============================================================
+[2026-06-03 20:13:15] ============================================================
+[2026-06-03 20:13:15] QA TEST SUITE START
+[2026-06-03 20:13:15] ============================================================
+[2026-06-03 20:13:15] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:13:15]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:13:15]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:13:15]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:13:15] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:13:15]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:13:16]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:13:16]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:13:16]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:13:16]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:13:16]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:13:16]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:13:16]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:13:16]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:13:16]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:13:16]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:13:16]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:13:16]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:13:16]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:13:16]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:13:16]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:13:16]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:13:16]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:13:16]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:13:16]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:13:16]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:13:16]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:13:16]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:13:16]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:13:16]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:13:16]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:13:16]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:13:16]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:13:16]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:13:16]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:13:16]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:13:16]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:13:16]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:13:16]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:13:16]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:13:16]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:13:16]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:13:16]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:13:16]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:13:16]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:13:16]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:13:16]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:13:16]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:13:16]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:13:16]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:13:16]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:13:16]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:13:16] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:13:16]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:13:16] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:13:16]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:13:16]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:13:16]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:13:16]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:13:16]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:13:18]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:13:18]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:13:18]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:13:18]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:13:19]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:13:20]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:13:20]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:13:21]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:13:22]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:13:23]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:13:23]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:13:23]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:13:23]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:13:23]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:13:24]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:13:25]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:13:25]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:13:25]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:13:25]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:13:26]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:13:27]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:13:28]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:13:28]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:13:28]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:13:28]   [PASS] ✓ Backtest smoke (sid=99): ? trades
+[2026-06-03 20:13:28] ============================================================
+[2026-06-03 20:13:28] QA SUMMARY: 144 PASS · 0 FAIL · 0 WARN  (13s)
+[2026-06-03 20:13:28] ============================================================
+[2026-06-03 20:15:47] ============================================================
+[2026-06-03 20:15:47] QA TEST SUITE START
+[2026-06-03 20:15:47] ============================================================
+[2026-06-03 20:15:47] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:15:47]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:15:47]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:15:47]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:15:47] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:15:47]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:15:47]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:15:47]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:15:47]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:15:47]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:15:47]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:15:47]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:15:47]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:15:47]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:15:47]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:15:47]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:15:47]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:15:47]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:15:47]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:15:47]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:15:47]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:15:47]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:15:47]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:15:47]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:15:47]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:15:47]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:15:47]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:15:47]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:15:47]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:15:47]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:15:47]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:15:47]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:15:47]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:15:47]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:15:47]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:15:47]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:15:47]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:15:47]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:15:47]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:15:47]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:15:47]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:15:47]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:15:47]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:15:47]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:15:47]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:15:47]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:15:47]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:15:47]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:15:47]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:15:47]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:15:47]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:15:47]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:15:47] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:15:47]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:15:47] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:15:47]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:15:48]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:15:48]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:15:48]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:15:48]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:15:50]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:15:51]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:15:52]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:15:53]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:15:54]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:15:55]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:15:55]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:15:55]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:15:56]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:15:57]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:15:58]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:15:59]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:16:00]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:16:00]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:16:00]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:16:00]   [PASS] ✓ Backtest smoke (sid=99): ? trades
+[2026-06-03 20:16:00] ============================================================
+[2026-06-03 20:16:00] QA SUMMARY: 144 PASS · 0 FAIL · 0 WARN  (13s)
+[2026-06-03 20:16:00] ============================================================
+[2026-06-03 20:16:44] ============================================================
+[2026-06-03 20:16:44] QA TEST SUITE START
+[2026-06-03 20:16:44] ============================================================
+[2026-06-03 20:16:44] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:16:44]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:16:44]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:16:44]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:16:44] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:16:44]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:16:44]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:16:44]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:16:44]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:16:44]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:16:44]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:16:44]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:16:44]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:16:44]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:16:44]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:16:44]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:16:44]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:16:44]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:16:44]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:16:44]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:16:44]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:16:44]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:16:44]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:16:44]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:16:44]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:16:44]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:16:44]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:16:44]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:16:44]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:16:44]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:16:44]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:16:44]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:16:44]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:16:44]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:16:44]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:16:44]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:16:44]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:16:44]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:16:44]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:16:44]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:16:44]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:16:44]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:16:44]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:16:44]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:16:44]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:16:44]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:16:44]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:16:44]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:16:44]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:16:44]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:16:44]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:16:44]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:16:44] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:16:44]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:16:44] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:16:44]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:16:45]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:16:45]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:16:45]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:16:45]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:16:47]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:16:48]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:16:48]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:16:48]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:16:49]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:16:49]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:16:49]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:16:49]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:16:50]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:16:51]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:16:52]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:16:52]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:16:52]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:16:53]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:16:53]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:16:53]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:16:53]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:16:53]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:16:54]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:16:55]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:16:56]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:16:57]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:16:57]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:16:57]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:16:57]   [WARN] ⚠ Backtest smoke (sid=99): No results returned
+[2026-06-03 20:16:57] ============================================================
+[2026-06-03 20:16:57] QA SUMMARY: 143 PASS · 0 FAIL · 1 WARN  (13s)
+[2026-06-03 20:16:57] ============================================================
+[2026-06-03 20:17:10] ============================================================
+[2026-06-03 20:17:10] QA TEST SUITE START
+[2026-06-03 20:17:10] ============================================================
+[2026-06-03 20:17:10] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:17:10]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:17:10]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:17:10]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:17:10] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:17:10]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:17:11]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:17:11]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:17:11]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:17:11]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:17:11]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:17:11]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:17:11]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:17:11]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:17:11]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:17:11]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:17:11]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:17:11]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:17:11]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:17:11]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:17:11]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:17:11]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:17:11]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:17:11]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:17:11]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:17:11]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:17:11]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:17:11]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:17:11]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:17:11]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:17:11]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:17:11]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:17:11]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:17:11]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:17:11]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:17:11]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:17:11]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:17:11]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:17:11]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:17:11]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:17:11]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:17:11]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:17:11]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:17:11]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:17:11]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:17:11]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:17:11]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:17:11]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:17:11]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:17:11]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:17:11]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:17:11]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:17:11] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:17:11]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:17:11] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:17:11]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:17:11]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:17:11]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:17:11]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:17:11]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:17:13]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:17:14]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:17:14]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:17:14]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:17:14]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:17:15]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:17:15]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:17:15]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:17:16]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:17:17]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:17:18]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:17:18]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:17:19]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:17:20]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:17:21]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:17:22]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:17:23]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:17:23]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:17:23]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:17:23]   [WARN] ⚠ Backtest smoke (sid=99): No results returned (possible runtime crash if no error raised)
+[2026-06-03 20:17:23] ============================================================
+[2026-06-03 20:17:23] QA SUMMARY: 143 PASS · 0 FAIL · 1 WARN  (13s)
+[2026-06-03 20:17:23] ============================================================
+[2026-06-03 20:17:47] ============================================================
+[2026-06-03 20:17:47] QA TEST SUITE START
+[2026-06-03 20:17:47] ============================================================
+[2026-06-03 20:17:47] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:17:47]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:17:47]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:17:47]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:17:47] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:17:47]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:17:47]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:17:47]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:17:47]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:17:47]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:17:47]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:17:47]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:17:47]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:17:47]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:17:47]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:17:47]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:17:47]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:17:47]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:17:47]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:17:47]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:17:47]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:17:47]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:17:47]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:17:47]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:17:47]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:17:47]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:17:47]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:17:47]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:17:47]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:17:47]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:17:47]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:17:47]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:17:47]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:17:47]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:17:47]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:17:47]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:17:47]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:17:47]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:17:47]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:17:47]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:17:47]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:17:47]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:17:47]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:17:47]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:17:47]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:17:47]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:17:47]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:17:47]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:17:47]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:17:47]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:17:47]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:17:47]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:17:47] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:17:47]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:17:47] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:17:47]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:17:47]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:17:48]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:17:48]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:17:48]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:17:50]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:17:51]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:17:52]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:17:53]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:17:54]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:17:55]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:17:55]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:17:55]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:17:56]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:17:56]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:17:56]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:17:56]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:17:56]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:17:57]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:17:58]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:17:59]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:17:59]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:18:00]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:18:00]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:18:00]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:18:00]   [WARN] ⚠ Backtest smoke (sid=99): No results returned (possible runtime crash if no error raised)
+[2026-06-03 20:18:00] ============================================================
+[2026-06-03 20:18:00] QA SUMMARY: 143 PASS · 0 FAIL · 1 WARN  (13s)
+[2026-06-03 20:18:00] ============================================================
+[2026-06-03 20:18:11] ============================================================
+[2026-06-03 20:18:11] QA TEST SUITE START
+[2026-06-03 20:18:11] ============================================================
+[2026-06-03 20:18:11] ═══ TEST GROUP 1: Flask API Routes ═══
+[2026-06-03 20:18:11]   [PASS] ✓ GET /api/strategy_list: HTTP 200
+[2026-06-03 20:18:11]   [PASS] ✓ GET /api/agent_telemetry: HTTP 200
+[2026-06-03 20:18:11]   [PASS] ✓ GET /datasets: HTTP 200
+[2026-06-03 20:18:11] ═══ TEST GROUP 2: Strategy Class Imports ═══
+[2026-06-03 20:18:11]   [PASS] ✓ settings.py: 81 strategies registered
+[2026-06-03 20:18:12]   [PASS] ✓ Import MACDKDJStrategy: sid=1
+[2026-06-03 20:18:12]   [PASS] ✓ Import BB_Squeeze_Breakout_Strategy: sid=2
+[2026-06-03 20:18:12]   [PASS] ✓ Import MACDKDJ_ADX_ATR_Strategy: sid=3
+[2026-06-03 20:18:12]   [PASS] ✓ Import MTF_MACDKDJ_ADX_ATR_Strategy: sid=4
+[2026-06-03 20:18:12]   [PASS] ✓ Import FVG_Recovery_Strategy: sid=5
+[2026-06-03 20:18:12]   [PASS] ✓ Import MeanReversionVRSI: sid=6
+[2026-06-03 20:18:12]   [PASS] ✓ Import BTCSwingEMAMACD: sid=9
+[2026-06-03 20:18:12]   [PASS] ✓ Import TIPBreakoutStrategy: sid=10
+[2026-06-03 20:18:12]   [PASS] ✓ Import DualEMAVolatilityStrategy: sid=11
+[2026-06-03 20:18:12]   [PASS] ✓ Import VWAPATRReversionStrategy: sid=12
+[2026-06-03 20:18:12]   [PASS] ✓ Import MacroTakerFlowExhaustionStrategy: sid=13
+[2026-06-03 20:18:12]   [PASS] ✓ Import ETHLayeredReversionStrategy: sid=16
+[2026-06-03 20:18:12]   [PASS] ✓ Import TakerEMAPullbackStrategy: sid=17
+[2026-06-03 20:18:12]   [PASS] ✓ Import ETHMomentumSqueezeStrategy: sid=19
+[2026-06-03 20:18:12]   [PASS] ✓ Import SupertrendProStrategy: sid=20
+[2026-06-03 20:18:12]   [PASS] ✓ Import KeltnerRSIReversionStrategy: sid=21
+[2026-06-03 20:18:12]   [PASS] ✓ Import SuperFVMAStrategy: sid=22
+[2026-06-03 20:18:12]   [PASS] ✓ Import EnvelopeMeanReversionStrategy: sid=26
+[2026-06-03 20:18:12]   [PASS] ✓ Import EMACrossoverStrategy: sid=23
+[2026-06-03 20:18:12]   [PASS] ✓ Import TakerBuyIntensityMomentumStrategy: sid=27
+[2026-06-03 20:18:12]   [PASS] ✓ Import RSIMeanReversionDailyStrategy: sid=28
+[2026-06-03 20:18:12]   [PASS] ✓ Import LiquiditySweepReversalStrategy: sid=30
+[2026-06-03 20:18:12]   [PASS] ✓ Import DMIADXStrategy: sid=37
+[2026-06-03 20:18:12]   [PASS] ✓ Import FVGMitigationReversalStrategy: sid=38
+[2026-06-03 20:18:12]   [PASS] ✓ Import BBWVolatilityBreakoutStrategy: sid=42
+[2026-06-03 20:18:12]   [PASS] ✓ Import DynamicSwingAnchoredVWAPStrategy: sid=43
+[2026-06-03 20:18:12]   [PASS] ✓ Import RSITrendFilterStrategy: sid=44
+[2026-06-03 20:18:12]   [PASS] ✓ Import ICTHolyTrinityConfluenceStrategy: sid=45
+[2026-06-03 20:18:12]   [PASS] ✓ Import AroonRSIStrategy: sid=47
+[2026-06-03 20:18:12]   [PASS] ✓ Import WaveTrendMFIDivergenceStrategy: sid=48
+[2026-06-03 20:18:12]   [PASS] ✓ Import TrendIntensityIndexStrategy: sid=51
+[2026-06-03 20:18:12]   [PASS] ✓ Import DumpReversalPeakTrailStrategy: sid=60
+[2026-06-03 20:18:12]   [PASS] ✓ Import ZScoreStatArbStrategy: sid=64
+[2026-06-03 20:18:12]   [PASS] ✓ Import EMARibbonRSIMomentumStrategy: sid=65
+[2026-06-03 20:18:12]   [PASS] ✓ Import FisherTransformStrategy: sid=66
+[2026-06-03 20:18:12]   [PASS] ✓ Import OrderBlockSMCStrategy: sid=71
+[2026-06-03 20:18:12]   [PASS] ✓ Import AVSOMomentumStrategy: sid=72
+[2026-06-03 20:18:12]   [PASS] ✓ Import MultiTFRSIDivergenceStrategy: sid=73
+[2026-06-03 20:18:12]   [PASS] ✓ Import ZeroLagTrendSpeedStrategy: sid=74
+[2026-06-03 20:18:12]   [PASS] ✓ Import T3NexusStiffStrategy: sid=75
+[2026-06-03 20:18:12]   [PASS] ✓ Import MeanReversionFundingRateStrategy: sid=76
+[2026-06-03 20:18:12]   [PASS] ✓ Import VWAPRSIReversionStrategy: sid=77
+[2026-06-03 20:18:12]   [PASS] ✓ Import HarmonicDivergenceStrategy: sid=82
+[2026-06-03 20:18:12]   [PASS] ✓ Import NowoIchimokuMTFStrategy: sid=84
+[2026-06-03 20:18:12]   [PASS] ✓ Import SupertrendATRMomentumStrategy: sid=85
+[2026-06-03 20:18:12]   [PASS] ✓ Import MultiTFMomentumReversalStrategy: sid=86
+[2026-06-03 20:18:12] ═══ TEST GROUP 3: Data Linkage (parquet exists per strategy) ═══
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BTC/1d: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BTC/1h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BTC/4h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BTC/5m: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet ETH/4h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet ETH/15m: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BTC/15m: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BNB/4h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet SOL/4h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet XRP/4h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet ETH/1h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet BNB/1h: exists
+[2026-06-03 20:18:12]   [PASS] ✓ Parquet XRP/1h: exists
+[2026-06-03 20:18:12] ═══ TEST GROUP 4: Backtest Smoke Test (Exhaustive) ═══
+[2026-06-03 20:18:12]   [PASS] ✓ Backtest smoke (sid=1): 2 trades
+[2026-06-03 20:18:12]   [PASS] ✓ Backtest smoke (sid=2): 423 trades
+[2026-06-03 20:18:12]   [PASS] ✓ Backtest smoke (sid=3): 58 trades
+[2026-06-03 20:18:12]   [PASS] ✓ Backtest smoke (sid=4): 15 trades
+[2026-06-03 20:18:12]   [PASS] ✓ Backtest smoke (sid=5): 22 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=6): 2053 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=7): 22 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=8): 4 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=9): 50 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=10): 462 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=11): 9 trades
+[2026-06-03 20:18:14]   [PASS] ✓ Backtest smoke (sid=12): 1470 trades
+[2026-06-03 20:18:15]   [PASS] ✓ Backtest smoke (sid=13): 5 trades
+[2026-06-03 20:18:15]   [PASS] ✓ Backtest smoke (sid=14): 163 trades
+[2026-06-03 20:18:15]   [PASS] ✓ Backtest smoke (sid=15): 36 trades
+[2026-06-03 20:18:15]   [PASS] ✓ Backtest smoke (sid=16): 137 trades
+[2026-06-03 20:18:16]   [PASS] ✓ Backtest smoke (sid=17): 496 trades
+[2026-06-03 20:18:16]   [PASS] ✓ Backtest smoke (sid=18): 120 trades
+[2026-06-03 20:18:16]   [PASS] ✓ Backtest smoke (sid=19): 226 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=20): 73 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=21): 0 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=22): 15 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=23): 25 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=24): 15 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=25): 14 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=26): 11 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=27): 2479 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=28): 43 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=29): 1174 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=30): 270 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=31): 253 trades
+[2026-06-03 20:18:17]   [PASS] ✓ Backtest smoke (sid=32): 230 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=33): 235 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=34): 222 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=35): 1383 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=36): 1368 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=37): 136 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=38): 52 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=39): 154 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=40): 58 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=41): 247 trades
+[2026-06-03 20:18:18]   [PASS] ✓ Backtest smoke (sid=42): 188 trades
+[2026-06-03 20:18:19]   [PASS] ✓ Backtest smoke (sid=43): 174 trades
+[2026-06-03 20:18:19]   [PASS] ✓ Backtest smoke (sid=44): 14 trades
+[2026-06-03 20:18:19]   [PASS] ✓ Backtest smoke (sid=45): 23 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=46): 104 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=47): 159 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=48): 23 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=49): 122 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=50): 129 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=51): 64 trades
+[2026-06-03 20:18:20]   [PASS] ✓ Backtest smoke (sid=55): 30 trades
+[2026-06-03 20:18:21]   [PASS] ✓ Backtest smoke (sid=56): 35 trades
+[2026-06-03 20:18:21]   [PASS] ✓ Backtest smoke (sid=58): 27 trades
+[2026-06-03 20:18:21]   [PASS] ✓ Backtest smoke (sid=60): 106 trades
+[2026-06-03 20:18:21]   [PASS] ✓ Backtest smoke (sid=61): 100 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=63): 80 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=64): 59 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=65): 275 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=66): 1663 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=67): 59 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=68): 53 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=69): 58 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=70): 73 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=71): 28 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=72): 2 trades
+[2026-06-03 20:18:22]   [PASS] ✓ Backtest smoke (sid=73): 30 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=74): 227 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=75): 80 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=76): 52 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=77): 46 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=78): 72 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=79): 98 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=80): 287 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=81): 249 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=82): 67 trades
+[2026-06-03 20:18:23]   [PASS] ✓ Backtest smoke (sid=83): 7 trades
+[2026-06-03 20:18:24]   [PASS] ✓ Backtest smoke (sid=84): 4521 trades
+[2026-06-03 20:18:24]   [PASS] ✓ Backtest smoke (sid=85): 66 trades
+[2026-06-03 20:18:25]   [PASS] ✓ Backtest smoke (sid=86): 214 trades
+[2026-06-03 20:18:25]   [FAIL] ✗ Backtest smoke (sid=99): Sandbox Runtime Crash (Empty Results)
+[2026-06-03 20:18:25]   → Inbox → @crypto-fullstack [HIGH] BACKTEST_SMOKE_FAIL
+[2026-06-03 20:18:25] ============================================================
+[2026-06-03 20:18:25] QA SUMMARY: 143 PASS · 1 FAIL · 0 WARN  (13s)
+[2026-06-03 20:18:25] ============================================================

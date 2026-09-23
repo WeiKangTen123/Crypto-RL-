@@ -1,0 +1,98 @@
+{
+  "strategy_id": "7",
+  "primary_results": {
+    "sharpe": -0.01,
+    "return": -4.43,
+    "mdd": 43.21,
+    "trades": 33,
+    "win_rate": 54.55,
+    "profit_factor": 0.92
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.69,
+      "return": -49.92,
+      "mdd": 60.35,
+      "trades": 33
+    },
+    "BTC": {
+      "sharpe": -0.01,
+      "return": -4.43,
+      "mdd": 43.21,
+      "trades": 33
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "vrsi_period",
+      "value": 19,
+      "sharpe": -0.33
+    },
+    {
+      "param": "vrsi_period",
+      "value": 23,
+      "sharpe": 0.05
+    },
+    {
+      "param": "vrsi_oversold",
+      "value": 11.653110000000002,
+      "sharpe": -0.16
+    },
+    {
+      "param": "vrsi_oversold",
+      "value": 14.242690000000001,
+      "sharpe": 0.06
+    },
+    {
+      "param": "vrsi_overbought",
+      "value": 69.84639,
+      "sharpe": -0.03
+    },
+    {
+      "param": "vrsi_overbought",
+      "value": 85.36781,
+      "sharpe": -0.31
+    },
+    {
+      "param": "vwap_period",
+      "value": 111,
+      "sharpe": -0.4
+    },
+    {
+      "param": "vwap_period",
+      "value": 135,
+      "sharpe": -0.21
+    },
+    {
+      "param": "vwap_std_mult",
+      "value": 3.2595300000000003,
+      "sharpe": -0.35
+    },
+    {
+      "param": "vwap_std_mult",
+      "value": 3.9838700000000005,
+      "sharpe": 0.23
+    },
+    {
+      "param": "sl_pct",
+      "value": 0.059129999999999995,
+      "sharpe": -0.02
+    },
+    {
+      "param": "sl_pct",
+      "value": 0.07227,
+      "sharpe": 0.24
+    },
+    {
+      "param": "ema_period",
+      "value": 15,
+      "sharpe": -0.01
+    },
+    {
+      "param": "ema_period",
+      "value": 19,
+      "sharpe": -0.01
+    }
+  ]
+}

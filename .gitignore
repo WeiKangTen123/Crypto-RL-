@@ -1,107 +1,51 @@
-# Python
-*.pyc
-*.pyo
-__pycache__/
-*.egg-info/
+# ── FULL BACKUP BRANCH ────────────────────────────────────────────────────────
+# This branch is pushed as `main` on github.com/WeiKangTen123/Crypto-RL- (private).
+# It is a complete backup of the working tree, credentials included. Only
+# regenerable caches and files GitHub physically refuses (>= 100 MB) are excluded.
+# The trimmed .gitignore used for the abacus-my remote lives on the `main` branch.
 
-# Virtual environment
+# Regenerable caches / environments
 venv/
 .venv/
 env/
 ENV/
-
-# Data files
-*.parquet
-*.parquet.bak
-dataset/
-*.pkl
-*.sqlite
-
-# Logs & temp
-*.log
-*.tmp
-*.bak
-
-# ── Secrets & API keys ────────────────────────────────────────────────────────
-# All credentials live in "API & others/" — the whole folder is ignored,
-# except the *.example templates that document each file's format.
-API & others/*
-!API & others/*.example
-!API & others/README.md
-
-# .env stays at repo root: load_dotenv() auto-discovers it from CWD upward,
-# and core/config_api.py + the .gemini data-engineer scripts rely on that.
-.env
-.env.*
-!.env.example
-
-# Belt-and-braces: these patterns still apply anywhere in the tree
-reddit_api.txt
-open_router_API.txt
-binance_api.txt
-signal_replay_api.txt
-signal_strive_API.txt
-*_api.txt
-*_API.txt
-*api_key*
-*secret*
-*credential*
-*_token.txt
-*.pem
-*.key
-*.ppk
-id_rsa*
-id_ed25519*
-myserver
-
-# Data & large folders
-data/
-dataset/
-train_results/
-
-# Generated outputs
-results/
-report/
-strategy_backtest/results/
-
-# Signal Replay run artifacts — large, regenerable (~525 MB)
-Signal_Replay/*.json
-!Signal_Replay/runs.json
-
-# DRL training artifacts — regenerable
-DRL_BTC/logs/*.json
-DRL_BTC/logs/*.jsonl
-DRL_BTC/data&feature/
-
-# Local scratch / throwaway experiments — never uploaded
-scratch/
-
-# Loose binary/media files
-*.zip
-*.pdf
-*.png
-*.webp
-*.jpg
-*.jpeg
-*.gif
-
-# Backup files (all)
-*.bak
-
-# Phase 12
-phase_12/
-
-# Freqtrade
-freqtrade/
-freqai/
-
-# Node
+__pycache__/
+.pycache_tmp/
+*.pyc
+*.pyo
 node_modules/
-
-# OS
 .DS_Store
 
 # Google Drive sync artifacts
 .tmp.drive*/
 .tmp.driveupload/
 .tmp.drivedownload/
+
+# ── Files >= 100 MB: GitHub hard limit, cannot be pushed ─────────────────────
+DRL_BTC/data&feature/alpha-direction_features.parquet
+DRL_BTC/data&feature/futures_klines_1m.parquet
+DRL_BTC/data&feature/spot_klines_1m.parquet
+DRL_BTC/data/checkpoints/sac_best_s42_session7.MD
+DRL_BTC/data/checkpoints/sac_best_s42_session7.pt
+dataset/AAVE/1m/order_book_depth.parquet
+dataset/ADA/1m/order_book_depth.parquet
+dataset/ADA/1m/spot_ohlcv.parquet
+dataset/AVAX/1m/order_book_depth.parquet
+dataset/AVAX/1m/spot_ohlcv.parquet
+dataset/BNB/1m/order_book_depth.parquet
+dataset/BTC/1m/order_book_depth.parquet
+dataset/BTC/1m/spot_ohlcv.parquet
+dataset/BTC/spot_ohlcv.parquet
+dataset/DOT/1m/order_book_depth.parquet
+dataset/DOT/1m/spot_ohlcv.parquet
+dataset/ETH/1m/order_book_depth.parquet
+dataset/LINK/1m/order_book_depth.parquet
+dataset/LINK/1m/spot_ohlcv.parquet
+dataset/MATIC/1m/order_book_depth.parquet
+dataset/MATIC/1m/spot_ohlcv.parquet
+dataset/SOL/1m/order_book_depth.parquet
+dataset/XRP/1m/order_book_depth.parquet
+phase_10/data/results_advanced_5m.json
+phase_10/data/results_wright_5m.json
+train_results/res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k/stored_agent/actor_00017920_00015.062.pth
+train_results/res_2026-05-22__11_27_47_model_CPCV_sac_4h_50H_15k/study.pkl

@@ -1,0 +1,104 @@
+| 2026-05-29 18:46 | @crypto-strategy-tuner | .gemini/skills/alpha-researcher/inbox/20260529_184643_from_tuner_FINETUNE_COMPLETE.json | Created new inbox message for alpha-researcher. | To inform alpha-researcher about the fine-tuning result for strategy ID 27. || 2026-05-29 18:47 | @crypto-strategy-tuner | .gemini/skills/alpha-researcher/inbox/20260529_184717_from_tuner_FINETUNE_COMPLETE.json | Created new inbox message for alpha-researcher. | To inform alpha-researcher about the fine-tuning result for strategy ID 28. |
+| 2026-05-29 18:47 | @crypto-strategy-tuner | .gemini/skills/alpha-researcher/inbox/20260529_184737_from_tuner_FINETUNE_COMPLETE.json | Created new inbox message for alpha-researcher. | To inform alpha-researcher about the fine-tuning result for strategy ID 74. |
+| 2026-05-29 17:08:00 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | Reflecting active state and current task.
+| 2026-05-29 17:08:00 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting agent's operational start.
+| 2026-05-29 17:08:00 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting skipped scan and proceeding to inbox check.
+| 2026-05-29 17:08:00 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting no FINETUNE messages and cycle ending.
+| 2026-05-29 17:08:00 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | Reflecting idle state.
+2026-05-29 21:47:44 | @crypto-strategy-tuner | main_controller/activity.log | Appended log entry | Logged scan skip.
+2026-05-29 21:47:44 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status | Set status to Idle and action to checking inbox.
+2026-05-29 21:47:44 | @crypto-strategy-tuner | .gemini/shared/AGENT_COLLABORATION.md | Appended summary | Summarized skipped scan and no FINETUNE messages.
+| 2026-05-29 21:49:47 | @alpha-researcher | main_controller/activity.log | Appended 'Finished processing inbox (no messages found)' message | To reflect completion of inbox processing.
+| 2026-05-29 21:49:47 | @alpha-researcher | main_controller/heartbeat.json | Updated status to 'Idle' and action to 'Finished processing inbox' | To reflect the agent's current state after checking inbox.
+| 2026-05-29 21:51:25 | @alpha-researcher | main_controller/activity.log | Appended fine-tuning result for Strategy ID 6 | To log the outcome of the fine-tuning process.
+| 2026-05-29 21:51:25 | @alpha-researcher | main_controller/heartbeat.json | Updated status and action | To reflect current processing of fine-tuning result.
+| 2026-05-29 21:51:25 | @alpha-researcher | .gemini/shared/AGENT_COLLABORATION.md | Appended processing of fine-tuning result for Strategy ID 6 | To document cross-agent communication.
+| 2026-05-29 23:12 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | Reflecting active state and current task.
+| 2026-05-29 23:12 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting agent's operational start.
+| 2026-05-29 23:13 | @crypto-strategy-tuner | .gemini/skills/alpha-researcher/inbox/20260529_231354_from_tuner_FINETUNE_COMPLETE.json | Created new inbox message for alpha-researcher. | To inform alpha-researcher about the fine-tuning result for strategy ID 6.
+| 2026-05-29 23:13 | @crypto-strategy-tuner | .gemini/shared/AGENT_COLLABORATION.md | Appended summary | Summarized fine-tuning result for strategy ID 6.
+| 2026-05-29 23:13 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | Reflecting idle state after fine-tuning.
+| 2026-05-29 23:52 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting fine-tuning result.
+| 2026-05-29 23:52 | @crypto-strategy-tuner | main_controller/activity.log | Appended new log entry | Documenting agent's idle state.
+| 2026-05-29 23:52 | @alpha-researcher | main_controller/activity.log | Appended fine-tuning rejection for Strategy ID 4. | To log the outcome of fine-tuning for Strategy ID 4.
+| 2026-05-29 23:52 | @alpha-researcher | main_controller/heartbeat.json | Updated status and action | To reflect that the agent is idle after processing strategy ID 4's fine-tuning.
+| 2026-05-29 23:13 | @alpha-researcher | main_controller/activity.log | Appended new log entry | To log the rejection of strategy ID 6.
+| 2026-05-29 23:13 | @alpha-researcher | main_controller/heartbeat.json | Updated 'action' to 'Processing fine-tuning results' | To reflect current task.
+| 2026-05-29 23:13 | @alpha-researcher | .gemini/shared/AGENT_COLLABORATION.md | Appended new row | To document the rejection of strategy ID 6.
+| 2026-05-29 23:13 | @alpha-researcher | main_controller/heartbeat.json | Updated 'action' to 'Idle' | To reflect agent's idle state after processing fine-tuning results.
+| 2026-05-29 23:30 | @alpha-researcher | main_controller/activity.log | Appended new log entry | Documenting the start of the autonomous research cycle and strategy search.
+| 2026-05-29 23:35 | @alpha-researcher | main_controller/activity.log | Appended new log entry | Documenting the failure of the `google_web_search` tool and the escalation to `@crypto-fullstack`.
+| 2026-05-29 23:36 | @alpha-researcher | main_controller/heartbeat.json | Updated status and action | Reflecting a blocked state and escalation to `@crypto-fullstack` due to web search tool failure.
+| 2026-05-29 23:36 | @alpha-researcher | .gemini/skills/crypto-fullstack/inbox/20260529_2336_from_quant_WEB_SEARCH_TOOL_FAILURE.json | Created new inbox message | Reporting the `google_web_search` tool failure to `@crypto-fullstack`.| 2026-05-29 23:36 | @crypto-fullstack | main_controller/activity.log | Appended new log entry | Documenting start of investigation into google_web_search tool failure.
+| 2026-05-29 23:36 | @crypto-fullstack | google_web_search tool | Tested functionality with generic query | Confirmed the tool is working for generic queries, contradicting initial report.
+| 2026-05-29 23:36 | @crypto-fullstack | main_controller/heartbeat.json | Updated status and action | Reflecting start of investigation into google_web_search tool failure.
+| 2026-05-29 23:45 | @alpha-researcher | main_controller/activity.log | Appended new log entry | Documenting the rejection of strategy ID 4 after fine-tuning.
+| 2026-05-29 23:45 | @alpha-researcher | main_controller/heartbeat.json | Updated 'action' | To reflect current processing of fine-tuning result for strategy ID 4.
+| 2026-05-29 23:45 | @alpha-researcher | .gemini/shared/AGENT_COLLABORATION.md | Appended new row | To document the rejection of strategy ID 4.
+2026-05-29 23:40 | @crypto-strategy-tuner | strategy_backtest/strategies/mean_reversion_vrsi_strategy.py | Updated default parameters | Fine-tuning strategy ID 7
+2026-05-29 23:40 | @crypto-strategy-tuner | strategy_backtest/settings.py | Updated strategy parameters | Fine-tuning strategy ID 7
+2026-05-29 23:43 | @crypto-strategy-tuner | strategy_backtest/strategies/dual_ema_volatility_strategy.py | Updated default parameters | Fine-tuning strategy ID 15
+2026-05-29 23:43 | @crypto-strategy-tuner | strategy_backtest/settings.py | Updated strategy parameters | Fine-tuning strategy ID 152026-05-29 23:43:54 | @alpha-researcher | main_controller/activity.log | Appended info about message from @crypto-fullstack | To log receipt of message from @crypto-fullstack
+2026-05-29 23:44:26 | @alpha-researcher | .gemini/shared/AGENT_COLLABORATION.md | Appended investigation status for web search tool failure | To log status of web search tool investigation
+2026-05-29 23:44:37 | @alpha-researcher | .gemini/skills/crypto-fullstack/inbox/20260529_234433_from_quant_WEB_SEARCH_TOOL_INVESTIGATION_RESPONSE.json | Created response message for @crypto-fullstack | To provide feedback on web search tool investigation
+2026-05-29 23:44:46 | @alpha-researcher | main_controller/activity.log | Appended info about sending response to @crypto-fullstack | To log sending of response to @crypto-fullstack
+| 2026-05-29 23:45 | @alpha-researcher | main_controller/activity.log | Appended fine-tuning rejection for Strategy ID 15. | To log the outcome of fine-tuning for Strategy ID 15.
+| 2026-05-29 23:45 | @alpha-researcher | main_controller/heartbeat.json | Updated action to "Processing fine-tuning results for strategy ID 15". | To reflect current agent activity.
+| 2026-05-29 23:45 | @alpha-researcher | .gemini/shared/STRATEGY_LEADERBOARD.md | Added Strategy ID 15 as rejected with Sharpe 0.5. | To reflect the rejection of Strategy ID 15.
+| 2026-05-29 23:45 | @alpha-researcher | .gemini/shared/AGENT_COLLABORATION.md | Added an entry for Strategy ID 15's fine-tuning rejection. | To log the outcome of fine-tuning for Strategy ID 15.
+| 2026-05-29 23:45 | @crypto-fullstack | main_controller/heartbeat.json | Updated status and action | To reflect analysis of inbox message.
+| 2026-05-29 23:45 | @crypto-fullstack | main_controller/activity.log | Appended new activity entry | To log the start of inbox message analysis.
+| 2026-05-29 23:46 | @crypto-fullstack | .gemini/skills/alpha-researcher/inbox/20260529_234600_from_fullstack_WEB_SEARCH_TOOL_TEST_QUERIES.json | Created new inbox message | To provide test queries for google_web_search to @alpha-researcher.
+| 2026-05-29 23:46 | @crypto-fullstack | .gemini/shared/AGENT_COLLABORATION.md | Appended new collaboration entry | To log the communication with @alpha-researcher.
+| 2026-05-29 23:48:29 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | Reflecting that the agent is checking inbox for FINETUNE messages |
+| 2026-05-30 00:04:58 | @crypto-strategy-tuner | main_controller/heartbeat.json | Updated status and action | To indicate the start of the scanning process |
+| 2026-05-30 00:05:43 | @crypto-strategy-tuner | main_controller/activity.log | Appended 'SCANNING' entry | To indicate the start of the scanning process |
+| 2026-05-30 00:15 | @crypto-strategy-tuner | scan_results.json | Classified 69 strategies | Post-scan classification complete |
+| 2026-05-30 00:11 | @crypto-strategy-tuner | .gemini/skills/alpha-researcher/inbox/20260530_001153_from_tuner_FINETUNE_COMPLETE.json | Created new inbox message | To inform alpha-researcher about the fine-tuning result for strategy ID 6.
+2026-05-29 16:12:22 | @crypto-strategy-tuner | FINETUNE_COMPLETE | Strategy ID 6 fine-tuned, Sharpe improved from -0.99 to -0.29. | Fine-tuning process completed as per inbox request.
+[2026-05-30 00:11] RESULT | Strategy ID 6 | Fine-tuning completed. Best Sharpe: -0.23. Not promoted to leaderboard.
+[2026-05-30 00:11] INFO | @alpha-researcher | Finished processing inbox (no messages found).
+[2026-05-30 00:11] INFO | @alpha-researcher | Agent is now Idle.
+[2026-05-30 00:18] DEVELOPING | @alpha-researcher | Started autonomous research cycle.
+[2026-05-30 00:18] INFO | @alpha-researcher | Blocked: google_web_search is not returning any results, cannot proceed with strategy discovery.
+[2026-06-04 10:00] FIXING | Strategy 99 | Analyzing TA_RSI failure.
+[2026-06-10 16:15:00] ▶ START | crypto-fullstack | Processing STRATEGY_PERFORMANCE_UPDATE for ChoppinessKeltnerBreakoutStrategy (ID 102) with grade BAD.
+[2026-06-10 16:15:00] ✓ RESULT | crypto-fullstack | Confirmed automatic handling of STRATEGY_PERFORMANCE_UPDATE. No UI code changes required. The system already reflects strategy grades from scan_results.json in the Tuner Panel, Graveyard count, and Failure Vault.
+[2026-06-10 18:30] 🏁 FINISH | OrderBlockSMCStrategy | Implemented and validated SMC strategy as ID 103.
+[2026-06-11 10:00] ▶ START | RSI_EMA_Strategy | Build Phase.
+[2026-06-11 10:05] ✓ RESULT | RSI_EMA_Strategy | Strategy Assembled with Logic Switches.
+| 2026-06-11 11:30 | @alpha-developer | main_controller/activity.log | Appended 'Syntax Check Passed' entry | To log completion of Stage 3 (SYNTAX) for RSI_EMA_Strategy.
+[2026-06-11 10:20] ✗ FAIL | PBO_AUDIT | Strategy res_2026-06-11__10_10_54_model_WF_ppo_4h_50H_15k has no completed trials. Unable to calculate PBO.
+[2026-06-12 01:41] ▶ START | crypto-strategy-tuner | Running scan_all.py.
+[2026-06-12 01:42] ✓ RESULT | crypto-strategy-tuner | scan_all.py completed, 104 strategies PENDING classification.
+[2026-06-12 12:00] ▶ START | crypto-strategy-tuner | scan_results.json missing, initiating full scan.
+[2026-06-12 12:05] ✓ RESULT | crypto-strategy-tuner | scan_all.py completed, 104 strategies PENDING classification.[2026-06-12 14:52] ✓ RESULT | crypto-data-engineer | [3/4] REPAIR: Data backfill completed. Proceeding to verification.
+2026-06-12 14:51 | ▶ START | @alpha-developer | [6/8] WFO_EVO: Running Walk-Forward Stability check (4-Window)...
+2026-06-14 22:15 | @alpha-developer | main_controller/activity.log | Appended 'Syntax Check Passed' entry | To log completion of Stage 3 (SYNTAX) for gemini_test_strategy.py.
+2026-06-14 22:15 | @alpha-developer | main_controller/activity.log | Appended 'Smoke Test Passed' entry | To log completion of Stage 4 (SMOKE) for gemini_test_strategy.py.
+2026-06-14 22:15 | @alpha-developer | main_controller/activity.log | Appended 'Baseline Backtest Completed' entry | To log completion of Stage 5 (BACKTEST) for gemini_test_strategy.py (0 trades generated).
+2026-06-14 22:15 | @alpha-developer | main_controller/activity.log | Appended 'WFO Stability Check Failed: No Trades Generated' entry | To log completion of Stage 6 (WFO_EVO) for gemini_test_strategy.py.
+[2026-09-15 13:35] ▶ START | Lead Architect | Researching Vegas Theory + Z-Score / Mean Score strategies.
+[2026-09-15 13:40] ⚙ WORK | alpha-developer | Implementing Vegas Tunnel and Z-Score factors in strategy_backtest/library.py.
+[2026-09-15 13:45] ✓ RESULT | alpha-developer | Built VegasZScoreStrategy (ID 257 1H, ID 258 4H) in strategy_backtest/strategies/vegas_zscore_strategy.py.
+[2026-09-15 13:50] ⚙ WORK | crypto-qa-tester | Local 5-year backtest: Strategy 257 (SOL 1H) Sharpe 0.99, ROI +232.4%, MDD 31.5%; Strategy 258 (SOL 4H) Sharpe 0.82, ROI +165.3%.
+[2026-09-15 13:55] ✓ RESULT | Lead Architect | Signal Replay evaluated Strategy 257 (run_id sr_37f30fb2a6): +448.2% Return ($5.48M equity), Sharpe 0.804; Strategy 258 (run_id sr_3b5e0da9b6): +368.8% Return ($4.69M equity), Sharpe 0.779.
+[2026-09-15 13:57] 🏁 FINISH | Lead Architect | Vegas Z-Score strategies backtested, scored on Signal Strive API, and cataloged into runs.json.
+[2026-09-15 14:26] ▶ START | Lead Architect | [1/6] Expanding multi-asset universe from 10 to 30 coins for MDD minimization and ROI enhancement.
+[2026-09-15 14:32] ✓ RESULT | crypto-data-engineer | [2/6] Ingested 20 additional liquid cryptocurrencies from 2020-12-31 to 2026-09-15 (12,498 bars each).
+[2026-09-15 14:35] ⚙ WORK | alpha-developer | [3/6] Running 30-coin parameter matrix simulation across universe sizes, risk parity sizing, and market breadth filters.
+[2026-09-15 15:10] ✓ RESULT | Lead Architect | [4/6] Signal Strive evaluated 10-Coin Portfolio (run_id sr_57209bec6a): Grade C (Score 65.7), Run B Sharpe 1.233, MDD 11.96%, Cost Ratio 27.9%, Run A Return +529.52% ($6.30M).
+[2026-09-15 15:20] ✓ RESULT | Lead Architect | [5/6] Signal Strive evaluated 12-Coin Portfolio (run_id sr_02c5ca772f): Single-Digit MDD 9.78%, Run B Sharpe 1.090, Run A Return +320.08% ($4.20M).
+[2026-09-15 15:38] 🏁 FINISH | Lead Architect | [6/6] Multi-Coin Vegas Strategy permanently registered (IDs 259 & 260) in settings.py, cataloged in runs.json.
+[2026-09-15 16:16] ▶ START  | Lead Architect | [1/6] Ingesting & synchronizing 2021-2026 Macro (SPY, DXY, VIX, JPY) and Spot ETF (IBIT, FBTC) datasets.
+[2026-09-15 16:25] ✓ RESULT | Lead Architect | [1/6] Successfully ingested & aligned 11,956 4h bars for SPY, DXY, VIX, JPY, IBIT, and FBTC (0 NaNs).
+[2026-09-15 16:26] ▶ START  | Lead Architect | [2/6] Implementing pure mathematical functions in strategy_backtest/library.py for Macro Market Map & ETF Flow Engine.
+[2026-09-15 16:33] ✓ RESULT | Lead Architect | [2/6] Pure functions calc_macro_regime_index and calc_etf_flow_proxy verified in strategy_backtest/library.py under Library-First rule.
+[2026-09-15 16:34] ▶ START  | Lead Architect | [3/6] Building Macro + ETF Enhanced Multi-Coin Vegas Strategy and backtesting engine.
+[2026-09-15 17:05] ✓ RESULT | Lead Architect | [3/6] VegasMacroETFPortfolioStrategy created and verified in strategy_backtest/strategies/.
+[2026-09-15 17:10] ✓ RESULT | Lead Architect | [4/6] Registered Strategies 261 & 262 in settings.py with settings.py.bak backup preserved.
+[2026-09-15 17:12] ▶ START  | Lead Architect | [5/6] Running full multi-coin portfolio simulation and preparing Signal Strive submission.
+[2026-09-15 17:41] ✓ RESULT | Lead Architect | [5/6] Submitted Strategy 261 (10-Coin Macro+ETF) to Signal Strive (run_id sr_bee52824af): Run B MDD 7.94%, Return +114.4% ($2.14M), PF 1.82, Cost Ratio 21.6%, Run A Return +512.03% ($6.12M).
+[2026-09-15 17:43] ✓ RESULT | Lead Architect | [6/6] Submitted Strategy 262 (12-Coin Macro+ETF) to Signal Strive (run_id sr_ad00596a9d): Run B MDD 6.88% (Ultra-low single digit!), Return +74.18% ($1.74M), PF 1.71, Run A Return +261.62% ($3.62M).
+[2026-09-15 17:45] 🏁 FINISH | Lead Architect | [6/6] Macro Market Map & Spot Bitcoin ETF multi-coin portfolio fully operational, cataloged in settings.py and runs.json.
+[2026-09-19 11:39] 🏁 FINISH | Lead Architect | Full project backup (6,277 files, 8.5 GB) synchronized to Google Drive 'YWVision (WORK)/Backup/Crypto-RL_2026-09-19.zip'. Purged legacy archives.

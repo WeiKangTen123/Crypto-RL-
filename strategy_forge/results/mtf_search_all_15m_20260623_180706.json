@@ -1,0 +1,362 @@
+{
+  "run_at": "2026-06-23T18:07:06.549858",
+  "style": "mtf",
+  "coin": "all",
+  "tf": "15m",
+  "date_from": "2022-01-01",
+  "date_to": "2026-06-01",
+  "n_tested": 110,
+  "score_mode": "blend",
+  "risk": {
+    "risk_per_trade": 0.05,
+    "leverage": 5.0,
+    "trading_fee": 0.0004,
+    "slippage_pct": 0.0005
+  },
+  "top_results": [
+    {
+      "rank": 1,
+      "score": 22.5593,
+      "source": "random",
+      "entry": "wavetrend",
+      "filters": [
+        "htf_supertrend",
+        "htf_ema_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "wt_oversold": -56,
+        "htf_bars": 2,
+        "st_multiplier": 2.6378,
+        "atr_period": 11,
+        "sl_atr_mult": 1.36,
+        "htf_ema_period": 121,
+        "wt_overbought": 43,
+        "atr_multiplier": 3.1387,
+        "wt_n1": 19,
+        "st_period": 6,
+        "be_trigger_mult": 1.8285,
+        "wt_n2": 30,
+        "tp_atr_mult": 3.5
+      },
+      "metrics": {
+        "total_return": 1.1680271115449877e+17,
+        "sharpe": 9.038181818181817,
+        "max_drawdown": 4.974545454545455,
+        "win_rate": 36.88363636363636,
+        "total_trades": 21077,
+        "profit_factor": null,
+        "trades_per_week": 8.618181818181817,
+        "style": "mft"
+      }
+    },
+    {
+      "rank": 2,
+      "score": 21.3253,
+      "source": "random",
+      "entry": "aroon_cross",
+      "filters": [
+        "htf_ema_trend",
+        "obv_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "htf_bars": 8,
+        "sl_atr_mult": 0.91,
+        "atr_period": 20,
+        "htf_ema_period": 188,
+        "atr_multiplier": 3.873,
+        "aroon_period": 29,
+        "obv_period": 50,
+        "be_trigger_mult": 1.8069,
+        "aroon_threshold": 75,
+        "tp_atr_mult": 3.12
+      },
+      "metrics": {
+        "total_return": 1.3586828970694206e+17,
+        "sharpe": 6.419090909090911,
+        "max_drawdown": 9.93,
+        "win_rate": 22.083636363636366,
+        "total_trades": 62557,
+        "profit_factor": null,
+        "trades_per_week": 25.509090909090904,
+        "style": "mft"
+      }
+    },
+    {
+      "rank": 3,
+      "score": 11.8777,
+      "source": "random",
+      "entry": "stoch_rsi_reversion",
+      "filters": [
+        "htf_supertrend",
+        "obv_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "htf_bars": 4,
+        "st_multiplier": 3.2273,
+        "sl_atr_mult": 1.31,
+        "atr_period": 9,
+        "rsi_overbought": 73,
+        "atr_multiplier": 1.3852,
+        "rsi_period": 6,
+        "obv_period": 42,
+        "st_period": 29,
+        "be_trigger_mult": 0.9234,
+        "rsi_oversold": 22,
+        "smoothing": 5,
+        "tp_atr_mult": 3.08
+      },
+      "metrics": {
+        "total_return": 1763801604.5072725,
+        "sharpe": 5.683636363636364,
+        "max_drawdown": 4.505454545454546,
+        "win_rate": 36.74272727272727,
+        "total_trades": 19010,
+        "profit_factor": null,
+        "trades_per_week": 7.772727272727272,
+        "style": "swing"
+      }
+    },
+    {
+      "rank": 4,
+      "score": 11.7908,
+      "source": "random",
+      "entry": "hma_cross",
+      "filters": [
+        "htf_supertrend",
+        "atr_expansion"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 172,
+        "htf_bars": 4,
+        "st_multiplier": 1.1686,
+        "sl_atr_mult": 1.17,
+        "atr_period": 26,
+        "vol_ma_period": 18,
+        "ema_fast": 17,
+        "atr_multiplier": 1.399,
+        "st_period": 14,
+        "be_trigger_mult": 1.5098,
+        "tp_atr_mult": 2.6
+      },
+      "metrics": {
+        "total_return": 2816268524.4309087,
+        "sharpe": 5.041818181818182,
+        "max_drawdown": 4.658181818181818,
+        "win_rate": 38.00636363636363,
+        "total_trades": 12485,
+        "profit_factor": null,
+        "trades_per_week": 5.090909090909091,
+        "style": "swing"
+      }
+    },
+    {
+      "rank": 5,
+      "score": 11.6736,
+      "source": "random",
+      "entry": "stoch_rsi_reversion",
+      "filters": [
+        "htf_ema_trend",
+        "wr_not_extreme"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "htf_bars": 8,
+        "sl_atr_mult": 1.27,
+        "atr_period": 27,
+        "htf_ema_period": 37,
+        "period": 10,
+        "rsi_overbought": 73,
+        "atr_multiplier": 3.0395,
+        "rsi_period": 9,
+        "be_trigger_mult": 1.2057,
+        "rsi_oversold": 31,
+        "smoothing": 6,
+        "tp_atr_mult": 1.94
+      },
+      "metrics": {
+        "total_return": 1368625334.4172726,
+        "sharpe": 5.52909090909091,
+        "max_drawdown": 8.624545454545453,
+        "win_rate": 27.89727272727273,
+        "total_trades": 39425,
+        "profit_factor": null,
+        "trades_per_week": 16.11818181818182,
+        "style": "mft"
+      }
+    },
+    {
+      "rank": 6,
+      "score": 10.5912,
+      "source": "random",
+      "entry": "hma_cross",
+      "filters": [
+        "htf_supertrend",
+        "obv_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 168,
+        "htf_bars": 4,
+        "st_multiplier": 1.2304,
+        "sl_atr_mult": 1.15,
+        "atr_period": 11,
+        "ema_fast": 29,
+        "atr_multiplier": 2.5543,
+        "obv_period": 31,
+        "st_period": 12,
+        "be_trigger_mult": 1.0644,
+        "tp_atr_mult": 1.81
+      },
+      "metrics": {
+        "total_return": 176305079.58181816,
+        "sharpe": 5.413636363636363,
+        "max_drawdown": 4.3999999999999995,
+        "win_rate": 29.424545454545452,
+        "total_trades": 14274,
+        "profit_factor": null,
+        "trades_per_week": 5.845454545454547,
+        "style": "swing"
+      }
+    },
+    {
+      "rank": 7,
+      "score": 9.9731,
+      "source": "random",
+      "entry": "zlema_cross",
+      "filters": [
+        "htf_ema_trend",
+        "obv_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 25,
+        "htf_bars": 4,
+        "sl_atr_mult": 1.29,
+        "atr_period": 29,
+        "htf_ema_period": 118,
+        "ema_fast": 27,
+        "atr_multiplier": 1.2007,
+        "obv_period": 24,
+        "be_trigger_mult": 1.5085,
+        "tp_atr_mult": 3.5
+      },
+      "metrics": {
+        "total_return": 223127345.68,
+        "sharpe": 3.941818181818182,
+        "max_drawdown": 3.8045454545454547,
+        "win_rate": 43.208181818181814,
+        "total_trades": 8855,
+        "profit_factor": null,
+        "trades_per_week": 3.6181818181818186,
+        "style": "swing"
+      }
+    },
+    {
+      "rank": 8,
+      "score": 5.7089,
+      "source": "random",
+      "entry": "zlema_cross",
+      "filters": [
+        "htf_supertrend",
+        "adx_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 195,
+        "htf_bars": 8,
+        "st_multiplier": 2.0393,
+        "sl_atr_mult": 1.24,
+        "atr_period": 8,
+        "adx_period": 17,
+        "ema_fast": 23,
+        "atr_multiplier": 5.5272,
+        "adx_threshold": 15,
+        "st_period": 18,
+        "be_trigger_mult": 0.9915,
+        "tp_atr_mult": 1.95
+      },
+      "metrics": {
+        "total_return": 59438.98545454545,
+        "sharpe": 3.6436363636363636,
+        "max_drawdown": 4.504545454545456,
+        "win_rate": 24.829090909090908,
+        "total_trades": 7926,
+        "profit_factor": null,
+        "trades_per_week": 3.2545454545454544,
+        "style": "swing"
+      }
+    },
+    {
+      "rank": 9,
+      "score": 4.5342,
+      "source": "random",
+      "entry": "ema_cross",
+      "filters": [
+        "htf_supertrend",
+        "htf_ema_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 142,
+        "htf_bars": 4,
+        "st_multiplier": 1.2501,
+        "sl_atr_mult": 0.93,
+        "atr_period": 15,
+        "htf_ema_period": 114,
+        "ema_fast": 27,
+        "atr_multiplier": 3.9873,
+        "st_period": 22,
+        "be_trigger_mult": 1.3379,
+        "tp_atr_mult": 2.19
+      },
+      "metrics": {
+        "total_return": 17781.362727272728,
+        "sharpe": 2.5000000000000004,
+        "max_drawdown": 3.813636363636364,
+        "win_rate": 22.282727272727275,
+        "total_trades": 4368,
+        "profit_factor": null,
+        "trades_per_week": 1.781818181818182,
+        "style": "position"
+      }
+    },
+    {
+      "rank": 10,
+      "score": 3.4928,
+      "source": "random",
+      "entry": "ema_cross",
+      "filters": [
+        "htf_ema_trend",
+        "adx_trend"
+      ],
+      "exit_method": "breakeven_trail",
+      "params": {
+        "ema_slow": 70,
+        "htf_bars": 8,
+        "sl_atr_mult": 0.81,
+        "atr_period": 5,
+        "htf_ema_period": 181,
+        "adx_period": 27,
+        "ema_fast": 14,
+        "atr_multiplier": 2.1712,
+        "adx_threshold": 21,
+        "be_trigger_mult": 0.9904,
+        "tp_atr_mult": 3.04
+      },
+      "metrics": {
+        "total_return": 5971.535454545456,
+        "sharpe": 1.5054545454545454,
+        "max_drawdown": 2.838181818181819,
+        "win_rate": 19.95090909090909,
+        "total_trades": 1410,
+        "profit_factor": null,
+        "trades_per_week": 0.5727272727272726,
+        "style": "position"
+      }
+    }
+  ]
+}

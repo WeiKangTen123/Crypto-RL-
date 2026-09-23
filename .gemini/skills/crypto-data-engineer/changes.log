@@ -1,0 +1,135 @@
+[2026-05-27 13:52] CREATED | dataset/SPY/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SPY/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/15m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/15m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/VIX/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/VIX/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/DXY/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/DXY/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/15m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/15m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/JPY/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/JPY/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BTC/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BTC/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/XRP/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/XRP/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/SOL/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/SOL/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/ETH/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/ETH/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/5m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/5m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/30m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/30m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/4h/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/4h/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1d/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1d/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 13:52] CREATED | dataset/BNB/1m/spot_ohlcv.parquet | Backup before repair
+[2026-05-27 13:52] REPAIRED | dataset/BNB/1m/spot_ohlcv.parquet | Cast dtypes to float64
+[2026-05-27 14:05] REPAIRED | dataset/ | Cast num_trades and quote_asset_volume to float64 system-wide | Dtype error and StringDtype incompatibility
+[2026-05-27 14:30] PATCHED | .gemini/skills/crypto-data-engineer/scripts/health_scout_v2.py | Fixed heartbeat and collaboration table formatting | script fix
+[2026-05-27 14:35] ACTION | main_controller/agent_status.json | MODIFIED | Updated agent status after health check

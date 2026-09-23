@@ -1,0 +1,197 @@
+sk_sig_98b9e08318aefef9ccda85d3dfc466ea8694d578b8c4b3965c0d67efd5530e31
+
+usage:
+
+Signal API endpoint
+What a provider integrates against. They pull market data / timestamps from us, and POST a signal when their model fires. We stamp as_of on receipt.
+
+POST
+https://btest.abcz-tr.com/api/v1/signals
+⏱ as_of is stamped server-side on receipt — providers can't back-date a signal or claim latency they didn't have.
+🔁 You own every decision. We execute the entries and exits you submit. You can also rest an explicit stop or take-profit at a price — set stop_loss_price / take_profit_price (absolute) and we fill at that level when a bar trades through it (worse, at the open, on a gap). We do not compute dynamic exits (trailing / percent-of-entry / ATR) — run those yourself and submit the exit as a signal (target: 0, or a flip). Dynamic / ambiguous stop fields are rejected, so your record is only ever your own calls.
+Signal contract
+Field	Type	Meaning
+ts req	int (ns)	decision time (their bar)
+symbol req	string	e.g. BTCUSDT
+target req	float [-1,1]	desired position: +1 long … −1 short, 0 flat
+strength	float	conviction — sizes the bet (higher = bigger, relative to your own calls)
+margin	float ($)	optional sizing scheme → runs your scheme alongside ours
+leverage	float	optional — with margin → notional = margin × leverage
+notional	float ($)	optional — explicit Run B notional (instead of margin × leverage)
+stop_loss_price	float ($)	optional — resting stop at an absolute price; filled AT the level when a bar trades through it
+take_profit_price	float ($)	optional — resting take-profit at an absolute price (same fill model)
+horizon	int (ns)	optional intended hold
+reason	string	optional free text
+as_of	int (ns)	server-stamped — ignored if sent
+Example
+# provider POSTs its signal series (one submission → one scored run)
+curl -X POST https://btest.abcz-tr.com/api/v1/signals \
+  -H "Authorization: Bearer sk_sig_…" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "strategy": "My Momentum Alpha",
+    "symbol": "BTCUSDT", "resolution": "1d",
+    "signals": [
+      {"ts": 1700000000000000000, "target": 1.0},
+      {"ts": 1701000000000000000, "target": 0.0}
+    ]
+  }'
+Name the run with an optional top-level strategy — it labels this run in your Runs & History (falls back to your key's name if omitted), so one key can run many differently-named strategies. We replay the submitted series through the same deterministic engine (fills, fees, slippage, funding) — the score reflects OUR execution, not theirs. One submission → one run.
+Sizing — want to set your own leverage?
+Every run is graded on our standard sizing (Run A) — that's the grade of record, so results stay comparable across providers. If you also want your own leverage / margin measured, tag every signal with a sizing scheme and we'll additionally replay it as Run B and report the gap between the two.
+
+Run A — standard sizing · always
+# just direction + conviction — we size it
+"signals": [
+  {"ts": …, "target": 1.0, "strength": 0.8},
+  {"ts": …, "target": -0.5, "strength": 0.3}
+]
+One fully-funded cross-margin book (≤1×, never levered): a lone position takes ≈95% of equity, N concurrent positions split it ≈95%/N. strength (optional) weights that split — higher-conviction calls get a bigger share.
+Run B — your own leverage · optional
+# add margin + leverage to EVERY signal
+"signals": [
+  {"ts": …, "target": 1.0, "margin": 500,  "leverage": 5},
+  {"ts": …, "target": 1.0, "margin": 1000, "leverage": 3}
+]
+margin (USD) × leverage = your notional — or send an explicit notional. We replay your scheme alongside Run A; the A↔B gap = what your sizing is worth. Miss the scheme on any signal → Run B is skipped. (target still sets direction; your scheme sets size.)
+The grade of record stays Run A either way — we never let a provider flatter the headline grade with their own sizing. Run B is shown as a side-by-side comparison in each run's report.
+Levered / market-neutral books: also send a run-level leverage (e.g. 5) and Run B becomes a faithful levered lens — your real gross, with funding, slippage and maintenance-margin liquidation all modelled (a book the venue would have margin-called shows the real drawdown, even −100%). It's a display lens, never graded: leverage is a knob you can turn any day, not signal skill. So you get both — a comparable ≤1× grade (Run A) and your true levered curve (Run B), with a verdict on whether the leverage improved risk-adjusted return or just amplified variance toward ruin.
+Multiple coins & custom backtest period
+Two more knobs on a submission: run a multi-coin book, and pin the backtest window instead of letting it default to wherever your signals fall.
+
+Multiple coins → one portfolio
+# tag each signal with its own symbol
+"signals": [
+  {"ts": …, "symbol": "BTCUSDT", "target": 1.0},
+  {"ts": …, "symbol": "ETHUSDT", "target": -0.5},
+  {"ts": …, "symbol": "SOLUSDT", "target": 1.0}
+]
+All coins run in one fully-funded cross-margin book (≤1×, split across positions by conviction) → one equity curve, one grade for the basket. The top-level symbol becomes an optional fallback. Coins we have no price data for are skipped and listed as uncovered.
+Custom period (optional)
+# pin the window; omit → your signal span
+{
+  "resolution": "1d",
+  "start": "2023-01-01",
+  "end":   "2025-01-01",
+  "signals": [ … ]
+}
+We replay over exactly [start, end] (clipped to available data). Time with no active signal is flat; signals outside are ignored. Handy to grade every provider on the same window. Omit both → first-signal … last-signal.
+Honesty pays — declare your trials, claim your track
+Two optional fields (Scorecard v2.1) let a serious provider prove their edge isn't luck — and unlock the top grade.
+
+variants_tested — deflate your own Sharpe honestly
+# how many variants did you try before this one?
+{
+  "variants_tested": 25,
+  "signals": [ … ]
+}
+The best Sharpe of 25 attempts is much weaker evidence than a first-try Sharpe. The deflated-Sharpe test uses max(your declared count, your observed resubmissions of the same book) — so declaring honestly costs nothing extra, while resubmission farming raises your own bar automatically. Undeclared → we still count your family of submissions.
+claimed — reconcile a real track, unlock grade A
+# claim your return over the window (percent)
+{
+  "claimed": { "total_return_pct": 12.5, "tolerance_pct": 2.0 },
+  "signals": [ … ]
+}
+We check our ≤1× replay against your claim: match within tolerance → the reconciled gate passes hard and grade A becomes reachable. Mismatch → DQ. No claim → grades cap at B (the score itself is never capped). Not combinable with run-level leverage > 1 — the claim is checked against the standard ≤1× book.
+Integrate with Claude Code
+📋 Copy prompt
+Hand this to your Claude Code — it has the endpoint, auth, signal contract and the rules, so it wires up submission correctly the first time. (Swap in your own provider key.)
+
+You are integrating with the SIGNAL STRIVE signal-replay API to submit trading signals for evaluation.
+
+WHAT THIS IS
+  I run my own strategy on my own infra. When my model decides a position, I POST a signal.
+  The platform stamps `as_of` on receipt, replays my submitted signals through its deterministic
+  engine (its fills, fees, slippage, funding) and scores the result. It never runs my code.
+
+ENDPOINT
+  POST https://btest.abcz-tr.com/api/v1/signals
+  Headers:
+    Authorization: Bearer <MY_PROVIDER_KEY>   # starts with sk_sig_
+    Content-Type: application/json
+
+REQUEST BODY (one submission = one scored run — send my full signal series)
+  {
+    "strategy": "My Momentum Alpha",  // OPTIONAL — names THIS run in Runs/History; else the key name
+    "symbol": "BTCUSDT",       // OPTIONAL fallback; omit and tag each signal for multi-coin
+    "resolution": "1d",        // 1m | 5m | 15m | 1h | 1d
+    "start": "2023-01-01",     // OPTIONAL custom window (YYYY-MM-DD); omit -> my signal span
+    "end":   "2025-01-01",     // OPTIONAL
+    "variants_tested": 25,     // OPTIONAL — how many variants I tried; deflates the Sharpe test honestly
+    "claimed": { "total_return_pct": 12.5, "tolerance_pct": 2.0 },  // OPTIONAL — my claimed track; unlocks grade A
+    "signals": [
+      { "ts": 1700000000000000000, "symbol": "BTCUSDT", "target": 1.0, "strength": 0.8 },
+      { "ts": 1701000000000000000, "symbol": "ETHUSDT", "target": -0.5, "strength": 0.3 }
+    ]
+  }
+
+MULTI-COIN + PERIOD
+  - Tag each signal with its own `symbol` to run a multi-coin PORTFOLIO — one fully-funded
+    cross-margin book (<=1x, split across positions by conviction). Uncovered coins are skipped.
+  - `start`/`end` pin the backtest window; time with no active signal is flat, signals outside ignored.
+
+SIGNAL FIELDS
+  ts       (required) int64 NANOSECONDS — decision time = the bar I decided on (seconds x 1e9)
+  symbol   (per-signal for multi-coin; else falls back to the top-level `symbol`)
+  target   (required) float in [-1, 1] — desired POSITION: +1 full long, -1 full short, 0 flat
+  strength (optional) float — CONVICTION. Sizes the bet: higher-conviction calls get bigger
+           bets, relative to your own calls (this is Run A). z-score or probability both work.
+  margin   (optional) float USD — Run B sizing scheme (pair with leverage). See SIZING below.
+  leverage (optional) float     — Run B sizing scheme (pair with margin).  See SIZING below.
+  notional (optional) float USD — Run B sizing scheme (explicit notional). See SIZING below.
+  horizon  (optional) int64 ns — intended hold
+  reason   (optional) string
+  Never send `as_of` — the server stamps it on receipt (prevents back-dating).
+
+SIZING — DO YOU WANT TO SET YOUR OWN LEVERAGE?  (decide this before building the client)
+  A run can be sized two ways. ASK ME which one I want:
+
+  RUN A — standard sizing — ALWAYS runs, and is the GRADE OF RECORD.
+    Send just `target` (+ optional `strength`). The platform sizes every position itself on one
+    cross-margin book (fully-funded <=1x, split across positions; `strength` weights the split). This keeps all
+    providers comparable, so the headline grade is ALWAYS Run A — my own leverage can never
+    inflate it. If I don't care about custom leverage, this is all I need — nothing extra to send.
+
+  RUN B — MY OWN leverage / margin — OPTIONAL, only if I ask for it.
+    If I want my own position sizing measured too, put a scheme on EVERY signal:
+      margin (USD) + leverage   ->  notional = margin x leverage,   OR
+      an explicit notional (USD).
+    The platform then ADDITIONALLY replays my exact scheme as Run B beside Run A and reports the
+    A<->B gap = what my sizing skill is actually worth.
+    IMPORTANT: the scheme MUST be on every signal — miss it on even one and Run B is skipped
+    silently (only Run A grades). `target` still sets DIRECTION; the scheme only sets SIZE.
+
+HONESTY KNOBS (scorecard v2.1) — both optional, both run-level
+  variants_tested (int >= 1): how many strategy variants/parameter sets I tested before this
+    submission. The deflated-Sharpe overfit test uses max(my declared count, my observed
+    resubmissions of the same provider+symbols+resolution family) — resubmission farming
+    raises my own bar automatically, declaring honestly costs nothing extra.
+  claimed {total_return_pct, tolerance_pct=2.0}: my claimed return over the window (PERCENT).
+    The platform reconciles its <=1x replay against it: match -> the reconciled gate passes
+    HARD and grade A becomes reachable; mismatch -> DQ. Without a claim the grade LETTER caps
+    at B (the numeric score is never capped). NOT combinable with run-level leverage > 1.
+
+RULES
+  - `target` is a POSITION I hold until my next signal changes it — not a per-trade order.
+  - EXITS — TWO WAYS. (a) EXPLICIT price order: put `stop_loss_price` and/or `take_profit_price`
+    (an ABSOLUTE price) on the signal that OPENS a position; the platform fills AT that level when
+    a bar trades through it (worse, at the open, on a gap). (b) DISCRETIONARY / DYNAMIC exit
+    (trailing, ATR, percent-of-entry): the platform does NOT compute these — I run the rule on MY
+    side and emit the exit as a signal (`target: 0`, or a flip) at the bar it fires. The API REJECTS
+    trailing_stop_pct / stop_loss_pct / stop_loss / etc. — only explicit *_price orders are executed.
+  - `ts` must be a real PAST bar timestamp in nanoseconds.
+  - Send the whole series in one POST; the JSON response is the scored run:
+    run_id, total_return, sharpe, max_drawdown, final_equity_usd, grade, and a full
+    `scorecard` — integrity gates (reproducible / no-lookahead / costs-real / reconciled)
+    plus graded Edge / Robustness / Consistency / Cost on an adaptive lens. A hard gate
+    failure disqualifies the run regardless of returns; short samples grade PROVISIONAL.
+    If I sent a Run B scheme, the response also carries the Run A vs Run B sizing comparison.
+
+TASK
+  1. ASK me up front: (a) my provider key (starts with sk_sig_), and (b) do I want my OWN
+     leverage/margin measured (Run B), or just the standard grade (Run A)? If Run B, ensure
+     EVERY signal carries margin+leverage (or notional) — otherwise Run B is silently skipped.
+  2. Ask where my signals come from if you don't already have them.
+  3. Write a small, dependency-light client (Python or Node) that takes my signal series and
+     POSTs it in one request, then prints the returned run — grade + scorecard, plus the A/B
+     sizing gap if I opted into Run B.

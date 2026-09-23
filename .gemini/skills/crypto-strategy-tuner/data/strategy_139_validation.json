@@ -1,0 +1,98 @@
+{
+  "strategy_id": "139",
+  "primary_results": {
+    "sharpe": 0.66,
+    "return": 211.8,
+    "mdd": 61.31,
+    "trades": 37,
+    "win_rate": 8.11,
+    "profit_factor": 3.19
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": 0.6,
+      "return": 153.51,
+      "mdd": 66.78,
+      "trades": 70
+    },
+    "BTC": {
+      "sharpe": 0.66,
+      "return": 211.8,
+      "mdd": 61.31,
+      "trades": 37
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "low_lookback",
+      "value": 25,
+      "sharpe": 0.66
+    },
+    {
+      "param": "low_lookback",
+      "value": 31,
+      "sharpe": 0.66
+    },
+    {
+      "param": "vol_ma_period",
+      "value": 9,
+      "sharpe": 0.66
+    },
+    {
+      "param": "vol_ma_period",
+      "value": 11,
+      "sharpe": 0.61
+    },
+    {
+      "param": "vol_multiplier",
+      "value": 1.5975,
+      "sharpe": 0.57
+    },
+    {
+      "param": "vol_multiplier",
+      "value": 1.9525000000000001,
+      "sharpe": 0.46
+    },
+    {
+      "param": "rsi_period",
+      "value": 21,
+      "sharpe": 0.66
+    },
+    {
+      "param": "rsi_period",
+      "value": 25,
+      "sharpe": 0.66
+    },
+    {
+      "param": "rsi_threshold",
+      "value": 45.359550000000006,
+      "sharpe": 0.66
+    },
+    {
+      "param": "rsi_threshold",
+      "value": 55.43945000000001,
+      "sharpe": 0.66
+    },
+    {
+      "param": "stop_loss_pct",
+      "value": 0.02151,
+      "sharpe": 0.7
+    },
+    {
+      "param": "stop_loss_pct",
+      "value": 0.026290000000000004,
+      "sharpe": 0.63
+    },
+    {
+      "param": "peak_retrace_pct",
+      "value": 0.33192000000000005,
+      "sharpe": 0.63
+    },
+    {
+      "param": "peak_retrace_pct",
+      "value": 0.40568000000000004,
+      "sharpe": 0.64
+    }
+  ]
+}

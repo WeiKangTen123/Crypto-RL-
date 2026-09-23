@@ -1,0 +1,48 @@
+{
+  "strategy_id": "6_30M",
+  "primary_results": {
+    "sharpe": 0.23,
+    "return": 7.29,
+    "mdd": 12.8,
+    "trades": 34,
+    "win_rate": 38.24,
+    "profit_factor": 1.27
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -1.06,
+      "return": -28.61,
+      "mdd": 31.45,
+      "trades": 29
+    },
+    "BTC": {
+      "sharpe": 0.23,
+      "return": 7.29,
+      "mdd": 12.8,
+      "trades": 34
+    }
+  },
+  "stability_passed": false,
+  "stability_runs": [
+    {
+      "param": "vrsi_period",
+      "value": 12,
+      "sharpe": 0.16
+    },
+    {
+      "param": "vrsi_period",
+      "value": 14,
+      "sharpe": 0.2
+    },
+    {
+      "param": "vwap_period",
+      "value": 166,
+      "sharpe": -0.38
+    },
+    {
+      "param": "vwap_period",
+      "value": 202,
+      "sharpe": -0.04
+    }
+  ]
+}

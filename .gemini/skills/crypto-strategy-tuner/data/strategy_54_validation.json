@@ -1,0 +1,118 @@
+{
+  "strategy_id": "54",
+  "primary_results": {
+    "sharpe": 1.38,
+    "return": 95.38,
+    "mdd": 6.74,
+    "trades": 40,
+    "win_rate": 70.0,
+    "profit_factor": 3.55
+  },
+  "cross_asset_results": {
+    "ETH": {
+      "sharpe": -0.04,
+      "return": -2.99,
+      "mdd": 15.54,
+      "trades": 50
+    },
+    "BTC": {
+      "sharpe": 0.26,
+      "return": 7.46,
+      "mdd": 11.17,
+      "trades": 50
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "wt_n1",
+      "value": 13,
+      "sharpe": 1.16
+    },
+    {
+      "param": "wt_n1",
+      "value": 15,
+      "sharpe": 1.3
+    },
+    {
+      "param": "wt_n2",
+      "value": 17,
+      "sharpe": 1.16
+    },
+    {
+      "param": "wt_n2",
+      "value": 21,
+      "sharpe": 0.93
+    },
+    {
+      "param": "wt_oversold",
+      "value": -9,
+      "sharpe": 1.46
+    },
+    {
+      "param": "wt_oversold",
+      "value": -11,
+      "sharpe": 1.38
+    },
+    {
+      "param": "wt_overbought",
+      "value": 56,
+      "sharpe": 1.35
+    },
+    {
+      "param": "wt_overbought",
+      "value": 68,
+      "sharpe": 1.31
+    },
+    {
+      "param": "mfi_period",
+      "value": 7,
+      "sharpe": 1.32
+    },
+    {
+      "param": "mfi_period",
+      "value": 9,
+      "sharpe": 1.21
+    },
+    {
+      "param": "ema_period",
+      "value": 130,
+      "sharpe": 1.38
+    },
+    {
+      "param": "ema_period",
+      "value": 158,
+      "sharpe": 1.38
+    },
+    {
+      "param": "divergence_lookback",
+      "value": 6,
+      "sharpe": 1.22
+    },
+    {
+      "param": "divergence_lookback",
+      "value": 8,
+      "sharpe": 1.33
+    },
+    {
+      "param": "tp_rr",
+      "value": 1.00575,
+      "sharpe": 1.33
+    },
+    {
+      "param": "tp_rr",
+      "value": 1.22925,
+      "sharpe": 1.34
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 1.3765500000000002,
+      "sharpe": 1.28
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 1.6824500000000002,
+      "sharpe": 1.29
+    }
+  ]
+}

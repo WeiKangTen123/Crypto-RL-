@@ -1,0 +1,108 @@
+{
+  "strategy_id": "165",
+  "primary_results": {
+    "sharpe": -12.35,
+    "return": -99.99,
+    "mdd": 99.99,
+    "trades": 4599,
+    "win_rate": 20.35,
+    "profit_factor": 0.34
+  },
+  "cross_asset_results": {
+    "BTC": {
+      "sharpe": -15.88,
+      "return": -99.99,
+      "mdd": 99.99,
+      "trades": 4577
+    },
+    "SOL": {
+      "sharpe": -7.85,
+      "return": -99.99,
+      "mdd": 99.99,
+      "trades": 4623
+    }
+  },
+  "stability_passed": true,
+  "stability_runs": [
+    {
+      "param": "ema_fast",
+      "value": 13,
+      "sharpe": -12.43
+    },
+    {
+      "param": "ema_fast",
+      "value": 15,
+      "sharpe": -12.31
+    },
+    {
+      "param": "ema_slow",
+      "value": 173,
+      "sharpe": -12.74
+    },
+    {
+      "param": "ema_slow",
+      "value": 211,
+      "sharpe": -13.05
+    },
+    {
+      "param": "macd_fast",
+      "value": 21,
+      "sharpe": -12.36
+    },
+    {
+      "param": "macd_fast",
+      "value": 25,
+      "sharpe": -12.19
+    },
+    {
+      "param": "macd_slow",
+      "value": 59,
+      "sharpe": -12.32
+    },
+    {
+      "param": "macd_slow",
+      "value": 73,
+      "sharpe": -12.18
+    },
+    {
+      "param": "macd_signal",
+      "value": 4,
+      "sharpe": -12.92
+    },
+    {
+      "param": "macd_signal",
+      "value": 6,
+      "sharpe": -11.49
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 1.8828,
+      "sharpe": -12.83
+    },
+    {
+      "param": "tp_atr_mult",
+      "value": 2.3012,
+      "sharpe": -11.83
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.58068,
+      "sharpe": -12.8
+    },
+    {
+      "param": "sl_atr_mult",
+      "value": 0.70972,
+      "sharpe": -12.19
+    },
+    {
+      "param": "atr_period",
+      "value": 24,
+      "sharpe": -12.22
+    },
+    {
+      "param": "atr_period",
+      "value": 30,
+      "sharpe": -12.4
+    }
+  ]
+}
